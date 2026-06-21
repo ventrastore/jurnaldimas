@@ -84,7 +84,7 @@
             page-break-after: auto !important;
         }
         
-        /* Header dan Footer Halaman - POSISI TETAP */
+        /* Header Halaman */
         .page-header {
             position: absolute;
             top: 1cm;
@@ -97,19 +97,20 @@
             padding-bottom: 5px;
             z-index: 10;
         }
-        /* GARIS NAMA: HANYA DI BAWAH, TIDAK DI TENGAH */
+
+        /* ✅ GARIS NAMA: DIPINDAH KE TENGAH, SEBELUM JUDUL BAB BARU */
         .name-divider {
-            position: absolute;
-            bottom: 2cm;
-            left: 3cm;
-            right: 3cm;
+            display: block;
             border-top: 1px solid #999;
             text-align: center;
             font-size: 9pt;
             font-style: italic;
             padding-top: 5px;
-            z-index: 10;
+            margin: 30px 0;
+            position: relative;
+            clear: both;
         }
+
         .page-footer {
             position: absolute;
             bottom: 1cm;
@@ -123,7 +124,7 @@
         }
 
         /* ==========================================
-           HALAMAN 1: SAMPUL JUDUL - DIPERKECIL UKURANNYA
+           HALAMAN 1: SAMPUL JUDUL - UKURAN PAS
         ========================================== */
         .cover-page {
             display: flex;
@@ -134,7 +135,6 @@
             padding: 3cm 2cm !important;
         }
 
-        /* ✅ DIPERKECIL: DARI 18pt → 14pt */
         .journal-title-main {
             font-size: 14pt;
             font-weight: bold;
@@ -143,7 +143,6 @@
             margin-bottom: 2cm;
         }
 
-        /* Pengaturan Logo Kampus - PAS & UTUH */
         .logo-container {
             width: 200px;
             height: auto;
@@ -161,7 +160,6 @@
             display: block;
         }
 
-        /* ✅ DIPERKECIL: DARI 16pt → 13pt */
         .article-title {
             font-size: 13pt;
             font-weight: bold;
@@ -248,7 +246,7 @@
             }
         }
 
-        /* ✅ JUDUL BAB SELALU MULAI HALAMAN BARU */
+        /* ✅ JUDUL BAB: MULAI DI HALAMAN BARU, PERSIS CONTOH */
         h2 {
             font-size: 12pt;
             font-weight: bold;
@@ -463,14 +461,13 @@
             <p>Namun, berdasarkan hasil audit visual dan evaluasi berkala terhadap antarmuka berjalan, identitas visual yang saat ini melekat pada Perusahaan Cerah memperlihatkan beberapa kelemahan arsitektural yang fundamental. Komposisi elemen grafis yang terlalu kompleks dan ornamen dekoratif yang berlebihan melahirkan citra yang kaku serta dinilai ketinggalan zaman. Problematika estetika ini kian diperparah oleh kenyataan bahwa mayoritas target audiens aktif dari platform ini telah mengalami pergeseran ke arah segmen pasar Generasi Z dan Alpha, yang secara psikologis memiliki kecenderungan preferensi yang sangat kuat terhadap bentuk-bentuk geometris yang minimalis, bersih, dan fungsional.</p>
             <p>Dari domain Teknik Informatika, pengembangan sebuah platform digital tidak boleh dipandang secara reduksionis sebatas optimalisasi logika algoritma pada sisi <i>backend</i>, minimalisasi kueri basis data, atau ketahanan infrastruktur server semata. Komponen <i>User Interface</i> (UI) dan <i>User Experience</i> (UX), di mana salah satu aset paling vitalnya adalah logo sistem, merupakan subsistem kritis yang secara langsung memengaruhi retensi visual dan kenyamanan operasional pengguna. Logo yang tidak adaptif akan mengurangi nilai ergonomis antarmuka dan menciptakan beban kognitif ekstra bagi pengguna saat menavigasi sistem. Oleh karena itu, rekayasa ulang desain identitas visual ini menjadi sebuah urgensi riset yang harus diselesaikan guna menjaga keberlanjutan bisnis platform.</p>
 
-            <div class="name-divider">Dimas Arif Fikriawan | Perancangan Ulang Identity Branding</div>
             <div class="page-footer">Halaman 3</div>
         </div>
         <!-- AKHIR HALAMAN 3 -->
 
 
         <!-- ==========================================
-            HALAMAN 4: TINJAUAN PUSTAKA (MULAI HALAMAN BARU)
+            HALAMAN 4: TINJAUAN PUSTAKA
         ========================================== -->
         <div class="page">
             <div class="page-header">Dimas Arif Fikriawan | Perancangan Ulang Identity Branding</div>
@@ -490,7 +487,9 @@
             <p>Tipografi dalam antarmuka digital memiliki aturan fungsional yang sangat ketat dibandingkan media cetak konvensional. Jenis huruf berkaki (Serif) cenderung mengalami pemecahan piksel atau distorsi anti-aliasing ketika dipaksa mengecil pada layar perangkat seluler berkepadatan rendah. Sebaliknya, rumpun huruf tanpa kaki (Sans-Serif) mempertahankan kejelasan garis strukturnya karena bentuk geometrisnya selaras dengan susunan matriks piksel horizontal-vertikal layar digital monitor, sehingga sangat direkomendasikan untuk platform berbasis web mobile.</p>
             <p>Penelitian menunjukkan bahwa jenis huruf Sans-Serif memiliki tingkat keterbacaan 20-30% lebih tinggi pada jarak pandang rata-rata pengguna gawai. Karakteristik garis yang seragam dan bentuk huruf yang sederhana mengurangi beban kerja mata saat memindai informasi.</p>
 
+            <!-- ✅ GARIS NAMA DI TENGAH, SEBELUM JUDUL BAB BARU -->
             <div class="name-divider">Dimas Arif Fikriawan | Perancangan Ulang Identity Branding</div>
+
             <div class="page-footer">Halaman 4</div>
         </div>
         <!-- AKHIR HALAMAN 4 -->
@@ -515,14 +514,13 @@
             <p>Fase pertama dimulai dari <i>Empathize</i>, di mana peneliti melakukan pengumpulan data empiris melalui observasi langsung terhadap perilaku interaksi pengguna pada situs cerah.co serta menyebarkan kuesioner awal untuk menangkap impresi subjektif mereka. Fase kedua, <i>Define</i>, memetakan seluruh data keluhan menjadi rumusan masalah teknis: bentuk logo yang ada saat ini memicu distorsi visual (blurring effect) ketika diperkecil menjadi ikon resolusi rendah berukuran 32x32 piksel pada bilah status.</p>
             <p>Fase ketiga, <i>Ideate</i>, diisi dengan aktivitas penguraian ide secara kreatif guna melahirkan alternatif sketsa geometris dasar. Fase keempat, <i>Prototype</i>, memindahkan sketsa ke lingkungan digital menggunakan editor grafik vektor. Fase kelima, <i>Test</i>, merupakan tahap pengujian performa fungsional dengan mengintegrasikan aset digital baru tersebut ke dalam antarmuka web.</p>
 
-            <div class="name-divider">Dimas Arif Fikriawan | Perancangan Ulang Identity Branding</div>
             <div class="page-footer">Halaman 5</div>
         </div>
         <!-- AKHIR HALAMAN 5 -->
 
 
         <!-- ==========================================
-            HALAMAN 6: HASIL & PEMBAHASAN (MULAI HALAMAN BARU)
+            HALAMAN 6: HASIL & PEMBAHASAN
         ========================================== -->
         <div class="page">
             <div class="page-header">Dimas Arif Fikriawan | Perancangan Ulang Identity Branding</div>
@@ -580,7 +578,9 @@
 
             <p>Bentuk luar logo mengadopsi siluet balon percakapan yang secara filosofis melambangkan komunikasi interaktif dua arah. Pola ini merefleksikan visi utama platform dalam memfasilitasi penguasaan bahasa asing secara aktif dan komunikatif. Palet warna didominasi oleh warna kuning cerah `#FFD200` yang mengekspresikan optimisme, dipadukan dengan biru tua `#003366` untuk memancarkan stabilitas teknis dan profesionalisme.</p>
 
+            <!-- ✅ GARIS NAMA DI TENGAH HALAMAN -->
             <div class="name-divider">Dimas Arif Fikriawan | Perancangan Ulang Identity Branding</div>
+
             <div class="page-footer">Halaman 6</div>
         </div>
         <!-- AKHIR HALAMAN 6 -->
@@ -617,14 +617,13 @@
             <h2>V. Kesimpulan</h2>
             <p>Riset perancangan ulang sistem <i>identity branding</i> Perusahaan Cerah telah berhasil diselesaikan secara tuntas dengan mengacu pada metodologi <i>Design Thinking</i>. Penggunaan bentuk geometris minimalis yang dikombinasikan dengan pengaplikasian rumpun huruf modern Sans-Serif terbukti secara teknis mampu menyelesaikan kendala distorsi visual, memberikan tingkat skalabilitas tinggi, serta mempertahankan efisiensi rendering halaman sistem digital yang optimal pada gawai seluler. Respons positif dari sampel pengguna mengukuhkan bahwa rancangan identitas visual baru ini sangat layak dan siap diimplementasikan.</p>
 
-            <div class="name-divider">Dimas Arif Fikriawan | Perancangan Ulang Identity Branding</div>
             <div class="page-footer">Halaman 7</div>
         </div>
         <!-- AKHIR HALAMAN 7 -->
 
 
         <!-- ==========================================
-            HALAMAN 8: DAFTAR PUSTAKA (MULAI HALAMAN BARU)
+            HALAMAN 8: DAFTAR PUSTAKA
         ========================================== -->
         <div class="page">
             <div class="page-header">Dimas Arif Fikriawan | Perancangan Ulang Identity Branding</div>
@@ -640,7 +639,6 @@
                 <li>Kotler, P., & Keller, K. L. (2016). <i>Marketing Management</i> (15th ed.). Pearson Education.</li>
             </ul>
 
-            <div class="name-divider">Dimas Arif Fikriawan | Perancangan Ulang Identity Branding</div>
             <div class="page-footer">Halaman 8</div>
         </div>
         <!-- AKHIR HALAMAN 8 -->
@@ -675,7 +673,7 @@
                         .reference-list li { text-indent: -1.25cm; padding-left: 1.25cm; margin-bottom: 10px; mso-list: l0 level1 lfo1; }
                         .caption { font-size: 9.5pt; font-style: italic; text-align: center; margin-top: 4px; }
                         .page-header { display: block; font-size: 9pt; text-align: center; font-style: italic; margin: 10px 0; }
-                        .name-divider { display: block; font-size: 9pt; text-align: center; font-style: italic; border-top: 1px solid #999; padding-top: 5px; position: absolute; bottom: 2cm; left: 3cm; right: 3cm; }
+                        .name-divider { display: block; font-size: 9pt; text-align: center; font-style: italic; border-top: 1px solid #999; padding-top: 5px; margin: 30px 0; }
                         img { max-width: 75% !important; height: auto !important; display: block !important; margin-left: auto !important; margin-right: auto !important; border: none !important; mso-wrap-style: square; }
                         .logo-container img { max-width: 220px !important; height: auto !important; }
                     </style>
