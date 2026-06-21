@@ -11,12 +11,12 @@
     <style>
         * {
             box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
 
         html,
         body {
-            margin: 0;
-            padding: 0;
             background: #e8e8e8;
             color: #000;
             font-family: "Times New Roman", Times, serif;
@@ -79,21 +79,19 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            padding: 10px 0;
         }
 
-        /* ========== HALAMAN A4 TETAP ========== */
+        /* ========== HALAMAN ========== */
         .page {
             width: 210mm;
-            height: 297mm;
-            /* TETAP 297mm, bukan auto */
+            min-height: 297mm;
             margin: 0 auto 15px auto;
             background: #fff;
             padding: 20mm 20mm 20mm 20mm;
             position: relative;
-            overflow: hidden;
             page-break-after: always;
             box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
-            box-sizing: border-box;
         }
 
         .page:last-child {
@@ -101,115 +99,97 @@
             margin-bottom: 0;
         }
 
-        /* ========== SAMPUL ========== */
+        /* ========== SAMPUL - FULL MANUAL CENTER ========== */
         .cover-page {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
             text-align: center;
-            padding-top: 10mm;
-            padding-bottom: 10mm;
+            padding-top: 15mm;
         }
 
-        .cover-journal-title {
+        .cover-page .cover-journal-title {
             font-size: 14pt;
             font-weight: bold;
             text-transform: uppercase;
-            line-height: 1.5;
-            margin-bottom: 8mm;
-            letter-spacing: 0.4px;
-            word-spacing: 1px;
+            line-height: 1.6;
+            margin-bottom: 10mm;
+            letter-spacing: 0.5px;
             text-align: center;
-            width: 100%;
         }
 
-        .cover-logo-container {
+        .cover-page .cover-logo-container {
             width: 100%;
-            max-width: 250px;
-            margin: 0 auto 8mm auto;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            text-align: center;
+            margin-bottom: 10mm;
         }
 
-        .cover-logo-container img {
-            width: 100%;
+        .cover-page .cover-logo-container img {
+            display: inline-block;
+            width: auto;
             height: auto;
-            max-width: 250px;
-            aspect-ratio: auto;
-            object-fit: contain;
-            display: block;
+            max-width: 200px;
+            max-height: 200px;
         }
 
-        .cover-article-title {
+        .cover-page .cover-article-title {
             font-size: 13pt;
             font-weight: bold;
-            line-height: 1.45;
-            margin: 0 0 10mm 0;
-            max-width: 150mm;
+            line-height: 1.6;
+            margin-bottom: 12mm;
             text-align: center;
             letter-spacing: 0.3px;
-            width: 100%;
         }
 
-        .cover-section-1 {
-            margin-bottom: 8mm;
-            line-height: 1.4;
+        .cover-page .cover-section-1 {
+            margin-bottom: 10mm;
             text-align: center;
-            width: 100%;
         }
 
-        .cover-section-1 .name {
-            font-size: 11pt;
+        .cover-page .cover-section-1 .name {
+            font-size: 12pt;
             font-weight: bold;
+            margin-bottom: 2mm;
         }
 
-        .cover-section-1 .nim {
-            font-size: 11pt;
+        .cover-page .cover-section-1 .nim {
+            font-size: 12pt;
             font-weight: normal;
         }
 
-        .cover-section-2 {
-            margin-bottom: 12mm;
-            line-height: 1.6;
-            font-size: 10.5pt;
+        .cover-page .cover-section-2 {
+            margin-bottom: 14mm;
             text-align: center;
-            width: 100%;
+            line-height: 1.8;
+            font-size: 11pt;
         }
 
-        .cover-section-2 .prodi,
-        .cover-section-2 .institusi {
+        .cover-page .cover-section-2 .prodi,
+        .cover-page .cover-section-2 .institusi {
             font-weight: bold;
             font-size: 11pt;
         }
 
-        .cover-section-2 .alamat,
-        .cover-section-2 .telepon,
-        .cover-section-2 .email {
-            font-size: 10.5pt;
+        .cover-page .cover-section-2 .alamat,
+        .cover-page .cover-section-2 .telepon,
+        .cover-page .cover-section-2 .email {
+            font-size: 11pt;
         }
 
-        .cover-section-2 .email a {
+        .cover-page .cover-section-2 .email a {
             color: #003366;
             text-decoration: none;
         }
 
-        .cover-section-3 {
-            margin-top: 4mm;
-            font-size: 11pt;
+        .cover-page .cover-section-3 {
+            margin-top: 5mm;
+            font-size: 12pt;
             font-weight: bold;
             text-align: center;
-            width: 100%;
         }
 
-        .cover-footer {
+        .cover-page .cover-footer {
             margin-top: auto;
-            margin-bottom: 5mm;
             font-size: 10pt;
-            line-height: 1.5;
             text-align: center;
-            width: 100%;
+            padding-top: 10mm;
         }
 
         /* ========== HEADER JURNAL ========== */
@@ -296,7 +276,7 @@
             margin-bottom: 2mm;
         }
 
-        /* ========== HEADING ROMAWI ========== */
+        /* ========== HEADING ========== */
         h1.romawi {
             font-size: 12pt;
             font-weight: bold;
@@ -456,8 +436,6 @@
                 margin: 0;
                 box-shadow: none;
                 page-break-after: always;
-                height: 297mm;
-                overflow: hidden;
             }
 
             .page:last-child {
@@ -482,19 +460,23 @@
                 <span style="font-size:11pt;">JIKOM-DKV</span><br>
                 <span style="font-size:10pt;">VOLUME 4, NOMOR 2, JUNI 2026</span>
             </div>
+
             <div class="cover-logo-container">
                 <img src="logokampus.png" alt="Logo Kampus"
-                onerror="this.onerror=null;this.outerHTML='<div style=&quot;width:250px;height:auto;aspect-ratio:1/1;border:1px solid #000;display:flex;align-items:center;justify-content:center;font-size:10pt;margin:0 auto;background:#fafafa;&quot;>Logo Institut Widya Pratama</div>';">
+                onerror="this.onerror=null;this.outerHTML='<div style=&quot;display:inline-block;width:200px;height:200px;border:1px solid #000;display:flex;align-items:center;justify-content:center;font-size:10pt;background:#fafafa;&quot;>Logo Kampus</div>';">
             </div>
+
             <div class="cover-article-title">
                 PERANCANGAN ULANG IDENTITY BRANDING<br>
                 MELALUI DESAIN LOGO BARU<br>
                 PADA PERUSAHAAN CERAH
             </div>
+
             <div class="cover-section-1">
                 <div class="name">Dimas Arif Fikriawan</div>
                 <div class="nim">NIM 24.240.0075</div>
             </div>
+
             <div class="cover-section-2">
                 <div class="prodi">Program Studi Teknik Informatika</div>
                 <div class="institusi">Institut Widya Pratama</div>
@@ -502,7 +484,9 @@
                 <div class="telepon">(0285) 427816 / 427817</div>
                 <div class="email">Email: <a href="mailto:akademik@iwima.ac.id">akademik@iwima.ac.id</a></div>
             </div>
+
             <div class="cover-section-3">Tahun 2026</div>
+
             <div class="cover-footer">&nbsp;</div>
         </div>
 
@@ -535,7 +519,7 @@
                 <div class="abstract-col">
                     <div class="abstract-label">Abstrak</div>
                     <p class="no-indent" style="font-size:9.5pt; text-indent:0;">
-                        Perusahaan Cerah berjalan di sektor layanan edukasi digital. Belakangan persaingan makin ramai, dan logo yang dipakai selama ini sudah tidak begitu pas lagi. Tampilannya penuh, sulit terbaca begitu ukurannya dikecilkan, dan kurang luwes kalau harus tampil di layar ponsel atau media sosial. Penelitian ini mencoba menjawab persoalan itu dengan merancang ulang logo perusahaan. Harapannya, logo baru punya tampilan yang lebih bersih, modern, dan gampang dipakai di berbagai media tanpa menghilangkan jati diri perusahaan. Seluruh proses dikerjakan lewat pendekatan <i>Design Thinking</i>: mulai dari mencari tahu apa yang benar-benar diperlukan, memetakan masalah, mengumpulkan gagasan, membangun purwarupa, sampai menguji hasilnya. Temuan di lapangan menunjukkan bahwa logo yang baru terbaca lebih jelas, lebih membekas di ingatan, dan bisa dipasang di banyak tempat, baik layar maupun cetak. Pembaruan ini semoga bisa mengangkat wajah perusahaan agar tampak lebih profesional dan lebih tangkas menghadapi persaingan.
+                        Perusahaan Cerah berjalan di sektor layanan edukasi digital. Belakangan persaingan makin ramai, dan logo yang dipakai selama ini sudah tidak begitu pas lagi. Tampilannya penuh, sulit terbaca begitu ukurannya dikecilkan, dan kurang luwes kalau harus tampil di layar ponsel atau media sosial. Penelitian ini mencoba menjawab persoalan itu dengan merancang ulang logo perusahaan. Harapannya, logo baru punya tampilan yang lebih bersih, modern, dan gampang dipakai di berbagai media tanpa menghilangkan jati diri perusahaan. Seluruh proses dikerjakan lewat pendekatan <i>Design Thinking</i>. Temuan di lapangan menunjukkan bahwa logo yang baru terbaca lebih jelas, lebih membekas di ingatan, dan bisa dipasang di banyak tempat. Pembaruan ini semoga bisa mengangkat wajah perusahaan agar tampak lebih profesional.
                     </p>
                     <p class="keywords-text">
                         <b>Kata Kunci:</b> perancangan ulang, identitas merek, logo, desain visual, Design Thinking.
@@ -544,7 +528,7 @@
                 <div class="abstract-col">
                     <div class="abstract-label">Abstract</div>
                     <p class="no-indent" style="font-size:9.5pt; text-indent:0;">
-                        <i>Perusahaan Cerah works in digital education. Lately the competition has been getting busier, and its old logo no longer feels quite right. The design is crowded, hard to read once scaled down, and not flexible enough for phone screens or social media. This study tried to answer that problem by redesigning the logo. The hope was to create something cleaner, more modern, and easier to use across all kinds of media, while still keeping the company's original character. The whole thing was done using Design Thinking: figuring out what people actually needed, mapping the real problem, gathering ideas, building prototypes, and testing the result. What came out is a logo that reads clearer, sticks in the mind longer, and works well on both screens and printed materials. This refresh should help the company look more professional and stay competitive.</i>
+                        <i>Perusahaan Cerah works in digital education. Lately competition has been getting busier, and its old logo no longer feels quite right. The design is crowded, hard to read once scaled down, and not flexible enough for phone screens. This study tried to answer that problem by redesigning the logo. The hope was to create something cleaner, more modern, and easier to use across all kinds of media, while still keeping the company's original character. The whole thing was done using Design Thinking. What came out is a logo that reads clearer, sticks in the mind longer, and works well on both screens and printed materials.</i>
                     </p>
                     <p class="keywords-text">
                         <b>Keywords:</b> <i>redesign, brand identity, logo, visual design, Design Thinking.</i>
@@ -782,6 +766,12 @@
                         .page { page-break-after: always; width: 100%; min-height: 297mm; }
                         .page:last-child { page-break-after: auto; }
                         .cover-page { text-align: center; }
+                        .cover-page .cover-journal-title,
+                        .cover-page .cover-article-title,
+                        .cover-page .cover-section-1,
+                        .cover-page .cover-section-2,
+                        .cover-page .cover-section-3,
+                        .cover-page .cover-footer { text-align: center; }
                         h1.romawi { font-size: 12pt; font-weight: bold; text-align: center; text-transform: uppercase; }
                         h2 { font-size: 11pt; font-weight: bold; text-align: left; }
                         h3 { font-size: 11pt; font-weight: bold; font-style: italic; text-align: left; }
@@ -820,10 +810,6 @@
             try {
                 const { jsPDF } = window.jspdf;
 
-                // Ukuran A4 dalam mm
-                const A4_WIDTH = 210;
-                const A4_HEIGHT = 297;
-
                 const doc = new jsPDF({
                     unit: "mm",
                     format: "a4",
@@ -832,6 +818,9 @@
                     hotfixes: ["px_scaling"]
                 });
 
+                const A4_WIDTH = 210;
+                const A4_HEIGHT = 297;
+
                 const pages = document.querySelectorAll("#journal-document-content .page");
 
                 for (let i = 0; i < pages.length; i++) {
@@ -839,8 +828,7 @@
                         doc.addPage();
                     }
 
-                    // Jeda penting agar render sempurna
-                    await new Promise(resolve => setTimeout(resolve, 200));
+                    await new Promise(resolve => setTimeout(resolve, 250));
 
                     const canvas = await html2canvas(pages[i], {
                         scale: 4,
@@ -849,23 +837,10 @@
                         allowTaint: true,
                         backgroundColor: '#ffffff',
                         width: pages[i].offsetWidth,
-                        height: pages[i].offsetHeight,
-                        onclone: function(clonedDoc) {
-                            const clonedPages = clonedDoc.querySelectorAll('.page');
-                            clonedPages.forEach(page => {
-                                page.style.display = 'block';
-                                page.style.visibility = 'visible';
-                                page.style.opacity = '1';
-                                page.style.transform = 'scale(1)';
-                                page.style.width = '210mm';
-                                page.style.height = '297mm';
-                            });
-                        }
+                        height: pages[i].offsetHeight
                     });
 
                     const imgData = canvas.toDataURL("image/png", 1.0);
-
-                    // Pasang gambar tepat seukuran A4 (210x297mm)
                     doc.addImage(imgData, "PNG", 0, 0, A4_WIDTH, A4_HEIGHT, undefined, "FAST");
                 }
 
