@@ -60,7 +60,7 @@
         body {
             font-family: 'Tinos', 'Times New Roman', Times, serif;
             font-size: 11pt;
-            line-height: 1.55; /* ✅ Disesuaikan agar pas */
+            line-height: 1.55;
             color: #000000;
             margin: 0;
             padding: 0;
@@ -75,7 +75,7 @@
             margin: 0 auto 20px auto;
             box-sizing: border-box;
             position: relative;
-            overflow: visible !important; /* ✅ Agar tidak terpotong */
+            overflow: visible !important;
             page-break-after: always !important;
             background: #ffffff;
         }
@@ -106,7 +106,7 @@
             font-size: 9pt;
             font-style: italic;
             padding-top: 4px;
-            margin: 12px 0 20px 0; /* ✅ Jarak pas */
+            margin: 12px 0 20px 0;
             position: relative;
             clear: both;
             width: 100%;
@@ -258,6 +258,12 @@
             position: relative;
         }
 
+        /* ✅ PERBAIKAN KHUSUS: JARAK ATAS BAGIAN KESIMPULAN DIPERBESAR */
+        h2.kesimpulan {
+            margin-top: 30px !important; /* ✅ Jarak atas diperbesar jauh dari teks sebelumnya */
+            margin-bottom: 16px !important;
+        }
+
         h3 {
             font-size: 11pt;
             font-weight: bold;
@@ -274,7 +280,7 @@
             text-align: justify;
             orphans: 4;
             widows: 4;
-            line-height: 1.55; /* ✅ Sama persis contoh */
+            line-height: 1.55;
             word-spacing: 0.1px;
             letter-spacing: 0px;
         }
@@ -286,7 +292,7 @@
         /* ✅ BAGIAN C. TIPOGRAFI KHUSUS: DIPERBAIKI LENGKAP TANPA POTONG */
         .section-c {
             margin-top: 15px;
-            margin-bottom: 0 !important; /* ✅ Hapus jarak bawah */
+            margin-bottom: 0 !important;
             padding-bottom: 0 !important;
             width: 100%;
             display: block;
@@ -296,13 +302,12 @@
         }
         .section-c p {
             line-height: 1.55 !important;
-            margin-bottom: 0 !important; /* ✅ PENTING: Agar kalimat terakhir utuh */
+            margin-bottom: 0 !important;
             padding-bottom: 0 !important;
             text-align: justify !important;
             width: 100% !important;
             white-space: normal !important;
             overflow: visible !important;
-            /* ✅ Paksa teks sampai akhir */
             page-break-after: avoid !important;
             break-after: avoid !important;
         }
@@ -618,14 +623,19 @@
 
 
         <!-- ==========================================
-            HALAMAN 7: HASIL & KESIMPULAN - TAMPILAN PERSIS
+            HALAMAN 7: HASIL & KESIMPULAN - ✅ JARAK KESIMPULAN DIPERBESAR
         ========================================== -->
         <div class="page">
             <div class="page-header">Grafik 1. Hasil Evaluasi Empiris Desain Baru</div>
 
+            <div style="text-align:center; border-top:1px solid #999; border-bottom:1px solid #999; padding:4px 0; font-size:9pt; font-style:italic; margin-bottom:20px;">
+                Grafik 1. Hasil Evaluasi Empiris Desain Baru
+            </div>
+
             <p>Berdasarkan sajian data grafik di atas, rata-rata penilaian dari seluruh indikator menunjukkan tingkat kepuasan yang sangat tinggi di atas 80%. Indikator kesesuaian nilai menempati skor tertinggi yaitu mencapai angka 90%, menegaskan bahwa hasil rancangan logo baru ini mampu merepresentasikan identitas visi misi platform secara akurat.</p>
 
-            <h2>V. KESIMPULAN</h2>
+            <!-- ✅ PERBAIKAN UTAMA: JARAK ATAS DIPERBESAR JAUH -->
+            <h2 class="kesimpulan">V. KESIMPULAN</h2>
             <p>Riset perancangan ulang sistem <i>identity branding</i> Perusahaan Cerah telah berhasil diselesaikan secara tuntas dengan mengacu pada metodologi <i>Design Thinking</i>. Penggunaan bentuk geometris minimalis yang dikombinasikan dengan pengaplikasian rumpun huruf modern Sans-Serif terbukti secara teknis mampu menyelesaikan kendala distorsi visual, memberikan tingkat skalabilitas tinggi, serta mempertahankan efisiensi rendering halaman sistem digital yang optimal pada gawai seluler. Respons positif dari sampel pengguna mengukuhkan bahwa rancangan identitas visual baru ini sangat layak dan siap diimplementasikan.</p>
 
             <div class="page-footer">Halaman 7</div>
@@ -673,6 +683,7 @@
                         .page { page-break-after: always; margin: 0; padding: 0; width: 100%; min-height: auto; }
                         .page:last-child { page-break-after: auto; }
                         h2 { font-size: 12pt; font-weight: bold; text-transform: uppercase; text-align: center; margin-top: 16px; margin-bottom: 10px; mso-heading-level: 2; page-break-before: always; }
+                        h2.kesimpulan { margin-top: 30px !important; }
                         h3 { font-size: 11pt; font-weight: bold; margin-top: 14px; margin-bottom: 6px; mso-heading-level: 3; text-align: left; }
                         p { text-indent: 1.25cm; margin-bottom: 8px; text-align: justify; line-height: 1.55; mso-pagination: widow-orphan; }
                         p.no-indent { text-indent: 0cm; }
