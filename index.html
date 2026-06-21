@@ -5,12 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Perancangan Ulang Identity Branding Melalui Desain Logo Baru pada Perusahaan Cerah</title>
 
-    <!-- Library -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 
     <style>
-        /* ========== RESET & BASE ========== */
         * {
             box-sizing: border-box;
         }
@@ -29,7 +27,6 @@
             print-color-adjust: exact;
         }
 
-        /* ========== TOMBOL DOWNLOAD ========== */
         .download-btn-container {
             position: fixed;
             top: 20px;
@@ -77,7 +74,6 @@
             cursor: wait;
         }
 
-        /* ========== KONTEN JURNAL ========== */
         #journal-document-content {
             width: 100%;
             display: flex;
@@ -89,7 +85,6 @@
             width: 210mm;
             min-height: 297mm;
             height: auto;
-            /* ubah dari 297mm fixed ke auto agar konten panjang tidak terpotong */
             margin: 0 auto 15px auto;
             background: #fff;
             padding: 20mm 20mm 20mm 20mm;
@@ -104,7 +99,6 @@
             page-break-after: auto;
         }
 
-        /* ========== HALAMAN SAMPUL ========== */
         .cover-page {
             display: flex;
             flex-direction: column;
@@ -204,7 +198,6 @@
             line-height: 1.5;
         }
 
-        /* ========== HEADER JURNAL ========== */
         .journal-header {
             text-align: center;
             margin-bottom: 4mm;
@@ -230,7 +223,6 @@
             margin-bottom: 6mm;
         }
 
-        /* ========== JUDUL ARTIKEL & PENULIS ========== */
         .article-title-main {
             font-size: 13pt;
             font-weight: bold;
@@ -263,7 +255,6 @@
             margin-bottom: 4mm;
         }
 
-        /* ========== ABSTRAK DUA KOLOM ========== */
         .abstract-dual {
             display: flex;
             gap: 8mm;
@@ -292,7 +283,6 @@
             font-style: italic;
         }
 
-        /* ========== TYPOGRAPHY ========== */
         h1 {
             font-size: 12pt;
             font-weight: bold;
@@ -334,7 +324,6 @@
             text-indent: 0;
         }
 
-        /* ========== GAMBAR & TABEL ========== */
         .figure-container {
             text-align: center;
             margin: 4mm 0;
@@ -395,7 +384,6 @@
             margin-top: 1.5mm;
         }
 
-        /* ========== DAFTAR PUSTAKA ========== */
         .reference-list {
             list-style: none;
             padding-left: 0;
@@ -412,7 +400,6 @@
             page-break-inside: avoid;
         }
 
-        /* ========== FOOTER HALAMAN ========== */
         .page-footer {
             position: absolute;
             bottom: 12mm;
@@ -424,7 +411,6 @@
             padding-top: 2mm;
         }
 
-        /* ========== UTILITY ========== */
         .citation {
             font-size: 9.5pt;
         }
@@ -434,7 +420,6 @@
             text-decoration: none;
         }
 
-        /* ========== PRINT STYLES ========== */
         @media print {
             body {
                 background: #fff;
@@ -451,7 +436,6 @@
                 box-shadow: none;
                 page-break-after: always;
                 height: auto;
-                /* auto saat print agar tidak terpotong */
                 min-height: 297mm;
                 overflow: hidden;
             }
@@ -464,16 +448,14 @@
 </head>
 
 <body>
-    <!-- Tombol Download -->
     <div class="download-btn-container" id="action-layer">
         <button class="btn-download" onclick="exportToWord()">Unduh Format Word (.doc)</button>
         <button class="btn-download btn-pdf" id="pdfBtn" onclick="exportToPDF()">Unduh Format PDF</button>
     </div>
 
-    <!-- Konten Jurnal -->
     <div id="journal-document-content">
 
-        <!-- ===== HALAMAN SAMPUL (COVER) ===== -->
+        <!-- ===== HALAMAN SAMPUL ===== -->
         <div class="page cover-page">
             <div class="cover-journal-title">
                 JOURNAL OF INDONESIAN EDUCATION<br>
@@ -514,7 +496,7 @@
             </div>
         </div>
 
-        <!-- ===== HALAMAN 1 : ARTIKEL ===== -->
+        <!-- ===== HALAMAN 1 ===== -->
         <div class="page">
             <div class="journal-header">
                 <div class="journal-header-line"></div>
@@ -545,16 +527,16 @@
                 <div class="abstract-col">
                     <div class="abstract-label">Abstrak</div>
                     <p class="no-indent" style="font-size:9.5pt; text-indent:0;">
-                        Perusahaan Cerah adalah penyedia layanan edukasi digital yang terus berkembang, namun seiring makin ketatnya persaingan, identitas visual yang dipakai selama ini mulai terasa kurang pas. Bentuknya terlalu rumit, sulit dibaca kalau diperkecil, dan tidak fleksibel saat diterapkan di berbagai perangkat genggam. Penelitian ini bertujuan menyusun ulang <i>identity branding</i> dengan membuat logo baru yang lebih sederhana, modern, dan mudah beradaptasi, tanpa menghilangkan ciri khas perusahaan. Pendekatan yang dipakai adalah <i>Design Thinking</i>, mulai dari memahami kebutuhan, merumuskan masalah, mencari ide, membuat contoh, hingga menguji hasilnya. Hasilnya, logo baru jauh lebih jelas, lebih mudah diingat, dan bisa dipakai di mana saja, baik di media sosial maupun cetak. Perubahan ini diharapkan bisa membuat citra perusahaan makin profesional dan lebih siap bersaing di era digital.
+                        Perusahaan Cerah bergerak di bidang layanan edukasi digital. Seiring makin banyaknya pesaing, logo yang selama ini dipakai mulai terasa kurang cocok. Bentuknya terlalu ramai, susah dibaca kalau ukurannya kecil, dan tidak fleksibel dipasang di berbagai layar. Penelitian ini dilakukan untuk menyusun ulang identitas merek lewat pembuatan logo baru yang tampilannya lebih sederhana, modern, serta gampang menyesuaikan di banyak media, tapi tetap mempertahankan ciri khas perusahaan. Prosesnya memakai pendekatan <i>Design Thinking</i>, dimulai dari menggali kebutuhan, merumuskan persoalan, mengumpulkan ide, membuat purwarupa, sampai menguji hasil. Temuannya, logo baru lebih gampang dikenali, lebih mudah diingat, dan bisa dipakai di media sosial maupun cetak. Dengan penyegaran ini, harapannya citra perusahaan jadi lebih profesional dan lebih siap menghadapi persaingan.
                     </p>
                     <p class="keywords-text">
-                        <b>Kata Kunci:</b> perancangan ulang, identitas merek, logo, desain visual, Desain Berpikir.
+                        <b>Kata Kunci:</b> perancangan ulang, identitas merek, logo, desain visual, Design Thinking.
                     </p>
                 </div>
                 <div class="abstract-col">
                     <div class="abstract-label">Abstract</div>
                     <p class="no-indent" style="font-size:9.5pt; text-indent:0;">
-                        <i>Perusahaan Cerah is a growing digital education provider, yet amid rising competition, its current visual identity has begun to feel less suitable. Its complex form is hard to read when scaled down and lacks flexibility across mobile devices. This study aims to redesign its identity branding by creating a new logo that is simpler, more modern, and adaptable, while preserving the company's core character. The research uses Design Thinking, covering needs analysis, problem definition, ideation, prototyping, and testing. The new logo is clearer, more memorable, and works well across both digital and print media. This redesign is expected to strengthen the company's professional image and improve its competitiveness in the digital age.</i>
+                        <i>Perusahaan Cerah is a growing digital education provider. As competition tightens, its existing logo has begun to feel outdated—too detailed, hard to read at small sizes, and not flexible enough for mobile screens. This study set out to redesign the brand identity by creating a new logo that is cleaner, more modern, and easier to adapt across platforms, while keeping the company's personality intact. The design process followed the Design Thinking method: understanding user needs, defining the problem, brainstorming ideas, building prototypes, and testing the outcome. The result is a logo that is clearer, more memorable, and works well on both social media and printed materials. This update is expected to give the company a more professional look and help it compete better in the digital space.</i>
                     </p>
                     <p class="keywords-text">
                         <b>Keywords:</b> <i>redesign, brand identity, logo, visual design, Design Thinking.</i>
@@ -564,15 +546,15 @@
 
             <h1>1. PENDAHULUAN</h1>
 
-            <p>Perkembangan teknologi yang sangat cepat belakangan ini mengubah cara perusahaan berkomunikasi dengan masyarakat. Di dunia industri digital, logo bukan lagi sekadar tanda pengenal, melainkan alat komunikasi penting yang bisa membentuk pandangan orang terhadap kualitas layanan dan kredibilitas perusahaan <span class="citation">(Wheeler, 2018)</span>. Karena itu, desain logo harus bisa terlihat jelas baik saat dicetak besar maupun saat dipasang kecil di layar ponsel.</p>
+            <p>Teknologi yang berkembang begitu cepat dalam beberapa tahun belakangan ikut mengubah cara perusahaan menyapa khalayak. Di ranah digital, logo bukan sekadar penanda, tetapi sudah menjadi alat komunikasi yang turut membentuk penilaian orang terhadap mutu layanan dan kredibilitas sebuah perusahaan <span class="citation">(Wheeler, 2018)</span>. Karena itu, desain logo seharusnya tetap terbaca dengan baik, baik ketika dicetak dalam ukuran besar maupun saat ditampilkan kecil di layar ponsel.</p>
 
-            <p>Perusahaan Cerah, sebagai platform berbasis teknologi, membutuhkan identitas visual yang lebih luwes agar tetap relevan dengan selera pengguna masa kini. Desain lama yang terlalu banyak detail ternyata menyulitkan saat dipakai di antarmuka <i>mobile</i> dan membuat pesan yang ingin disampaikan jadi kurang tegas. Dari situ muncul kebutuhan untuk mendesain ulang logo agar lebih sederhana, garisnya tegas, dan bentuknya konsisten di mana saja <span class="citation">(Rustan, 2019)</span>.</p>
+            <p>Perusahaan Cerah yang berbasis teknologi memerlukan tampilan visual yang lebih luwes supaya tetap sesuai dengan selera pengguna sekarang. Logo lama yang sarat detail ternyata merepotkan ketika dipakai di antarmuka <i>mobile</i>, dan pesan yang hendak disampaikan jadi kurang menonjol. Dari sinilah muncul gagasan untuk merancang ulang logo dengan bentuk yang lebih ringkas, garis yang tegas, serta konsisten di berbagai media <span class="citation">(Rustan, 2019)</span>.</p>
 
-            <p>Penelitian ini cukup penting karena identitas visual yang kuat bisa membantu membangun kepercayaan, membuat orang lebih mudah mengingat merek, dan membuat pengalaman pengguna jadi lebih baik. Jadi, pembuatan logo baru ini bukan cuma soal keindahan, tapi juga soal fungsi yang mendukung kemajuan perusahaan.</p>
+            <p>Penelitian ini menjadi penting karena identitas visual yang solid bisa menumbuhkan rasa percaya, memudahkan orang mengingat merek, dan pada akhirnya memperbaiki pengalaman pengguna. Jadi, pembuatan logo baru bukan semata urusan estetika, melainkan juga fungsi yang ikut mendorong kemajuan perusahaan.</p>
 
-            <p>Selain itu, kebiasaan pengguna yang kini lebih banyak mengakses lewat ponsel menuntut setiap elemen desain harus langsung dikenali dalam sekejap. Logo yang terlalu rumit sering kali kehilangan maknanya kalau diperkecil <span class="citation">(Pradana &amp; Nugroho, 2021)</span>. Hal inilah yang mendasari kenapa perancangan ulang ini perlu dilakukan, supaya identitas visual tetap efektif di segala situasi.</p>
+            <p>Di samping itu, kebiasaan orang yang sekarang lebih sering mengakses internet lewat ponsel menuntut setiap unsur desain harus langsung bisa dikenali dalam waktu singkat. Logo yang terlalu ramai sering kali kehilangan maknanya begitu diperkecil <span class="citation">(Pradana &amp; Nugroho, 2021)</span>. Alasan inilah yang mendorong perlunya perancangan ulang agar identitas visual tetap bekerja maksimal di segala kondisi.</p>
 
-            <p>Berdasarkan hal-hal tersebut, masalah yang ingin dijawab dalam penelitian ini adalah: (1) Bagaimana merancang ulang logo Perusahaan Cerah agar lebih sederhana, mudah dikenali, dan fleksibel? (2) Apakah logo baru yang dihasilkan lebih jelas dan lebih bisa disesuaikan ukurannya dibanding yang lama? Tujuannya jelas: mendapatkan desain baru yang lebih modern, pas untuk dipakai di media apa saja, dan terbukti lebih efektif dalam membangun citra perusahaan.</p>
+            <p>Berangkat dari kenyataan itu, ada dua pertanyaan yang ingin dijawab dalam penelitian ini: (1) Bagaimana cara merancang ulang logo Perusahaan Cerah supaya lebih ringkas, gampang dikenali, dan luwes? (2) Apakah logo baru yang dihasilkan lebih jelas serta lebih mudah disesuaikan ukurannya dibanding logo yang lama? Tujuannya sederhana: memperoleh desain baru yang lebih modern, cocok dipakai di media apa pun, dan terbukti lebih efektif dalam memperkuat citra perusahaan.</p>
 
             <div class="page-footer">
                 Journal of Indonesian Education, Vol. 4, No. 2, Juni 2026 &ensp;|&ensp; 125
@@ -585,37 +567,37 @@
 
             <h2>2.1. Identitas Merek di Dunia Digital</h2>
 
-            <p><i>Identity branding</i> adalah sekumpulan elemen visual dan konsep yang dipakai untuk membangun persepsi publik terhadap sebuah organisasi. Mulai dari logo, warna, jenis huruf, sampai cara berkomunikasi harus serasi dan satu nada. Dalam desain masa kini, identitas yang baik harus mudah diingat, bisa dipakai di banyak tempat, dan tepat menggambarkan nilai-nilai perusahaan <span class="citation">(Wheeler, 2018)</span>.</p>
+            <p><i>Identity branding</i> merupakan kumpulan elemen visual dan gagasan yang digunakan untuk membentuk cara pandang masyarakat terhadap suatu organisasi. Mulai dari logo, warna, jenis huruf, hingga gaya berkomunikasi semuanya harus selaras. Dalam konteks desain masa kini, identitas yang baik wajib mudah diingat, bisa diterapkan di banyak tempat, dan mampu mewakili nilai-nilai perusahaan dengan pas <span class="citation">(Wheeler, 2018)</span>.</p>
 
-            <p>Di dunia digital, logo sering kali menjadi hal pertama yang dilihat pengguna. Identitas yang sederhana dan kuat biasanya lebih cepat melekat di ingatan dibanding yang penuh detail. Itulah sebabnya strategi <i>branding</i> digital sangat menekankan kejelasan, keseragaman, dan kesesuaian dengan tempat logo itu dipasang <span class="citation">(Rowe, 2019)</span>.</p>
+            <p>Di lingkungan digital, logo kerap kali menjadi hal pertama yang ditangkap oleh pengguna. Identitas yang sederhana tetapi kuat biasanya lebih cepat melekat di ingatan ketimbang yang penuh hiasan. Itulah mengapa strategi <i>branding</i> digital sangat menekankan kejelasan, keseragaman, serta kecocokan dengan media tempat logo itu muncul <span class="citation">(Rowe, 2019)</span>.</p>
 
-            <p>Kalau seluruh elemen visual selaras, perusahaan akan terlihat lebih rapi dan terpercaya. Konsistensi ini membuat orang makin yakin dan makin mudah mengingat siapa perusahaan itu dan apa yang ditawarkannya <span class="citation">(Kotler &amp; Keller, 2016)</span>.</p>
+            <p>Jika semua elemen visual berjalan seirama, perusahaan akan tampak lebih tertata dan bisa dipercaya. Konsistensi semacam ini membuat orang makin yakin sekaligus lebih gampang mengingat siapa perusahaan tersebut dan apa yang ditawarkannya <span class="citation">(Kotler &amp; Keller, 2016)</span>.</p>
 
             <h2>2.2. Keunggulan Format Vektor</h2>
 
-            <p>Gambar berformat vektor seperti SVG punya kelebihan utama: bisa diperbesar atau diperkecil sepuasnya tanpa pecah atau buram. Ini sangat cocok untuk kebutuhan layar digital yang ukurannya bermacam-macam. Selain itu, ukuran filenya kecil, jadi tidak membebani kecepatan buka halaman <span class="citation">(Pradana &amp; Nugroho, 2021)</span>.</p>
+            <p>Gambar berformat vektor seperti SVG punya kelebihan utama: bisa diperbesar atau diperkecil sesuka hati tanpa pecah maupun blur. Sifat ini sangat sesuai untuk kebutuhan layar digital yang ukurannya bermacam-macam. Selain itu, ukuran filenya tergolong kecil sehingga tidak membebani kecepatan muat halaman <span class="citation">(Pradana &amp; Nugroho, 2021)</span>.</p>
 
-            <p>Karena sifatnya itu, satu desain saja sudah cukup untuk dipakai di situs web, aplikasi, spanduk, hingga barang cetakan. Tidak perlu membuat banyak versi ukuran, yang tentu saja menghemat waktu dan tenaga.</p>
+            <p>Dengan karakter seperti itu, satu desain saja sudah mencukupi untuk dipasang di situs web, aplikasi, spanduk, sampai bahan cetakan. Tidak perlu repot menyiapkan banyak versi ukuran, yang tentu menghemat waktu dan tenaga.</p>
 
             <h2>2.3. Pemilihan Huruf untuk Media Digital</h2>
 
-            <p>Jenis huruf sangat berpengaruh pada kesan yang muncul dan kenyamanan membaca. Huruf <i>sans-serif</i> sering dipilih untuk tampilan layar karena bentuknya bersih, sederhana, dan tetap jelas meski ukurannya kecil <span class="citation">(Saraswati &amp; Kurniawan, 2023)</span>. Dengan pilihan yang tepat, tampilan akan terasa lebih rapi dan modern.</p>
+            <p>Jenis huruf punya andil besar dalam membentuk kesan dan kenyamanan membaca. Huruf <i>sans-serif</i> kerap dipilih untuk tampilan di layar karena bentuknya bersih, sederhana, dan tetap terbaca walaupun ukurannya kecil <span class="citation">(Saraswati &amp; Kurniawan, 2023)</span>. Dengan pilihan yang tepat, keseluruhan tampilan akan terasa lebih rapi dan modern.</p>
 
-            <p>Selain kejelasan, bentuk huruf juga menyampaikan suasana. Ada yang memberi kesan resmi, ada yang terasa akrab, ada yang tegas, ada yang inovatif. Karena itu, pemilihan jenis huruf tidak boleh asal, harus disesuaikan dengan karakter dan visi perusahaan.</p>
+            <p>Selain soal keterbacaan, bentuk huruf juga menyampaikan suasana tertentu. Ada yang terasa resmi, akrab, tegas, atau inovatif. Maka dari itu, pemilihan jenis huruf tidak bisa sembarangan; harus diselaraskan dengan watak dan visi perusahaan.</p>
 
             <h2>2.4. Psikologi Warna dalam Desain Merek</h2>
 
-            <p>Warna punya kekuatan besar dalam membangun perasaan dan kesan di benak orang. Biru sering dikaitkan dengan kepercayaan dan kestabilan, kuning dengan semangat dan optimisme. Gabungan warna yang pas bisa membuat logo makin menarik sekaligus memperkuat pesan yang ingin disampaikan <span class="citation">(Rustan, 2019)</span>.</p>
+            <p>Warna memiliki kekuatan besar dalam menumbuhkan perasaan dan kesan di benak orang. Biru sering dihubungkan dengan rasa percaya dan kemantapan, sementara kuning identik dengan semangat serta optimisme. Perpaduan warna yang serasi bisa membuat logo kian menarik sekaligus mempertegas pesan yang ingin disampaikan <span class="citation">(Rustan, 2019)</span>.</p>
 
-            <p>Warna yang baik tidak cuma enak dilihat, tapi juga harus tetap terbaca jelas di latar belakang terang maupun gelap, serta mudah diterapkan di berbagai jenis media visual.</p>
+            <p>Warna yang baik tidak cuma sedap dipandang, tetapi juga harus tetap jelas terlihat di latar terang maupun gelap, serta gampang diterapkan di aneka media visual.</p>
 
             <h2>2.5. Metode Design Thinking dalam Desain</h2>
 
-            <p><i>Design Thinking</i> adalah cara merancang yang berpusat pada kebutuhan manusia dan dilakukan berulang kali sampai hasilnya pas. Ada lima tahapan: pahami kebutuhan, rumuskan masalah, cari ide, buat contoh, dan uji coba <span class="citation">(Anggraini &amp; Natasia, 2020)</span>. Dalam pembuatan logo, cara ini memungkinkan kita bereksperimen dengan banyak ide namun tetap terarah pada apa yang dibutuhkan pengguna.</p>
+            <p><i>Design Thinking</i> adalah cara merancang yang bertumpu pada kebutuhan manusia dan dikerjakan secara berulang sampai ketemu hasil yang pas. Ada lima langkah: memahami kebutuhan, merumuskan masalah, mencari gagasan, membuat purwarupa, dan menguji <span class="citation">(Anggraini &amp; Natasia, 2020)</span>. Dalam konteks pembuatan logo, pendekatan ini memberi keleluasaan untuk menjajal banyak ide sembari tetap terarah pada keperluan pengguna.</p>
 
             <h2>2.6. Penelitian Sebelumnya</h2>
 
-            <p>Hidayat dan Rahmawati <span class="citation">(2022)</span> pernah meneliti perubahan identitas visual dan menemukan bahwa penyederhanaan bentuk sangat meningkatkan kejelasan logo saat dipakai ukuran kecil. Penelitian itu juga membuktikan bahwa konsistensi bentuk di berbagai media sangat berpengaruh pada pengenalan merek. Di sisi lain, Pradana dan Nugroho <span class="citation">(2021)</span> menekankan pentingnya format vektor agar kualitas gambar tetap terjaga di semua resolusi. Kedua hasil ini menjadi acuan utama dalam penelitian ini.</p>
+            <p>Hidayat dan Rahmawati <span class="citation">(2022)</span> pernah mengkaji pembaruan identitas visual dan mendapati bahwa penyederhanaan bentuk sangat meningkatkan kejelasan logo saat dipakai dalam ukuran kecil. Studi itu juga membuktikan bahwa konsistensi bentuk di pelbagai media sangat memengaruhi pengenalan merek. Sementara itu, Pradana dan Nugroho <span class="citation">(2021)</span> menekankan pentingnya format vektor supaya mutu gambar tetap terjaga di semua resolusi. Kedua temuan ini menjadi pijakan utama dalam penelitian yang sekarang.</p>
 
             <div class="page-footer">
                 Journal of Indonesian Education, Vol. 4, No. 2, Juni 2026 &ensp;|&ensp; 126
@@ -626,9 +608,9 @@
         <div class="page">
             <h1>3. METODOLOGI PENELITIAN</h1>
 
-            <p>Penelitian ini menggunakan metode <i>Design Thinking</i> karena cara ini memberi ruang luas untuk berkreasi, namun tetap teratur dan berpusat pada kebutuhan pemakai. Tahapannya dilakukan berurutan supaya hasil desain tidak cuma indah dipandang, tapi juga benar-benar berguna dan pas dipakai di lapangan <span class="citation">(Anggraini &amp; Natasia, 2020)</span>.</p>
+            <p>Penelitian ini menempuh metode <i>Design Thinking</i> karena pendekatan ini memberikan ruang luas untuk bereksplorasi, namun tetap runut dan berfokus pada kebutuhan pemakai. Tiap langkah dikerjakan secara berurutan supaya desain yang dihasilkan tidak cuma enak dilihat, melainkan juga benar-benar berguna dan pas dipakai di lapangan <span class="citation">(Anggraini &amp; Natasia, 2020)</span>.</p>
 
-            <p>Metode ini cocok sekali karena bisa menyeimbangkan keindahan seni dan kebutuhan teknis. Dalam kasus desain logo, kita harus memastikan hasil akhirnya tidak cuma bagus, tapi juga sesuai dengan selera pengguna dan media yang dipakai <span class="citation">(Norman, 2013)</span>.</p>
+            <p>Metode ini terbilang cocok karena bisa menyeimbangkan sisi artistik dan tuntutan teknis. Dalam urusan desain logo, kita mesti memastikan bahwa hasil akhirnya tidak sekadar bagus, tetapi juga selaras dengan selera pengguna serta karakter media yang digunakan <span class="citation">(Norman, 2013)</span>.</p>
 
             <div class="figure-container">
                 <div class="figure-placeholder" style="display:inline-block; padding:8mm 10mm; border:1px dashed #000; background:#fafafa; font-weight:bold; font-size:10pt;">
@@ -637,13 +619,13 @@
                 <div class="figure-caption"><b>Gambar 1.</b> Alur Metode <i>Design Thinking</i></div>
             </div>
 
-            <p>Langkah pertama adalah memahami apa yang dibutuhkan pengguna dan seperti apa karakter media yang akan dipakai. Kemudian merumuskan apa saja kekurangan logo lama, terutama soal kerumitan bentuk dan keterbacaan saat kecil. Setelah itu, kita mengumpulkan banyak ide dan sketsa baru yang lebih sederhana.</p>
+            <p>Langkah pertama adalah menggali apa yang sebetulnya dibutuhkan pengguna dan seperti apa sifat media yang akan dipakai. Berikutnya, merinci kekurangan-kekurangan logo lama, khususnya soal kerumitan bentuk dan daya bacanya saat ukurannya kecil. Sesudah itu, dikumpulkanlah beragam ide dan sketsa baru dengan bentuk yang lebih ringkas.</p>
 
-            <p>Setelah ada ide yang terpilih, barulah dibuat bentuk digital menggunakan perangkat lunak desain vektor. Langkah terakhir adalah menguji apakah desain baru itu sudah cukup jelas, mudah diingat, dan memberi kesan yang pas bagi pengguna.</p>
+            <p>Begitu ada gagasan yang dirasa paling menjanjikan, barulah dibuat wujud digital memakai perangkat lunak desain vektor. Langkah terakhir adalah menguji apakah desain baru tersebut sudah cukup jelas, gampang diingat, serta memberi kesan yang sesuai bagi pengguna.</p>
 
-            <p>Pengumpulan datanya dilakukan dengan cara mengamati dan membandingkan logo lama dengan yang baru. Selain itu, penulis juga berpegang pada prinsip-prinsip desain yang baik: keseimbangan, kesatuan, kontras, penekanan, dan proporsi supaya hasilnya kuat secara visual <span class="citation">(Rustan, 2019)</span>.</p>
+            <p>Pengumpulan data dilakukan dengan mengamati serta membandingkan logo lama dan logo baru. Di samping itu, penulis juga berpegang pada prinsip-prinsip desain yang baik: keseimbangan, kesatuan, kontras, penekanan, dan proporsi agar hasilnya kokoh secara visual <span class="citation">(Rustan, 2019)</span>.</p>
 
-            <p>Untuk menilai hasilnya, ada beberapa hal yang dilihat: seberapa rumit bentuknya, jenis huruf yang dipakai, jenis berkas, kemampuan diperbesar, dan seberapa jelas bentuknya. Penilaian ini dilakukan sendiri oleh penulis dan juga dikonfirmasi ke dua ahli desain grafis supaya hasilnya lebih terpercaya.</p>
+            <p>Untuk menilai hasil akhir, sejumlah aspek diperhatikan: tingkat kerumitan bentuk, jenis huruf yang dipilih, format berkas, kelenturan saat diubah ukurannya, serta kejelasan bentuk. Penilaian dilakukan sendiri oleh penulis dan dikonfirmasi pula kepada dua orang praktisi desain grafis agar kesimpulannya lebih bisa diandalkan.</p>
 
             <div class="page-footer">
                 Journal of Indonesian Education, Vol. 4, No. 2, Juni 2026 &ensp;|&ensp; 127
@@ -656,9 +638,9 @@
 
             <h2>4.1. Hasil Perancangan</h2>
 
-            <p>Dari proses yang dilakukan, didapatkan desain baru yang lebih banyak menggunakan bentuk geometris sederhana dan komposisi yang seimbang. Bentuk yang ringkas ini membuat logo lebih mudah dipasang di mana saja, mulai dari ikon aplikasi, bagian atas situs, sampai materi promosi <span class="citation">(Hidayat &amp; Rahmawati, 2022)</span>.</p>
+            <p>Dari serangkaian proses yang sudah dijalani, diperoleh desain baru yang lebih banyak mengandalkan bentuk geometris sederhana serta komposisi yang seimbang. Bentuk yang ringkas ini memudahkan logo dipasang di pelbagai tempat, mulai dari ikon aplikasi, tajuk situs, sampai materi promosi <span class="citation">(Hidayat &amp; Rahmawati, 2022)</span>.</p>
 
-            <p>Dalam pemilihan bentuk, diusahakan agar tetap ada kesan resmi namun tetap ramah. Ini penting karena perusahaan bergerak di bidang pendidikan, jadi harus terpercaya tapi juga tidak kaku. Bentuk akhirnya dirancang agar bisa mewakili kedua sisi itu sekaligus.</p>
+            <p>Dalam menentukan bentuk, diupayakan agar tetap ada nuansa resmi tetapi tidak kehilangan kesan ramah. Hal ini cukup penting mengingat perusahaan bergerak di bidang pendidikan, sehingga harus memancarkan rasa terpercaya sekaligus tidak kaku. Wujud akhirnya disusun supaya bisa mewakili dua sisi itu sekaligus.</p>
 
             <div class="figure-container">
                 <div class="figure-placeholder" style="display:inline-block; width:120mm; padding:6mm; text-align:center;">
@@ -717,11 +699,11 @@
                 <div class="table-caption">Sumber: Hasil Analisis Penulis, 2026</div>
             </div>
 
-            <p>Secara keseluruhan, logo baru terasa lebih rapi, lebih modern, dan enak dilihat di layar apa saja. Perubahan dari gambar biasa ke vektor juga membuat pemakaiannya jadi jauh lebih leluasa dan tidak perlu khawatir gambarnya rusak kalau diperbesar. Jadi, desain ini memang lebih pas untuk kebutuhan masa kini <span class="citation">(Pradana &amp; Nugroho, 2021)</span>.</p>
+            <p>Secara umum, logo baru terasa lebih rapi, lebih modern, serta nyaman dilihat di layar apa saja. Peralihan dari gambar raster ke vektor juga membuat pemakaiannya jauh lebih leluasa; tidak perlu khawatir gambar pecah kalau dibesarkan. Jadi, desain ini memang lebih sesuai untuk kebutuhan zaman sekarang <span class="citation">(Pradana &amp; Nugroho, 2021)</span>.</p>
 
-            <p>Keunggulan teknis dari vektor ini sangat terasa, terutama saat dipakai di situs atau aplikasi. Gambar tetap tajam, tidak pecah, dan tidak berat saat dimuat. Hal ini sangat membantu dalam menjaga kualitas tampilan visual perusahaan.</p>
+            <p>Keunggulan teknis format vektor benar-benar terasa, terutama saat dipakai di situs atau aplikasi. Gambar tetap tajam, tidak pecah, dan tidak memberatkan proses muat. Ini turut menjaga mutu tampilan visual perusahaan.</p>
 
-            <p>Dari segi warna, pilihan yang dipakai juga lebih mudah dipahami dan memberi kesan seimbang antara dinamis dan profesional. Gabungan warna cerah dan gelap membuatnya tetap kuat dan mudah diingat, sekaligus mendukung citra perusahaan yang aktif namun terpercaya.</p>
+            <p>Dari sisi warna, pilihan yang diambil juga lebih gampang dimaknai dan memberikan kesan seimbang antara dinamis dan profesional. Perpaduan warna terang dan gelap membuat logo tetap kuat serta mudah diingat, sekaligus mendukung citra perusahaan yang aktif tetapi bisa dipercaya.</p>
 
             <div class="page-footer">
                 Journal of Indonesian Education, Vol. 4, No. 2, Juni 2026 &ensp;|&ensp; 128
@@ -732,31 +714,31 @@
         <div class="page">
             <h2>4.2. Makna Filosofis dan Visual</h2>
 
-            <p>Setiap bagian dari logo baru ini dirancang dengan maksud tertentu: bentuknya melambangkan komunikasi terbuka, garisnya tegas menunjukkan kestabilan, dan kesederhanaannya mewakili kemudahan akses. Warna yang dipilih memberi kesan optimis namun tetap serius dan bisa dipercaya. Bentuk yang simetris juga membantu membuatnya lebih mudah diingat dan terasa rapi <span class="citation">(Rowe, 2019)</span>.</p>
+            <p>Tiap bagian dari logo baru ini dirancang dengan maksud tertentu: bentuknya mengisyaratkan komunikasi yang terbuka, garis yang tegas melambangkan kemantapan, dan kesederhanaannya mewakili kemudahan akses. Warna yang dipilih memberi nuansa optimistis namun tetap serius dan terpercaya. Bentuk yang simetris juga ikut membuat logo lebih mudah diingat serta terkesan tertata <span class="citation">(Rowe, 2019)</span>.</p>
 
-            <p>Secara mendasar, bentuk yang sederhana lebih cepat dipahami oleh otak manusia. Ini sesuai prinsip desain yang baik: pesan harus sampai dengan cepat dan jelas. Jadi, perubahan ini bukan cuma soal tampilan, tapi juga soal seberapa efektif pesan yang ingin disampaikan sampai ke pengguna <span class="citation">(Rustan, 2019)</span>.</p>
+            <p>Pada dasarnya, bentuk yang sederhana lebih cepat ditangkap oleh otak manusia. Ini sejalan dengan prinsip desain yang baik: pesan mesti sampai dengan cepat dan gamblang. Jadi, perubahan ini bukan cuma soal penampilan, melainkan juga soal seberapa efektif pesan yang hendak disampaikan tersalur kepada pengguna <span class="citation">(Rustan, 2019)</span>.</p>
 
             <h2>4.3. Penilaian Kelayakan</h2>
 
-            <p>Penilaian dilakukan berdasarkan empat hal utama: seberapa sederhana, seberapa konsisten, seberapa luwes, dan seberapa menarik bentuknya. Hasilnya, logo baru unggul di semua poin dibanding yang lama. Ini menandakan bahwa tujuan awal penelitian sudah tercapai.</p>
+            <p>Penilaian dilakukan berdasarkan empat tolok ukur utama: tingkat kesederhanaan, konsistensi, keluwesan, serta daya tarik bentuk. Hasilnya, logo baru menang di semua poin dibandingkan logo lama. Ini menandakan bahwa tujuan awal penelitian sudah tercapai.</p>
 
-            <p>Karena bentuknya sederhana, logo ini mudah diletakkan di ruang sempit sekalipun. Konsistensi juga lebih mudah dijaga karena tidak ada elemen yang saling bertabrakan. Di dunia digital, hal ini sangat penting karena logo sering muncul di tempat yang sangat kecil, seperti ikon situs, tombol aplikasi, atau gambar profil <span class="citation">(Cooper et al., 2014)</span>.</p>
+            <p>Karena bentuknya ringkas, logo ini gampang diletakkan bahkan di ruang yang sempit sekali pun. Konsistensi juga lebih mudah dijaga sebab tidak ada elemen yang saling bertabrakan. Di dunia digital, perkara ini krusial karena logo kerap tampil di tempat yang amat kecil, seperti ikon situs, tombol aplikasi, atau foto profil <span class="citation">(Cooper et al., 2014)</span>.</p>
 
-            <p>Kelebihan terbesar tentu saja kemampuan ubah ukurannya. Tidak ada lagi gambar yang pecah saat diperbesar. Sementara itu, dari segi daya tarik, tampilan yang bersih dan minimalis sangat cocok dengan selera pengguna masa kini yang lebih menyukai kesederhanaan.</p>
+            <p>Keunggulan terbesar tidak diragukan lagi adalah kemampuannya diubah ukuran. Tidak ada lagi gambar yang pecah saat diperbesar. Sementara dari segi daya pikat, penampilan yang bersih dan minimalis benar-benar cocok dengan selera pengguna masa kini yang lebih menyukai kesederhanaan.</p>
 
             <h2>4.4. Penerapan di Berbagai Media</h2>
 
-            <p>Logo baru ini bisa dipakai di situs web, aplikasi, spanduk, hingga barang cetakan tanpa perlu banyak diubah. Kemudahan ini sangat menguntungkan karena menghemat waktu pembuatan materi promosi. Kalau tampilannya seragam di mana-mana, perusahaan akan terlihat jauh lebih profesional dan teratur <span class="citation">(Hidayat &amp; Rahmawati, 2022)</span>.</p>
+            <p>Logo baru ini bisa dipakai di situs web, aplikasi, spanduk, hingga bahan cetakan tanpa perlu banyak penyesuaian. Kemudahan ini jelas menguntungkan karena memangkas waktu pembuatan materi promosi. Kalau tampilannya seragam di semua saluran, perusahaan akan tampak jauh lebih profesional dan tertib <span class="citation">(Hidayat &amp; Rahmawati, 2022)</span>.</p>
 
-            <p>Dalam dunia antarmuka pengguna, logo yang jelas dan ringan membantu orang mengenali merek lebih cepat. Ini berdampak positif pada kenyamanan penggunaan aplikasi atau situs, terutama di layar kecil. Identitas visual yang kuat membuat orang makin akrab dan makin percaya pada layanan yang ditawarkan.</p>
+            <p>Dalam ranah antarmuka pengguna, logo yang jelas dan ringan membantu orang mengenali merek dengan lebih cepat. Hal ini berdampak positif pada kenyamanan penggunaan aplikasi atau situs, terlebih di layar mungil. Identitas visual yang kuat membuat orang kian akrab dan kian percaya pada layanan yang ditawarkan.</p>
 
-            <p>Kalau semua media komunikasi memakai ciri yang sama, asosiasi yang terbentuk di benak orang akan makin kuat. Ini sangat membantu membangun merek yang kuat dalam jangka panjang.</p>
+            <p>Jika semua wahana komunikasi menggunakan ciri khas yang sama, asosiasi yang terbangun di benak orang akan semakin kokoh. Ini sangat menunjang pembentukan merek yang kuat dalam jangka panjang.</p>
 
             <h2>4.5. Dampak pada Citra Perusahaan</h2>
 
-            <p>Identitas visual yang rapi punya peran besar dalam membangun pandangan orang terhadap perusahaan. Logo yang baik memberi sinyal bahwa perusahaan itu teliti, berkualitas, dan konsisten. Di tengah persaingan yang ketat, kesan pertama dari tampilan visual ini bisa sangat menentukan <span class="citation">(Kotler &amp; Keller, 2016)</span>.</p>
+            <p>Identitas visual yang tertata punya andil besar dalam membentuk pandangan orang terhadap perusahaan. Logo yang baik memberi isyarat bahwa perusahaan itu cermat, berkualitas, dan konsisten. Di tengah persaingan yang ketat, kesan pertama dari penampilan visual seperti ini bisa jadi sangat menentukan <span class="citation">(Kotler &amp; Keller, 2016)</span>.</p>
 
-            <p>Di era digital, orang sering menilai kualitas layanan dari tampilan awal yang mereka lihat. Karena itu, desain yang rapi dan serasi memberi keuntungan tersendiri. Dengan bentuk baru yang lebih tegas dan jelas, persepsi positif terhadap perusahaan bisa meningkat.</p>
+            <p>Di era digital, orang acap kali menilai mutu layanan dari penampilan muka yang mereka lihat. Oleh sebab itu, desain yang rapi dan padu mendatangkan keuntungan tersendiri. Dengan wujud baru yang lebih tegas dan gamblang, persepsi positif terhadap perusahaan berpeluang meningkat.</p>
 
             <div class="page-footer">
                 Journal of Indonesian Education, Vol. 4, No. 2, Juni 2026 &ensp;|&ensp; 129
@@ -767,35 +749,35 @@
         <div class="page">
             <h2>4.6. Hubungan Bentuk dan Kegunaan</h2>
 
-            <p>Desain yang baik selalu mempertemukan keindahan dan fungsi. Logo yang cuma indah tapi sulit dipakai tidak ada gunanya. Sebaliknya, logo yang sederhana, luwes, dan jelas akan sangat berguna untuk jangka panjang <span class="citation">(Norman, 2013)</span>.</p>
+            <p>Desain yang baik selalu mempertemukan keindahan dan fungsi. Logo yang sekadar cantik tetapi sukar dipakai tidak banyak manfaatnya. Sebaliknya, logo yang sederhana, luwes, dan jelas akan sangat berguna untuk jangka panjang <span class="citation">(Norman, 2013)</span>.</p>
 
-            <p>Dalam kasus ini, fungsi utama logo adalah mewakili nama perusahaan secara singkat namun kuat. Logo baru berhasil melakukan itu karena bentuk, warna, dan tulisannya saling mendukung. Ini membuktikan bahwa desain identitas yang baik harus seimbang antara seni dan kebutuhan teknis.</p>
+            <p>Dalam perkara ini, fungsi utama logo adalah mewakili nama perusahaan secara ringkas tetapi membekas. Logo baru berhasil menjalankan tugas itu karena bentuk, warna, dan hurufnya saling mendukung. Ini membuktikan bahwa desain identitas yang baik mesti setara antara seni dan kebutuhan teknis.</p>
 
-            <p>Logo juga merupakan bagian dari strategi komunikasi. Identitas yang tepat bisa membantu mengarahkan pandangan publik ke arah yang diinginkan. Karena itu, berinvestasi pada desain yang baik adalah langkah cerdas untuk memperkuat posisi merek <span class="citation">(Wheeler, 2018)</span>.</p>
+            <p>Logo juga menjadi bagian dari strategi komunikasi. Identitas yang tepat bisa membantu mengarahkan pandangan khalayak ke arah yang dikehendaki. Karena itu, menanamkan upaya pada desain yang baik merupakan langkah bijak untuk memperkuat posisi merek <span class="citation">(Wheeler, 2018)</span>.</p>
 
             <h2>4.7. Analisis Kelayakan Teknis</h2>
 
-            <p>Ditinjau dari segi teknis, desain baru ini sangat layak dipakai di mana saja. Bentuknya sederhana jadi mudah dibuat ulang, warnanya fleksibel, dan tetap terlihat jelas di latar terang atau gelap. Ini tandanya desain ini siap dipakai di lapangan.</p>
+            <p>Dilihat dari sisi teknis, desain baru ini sangat layak dipakai di mana-mana. Bentuknya sederhana sehingga gampang direproduksi, warnanya lentur, dan tetap terlihat jelas di latar belakang terang ataupun gelap. Ini menandakan bahwa desain sudah siap digunakan di lapangan.</p>
 
-            <p>Selain itu, format vektor yang dipakai sangat cocok dengan sistem digital masa kini. Di situs atau aplikasi, gambar harus jelas tapi tidak boleh membebani sistem. Karena ukuran berkasnya kecil, kebutuhan ini terpenuhi dengan sangat baik <span class="citation">(Pradana &amp; Nugroho, 2021)</span>.</p>
+            <p>Di samping itu, format vektor yang dipilih sangat serasi dengan sistem digital masa kini. Di situs maupun aplikasi, gambar memang harus jelas tetapi tidak boleh membebani kinerja. Karena ukuran berkasnya kecil, kebutuhan itu terpenuhi dengan amat baik <span class="citation">(Pradana &amp; Nugroho, 2021)</span>.</p>
 
             <h2>4.8. Keterbatasan Penelitian</h2>
 
-            <p>Meskipun hasilnya sudah jauh lebih baik, tetap ada hal yang bisa dikembangkan lagi. Salah satunya adalah perlunya pengujian lebih luas dengan melibatkan banyak pengguna nyata. Penelitian selanjutnya bisa menggunakan survei supaya hasil penilaiannya lebih kuat secara data.</p>
+            <p>Meski hasilnya sudah jauh lebih baik, masih ada sejumlah hal yang bisa dikembangkan lagi. Salah satunya adalah perlunya pengujian yang lebih luas dengan melibatkan banyak pengguna sungguhan. Penelitian selanjutnya bisa menyertakan survei agar hasil penilaiannya lebih kokoh secara data.</p>
 
-            <p>Hal lain yang perlu diperhatikan adalah konsistensi saat dipakai di media yang sangat beragam. Meskipun sudah dirancang luwes, pengawasan tetap diperlukan supaya semua tampilan tetap seragam. Pengembangan lanjutan masih sangat terbuka untuk dilakukan <span class="citation">(Hidayat &amp; Rahmawati, 2022)</span>.</p>
+            <p>Hal lain yang mesti dicermati adalah konsistensi saat dipakai di media yang amat bermacam-macam. Walaupun sudah dirancang luwes, pengawasan tetap diperlukan supaya semua tampilan tetap seragam. Ruang untuk pengembangan lanjutan masih sangat terbuka <span class="citation">(Hidayat &amp; Rahmawati, 2022)</span>.</p>
 
             <h1>5. PENGEMBANGAN LEBIH LANJUT</h1>
 
-            <p>Perancangan ulang ini tidak berhenti pada satu logo saja. Bisa dikembangkan lagi menjadi satu sistem panduan lengkap yang mencakup aturan pakai logo, warna utama dan pendamping, jenis huruf resmi, dan cara mengatur ukuran. Panduan ini penting supaya semua orang yang memakai aset perusahaan melakukannya dengan cara yang sama <span class="citation">(Wheeler, 2018)</span>.</p>
+            <p>Perancangan ulang ini tidak mesti berhenti pada satu logo saja. Ke depan, bisa dikembangkan menjadi sebuah sistem panduan lengkap yang mencakup aturan pemakaian logo, warna utama dan pendamping, jenis huruf resmi, serta tata letak ukuran. Panduan semacam ini penting agar siapa pun yang menggunakan aset perusahaan menerapkannya dengan cara yang seragam <span class="citation">(Wheeler, 2018)</span>.</p>
 
             <h2>5.1. Panduan Penggunaan</h2>
 
-            <p>Panduan ini nanti akan menjelaskan hal-hal rinci seperti seberapa jauh jarak aman logo dari benda lain, ukuran paling kecil yang masih boleh dipakai, dan aturan pemakaian warna. Hal kecil seperti ini sering diabaikan, padahal sangat menentukan kualitas hasil akhir. Logo yang baik harus tetap terlihat kuat walaupun diletakkan di ruang sempit <span class="citation">(Rustan, 2019)</span>.</p>
+            <p>Panduan itu nanti akan memerinci hal-hal seperti jarak aman logo dari elemen lain, ukuran paling kecil yang masih diizinkan, dan aturan pakai warna. Perkara-perkara kecil begini sering terlalaikan, meski sebetulnya sangat memengaruhi mutu hasil akhir. Logo yang baik semestinya tetap tampak kuat walaupun ditempatkan di ruang terbatas <span class="citation">(Rustan, 2019)</span>.</p>
 
             <h2>5.2. Adaptasi di Berbagai Platform</h2>
 
-            <p>Logo yang dibuat untuk zaman digital harus siap dipakai di mana saja. Di situs, harus jelas di bagian atas maupun di ikon kecil. Di media sosial, harus tetap terbaca meski kecil. Di cetakan, harus tajam dan warnanya pas. Semua ini sudah diperhitungkan dalam desain baru ini <span class="citation">(Rowe, 2019)</span>.</p>
+            <p>Logo yang dibuat untuk zaman digital harus siap dipakai di pelbagai tempat. Di situs, ia wajib jelas di bagian tajuk maupun ikon kecil. Di media sosial, ia mesti tetap terbaca walaupun ukurannya ringkas. Di cetakan, ia harus tajam dan warnanya tepat. Semua ini sudah ikut diperhitungkan dalam desain baru <span class="citation">(Rowe, 2019)</span>.</p>
 
             <div class="page-footer">
                 Journal of Indonesian Education, Vol. 4, No. 2, Juni 2026 &ensp;|&ensp; 130
@@ -808,15 +790,15 @@
 
             <h2>6.1. Kesimpulan</h2>
 
-            <p>Berdasarkan apa yang sudah dibahas, bisa disimpulkan bahwa perubahan identitas visual Perusahaan Cerah berhasil menghasilkan logo baru yang jauh lebih sederhana, luwes, dan profesional. Pemakaian metode <i>Design Thinking</i> membuat prosesnya berjalan rapi, mulai dari mencari masalah sampai menguji hasil akhirnya.</p>
+            <p>Berdasarkan pembahasan yang sudah diuraikan, dapat disimpulkan bahwa pembaruan identitas visual Perusahaan Cerah berhasil menghasilkan logo baru yang jauh lebih ringkas, luwes, dan profesional. Penggunaan metode <i>Design Thinking</i> membuat seluruh proses berjalan tertib, mulai dari mengenali persoalan sampai menguji hasil akhir.</p>
 
-            <p>Logo baru ini menunjukkan peningkatan nyata di lima hal utama: bentuknya tidak lagi rumit, memakai huruf yang lebih modern, berkasnya berformat vektor, bisa diubah ukurannya dengan bebas, dan bentuknya jauh lebih jelas dibanding yang lama. Ini membuktikan bahwa desain identitas yang baik sangat penting untuk membangun nama baik perusahaan dan mendukung komunikasi visual yang efektif di era digital.</p>
+            <p>Logo baru memperlihatkan perbaikan nyata pada lima hal pokok: bentuk tidak lagi rumit, memakai huruf yang lebih modern, berkasnya berbentuk vektor, bebas diubah ukurannya, dan wujudnya jauh lebih gamblang ketimbang logo lama. Ini membuktikan bahwa desain identitas yang matang sangat penting untuk mengangkat nama baik perusahaan serta mendukung komunikasi visual yang efektif di era digital.</p>
 
-            <p>Secara umum, perubahan ini menunjukkan bahwa identitas visual bukan sekadar hiasan, tapi aset penting yang menjaga reputasi dan kepercayaan pengguna. Pendekatan yang sederhana ternyata paling cocok untuk dunia yang serba cepat ini. Di tengah kebutuhan tampil di banyak perangkat berbeda, desain yang ringkas namun kuat adalah pilihan terbaik.</p>
+            <p>Secara garis besar, perubahan ini menegaskan bahwa identitas visual bukan sekadar hiasan, melainkan aset berharga yang memelihara reputasi dan kepercayaan pengguna. Pendekatan yang sederhana ternyata paling sesuai untuk dunia yang bergerak cepat sekarang ini. Di tengah tuntutan tampil di banyak perangkat yang berbeda-beda, desain yang ringkas namun kuat adalah pilihan paling tepat.</p>
 
             <h2>6.2. Saran</h2>
 
-            <p>Dari hasil penelitian ini, ada beberapa hal yang bisa disarankan: (1) Penelitian selanjutnya sebaiknya menguji logo ini langsung ke pengguna nyata lewat survei supaya hasil penilaiannya lebih lengkap dan terukur. (2) Pengembangan panduan identitas sebaiknya tidak berhenti di logo saja, tapi juga mencakup aturan warna, huruf, dan cara membuat materi promosi. (3) Perlu dicoba pemakaian logo ini di berbagai jenis media untuk memastikan hasilnya tetap seragam. (4) Bisa dikembangkan lagi variasi logo, misalnya versi hitam putih atau versi horizontal, supaya makin luwes pemakaiannya.</p>
+            <p>Dari hasil penelitian ini, sejumlah saran bisa diajukan: (1) Penelitian selanjutnya sebaiknya menguji logo ini langsung kepada pengguna nyata melalui survei agar hasil penilaiannya lebih lengkap dan terukur. (2) Pengembangan panduan identitas tidak semestinya berhenti di logo saja, tetapi juga mencakup aturan warna, huruf, serta tata cara membuat materi promosi. (3) Perlu dilakukan uji coba pemakaian logo di aneka jenis media untuk memastikan hasilnya tetap seragam. (4) Dapat pula dikembangkan variasi logo, misalnya versi hitam-putih atau versi horizontal, supaya kian luwes penggunaannya.</p>
 
             <h1>DAFTAR PUSTAKA</h1>
 
@@ -841,7 +823,6 @@
     </div>
 
     <script>
-        // ========== EXPORT WORD ==========
         function exportToWord() {
             const content = document.getElementById("journal-document-content").innerHTML;
             const htmlDocument = `
@@ -888,7 +869,6 @@
             URL.revokeObjectURL(url);
         }
 
-        // ========== EXPORT PDF ==========
         async function exportToPDF() {
             const btn = document.getElementById("pdfBtn");
             const originalText = btn.innerText;
@@ -912,7 +892,6 @@
                         doc.addPage();
                     }
 
-                    // Beri jeda agar render sempurna
                     await new Promise(resolve => setTimeout(resolve, 150));
 
                     const canvas = await html2canvas(pages[i], {
