@@ -87,12 +87,12 @@
     .page {
       width: 210mm;
       min-height: 297mm;
-      height: auto;
+      height: 297mm;
       margin: 0 auto 15px auto;
       background: #fff;
       padding: 20mm 20mm 20mm 20mm;
       position: relative;
-      overflow: visible;
+      overflow: hidden;
       page-break-after: always;
       box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
       box-sizing: border-box;
@@ -838,29 +838,31 @@
           doc.addPage();
         }
 
-        await new Promise(resolve => setTimeout(resolve, 100));
+        await new Promise(resolve => setTimeout(resolve, 150));
 
         const canvas = await html2canvas(pages[i], {
-          scale: 2.5,
+          scale: 3,
           useCORS: true,
           logging: false,
           allowTaint: true,
           backgroundColor: '#ffffff',
-          width: 210 * 2.5,
-          height: 297 * 2.5,
-          windowWidth: 210 * 2.5,
-          windowHeight: 297 * 2.5,
+          width: 794,
+          height: 1123,
+          windowWidth: 794,
+          windowHeight: 1123,
           onclone: function(clonedDoc) {
             const clonedPages = clonedDoc.querySelectorAll('.page');
             clonedPages.forEach(page => {
               page.style.display = 'block';
               page.style.visibility = 'visible';
               page.style.opacity = '1';
+              page.style.transform = 'scale(1)';
             });
           }
         });
 
         const imgData = canvas.toDataURL("image/png", 1.0);
+
         doc.addImage(imgData, "PNG", 0, 0, 210, 297, undefined, "FAST");
       }
 
