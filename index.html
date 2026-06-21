@@ -98,15 +98,15 @@
             z-index: 10;
         }
 
-        /* ✅ GARIS NAMA: POSISI TEPAT, JARAK PAS */
+        /* ✅ GARIS NAMA: PERSIS CONTOH - GARIS LURUS, TENGAH, TEKS DI ATAS GARIS */
         .name-divider {
             display: block;
             border-top: 1px solid #999;
             text-align: center;
             font-size: 9pt;
             font-style: italic;
-            padding-top: 5px;
-            margin: 20px 0 25px 0;
+            padding-top: 4px;
+            margin: 18px 0 22px 0;
             position: relative;
             clear: both;
         }
@@ -129,10 +129,10 @@
         .cover-page {
             display: flex;
             flex-direction: column;
-            justify-content: flex-start; /* Diubah dari center ke flex-start */
+            justify-content: flex-start;
             align-items: center;
             text-align: center;
-            padding: 1.5cm 2cm !important; /* Padding atas diperkecil */
+            padding: 1.5cm 2cm !important;
         }
 
         .journal-title-main {
@@ -140,21 +140,20 @@
             font-weight: bold;
             text-transform: uppercase;
             line-height: 1.5;
-            margin-bottom: 1.5cm; /* Jarak bawah dikurangi */
-            margin-top: 0; /* Hilangkan jarak atas */
+            margin-bottom: 1.5cm;
+            margin-top: 0;
         }
 
         .logo-container {
             width: 200px;
             height: auto;
             border: none;
-            margin: 0 auto 1.5cm auto; /* Jarak bawah dikurangi */
+            margin: 0 auto 1.5cm auto;
             display: flex;
             align-items: center;
             justify-content: center;
             background: transparent;
         }
-        /* ✅ LOGO DIPERBAIKI: Pasti muncul jika file ada */
         .logo-container img {
             width: 100%;
             height: auto;
@@ -228,11 +227,8 @@
             font-size: 10pt;
         }
 
-        /* Tata Letak Isi: 2 Kolom */
+        /* Tata Letak Isi */
         .main-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 25px;
             max-width: 100%;
             margin: 0;
         }
@@ -243,10 +239,6 @@
                 width: 100%;
                 min-height: auto;
                 padding: 2cm 1.5cm !important;
-            }
-            .main-content { 
-                grid-template-columns: 1fr; 
-                gap: 20px;
             }
         }
 
@@ -270,7 +262,7 @@
             font-weight: bold;
             margin-top: 15px;
             margin-bottom: 8px;
-            text-align: left; /* ✅ Rata kiri seperti contoh */
+            text-align: left;
             text-transform: none;
         }
 
@@ -282,22 +274,27 @@
             orphans: 4;
             widows: 4;
             line-height: 1.6;
+            word-spacing: 0.2px;
         }
         p.no-indent {
             text-indent: 0;
             margin-bottom: 10px;
         }
 
-        /* ✅ BAGIAN C. TIPOGRAFI KHUSUS: DIPERBAIKI SESUAI CONTOH */
+        /* ✅ BAGIAN C. TIPOGRAFI KHUSUS: DIPERBAIKI LENGKAP TANPA POTONG */
         .section-c {
             margin-top: 15px;
+            margin-bottom: 5px;
         }
         .section-c h3 {
             margin-bottom: 6px;
         }
         .section-c p {
             line-height: 1.6;
-            margin-bottom: 8px;
+            margin-bottom: 0;
+            text-align: justify;
+            /* Pastikan teks terakhir tidak terpotong */
+            page-break-after: avoid !important;
         }
 
         /* ✅ GAMBAR & TABEL: TIDAK TERPOTONG, JARAK PAS */
@@ -486,7 +483,7 @@
 
 
         <!-- ==========================================
-            HALAMAN 4: TINJAUAN PUSTAKA - ✅ BAGIAN C DIPERBAIKI
+            HALAMAN 4: TINJAUAN PUSTAKA - ✅ BAGIAN C LENGKAP UTUH
         ========================================== -->
         <div class="page">
             <div class="page-header">Dimas Arif Fikriawan | Perancangan Ulang Identity Branding</div>
@@ -502,13 +499,13 @@
             <p>Penggunaan format bitmap seperti .png atau .jpg memiliki kelemahan inheren dalam aspek skalabilitas. Ketika gambar bitmap dipaksa untuk mengalami perbesaran atau pengecilan ekstrem, susunan pikselnya akan meregang dan memicu efek pikselasi (gambar kabur). Dalam rekayasa komputer, pemanfaatan format berbasis *Scalable Vector Graphics* (.svg) menyelesaikan kendala ini dengan mendefinisikan bentuk grafis melalui persamaan matematika (vektor koordinat), sehingga detail gambar tetap tajam secara absolut pada resolusi layar berukuran berapapun.</p>
             <p>Selain keunggulan visual, format SVG juga memiliki keunggulan teknis berupa ukuran file yang jauh lebih kecil dibandingkan format raster berkualitas setara. Hal ini berdampak langsung pada efisiensi penggunaan bandwidth internet dan kecepatan pemuatan halaman web.</p>
 
-            <!-- ✅ BAGIAN C. TIPOGRAFI KHUSUS: TEPAT SESUAI CONTOH -->
+            <!-- ✅ BAGIAN C. TIPOGRAFI KHUSUS: LENGKAP TANPA POTONG, PERSIS CONTOH -->
             <div class="section-c">
                 <h3>C. Tipografi Khusus User Interface</h3>
                 <p>Tipografi dalam antarmuka digital memiliki aturan fungsional yang sangat ketat dibandingkan media cetak konvensional. Jenis huruf berkaki (Serif) cenderung mengalami pemecahan piksel atau distorsi anti-aliasing ketika dipaksa mengecil pada layar perangkat seluler berkepadatan rendah. Sebaliknya, rumpun huruf tanpa kaki (Sans-Serif) mempertahankan kejelasan garis strukturnya karena bentuk geometrisnya selaras dengan susunan matriks piksel horizontal-vertikal layar digital monitor, sehingga sangat direkomendasikan untuk platform berbasis web mobile.</p>
             </div>
 
-            <!-- ✅ GARIS NAMA: POSISI PERSIS CONTOH -->
+            <!-- ✅ GARIS NAMA: POSISI PERSIS DI BAWAHNYA -->
             <div class="name-divider">Dimas Arif Fikriawan | Perancangan Ulang Identity Branding</div>
 
             <div class="page-footer">Halaman 4</div>
@@ -674,7 +671,7 @@
                         .reference-list li { text-indent: -1.25cm; padding-left: 1.25cm; margin-bottom: 10px; mso-list: l0 level1 lfo1; }
                         .caption { font-size: 9.5pt; font-style: italic; text-align: center; margin-top: 4px; margin-bottom: 8px; }
                         .page-header { display: block; font-size: 9pt; text-align: center; font-style: italic; margin: 10px 0; }
-                        .name-divider { display: block; font-size: 9pt; text-align: center; font-style: italic; border-top: 1px solid #999; padding-top: 5px; margin: 20px 0 25px 0; }
+                        .name-divider { display: block; font-size: 9pt; text-align: center; font-style: italic; border-top: 1px solid #999; padding-top: 4px; margin: 18px 0 22px 0; }
                         img { max-width: 75% !important; height: auto !important; display: block !important; margin-left: auto !important; margin-right: auto !important; border: none !important; mso-wrap-style: square; }
                         .logo-container img { max-width: 220px !important; height: auto !important; }
                     </style>
