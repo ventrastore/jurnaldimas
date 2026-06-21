@@ -60,7 +60,7 @@
         body {
             font-family: 'Times New Roman', Times, serif !important;
             font-size: 12pt !important;
-            line-height: 1.5 !important; /* Standar jurnal: 1.5 spasi */
+            line-height: 1.5 !important;
             color: #000000;
             margin: 0;
             padding: 0;
@@ -74,11 +74,11 @@
         .page {
             width: 21cm;
             min-height: 29.7cm;
-            padding: 3cm 2.5cm 2cm 2.5cm !important; /* Aturan: Atas 3cm, Kiri 2.5cm, Kanan 2.5cm, Bawah 2cm */
+            padding: 2.5cm 2.5cm 2cm 2.5cm !important; /* Dikurangi padding atas agar muat lebih banyak tapi aman */
             margin: 0 auto;
             box-sizing: border-box;
             position: relative;
-            overflow: hidden !important; /* Mencegah terpotong/keluar */
+            overflow: visible !important; /* Ubah ke visible agar tidak terpotong */
             page-break-after: always !important;
             background: #ffffff;
         }
@@ -122,30 +122,28 @@
             font-weight: normal;
         }
 
-        /* ==== HALAMAN SAMPUL - DISESUAIKAN PERMINTAAN ==== */
+        /* ==== HALAMAN SAMPUL ==== */
         .cover-page {
             display: flex;
             flex-direction: column;
-            justify-content: flex-start; /* Posisi ke ATAS */
+            justify-content: flex-start;
             align-items: center;
             text-align: center;
             min-height: 29.7cm;
-            padding: 2cm 2cm 0 2cm !important; /* Jarak atas dikurangi agar naik ke atas */
+            padding: 2cm 2cm 0 2cm !important;
             box-sizing: border-box;
         }
-        /* JUDUL JURNAL DINAJKKAN KE ATAS SESUAI PERMINTAAN */
         .journal-title-main {
             font-size: 14pt;
             font-weight: bold;
             text-transform: uppercase;
             line-height: 1.6;
-            margin-top: 0 !important; /* Langsung dari atas */
-            margin-bottom: 1.5cm !important; /* Jarak ke logo diperkecil */
-            letter-spacing: 0.5px; /* Estetika huruf */
+            margin-top: 0 !important;
+            margin-bottom: 1.5cm !important;
+            letter-spacing: 0.5px;
         }
-        /* LOGO KAMPUS DIPERBESAR SESUAI PERMINTAAN */
         .logo-container {
-            width: 220px !important; /* DIPERBESAR dari 180px ke 220px */
+            width: 220px !important;
             margin: 0 auto 2cm auto !important;
         }
         .logo-container img {
@@ -172,7 +170,7 @@
             line-height: 1.4;
         }
 
-        /* ==== JUDUL & SUB JUDUL: ROMAWI SELALU TENGAH (Aturan SINTA) ==== */
+        /* ==== JUDUL & SUB JUDUL ==== */
         h1 {
             font-size: 14pt;
             font-weight: bold;
@@ -187,8 +185,8 @@
             font-size: 12pt;
             font-weight: bold;
             text-transform: uppercase;
-            text-align: center !important; /* SEMUA ROMAWI TENGAH */
-            margin: 0 0 0.5cm 0 !important;
+            text-align: center !important;
+            margin: 0.8cm 0 0.5cm 0 !important; /* Jarak atas ditambah agar tidak mepet */
             padding: 0;
             page-break-after: avoid !important;
             display: block !important;
@@ -203,21 +201,21 @@
             page-break-after: avoid !important;
         }
 
-        /* ==== PARAGRAF: ATURAN SINTA 4 (Indensi 1.25cm, Rata Kanan-Kiri) ==== */
+        /* ==== PARAGRAF ==== */
         p { 
-            margin: 0 0 0.3cm 0 !important;
-            text-indent: 1.25cm !important; /* Indensi standar */
+            margin: 0 0 0.4cm 0 !important; /* Jarak antar paragraf ditambah agar rapi */
+            text-indent: 1.25cm !important;
             text-align: justify !important;
-            line-height: 1.5 !important; /* Spasi 1.5 */
-            orphans: 5 !important; /* Cegah baris terpisah di bawah */
-            widows: 5 !important; /* Cegah baris terpisah di atas */
+            line-height: 1.5 !important;
+            orphans: 4 !important; /* Minimal 4 baris di halaman bawah */
+            widows: 4 !important; /* Minimal 4 baris di halaman atas */
             page-break-inside: avoid !important;
         }
         p.no-indent { text-indent: 0 !important; }
 
         /* ==== ABSTRAK & KATA KUNCI ==== */
         .abstract-container {
-            margin: 0 0 0.8cm 0;
+            margin: 0 0 1cm 0;
         }
         .abstract-title {
             font-weight: bold;
@@ -236,10 +234,10 @@
             font-style: normal;
         }
 
-        /* ==== GAMBAR, TABEL & KETERANGAN (AMAN DARI POTONGAN) ==== */
+        /* ==== GAMBAR, TABEL & KETERANGAN ==== */
         .element-wrapper { 
             text-align: center; 
-            margin: 0.5cm 0 !important;
+            margin: 0.8cm 0 !important; /* Jarak atas bawah ditambah */
             page-break-inside: avoid !important;
             display: block !important;
         }
@@ -255,7 +253,7 @@
             justify-content: center;
             align-items: center;
             gap: 2cm;
-            margin: 0.5cm 0;
+            margin: 0.8cm 0;
             page-break-inside: avoid !important;
         }
         .logo-box img {
@@ -279,7 +277,7 @@
         }
         table { 
             width: 85%; 
-            margin: 0.5cm auto !important;
+            margin: 0.8cm auto !important;
             border-collapse: collapse; 
             font-size: 11pt; 
             page-break-inside: avoid !important;
@@ -297,7 +295,7 @@
             font-weight: bold;
         }
 
-        /* ==== DAFTAR PUSTAKA (ATURAN SINTA: GANTI BARIS MENGGANTUNG) ==== */
+        /* ==== DAFTAR PUSTAKA ==== */
         .reference-list { 
             list-style-type: none; 
             padding-left: 0; 
@@ -306,7 +304,7 @@
         }
         .reference-list li { 
             padding-left: 1.25cm; 
-            text-indent: -1.25cm; /* Gantung baris */
+            text-indent: -1.25cm;
             margin-bottom: 0.3cm !important; 
             font-size: 11pt; 
             line-height: 1.5;
@@ -314,28 +312,28 @@
             page-break-inside: avoid !important;
         }
 
-        /* ==== PERBAIKAN KHUSUS: JARAK ANTARA TEKS & KESIMPULAN ==== */
+        /* ==== JARAK KHUSUS ==== */
         .space-before-conclusion {
-            margin-top: 0.8cm !important; /* Jarak pas, tidak terlalu dekat, tidak terlalu jauh */
+            margin-top: 1cm !important;
         }
 
-        /* Pengaturan Cetak/PDF (PENTING AGAR TIDAK TERPOTONG 100%) */
+        /* Pengaturan Cetak/PDF */
         @media print {
             .download-btn-container { display: none !important; }
             .page { 
                 margin: 0 !important; 
-                padding: 3cm 2.5cm 2cm 2.5cm !important;
+                padding: 2.5cm 2.5cm 2cm 2.5cm !important;
                 width: 21cm !important;
                 min-height: 29.7cm !important;
                 page-break-after: always !important;
-                overflow: hidden !important;
+                overflow: visible !important;
                 box-sizing: border-box !important;
             }
             * { 
                 box-sizing: border-box !important; 
                 page-break-inside: avoid !important;
-                orphans: 5 !important;
-                widows: 5 !important;
+                orphans: 4 !important;
+                widows: 4 !important;
             }
             h2, h3 { page-break-after: avoid !important; }
             table, figure { page-break-inside: avoid !important; }
@@ -353,25 +351,20 @@
     <div id="journal-document-content">
         
         <!-- ==========================================
-            HALAMAN 1: SAMPUL - SUDAH DIATUR ULANG
+            HALAMAN 1: SAMPUL
         ========================================== -->
         <div class="page cover-page">
-            <!-- ✅ JUDUL JURNAL DIPINDAH KE ATAS DAN DIPERINCI SESUAI PERMINTAAN -->
             <div class="journal-title-main">
                 JURNAL ILMU KOMPUTER DAN DESAIN KOMUNIKASI VISUAL<br>
                 JIKOM-DKV<br>
                 VOLUME 4, NOMOR 2, JUNI 2026
             </div>
-
-            <!-- ✅ LOGO KAMPUS DIPERBESAR UKURANNYA -->
             <div class="logo-container">
                 <img src="logo_kampus.png" alt="Logo Institut Widya Pratama" onerror="this.style.display='none'">
             </div>
-
             <div class="article-title">
                 PERANCANGAN ULANG IDENTITY BRANDING MELALUI DESAIN LOGO BARU PADA PERUSAHAAN CERAH
             </div>
-
             <div class="author-name">Dimas Arif Fikriawan</div>
             <div class="author-affiliation">
                 NIM: 24.240.0075<br>
@@ -383,7 +376,7 @@
 
 
         <!-- ==========================================
-            HALAMAN 2: JUDUL & ABSTRAK & PENDAHULUAN
+            HALAMAN 2: JUDUL & ABSTRAK
         ========================================== -->
         <div class="page">
             <div class="page-header">Journal of Indonesian Education, Vol. 4, No. 2, Juni 2026</div>
@@ -406,10 +399,8 @@
                 <div class="keywords"><b>Kata Kunci:</b> Perancangan Ulang, Identity Branding, Skalabilitas Logo, Teknik Informatika, UI/UX, Design Thinking.</div>
             </div>
 
-            <!-- GARIS PEMISAH PENUH SEBELUM PENDAHULUAN -->
             <div class="header-line-full"></div>
 
-            <!-- ✅ BAGIAN PENDAHULUAN LENGKAP DAN DIPERBAIKI -->
             <h2>I. PENDAHULUAN</h2>
             <p>
                 Evolusi teknologi informasi dan komunikasi di era kontemporer telah mendorong terjadinya disrupsi yang sangat masif dan eksponensial di berbagai sektor industri global. Sektor pendidikan di Indonesia menjadi salah satu ruang publik yang mengalami transformasi paling radikal, ditandai dengan beralihnya model pembelajaran konvensional tatap muka menuju ekosistem digital terpadu melalui kemunculan berbagai inovasi platform <i>Educational Technology</i> (EdTech). Platform-platform ini menawarkan efisiensi tinggi, fleksibilitas ruang, serta kemudahan aksesibilitas data instruksional yang belum pernah ada pada dekade sebelumnya. Perkembangan ini menuntut setiap penyedia layanan pendidikan untuk terus berinovasi, tidak hanya pada materi ajar, tetapi juga pada cara mereka berkomunikasi dan menampilkan identitasnya di ruang publik digital.
@@ -429,7 +420,7 @@
 
 
         <!-- ==========================================
-            HALAMAN 3: TINJAUAN PUSTAKA (DIPERBAIKI TULISAN SALAH)
+            HALAMAN 3: TINJAUAN PUSTAKA
         ========================================== -->
         <div class="page">
             <div class="sub-header">Dimas Arif Fikriawan | Perancangan Ulang Identity Branding</div>
@@ -465,7 +456,7 @@
 
 
         <!-- ==========================================
-            HALAMAN 4: METODOLOGI (DIPERBAIKI TULISAN SALAH)
+            HALAMAN 4: METODOLOGI
         ========================================== -->
         <div class="page">
             <div class="sub-header">Dimas Arif Fikriawan | Perancangan Ulang Identity Branding</div>
@@ -494,7 +485,7 @@
 
 
         <!-- ==========================================
-            HALAMAN 5: HASIL & PEMBAHASAN (DIPERBAIKI TULISAN SALAH)
+            HALAMAN 5: HASIL & PEMBAHASAN BAGIAN 1
         ========================================== -->
         <div class="page">
             <div class="sub-header">Dimas Arif Fikriawan | Perancangan Ulang Identity Branding</div>
@@ -565,6 +556,16 @@
                 Berdasarkan data pada tabel di atas, terlihat perbedaan signifikan pada hampir seluruh parameter teknis dan estetika. Perubahan dari format raster ke vektor memberikan dampak peningkatan kinerja sistem yang sangat besar, dengan pengurangan ukuran file hingga 80% dan percepatan waktu pemuatan hingga 10 kali lipat. Secara teknis, ini merupakan lonjakan efisiensi yang sangat besar dalam pengembangan sistem informasi berbasis web.
             </p>
 
+            <div class="page-number">52</div>
+        </div>
+
+
+        <!-- ==========================================
+            HALAMAN 6: HASIL & PEMBAHASAN BAGIAN 2 & KESIMPULAN
+        ========================================== -->
+        <div class="page">
+            <div class="sub-header">Dimas Arif Fikriawan | Perancangan Ulang Identity Branding</div>
+
             <h3>B. Analisis Filosofis Geometris</h3>
             <p>
                 Setiap goresan garis, penentuan sudut kurva bezier, dan pemilihan palet warna pada logo baru yang diusulkan oleh peneliti mengandung makna filosofis mendalam yang dikonversikan secara matematis ke dalam ruang vektor digital. Bentuk luar logo mengadopsi siluet balon percakapan yang secara filosofis melambangkan komunikasi interaktif dua arah. Pola ini merefleksikan visi utama platform dalam memfasilitasi penguasaan bahasa asing secara aktif dan komunikatif. Palet warna didominasi oleh warna kuning cerah `#FFD200` yang mengekspresikan optimisme, dipadukan dengan biru tua `#003366` untuk memancarkan stabilitas teknis dan profesionalisme.
@@ -573,17 +574,7 @@
                 Selain itu, komposisi bentuk geometris yang simetris memberikan kesan keseimbangan dan keadilan, nilai-nilai yang juga dipegang teguh oleh perusahaan. Pemilihan sudut-sudut yang membulat tidak hanya bertujuan untuk keindahan, tetapi juga memberikan kesan ramah dan mudah didekati, sesuai dengan karakter layanan pendidikan yang bersifat mendidik dan membimbing.
             </p>
 
-            <div class="page-number">52</div>
-        </div>
-
-
-        <!-- ==========================================
-            HALAMAN 6: KESIMPULAN (ANGKA DIPERBAIKI)
-        ========================================== -->
-        <div class="page">
-            <div class="sub-header">Dimas Arif Fikriawan | Perancangan Ulang Identity Branding</div>
-
-            <div style="text-align:center; border-top:1px solid #000; border-bottom:1px solid #000; padding:0.25cm 0; font-size:11pt; font-style:italic; margin-bottom:0.8cm; border-radius:2px;">
+            <div style="text-align:center; border-top:1px solid #000; border-bottom:1px solid #000; padding:0.25cm 0; font-size:11pt; font-style:italic; margin:0.8cm 0; border-radius:2px;">
                 Grafik 1. Hasil Evaluasi Empiris Desain Baru
             </div>
 
@@ -627,7 +618,7 @@
 
     </div>
 
-    <!-- SCRIPT EKSPOR: DIOPTIMALKAN AGAR 100% TIDAK TERPOTONG -->
+    <!-- SCRIPT EKSPOR: DIPERBAIKI AGAR TIDAK TERPOTONG -->
     <script>
         function exportToWord() {
             var content = document.getElementById("journal-document-content").innerHTML;
@@ -637,16 +628,16 @@
                     <meta charset='utf-8'>
                     <title>JURNAL DIMAS ARIF FIKRIAWAN</title>
                     <style>
-                        @page { size: 21cm 29.7cm; margin: 3cm 2.5cm 2cm 2.5cm; }
+                        @page { size: 21cm 29.7cm; margin: 2.5cm 2.5cm 2cm 2.5cm; }
                         body { font-family: 'Times New Roman', serif; font-size: 12pt; line-height: 1.5; text-align: justify; margin: 0; }
                         .page { page-break-after: always; margin: 0; padding: 0; width: 100%; min-height: 29.7cm; }
                         h1 { font-size:14pt; font-weight:bold; text-transform:uppercase; text-align:center; margin:0.4cm 0; letter-spacing:0.3px; }
-                        h2 { font-size:12pt; font-weight:bold; text-transform:uppercase; text-align:center !important; margin:0 0 0.5cm 0; page-break-after:avoid; letter-spacing:0.3px; }
+                        h2 { font-size:12pt; font-weight:bold; text-transform:uppercase; text-align:center !important; margin:0.8cm 0 0.5cm 0; page-break-after:avoid; letter-spacing:0.3px; }
                         h3 { font-size:12pt; font-weight:bold; text-align:left; margin:0.6cm 0 0.3cm 0; page-break-after:avoid; }
-                        p { text-indent:1.25cm; margin:0 0 0.3cm 0; text-align:justify; line-height:1.5; orphans:5; widows:5; }
+                        p { text-indent:1.25cm; margin:0 0 0.4cm 0; text-align:justify; line-height:1.5; orphans:4; widows:4; }
                         .abstract-title { font-weight:bold; text-align:center; text-transform:uppercase; }
                         .caption { font-size:10pt; font-style:italic; text-align:center; }
-                        table { width:85%; border-collapse:collapse; margin:0.5cm auto; page-break-inside:avoid; }
+                        table { width:85%; border-collapse:collapse; margin:0.8cm auto; page-break-inside:avoid; }
                         th, td { border:1px solid #000; padding:0.3cm 0.4cm; text-align:center; }
                         .reference-list { list-style:none; padding-left:0; margin-top:0.4cm; page-break-before:always; }
                         .reference-list li { padding-left:1.25cm; text-indent:-1.25cm; margin-bottom:0.3cm; font-size:11pt; line-height:1.5; text-align:justify; }
@@ -680,7 +671,7 @@
                 const pages = document.querySelectorAll('.page');
                 for (let i = 0; i < pages.length; i++) {
                     const canvas = await html2canvas(pages[i], {
-                        scale: 3, /* Diperbesar resolusi agar sangat tajam */
+                        scale: 2.5, /* Resolusi diatur agar pas dan tajam */
                         useCORS: true, 
                         allowTaint: false, 
                         logging: false, 
@@ -698,7 +689,7 @@
                     doc.addImage(imgData, 'PNG', 0, 0, imgWidth, imgHeight, undefined, 'FAST');
                 }
                 doc.save('JURNAL_DIMAS_ARIF_FIKRIAWAN.pdf');
-                alert('✅ PDF Berhasil Dibuat! 100% Rapi, Tidak Terpotong, Sesuai Standar SINTA 4.');
+                alert('✅ PDF Berhasil Dibuat! Halaman Rapi, Tidak Terpotong.');
             } catch (error) {
                 alert('❌ Masalah: ' + error.message);
             } finally {
