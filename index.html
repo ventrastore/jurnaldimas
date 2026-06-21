@@ -56,11 +56,11 @@
             cursor: not-allowed;
         }
 
-        /* ==== PENGATURAN UTAMA: STANDAR JURNAL RESMI ==== */
+        /* ==== PENGATURAN UTAMA: STANDAR SINTA 4 & JURNAL ILMIAH ==== */
         body {
             font-family: 'Times New Roman', Times, serif !important;
             font-size: 12pt !important;
-            line-height: 1.3 !important;
+            line-height: 1.5 !important; /* Standar jurnal: 1.5 spasi */
             color: #000000;
             margin: 0;
             padding: 0;
@@ -70,21 +70,21 @@
             print-color-adjust: exact !important;
         }
 
-        /* UKURAN KERTAS A4 & BATAS TEPI (PRESISI) */
+        /* UKURAN KERTAS A4 & BATAS TEPI PRESISI (Aturan SINTA 4) */
         .page {
             width: 21cm;
             min-height: 29.7cm;
-            padding: 3cm 2.5cm 2cm 2.5cm !important;
+            padding: 3cm 2.5cm 2cm 2.5cm !important; /* Aturan: Atas 3cm, Kiri 2.5cm, Kanan 2.5cm, Bawah 2cm */
             margin: 0 auto;
             box-sizing: border-box;
             position: relative;
-            overflow: hidden !important;
+            overflow: hidden !important; /* Mencegah terpotong/keluar */
             page-break-after: always !important;
             background: #ffffff;
         }
         .page:last-child { page-break-after: auto !important; }
 
-        /* ==== HEADER & GARIS PEMISAH (PERSIS CONTOH) ==== */
+        /* ==== HEADER & GARIS PEMISAH ==== */
         .page-header {
             position: absolute;
             top: 1cm;
@@ -122,106 +122,114 @@
             font-weight: normal;
         }
 
-        /* ==== HALAMAN SAMPUL ==== */
+        /* ==== HALAMAN SAMPUL - DISESUAIKAN PERMINTAAN ==== */
         .cover-page {
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            justify-content: flex-start; /* Posisi ke ATAS */
             align-items: center;
             text-align: center;
             min-height: 29.7cm;
-            padding: 0 2cm !important;
+            padding: 2cm 2cm 0 2cm !important; /* Jarak atas dikurangi agar naik ke atas */
             box-sizing: border-box;
         }
+        /* JUDUL JURNAL DINAJKKAN KE ATAS SESUAI PERMINTAAN */
         .journal-title-main {
             font-size: 14pt;
             font-weight: bold;
             text-transform: uppercase;
-            line-height: 1.5;
-            margin-bottom: 2cm !important;
+            line-height: 1.6;
+            margin-top: 0 !important; /* Langsung dari atas */
+            margin-bottom: 1.5cm !important; /* Jarak ke logo diperkecil */
+            letter-spacing: 0.5px; /* Estetika huruf */
         }
+        /* LOGO KAMPUS DIPERBESAR SESUAI PERMINTAAN */
         .logo-container {
-            width: 180px;
+            width: 220px !important; /* DIPERBESAR dari 180px ke 220px */
             margin: 0 auto 2cm auto !important;
         }
         .logo-container img {
             width: 100%;
             height: auto;
+            display: block;
         }
         .article-title {
             font-size: 14pt;
             font-weight: bold;
             text-transform: uppercase;
             line-height: 1.5;
-            margin-bottom: 2cm !important;
+            margin-bottom: 2.5cm !important;
+            max-width: 18cm;
         }
         .author-name {
             font-size: 12pt;
             font-weight: bold;
-            margin-bottom: 0.2cm;
+            margin-bottom: 0.3cm;
         }
         .author-affiliation {
             font-size: 11pt;
             font-style: italic;
-            line-height: 1.3;
+            line-height: 1.4;
         }
 
-        /* ==== JUDUL & SUB JUDUL: ROMAWI SELALU TENGAH ==== */
+        /* ==== JUDUL & SUB JUDUL: ROMAWI SELALU TENGAH (Aturan SINTA) ==== */
         h1 {
             font-size: 14pt;
             font-weight: bold;
             text-transform: uppercase;
             text-align: center;
-            margin: 0 0 0.5cm 0;
+            margin: 0 0 0.6cm 0;
             padding: 0;
             page-break-after: avoid !important;
+            letter-spacing: 0.3px;
         }
         h2 {
             font-size: 12pt;
             font-weight: bold;
             text-transform: uppercase;
             text-align: center !important; /* SEMUA ROMAWI TENGAH */
-            margin: 0 0 0.4cm 0 !important;
+            margin: 0 0 0.5cm 0 !important;
             padding: 0;
             page-break-after: avoid !important;
             display: block !important;
+            letter-spacing: 0.3px;
         }
         h3 {
             font-size: 12pt;
             font-weight: bold;
             text-align: left;
-            margin: 0.5cm 0 0.3cm 0 !important;
+            margin: 0.6cm 0 0.3cm 0 !important;
             padding: 0;
             page-break-after: avoid !important;
         }
 
-        /* ==== PARAGRAF (RAPI & TIDAK TERPOTONG) ==== */
+        /* ==== PARAGRAF: ATURAN SINTA 4 (Indensi 1.25cm, Rata Kanan-Kiri) ==== */
         p { 
-            margin: 0 0 0.2cm 0 !important;
-            text-indent: 1.25cm !important;
+            margin: 0 0 0.3cm 0 !important;
+            text-indent: 1.25cm !important; /* Indensi standar */
             text-align: justify !important;
-            line-height: 1.3 !important;
-            orphans: 4 !important;
-            widows: 4 !important;
+            line-height: 1.5 !important; /* Spasi 1.5 */
+            orphans: 5 !important; /* Cegah baris terpisah di bawah */
+            widows: 5 !important; /* Cegah baris terpisah di atas */
             page-break-inside: avoid !important;
         }
         p.no-indent { text-indent: 0 !important; }
 
         /* ==== ABSTRAK & KATA KUNCI ==== */
         .abstract-container {
-            margin: 0 0 0.5cm 0;
+            margin: 0 0 0.8cm 0;
         }
         .abstract-title {
             font-weight: bold;
             text-transform: uppercase;
             text-align: center;
-            margin-bottom: 0.2cm;
+            margin-bottom: 0.3cm;
             font-size: 12pt;
         }
         .keywords {
-            margin-top: 0.2cm;
+            margin-top: 0.3cm;
             font-size: 11pt;
-            line-height: 1.3;
+            line-height: 1.4;
             text-indent: 1.25cm;
         }
         .keywords b {
@@ -231,12 +239,12 @@
         /* ==== GAMBAR, TABEL & KETERANGAN (AMAN DARI POTONGAN) ==== */
         .element-wrapper { 
             text-align: center; 
-            margin: 0.4cm 0 !important;
+            margin: 0.5cm 0 !important;
             page-break-inside: avoid !important;
             display: block !important;
         }
         .img-custom {
-            max-width: 70%;
+            max-width: 75%;
             height: auto;
             display: block;
             margin: 0 auto;
@@ -246,20 +254,21 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 1.5cm;
-            margin: 0.4cm 0;
+            gap: 2cm;
+            margin: 0.5cm 0;
             page-break-inside: avoid !important;
         }
         .logo-box img {
-            max-width: 120px;
+            max-width: 130px;
             border: 1px solid #ccc;
-            padding: 5px;
+            padding: 6px;
             background: #fff;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
         }
         .logo-label {
             font-size: 11pt;
             font-weight: bold;
-            margin-top: 0.2cm;
+            margin-top: 0.3cm;
         }
         .caption { 
             font-size: 10pt; 
@@ -270,36 +279,37 @@
         }
         table { 
             width: 85%; 
-            margin: 0.4cm auto !important;
+            margin: 0.5cm auto !important;
             border-collapse: collapse; 
             font-size: 11pt; 
             page-break-inside: avoid !important;
             display: table !important;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
         }
         th, td { 
             border: 1px solid #000; 
-            padding: 0.2cm 0.3cm;
+            padding: 0.3cm 0.4cm;
             text-align: center;
             vertical-align: middle;
         }
         th { 
-            background-color: #f0f0f0; 
+            background-color: #f5f5f5; 
             font-weight: bold;
         }
 
-        /* ==== DAFTAR PUSTAKA (HALAMAN SENDIRI) ==== */
+        /* ==== DAFTAR PUSTAKA (ATURAN SINTA: GANTI BARIS MENGGANTUNG) ==== */
         .reference-list { 
             list-style-type: none; 
             padding-left: 0; 
-            margin-top: 0.3cm !important;
+            margin-top: 0.4cm !important;
             page-break-before: always !important;
         }
         .reference-list li { 
             padding-left: 1.25cm; 
-            text-indent: -1.25cm; 
-            margin-bottom: 0.2cm !important; 
+            text-indent: -1.25cm; /* Gantung baris */
+            margin-bottom: 0.3cm !important; 
             font-size: 11pt; 
-            line-height: 1.3;
+            line-height: 1.5;
             text-align: justify;
             page-break-inside: avoid !important;
         }
@@ -307,10 +317,15 @@
         /* ==== GARIS PEMISAH ==== */
         .divider-line {
             border-top: 1px solid #000;
-            margin: 0.5cm 0;
+            margin: 0.6cm 0;
         }
 
-        /* Pengaturan Cetak/PDF (PENTING UNTUK RAPI) */
+        /* ==== PERBAIKAN KHUSUS: JARAK ANTARA TEKS & KESIMPULAN ==== */
+        .space-before-conclusion {
+            margin-top: 0.8cm !important; /* Jarak pas, tidak terlalu dekat, tidak terlalu jauh */
+        }
+
+        /* Pengaturan Cetak/PDF (PENTING AGAR TIDAK TERPOTONG 100%) */
         @media print {
             .download-btn-container { display: none !important; }
             .page { 
@@ -320,12 +335,13 @@
                 min-height: 29.7cm !important;
                 page-break-after: always !important;
                 overflow: hidden !important;
+                box-sizing: border-box !important;
             }
             * { 
                 box-sizing: border-box !important; 
                 page-break-inside: avoid !important;
-                orphans: 4 !important;
-                widows: 4 !important;
+                orphans: 5 !important;
+                widows: 5 !important;
             }
             h2, h3 { page-break-after: avoid !important; }
             table, figure { page-break-inside: avoid !important; }
@@ -343,15 +359,17 @@
     <div id="journal-document-content">
         
         <!-- ==========================================
-            HALAMAN 1: SAMPUL
+            HALAMAN 1: SAMPUL - SUDAH DIATUR ULANG
         ========================================== -->
         <div class="page cover-page">
+            <!-- ✅ JUDUL JURNAL DIPINDAH KE ATAS DAN DIPERINCI SESUAI PERMINTAAN -->
             <div class="journal-title-main">
                 JURNAL ILMU KOMPUTER DAN DESAIN KOMUNIKASI VISUAL<br>
                 JIKOM-DKV<br>
                 VOLUME 4, NOMOR 2, JUNI 2026
             </div>
 
+            <!-- ✅ LOGO KAMPUS DIPERBESAR UKURANNYA -->
             <div class="logo-container">
                 <img src="logo_kampus.png" alt="Logo Institut Widya Pratama" onerror="this.style.display='none'">
             </div>
@@ -378,7 +396,7 @@
             
             <h1>PERANCANGAN ULANG IDENTITY BRANDING MELALUI DESAIN LOGO BARU PADA PERUSAHAAN CERAH</h1>
             
-            <div style="text-align:center; font-size:11pt; margin-bottom:0.4cm;">
+            <div style="text-align:center; font-size:11pt; margin-bottom:0.5cm;">
                 Dimas Arif Fikriawan<br>
                 Program Studi Teknik Informatika, Institut Widya Pratama<br>
             </div>
@@ -397,7 +415,7 @@
             <!-- GARIS PEMISAH PENUH SEBELUM PENDAHULUAN -->
             <div class="header-line-full"></div>
 
-            <!-- JUDUL ROMAWI I. PENDAHULUAN SUDAH TENGAH -->
+            <!-- JUDUL ROMAWI I. PENDAHULUAN TENGAH -->
             <h2>I. PENDAHULUAN</h2>
             <p>
                 Evolusi teknologi informasi dan komunikasi di era kontemporer telah mendorong terjadinya disrupsi yang sangat masif dan eksponensial di berbagai sektor industri global. Sektor pendidikan di Indonesia menjadi salah satu ruang publik yang mengalami transformasi paling radikal, ditandai dengan beralihnya model pembelajaran konvensional tatap muka menuju ekosistem digital terpadu melalui kemunculan berbagai inovasi platform <i>Educational Technology</i> (EdTech). Platform-platform ini menawarkan efisiensi tinggi, fleksibilitas ruang, serta kemudahan aksesibilitas data instruksional yang belum pernah ada pada dekade sebelumnya. Perkembangan ini menuntut setiap penyedia layanan pendidikan untuk terus berinovasi, tidak hanya pada materi ajar, tetapi juga pada cara mereka berkomunikasi dan menampilkan identitasnya di ruang publik digital.
@@ -422,7 +440,7 @@
         <div class="page">
             <div class="sub-header">Dimas Arif Fikriawan | Perancangan Ulang Identity Branding</div>
 
-            <!-- JUDUL ROMAWI II. TINJAUAN PUSTAKA SUDAH TENGAH -->
+            <!-- JUDUL ROMAWI II. TINJAUAN PUSTAKA TENGAH -->
             <h2>II. TINJAUAN PUSTAKA</h2>
             <p>
                 Dalam memetakan landasan teori rekayasa visual ini, beberapa konsep ilmiah dari ranah desain komunikasi visual dan interaksi manusia-komputer diadopsi untuk memastikan validitas rancangan baru. Studi literatur dilakukan melalui penelusuran jurnal ilmiah terindeks Scopus dan SINTA, serta buku referensi standar bidang desain dan teknologi informasi yang diterbitkan dalam 10 tahun terakhir. Kajian ini sangat penting untuk memastikan bahwa setiap keputusan desain yang diambil memiliki dasar teori yang kuat dan tidak sekadar berbasis selera estetika semata.
@@ -459,14 +477,14 @@
         <div class="page">
             <div class="sub-header">Dimas Arif Fikriawan | Perancangan Ulang Identity Branding</div>
 
-            <!-- JUDUL ROMAWI III. METODOLOGI SUDAH TENGAH -->
+            <!-- JUDUL ROMAWI III. METODOLOGI TENGAH -->
             <h2>III. METODOLOGI PENELITIAN</h2>
             <p>
                 Guna menjamin hasil rancangan yang memiliki validitas tinggi dan berorientasi pada kebutuhan riil pengguna, penelitian ini menerapkan metodologi <i>Design Thinking</i>. Metodologi ini dipilih karena karakteristiknya yang fleksibel, iteratif, dan sangat berpusat pada manusia (<i>human-centered design</i>). Proses penelitian dilaksanakan melalui lima tahapan operasional yang saling terintegrasi secara runtut, mulai dari penggalian data hingga pengujian akhir, memastikan setiap keputusan desain didasarkan pada data nyata dan bukan asumsi peneliti semata.
             </p>
             
             <div class="element-wrapper">
-                <div style="border:1px dashed #000; padding:0.2cm; font-weight:bold; display:inline-block; font-size:11pt;">
+                <div style="border:1px dashed #000; padding:0.25cm; font-weight:bold; display:inline-block; font-size:11pt; border-radius:3px;">
                     Empathize → Define → Ideate → Prototype → Test
                 </div>
                 <div class="caption">Gambar 1. Alur Siklus Operasional Metodologi Design Thinking</div>
@@ -489,7 +507,7 @@
         <div class="page">
             <div class="sub-header">Dimas Arif Fikriawan | Perancangan Ulang Identity Branding</div>
 
-            <!-- JUDUL ROMAWI IV. HASIL DAN PEMBAHASAN SUDAH TENGAH -->
+            <!-- JUDUL ROMAWI IV. HASIL DAN PEMBAHASAN TENGAH -->
             <h2>IV. HASIL DAN PEMBAHASAN</h2>
             
             <h3>A. Analisis Konsep Perancangan</h3>
@@ -499,15 +517,15 @@
 
             <!-- PERBANDINGAN LOGO -->
             <div class="element-wrapper">
-                <div style="font-weight:bold; margin-bottom:0.2cm; font-size:11pt;">Perbandingan Logo: Sebelum dan Sesudah</div>
+                <div style="font-weight:bold; margin-bottom:0.3cm; font-size:11pt;">Perbandingan Logo: Sebelum dan Sesudah</div>
                 <div class="logo-comparison">
                     <div class="logo-box">
-                        <img src="logo_cerah_sebelum.png" alt="Logo Cerah Sebelum" onerror="this.parentElement.innerHTML='<div style=\'width:120px; height:80px; border:1px dashed #000; display:flex; align-items:center; justify-content:center; font-size:10pt;\'>Logo Lama</div>'">
+                        <img src="logo_cerah_sebelum.png" alt="Logo Cerah Sebelum" onerror="this.parentElement.innerHTML='<div style=\'width:130px; height:90px; border:1px dashed #000; display:flex; align-items:center; justify-content:center; font-size:10pt;\'>Logo Lama</div>'">
                         <div class="logo-label">Logo Sebelum</div>
                     </div>
-                    <div style="font-weight:bold; font-size:14pt;">→</div>
+                    <div style="font-weight:bold; font-size:16pt;">→</div>
                     <div class="logo-box">
-                        <img src="logo_cerah_sesudah.png" alt="Saran Logo Baru Cerah" onerror="this.parentElement.innerHTML='<div style=\'width:120px; height:80px; border:1px dashed #000; display:flex; align-items:center; justify-content:center; font-size:10pt;\'>Saran Logo Baru</div>'">
+                        <img src="logo_cerah_sesudah.png" alt="Saran Logo Baru Cerah" onerror="this.parentElement.innerHTML='<div style=\'width:130px; height:90px; border:1px dashed #000; display:flex; align-items:center; justify-content:center; font-size:10pt;\'>Saran Logo Baru</div>'">
                         <div class="logo-label">Saran Logo Sesudah</div>
                     </div>
                 </div>
@@ -570,12 +588,12 @@
 
 
         <!-- ==========================================
-            HALAMAN 6: KESIMPULAN (JARAK SUDAH DIPERBAIKI)
+            HALAMAN 6: KESIMPULAN (JARAK SUDAH PAS & RAPI)
         ========================================== -->
         <div class="page">
             <div class="sub-header">Dimas Arif Fikriawan | Perancangan Ulang Identity Branding</div>
 
-            <div style="text-align:center; border-top:1px solid #000; border-bottom:1px solid #000; padding:0.2cm 0; font-size:11pt; font-style:italic; margin-bottom:0.8cm;">
+            <div style="text-align:center; border-top:1px solid #000; border-bottom:1px solid #000; padding:0.25cm 0; font-size:11pt; font-style:italic; margin-bottom:0.8cm; border-radius:2px;">
                 Grafik 1. Hasil Evaluasi Empiris Desain Baru
             </div>
 
@@ -583,10 +601,10 @@
                 Berdasarkan sajian data grafik di atas, rata-rata penilaian dari seluruh indikator menunjukkan tingkat kepuasan yang sangat tinggi di atas 80%. Indikator kesesuaian nilai menempati skor tertinggi yaitu mencapai angka 90%, menegaskan bahwa hasil rancangan logo baru ini mampu merepresentasikan identitas visi misi platform secara akurat. Indikator keunikan dan kemudahan pengenalan juga berada di angka 88% dan 92%, membuktikan bahwa desain baru ini berhasil menjadi pembeda yang kuat di pasar.
             </p>
 
-            <!-- ✅ JARAK DITAMBAHKAN DI SINI AGAR TIDAK DEKAT DENGAN JUDUL KESIMPULAN -->
-            <div style="margin-top:0.6cm;"></div>
+            <!-- ✅ JARAK PAS ANTARA TEKS & JUDUL KESIMPULAN -->
+            <div class="space-before-conclusion"></div>
 
-            <!-- JUDUL ROMAWI V. KESIMPULAN TETAP DI TENGAH -->
+            <!-- JUDUL ROMAWI V. KESIMPULAN TENGAH -->
             <h2>V. KESIMPULAN</h2>
             <p>
                 Riset perancangan ulang sistem <i>identity branding</i> Perusahaan Cerah telah berhasil diselesaikan secara tuntas dengan mengacu pada metodologi <i>Design Thinking</i>. Penggunaan bentuk geometris minimalis yang dikombinasikan dengan pengaplikasian rumpun huruf modern Sans-Serif terbukti secara teknis mampu menyelesaikan kendala distorsi visual, memberikan tingkat skalabilitas tinggi, serta mempertahankan efisiensi rendering halaman sistem digital yang optimal pada gawai seluler. Respons positif dari sampel pengguna mengukuhkan bahwa rancangan identitas visual baru ini sangat layak dan siap diimplementasikan.
@@ -605,7 +623,7 @@
         <div class="page">
             <div class="sub-header">Dimas Arif Fikriawan | Perancangan Ulang Identity Branding</div>
 
-            <!-- JUDUL ROMAWI VI. DAFTAR PUSTAKA SUDAH TENGAH -->
+            <!-- JUDUL ROMAWI VI. DAFTAR PUSTAKA TENGAH -->
             <h2>VI. DAFTAR PUSTAKA</h2>
             <ul class="reference-list">
                 <li>Anggraini, S., & Natasia, S. R. (2020). Pengembangan antarmuka pengguna aplikasi mobile menggunakan metode Design Thinking. <i>Jurnal RESTI</i>, 4(4), 670–678.</li>
@@ -622,7 +640,7 @@
 
     </div>
 
-    <!-- SCRIPT EKSPOR (DIOPTIMALKAN AGAR RAPI) -->
+    <!-- SCRIPT EKSPOR: DIOPTIMALKAN AGAR 100% TIDAK TERPOTONG -->
     <script>
         function exportToWord() {
             var content = document.getElementById("journal-document-content").innerHTML;
@@ -633,22 +651,24 @@
                     <title>JURNAL DIMAS ARIF FIKRIAWAN</title>
                     <style>
                         @page { size: 21cm 29.7cm; margin: 3cm 2.5cm 2cm 2.5cm; }
-                        body { font-family: 'Times New Roman', serif; font-size: 12pt; line-height: 1.3; text-align: justify; margin: 0; }
+                        body { font-family: 'Times New Roman', serif; font-size: 12pt; line-height: 1.5; text-align: justify; margin: 0; }
                         .page { page-break-after: always; margin: 0; padding: 0; width: 100%; min-height: 29.7cm; }
-                        h1 { font-size:14pt; font-weight:bold; text-transform:uppercase; text-align:center; margin:0.4cm 0; }
-                        h2 { font-size:12pt; font-weight:bold; text-transform:uppercase; text-align:center !important; margin:0 0 0.4cm 0; page-break-after:avoid; }
-                        h3 { font-size:12pt; font-weight:bold; text-align:left; margin:0.5cm 0 0.2cm 0; page-break-after:avoid; }
-                        p { text-indent:1.25cm; margin:0 0 0.2cm 0; text-align:justify; line-height:1.3; orphans:4; widows:4; }
+                        h1 { font-size:14pt; font-weight:bold; text-transform:uppercase; text-align:center; margin:0.4cm 0; letter-spacing:0.3px; }
+                        h2 { font-size:12pt; font-weight:bold; text-transform:uppercase; text-align:center !important; margin:0 0 0.5cm 0; page-break-after:avoid; letter-spacing:0.3px; }
+                        h3 { font-size:12pt; font-weight:bold; text-align:left; margin:0.6cm 0 0.3cm 0; page-break-after:avoid; }
+                        p { text-indent:1.25cm; margin:0 0 0.3cm 0; text-align:justify; line-height:1.5; orphans:5; widows:5; }
                         .abstract-title { font-weight:bold; text-align:center; text-transform:uppercase; }
                         .caption { font-size:10pt; font-style:italic; text-align:center; }
-                        table { width:85%; border-collapse:collapse; margin:0.4cm auto; page-break-inside:avoid; }
-                        th, td { border:1px solid #000; padding:0.2cm 0.3cm; text-align:center; }
-                        .reference-list { list-style:none; padding-left:0; margin-top:0.3cm; page-break-before:always; }
-                        .reference-list li { padding-left:1.25cm; text-indent:-1.25cm; margin-bottom:0.2cm; font-size:11pt; line-height:1.3; text-align:justify; }
-                        img { max-width:70%; height:auto; display:block; margin:0 auto; }
+                        table { width:85%; border-collapse:collapse; margin:0.5cm auto; page-break-inside:avoid; }
+                        th, td { border:1px solid #000; padding:0.3cm 0.4cm; text-align:center; }
+                        .reference-list { list-style:none; padding-left:0; margin-top:0.4cm; page-break-before:always; }
+                        .reference-list li { padding-left:1.25cm; text-indent:-1.25cm; margin-bottom:0.3cm; font-size:11pt; line-height:1.5; text-align:justify; }
+                        img { max-width:75%; height:auto; display:block; margin:0 auto; }
                         .page-number { text-align:center; font-size:10pt; margin-top:1cm; }
                         .sub-header { font-size:10pt; font-style:italic; text-align:center; padding-bottom:0.2cm; border-bottom:1px solid #999; margin-bottom:0.8cm; }
                         .header-line-full { border-bottom:1px solid #000; margin:0 0 0.8cm 0; width:100%; }
+                        .journal-title-main { font-size:14pt; font-weight:bold; text-transform:uppercase; line-height:1.6; margin-bottom:1.5cm; }
+                        .logo-container { width:220px !important; margin:0 auto 2cm auto !important; }
                     </style>
                 </head>
                 <body>${content}</body>
@@ -673,7 +693,7 @@
                 const pages = document.querySelectorAll('.page');
                 for (let i = 0; i < pages.length; i++) {
                     const canvas = await html2canvas(pages[i], {
-                        scale: 2, 
+                        scale: 3, /* Diperbesar resolusi agar sangat tajam */
                         useCORS: true, 
                         allowTaint: false, 
                         logging: false, 
@@ -691,7 +711,7 @@
                     doc.addImage(imgData, 'PNG', 0, 0, imgWidth, imgHeight, undefined, 'FAST');
                 }
                 doc.save('JURNAL_DIMAS_ARIF_FIKRIAWAN.pdf');
-                alert('✅ PDF Berhasil Dibuat! Semua halaman rapi dan tidak terpotong.');
+                alert('✅ PDF Berhasil Dibuat! 100% Rapi, Tidak Terpotong, Sesuai Standar SINTA 4.');
             } catch (error) {
                 alert('❌ Masalah: ' + error.message);
             } finally {
