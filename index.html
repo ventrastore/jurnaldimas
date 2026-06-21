@@ -125,31 +125,33 @@
         }
 
         /* ==========================================
-           ✅ HALAMAN SAMPUL: DIPERBAIKI - JARAK PRESISI, TIDAK TERLALU JAUH
+           ✅ HALAMAN SAMPUL: DIPERBAIKI - PRESISI TENGAH ATAS-BAWAH
         ========================================== */
         .cover-page {
             display: flex;
             flex-direction: column;
-            justify-content: flex-start;
-            align-items: center;
+            justify-content: center; /* ✅ TENGAH VERTIKAL (ATAS-BAWAH) */
+            align-items: center;    /* ✅ TENGAH HORIZONTAL (KIRI-KANAN) */
             text-align: center;
-            padding: 2cm 2cm !important; /* ✅ Padding atas diatur ulang */
+            min-height: 29.7cm;     /* ✅ Tinggi penuh A4 */
+            padding: 0 2cm !important;
+            box-sizing: border-box;
         }
 
         .journal-title-main {
-            font-size: 12pt; /* ✅ Ukuran font disesuaikan */
+            font-size: 12pt;
             font-weight: bold;
             text-transform: uppercase;
             line-height: 1.4;
-            margin-bottom: 1.5cm !important; /* ✅ Jarak ke LOGO diperkecil */
+            margin-bottom: 2cm !important; /* ✅ Jarak pas ke LOGO */
             margin-top: 0;
         }
 
         .logo-container {
-            width: 180px; /* ✅ Ukuran logo disesuaikan */
+            width: 180px;
             height: auto;
             border: none;
-            margin: 0 auto 1.8cm auto !important; /* ✅ Jarak ke JUDUL diperbaiki */
+            margin: 0 auto 2.2cm auto !important; /* ✅ Jarak pas ke JUDUL */
             display: flex;
             align-items: center;
             justify-content: center;
@@ -169,14 +171,14 @@
             font-weight: bold;
             text-transform: uppercase;
             line-height: 1.5;
-            margin-bottom: 1.8cm !important; /* ✅ Jarak ke NAMA diperbaiki */
+            margin-bottom: 2.2cm !important; /* ✅ Jarak pas ke NAMA */
             max-width: 100%;
         }
 
         .author-info {
             font-size: 11pt;
             line-height: 1.4;
-            margin-bottom: 1.5cm !important; /* ✅ Jarak ke INSTITUSI diperbaiki */
+            margin-bottom: 2cm !important; /* ✅ Jarak pas ke INSTITUSI */
         }
         .author-name {
             font-weight: bold;
@@ -401,7 +403,7 @@
             .main-content { display: block !important; }
             .page { 
                 margin: 0 !important; 
-                padding: 4cm 3cm 3cm 3cm !important;
+                padding: 0 !important; /* ✅ Sampul tanpa padding agar pas tengah */
                 width: 21cm !important;
                 min-height: 29.7cm !important;
                 page-break-after: always !important;
@@ -425,7 +427,7 @@
     <div id="journal-document-content">
         
         <!-- ==========================================
-            ✅ HALAMAN 1: SAMPUL JUDUL - DIPERBAIKI PRESISI
+            ✅ HALAMAN 1: SAMPUL JUDUL - SUDAH PRESISI TENGAH
         ========================================== -->
         <div class="page cover-page">
             <div class="journal-title-main">
@@ -434,7 +436,7 @@
                 VOL. 4, NO. 2, JUNI 2026
             </div>
 
-            <!-- ✅ LOGO: UKURAN & JARAK DIPERBAIKI -->
+            <!-- ✅ LOGO: POSISI TENGAH PAS -->
             <div class="logo-container">
                 <img src="logo_kampus.png" alt="Logo Institut Widya Pratama" onerror="this.style.display='none'">
             </div>
@@ -684,9 +686,10 @@
                     <meta charset='utf-8'>
                     <title>Jurnal Dimas Arif Fikriawan</title>
                     <style>
-                        @page { size: 21cm 29.7cm; margin: 4cm 3cm 3cm 3cm; mso-page-orientation: portrait; }
+                        @page { size: 21cm 29.7cm; margin: 0cm; mso-page-orientation: portrait; }
                         body { font-family: 'Tinos', 'Times New Roman', serif; font-size: 11pt; line-height: 1.55; text-align: justify; margin: 0; mso-line-height-rule: exactly; }
-                        .page { page-break-after: always; margin: 0; padding: 0; width: 100%; min-height: auto; }
+                        .page { page-break-after: always; margin: 0; padding: 0; width: 100%; min-height: 29.7cm; position: relative; }
+                        .cover-page { display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; min-height: 29.7cm; padding: 0 2cm; }
                         .page:last-child { page-break-after: auto; }
                         h2 { font-size: 12pt; font-weight: bold; text-transform: uppercase; text-align: center; margin-top: 16px; margin-bottom: 10px; mso-heading-level: 2; page-break-before: always; }
                         h2.kesimpulan { margin-top: 30px !important; }
