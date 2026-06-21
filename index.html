@@ -65,12 +65,26 @@
         .abstract-dual { display: flex; gap: 8mm; margin-bottom: 5mm; border-top: 1px solid #000; border-bottom: 1px solid #000; padding: 4mm 0; }
         .abstract-col { flex: 1; font-size: 9.5pt; line-height: 1.45; }
         .abstract-label { font-weight: bold; font-size: 10pt; text-align: center; margin-bottom: 2mm; }
-        .keywords-text { font-size: 9pt; margin-top: 2mm; font-style: italic; }
-        h1 { font-size: 12pt; font-weight: bold; text-align: left; margin: 5mm 0 3mm 0; letter-spacing: 0.2px; page-break-after: avoid; }
-        h2 { font-size: 11pt; font-weight: bold; text-align: left; margin: 4mm 0 2mm 0; page-break-after: avoid; }
-        h3 { font-size: 11pt; font-weight: bold; font-style: italic; text-align: left; margin: 3mm 0 1.5mm 0; page-break-after: avoid; }
+
+        /* ========== HEADING UTAMA (ROMWI) ========== */
+        h1.romawi {
+            font-size: 12pt; font-weight: bold; text-align: center;
+            margin: 5mm 0 3mm 0; letter-spacing: 0.2px;
+            page-break-after: avoid; text-transform: uppercase;
+        }
+
+        h2 {
+            font-size: 11pt; font-weight: bold; text-align: left;
+            margin: 4mm 0 2mm 0; page-break-after: avoid;
+        }
+        h3 {
+            font-size: 11pt; font-weight: bold; font-style: italic;
+            text-align: left; margin: 3mm 0 1.5mm 0; page-break-after: avoid;
+        }
+
         p { margin: 0 0 2.5mm 0; text-indent: 8mm; text-align: justify; line-height: 1.55; font-size: 10.5pt; word-spacing: 0.3px; orphans: 3; widows: 3; }
         p.no-indent { text-indent: 0; }
+        .keywords-text { font-size: 9pt; margin-top: 2mm; font-style: italic; }
         .figure-container { text-align: center; margin: 4mm 0; page-break-inside: avoid; }
         .figure-container img, .figure-placeholder { max-width: 120mm; height: auto; border: 1px solid #ccc; padding: 10px; background: #fafafa; }
         .figure-caption { font-size: 9.5pt; margin-top: 2mm; text-align: center; }
@@ -179,7 +193,7 @@
                 </div>
             </div>
 
-            <h1>1. PENDAHULUAN</h1>
+            <h1 class="romawi">I. PENDAHULUAN</h1>
 
             <p>Teknologi bergerak cepat beberapa tahun terakhir. Perubahan ini ikut menggeser cara perusahaan menyapa publiknya. Di lapangan digital, logo bukan cuma penanda biasa. Ia sudah jadi alat komunikasi yang ikut menentukan apakah orang akan memandang sebuah perusahaan punya mutu dan bisa diandalkan atau tidak <span class="citation">(Wheeler, 2018)</span>. Maka dari itu, logo mesti tetap jelas dilihat, entah itu dicetak sebesar spanduk maupun diselipkan di sudut layar ponsel.</p>
 
@@ -198,7 +212,7 @@
 
         <!-- ===== HALAMAN 2 ===== -->
         <div class="page">
-            <h1>2. TINJAUAN PUSTAKA</h1>
+            <h1 class="romawi">II. TINJAUAN PUSTAKA</h1>
 
             <h2>2.1. Identitas Merek di Dunia Digital</h2>
 
@@ -241,7 +255,7 @@
 
         <!-- ===== HALAMAN 3 ===== -->
         <div class="page">
-            <h1>3. METODOLOGI PENELITIAN</h1>
+            <h1 class="romawi">III. METODOLOGI PENELITIAN</h1>
 
             <p>Penelitian ini menempuh metode <i>Design Thinking</i>. Alasannya, pendekatan ini memberi ruang luas untuk bereksplorasi, tetapi tetap runut dan fokus pada kebutuhan pemakai. Tiap langkah dikerjakan secara berurutan supaya desain yang dihasilkan tidak cuma enak dilihat, melainkan juga benar-benar berguna dan pas dipakai di lapangan <span class="citation">(Anggraini &amp; Natasia, 2020)</span>.</p>
 
@@ -269,7 +283,7 @@
 
         <!-- ===== HALAMAN 4 ===== -->
         <div class="page">
-            <h1>4. HASIL DAN PEMBAHASAN</h1>
+            <h1 class="romawi">IV. HASIL DAN PEMBAHASAN</h1>
 
             <h2>4.1. Hasil Perancangan</h2>
 
@@ -382,7 +396,7 @@
 
             <p>Hal lain yang mesti dicermati adalah konsistensi saat dipakai di media yang amat bermacam-macam. Walaupun sudah dirancang luwes, pengawasan tetap diperlukan supaya semua tampilan tetap seragam. Ruang untuk pengembangan lanjutan masih sangat terbuka <span class="citation">(Hidayat &amp; Rahmawati, 2022)</span>.</p>
 
-            <h1>5. PENGEMBANGAN LEBIH LANJUT</h1>
+            <h1 class="romawi">V. PENGEMBANGAN LEBIH LANJUT</h1>
 
             <p>Perancangan ulang ini tidak mesti berhenti pada satu logo saja. Ke depan, bisa dikembangkan menjadi sebuah sistem panduan lengkap yang mencakup aturan pemakaian logo, warna utama dan pendamping, jenis huruf resmi, serta tata letak ukuran. Panduan semacam ini penting agar siapa pun yang menggunakan aset perusahaan menerapkannya dengan cara yang seragam <span class="citation">(Wheeler, 2018)</span>.</p>
 
@@ -401,7 +415,7 @@
 
         <!-- ===== HALAMAN 7 ===== -->
         <div class="page">
-            <h1>6. KESIMPULAN DAN SARAN</h1>
+            <h1 class="romawi">VI. KESIMPULAN DAN SARAN</h1>
 
             <h2>6.1. Kesimpulan</h2>
 
@@ -415,7 +429,7 @@
 
             <p>Dari hasil penelitian ini, sejumlah saran bisa diajukan: (1) Penelitian berikutnya sebaiknya menguji langsung logo ini kepada pengguna sungguhan lewat survei agar hasil penilaiannya lebih lengkap dan terukur. (2) Penyusunan panduan identitas tidak semestinya berhenti di logo saja, melainkan juga mencakup aturan warna, huruf, dan tata cara membuat materi promosi. (3) Perlu dicoba pemakaian logo di aneka jenis media untuk memastikan tampilannya tetap seragam. (4) Bisa juga dikembangkan variasi logo—misalnya versi hitam-putih atau versi horizontal—supaya makin luwes penggunaannya.</p>
 
-            <h1>DAFTAR PUSTAKA</h1>
+            <h1 class="romawi">DAFTAR PUSTAKA</h1>
 
             <ul class="reference-list">
                 <li>Anggraini, S., &amp; Natasia, S. R. (2020). Pengembangan antarmuka pengguna aplikasi mobile menggunakan metode Design Thinking. <i>Jurnal Teknologi Informasi dan Komunikasi</i>, 12(1), 45–56.</li>
@@ -453,7 +467,7 @@
                         .page { page-break-after: always; width: 100%; min-height: 297mm; }
                         .page:last-child { page-break-after: auto; }
                         .cover-page { text-align: center; }
-                        h1 { font-size: 12pt; font-weight: bold; text-align: left; }
+                        h1.romawi { font-size: 12pt; font-weight: bold; text-align: center; text-transform: uppercase; }
                         h2 { font-size: 11pt; font-weight: bold; text-align: left; }
                         h3 { font-size: 11pt; font-weight: bold; font-style: italic; text-align: left; }
                         p { text-indent: 8mm; margin: 0 0 2.5mm 0; font-size: 10.5pt; }
