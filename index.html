@@ -9,9 +9,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 
   <style>
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
     html, body {
       margin: 0;
@@ -20,7 +18,7 @@
       color: #000;
       font-family: "Times New Roman", Times, serif;
       font-size: 12pt;
-      line-height: 1.5; /* Sedikit dilonggarkan agar tidak gepeng */
+      line-height: 1.5;
       text-align: justify;
       -webkit-print-color-adjust: exact;
       print-color-adjust: exact;
@@ -79,13 +77,13 @@
 
     .page {
       width: 210mm;
-      min-height: 297mm; /* Biarkan min-height untuk tampilan layar */
+      min-height: 297mm;
       height: auto;
       margin: 0 auto 15px auto;
       background: #fff;
-      padding: 25mm 22mm 22mm 22mm; /* Padding bawah sedikit ditambah */
+      padding: 25mm 22mm 22mm 22mm;
       position: relative;
-      overflow: hidden;
+      overflow: visible; /* DULU 'hidden', sekarang 'visible' agar tidak potong konten */
       page-break-after: always;
       box-shadow: 0 2px 12px rgba(0,0,0,0.1);
       box-sizing: border-box;
@@ -116,9 +114,10 @@
       text-align: center;
     }
 
+    /* ===== PERBAIKAN LOGO SAMPUL ===== */
     .logo-container {
-      width: 320px;
-      height: 340px;
+      width: 100%;
+      max-width: 320px;
       margin: 0 auto 12mm auto;
       display: flex;
       align-items: center;
@@ -126,8 +125,10 @@
     }
 
     .logo-container img {
-      width: 320px;
-      height: 340px;
+      width: 100%;
+      height: auto;
+      max-width: 320px;
+      aspect-ratio: auto; /* Ikuti rasio asli gambar */
       object-fit: contain;
       display: block;
     }
@@ -214,7 +215,7 @@
       text-indent: 12.5mm;
       text-align: justify;
       line-height: 1.5;
-      word-spacing: 0.6px; /* Perbaikan agar tidak terlalu gepeng */
+      word-spacing: 0.6px;
       orphans: 3;
       widows: 3;
     }
@@ -258,6 +259,7 @@
       text-align: center;
     }
 
+    /* ===== PERBAIKAN LOGO PERBANDINGAN (HALAMAN 4) ===== */
     .logo-comparison {
       display: flex;
       justify-content: center;
@@ -273,8 +275,10 @@
     }
 
     .logo-box img {
-      width: 42mm;
-      height: 42mm;
+      width: 100%;
+      height: auto;
+      max-width: 42mm;
+      aspect-ratio: auto;
       object-fit: contain;
       display: block;
       margin: 0 auto;
@@ -339,7 +343,6 @@
       text-decoration: none;
     }
 
-    /* Perbaikan untuk print/PDF */
     @media print {
       body {
         background: #fff;
@@ -353,8 +356,9 @@
         margin: 0;
         box-shadow: none;
         page-break-after: always;
-        height: 297mm; /* Tinggi tetap untuk cetak */
+        height: 297mm;
         min-height: 297mm;
+        overflow: hidden; /* untuk cetak aman hidden */
       }
       .page:last-child {
         page-break-after: auto;
@@ -379,7 +383,7 @@
     </div>
     <div class="logo-container">
       <img src="logokampus.png" alt="Logo Kampus"
-           onerror="this.onerror=null;this.outerHTML='<div style=&quot;width:320px;height:340px;border:1px solid #000;display:flex;align-items:center;justify-content:center;font-size:10pt;margin:0 auto;&quot;>Logo Kampus</div>';">
+           onerror="this.onerror=null;this.outerHTML='<div style=&quot;width:320px;height:auto;aspect-ratio:1/1;border:1px solid #000;display:flex;align-items:center;justify-content:center;font-size:10pt;margin:0 auto;&quot;>Logo Kampus</div>';">
     </div>
     <div class="article-title">
       PERANCANGAN ULANG IDENTITY BRANDING MELALUI DESAIN LOGO BARU PADA PERUSAHAAN CERAH
@@ -675,7 +679,6 @@
       const pages = document.querySelectorAll(".page");
 
       for (let i = 0; i < pages.length; i++) {
-        // Scale ditingkatkan jadi 3 agar hasil render lebih tajam & proporsional
         const canvas = await html2canvas(pages[i], {
           scale: 3,
           useCORS: true,
@@ -684,12 +687,39 @@
           backgroundColor: "#ffffff",
         });
 
+        // ===== PERBAIKAN DISTORSI =====
+        // Hitung rasio asli kanvas, lalu tempatkan di A4 TANPA MOLOR
+        const pageWidth = 210; // mm
+        const pageHeight = 297; // mm
+        const canvasRatio = canvas.width / canvas.height;
+        const pageRatio = pageWidth / pageHeight;
+
+        let finalWidth, finalHeight, offsetX, offsetY;
+
+        if (canvasRatio > pageRatio) {
+          // Kanvas lebih lebar → sesuaikan lebar penuh
+          finalWidth = pageWidth;
+          finalHeight = pageWidth / canvasRatio;
+          offsetX = 0;
+          offsetY = (pageHeight - finalHeight) / 2;
+        } else {
+          // Kanvas lebih tinggi → sesuaikan tinggi penuh
+          finalHeight = pageHeight;
+          finalWidth = pageHeight * canvasRatio;
+          offsetX = (pageWidth - finalWidth) / 2;
+          offsetY = 0;
+        }
+
         const imgData = canvas.toDataURL("image/jpeg", 0.95);
 
         if (i > 0) doc.addPage();
 
-        // Metode addImage dengan ukuran tepat A4
-        doc.addImage(imgData, "JPEG", 0, 0, 210, 297, undefined, "FAST");
+        // Tambahkan background putih dulu
+        doc.setFillColor(255, 255, 255);
+        doc.rect(0, 0, pageWidth, pageHeight, "F");
+
+        // Tempatkan gambar persis di tengah tanpa distorsi
+        doc.addImage(imgData, "JPEG", offsetX, offsetY, finalWidth, finalHeight, undefined, "FAST");
       }
 
       doc.save("JURNAL_DIMAS_ARIFFIKRIAWAN.pdf");
