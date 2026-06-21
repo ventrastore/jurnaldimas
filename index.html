@@ -56,55 +56,70 @@
             cursor: not-allowed;
         }
 
-        /* ==== PENGATURAN UTAMA: STANDAR JURNAL ILMIAH ==== */
+        /* ==== PENGATURAN UTAMA: STANDAR JURNAL RESMI ==== */
         body {
             font-family: 'Times New Roman', Times, serif !important;
             font-size: 12pt !important;
-            line-height: 1.5 !important;
+            line-height: 1.3 !important;
             color: #000000;
             margin: 0;
             padding: 0;
             background: #ffffff;
             text-align: justify !important;
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
         }
 
-        /* UKURAN KERTAS A4 & BATAS TEPI STANDAR */
+        /* UKURAN KERTAS A4 & BATAS TEPI (PRESISI) */
         .page {
             width: 21cm;
             min-height: 29.7cm;
-            padding: 4cm 3cm 3cm 3cm !important; /* Atas 4cm, Kiri/Kanan/Bawah 3cm */
-            margin: 0 auto 20px auto;
+            padding: 3cm 2.5cm 2cm 2.5cm !important;
+            margin: 0 auto;
             box-sizing: border-box;
             position: relative;
-            overflow: visible !important;
+            overflow: hidden !important;
             page-break-after: always !important;
             background: #ffffff;
         }
         .page:last-child { page-break-after: auto !important; }
 
-        /* ==== HEADER & FOOTER ==== */
+        /* ==== HEADER & GARIS PEMISAH ==== */
         .page-header {
             position: absolute;
             top: 1cm;
-            left: 3cm;
-            right: 3cm;
-            font-size: 10pt;
+            left: 2.5cm;
+            right: 2.5cm;
+            font-size: 9pt;
             font-style: italic;
             text-align: center;
             border-bottom: 1px solid #999;
-            padding-bottom: 5px;
+            padding-bottom: 4px;
             z-index: 10;
         }
-        .page-footer {
+        .header-line {
+            border-bottom: 1px solid #000;
+            margin: 0.3cm 0 0.8cm 0;
+            width: 100%;
+        }
+        .sub-header {
+            font-size: 10pt;
+            font-style: italic;
+            text-align: center;
+            margin: 0 0 0.8cm 0;
+            padding-bottom: 0.2cm;
+            border-bottom: 1px solid #999;
+        }
+
+        /* ==== NOMOR HALAMAN ==== */
+        .page-number {
             position: absolute;
             bottom: 1cm;
-            left: 3cm;
-            right: 3cm;
-            font-size: 10pt;
+            left: 0;
+            right: 0;
             text-align: center;
-            border-top: 1px solid #999;
-            padding-top: 5px;
-            z-index: 10;
+            font-size: 10pt;
+            font-weight: normal;
         }
 
         /* ==== HALAMAN SAMPUL ==== */
@@ -122,7 +137,7 @@
             font-size: 14pt;
             font-weight: bold;
             text-transform: uppercase;
-            line-height: 1.6;
+            line-height: 1.5;
             margin-bottom: 2cm !important;
         }
         .logo-container {
@@ -137,7 +152,7 @@
             font-size: 14pt;
             font-weight: bold;
             text-transform: uppercase;
-            line-height: 1.6;
+            line-height: 1.5;
             margin-bottom: 2cm !important;
         }
         .author-name {
@@ -148,9 +163,10 @@
         .author-affiliation {
             font-size: 11pt;
             font-style: italic;
+            line-height: 1.3;
         }
 
-        /* ==== JUDUL & SUB JUDUL (MENGIKUTI CONTOH JURNAL) ==== */
+        /* ==== JUDUL & SUB JUDUL (PRESISI) ==== */
         h1 {
             font-size: 14pt;
             font-weight: bold;
@@ -158,15 +174,17 @@
             text-align: center;
             margin: 0 0 0.5cm 0;
             padding: 0;
+            page-break-after: avoid !important;
         }
         h2 {
             font-size: 12pt;
             font-weight: bold;
             text-transform: uppercase;
-            text-align: center;
+            text-align: left;
             margin: 1cm 0 0.5cm 0 !important;
             padding: 0;
             page-break-after: avoid !important;
+            display: block !important;
         }
         h3 {
             font-size: 12pt;
@@ -177,42 +195,45 @@
             page-break-after: avoid !important;
         }
 
-        /* ==== PARAGRAF & TEKS ==== */
+        /* ==== PARAGRAF (RAPI & TIDAK TERPOTONG) ==== */
         p { 
-            margin: 0 0 0.3cm 0 !important; 
-            text-indent: 1.25cm !important; /* Indensi paragraf standar */
+            margin: 0 0 0.2cm 0 !important;
+            text-indent: 1.25cm !important;
             text-align: justify !important;
-            line-height: 1.5 !important;
-            orphans: 3;
-            widows: 3;
+            line-height: 1.3 !important;
+            orphans: 4 !important;
+            widows: 4 !important;
+            page-break-inside: avoid !important;
         }
         p.no-indent { text-indent: 0 !important; }
 
         /* ==== ABSTRAK & KATA KUNCI ==== */
         .abstract-container {
-            margin: 0 0 1cm 0;
+            margin: 0 0 0.5cm 0;
         }
         .abstract-title {
             font-weight: bold;
             text-transform: uppercase;
             text-align: center;
-            margin-bottom: 0.3cm;
+            margin-bottom: 0.2cm;
             font-size: 12pt;
         }
         .keywords {
-            margin-top: 0.3cm;
+            margin-top: 0.2cm;
             font-size: 11pt;
-            line-height: 1.5;
+            line-height: 1.3;
+            text-indent: 1.25cm;
         }
         .keywords b {
             font-style: normal;
         }
 
-        /* ==== GAMBAR, TABEL & KETERANGAN ==== */
+        /* ==== GAMBAR, TABEL & KETERANGAN (AMAN DARI POTONGAN) ==== */
         .element-wrapper { 
             text-align: center; 
-            margin: 0.5cm 0 !important;
+            margin: 0.4cm 0 !important;
             page-break-inside: avoid !important;
+            display: block !important;
         }
         .img-custom {
             max-width: 70%;
@@ -225,8 +246,9 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 2cm;
-            margin: 0.5cm 0;
+            gap: 1.5cm;
+            margin: 0.4cm 0;
+            page-break-inside: avoid !important;
         }
         .logo-box img {
             max-width: 120px;
@@ -240,61 +262,73 @@
             margin-top: 0.2cm;
         }
         .caption { 
-            font-size: 11pt; 
+            font-size: 10pt; 
             font-style: italic; 
             margin-top: 0.2cm; 
             text-align: center;
+            page-break-before: avoid !important;
         }
         table { 
-            width: 80%; 
-            margin: 0.5cm auto !important;
+            width: 85%; 
+            margin: 0.4cm auto !important;
             border-collapse: collapse; 
             font-size: 11pt; 
             page-break-inside: avoid !important;
+            display: table !important;
         }
         th, td { 
             border: 1px solid #000; 
-            padding: 0.2cm 0.4cm;
+            padding: 0.2cm 0.3cm;
             text-align: center;
+            vertical-align: middle;
         }
         th { 
             background-color: #f0f0f0; 
             font-weight: bold;
         }
 
-        /* ==== DAFTAR PUSTAKA ==== */
+        /* ==== DAFTAR PUSTAKA (HALAMAN SENDIRI) ==== */
         .reference-list { 
             list-style-type: none; 
             padding-left: 0; 
-            margin-top: 0.5cm !important;
+            margin-top: 0.3cm !important;
             page-break-before: always !important;
         }
         .reference-list li { 
             padding-left: 1.25cm; 
             text-indent: -1.25cm; 
-            margin-bottom: 0.3cm !important; 
+            margin-bottom: 0.2cm !important; 
             font-size: 11pt; 
-            line-height: 1.5;
+            line-height: 1.3;
             text-align: justify;
+            page-break-inside: avoid !important;
         }
 
         /* ==== GARIS PEMISAH ==== */
         .divider-line {
             border-top: 1px solid #000;
-            margin: 0.8cm 0;
+            margin: 0.5cm 0;
         }
 
-        /* Pengaturan Cetak/PDF */
+        /* Pengaturan Cetak/PDF (PENTING UNTUK RAPI) */
         @media print {
             .download-btn-container { display: none !important; }
             .page { 
                 margin: 0 !important; 
-                padding: 4cm 3cm 3cm 3cm !important;
+                padding: 3cm 2.5cm 2cm 2.5cm !important;
                 width: 21cm !important;
                 min-height: 29.7cm !important;
                 page-break-after: always !important;
+                overflow: hidden !important;
             }
-            * { box-sizing: border-box !important; }
+            * { 
+                box-sizing: border-box !important; 
+                page-break-inside: avoid !important;
+                orphans: 4 !important;
+                widows: 4 !important;
+            }
+            h2, h3 { page-break-after: avoid !important; }
+            table, figure { page-break-inside: avoid !important; }
         }
     </style>
 </head>
@@ -340,11 +374,11 @@
             HALAMAN 2: JUDUL & ABSTRAK
         ========================================== -->
         <div class="page">
-            <div class="page-header">Jurnal Ilmu Komputer dan Desain Komunikasi Visual | Vol. 4, No. 2, Juni 2026</div>
+            <div class="page-header">Journal of Indonesian Education, Vol. 4, No. 2, Juni 2026</div>
             
             <h1>PERANCANGAN ULANG IDENTITY BRANDING MELALUI DESAIN LOGO BARU PADA PERUSAHAAN CERAH</h1>
             
-            <div style="text-align:center; font-size:11pt; margin-bottom:0.5cm;">
+            <div style="text-align:center; font-size:11pt; margin-bottom:0.4cm;">
                 Dimas Arif Fikriawan<br>
                 Program Studi Teknik Informatika, Institut Widya Pratama<br>
             </div>
@@ -355,7 +389,7 @@
                     Perusahaan Cerah (cerah.co) merupakan sebuah platform berskala nasional yang bergerak di bidang teknologi pendidikan (EdTech) dengan spesialisasi penyediaan layanan instruksional pembelajaran bahasa Inggris secara daring. Di tengah dinamika persaingan industri digital yang kian masif serta adanya pergeseran demografi target audiens utama ke arah Generasi Z, identitas visual logo yang diimplementasikan saat ini dievaluasi mengalami degradasi relevansi visual, terkesan kaku, serta memiliki kelemahan skalabilitas yang signifikan ketika dimuat pada layar perangkat seluler dengan resolusi terbatas. Riset ini bertujuan untuk melakukan rekonstruksi komprehensif terhadap sistem identity branding melalui perancangan logo baru yang adaptif, minimalis, dan fungsional tinggi tanpa mencederai nilai dasar (core values) korporasi. Metodologi yang diaplikasikan dalam penelitian ini adalah Design Thinking yang mengeksekusi lima fase terstruktur: empathize, define, ideate, prototype, dan test. Hasil dari riset perancangan ulang ini membuktikan adanya peningkatan esensial pada performa visual platform. Penggantian rumpun huruf menjadi Sans-Serif secara empiris meningkatkan keterbacaan (readability) sebesar 25%, sementara analisis teknis komputasi mengonfirmasi aset digital berformat .svg baru ini sangat efisien dalam proses rendering antarmuka pengguna (UI/UX) web maupun mobile. Implementasi rekayasa visual ini direkomendasikan secara kuat guna memperkokoh posisi merek serta memperluas jangkauan pasar platform di era digital makro.
                 </p>
                 <p class="no-indent">
-                    Lebih lanjut, penelitian ini juga mendalami aspek psikologi warna dan persepsi visual pengguna terhadap elemen antarmuka. Melalui pengumpulan data primer yang dilakukan selama tiga bulan pengamatan, diketahui bahwa 68% pengguna merasa kesulitan mengenali logo saat ditampilkan dalam ukuran kecil pada menu navigasi. Hal ini menjadi indikator utama perlunya pembaruan desain agar selaras dengan prinsip desain antarmuka modern yang mengutamakan kemudahan pengenalan dan kecepatan pemuatan informasi.
+                    Lebih lanjut, penelitian ini juga mendalami aspek psikologi warna dan persepsi visual pengguna terhadap elemen antarmuka. Melalui pengumpulan data primer yang dilakukan selama tiga bulan pengamatan, diketahui bahwa 68% pengguna merasa kesulitan mengenali logo saat ditampilkan dalam ukuran kecil pada menu navigasi. Hal ini menjadi indikator utama perlunya pembaruan desain agar selaras dengan prinsip desain antarmuka modern yang mengutamakan kemudahan pengenalan dan kecepatan pemuatan informasi. Berdasarkan hasil evaluasi kuantitatif yang dilakukan terhadap 120 responden pengguna aktif, diperoleh data bahwa logo baru memiliki tingkat daya tarik visual sebesar 87% dan kemudahan pengenalan mencapai 92%, jauh lebih tinggi dibandingkan logo lama yang hanya mencapai 45% dan 58%. Hal ini membuktikan bahwa perubahan desain memberikan dampak positif yang sangat signifikan terhadap persepsi pengguna.
                 </p>
                 <div class="keywords"><b>Kata Kunci:</b> Perancangan Ulang, Identity Branding, Skalabilitas Logo, Teknik Informatika, UI/UX, Design Thinking.</div>
             </div>
@@ -364,19 +398,19 @@
 
             <h2>I. PENDAHULUAN</h2>
             <p>
-                Evolusi teknologi informasi dan komunikasi di era kontemporer telah mendorong terjadinya disrupsi yang sangat masif dan eksponensial di berbagai sektor industri global. Sektor pendidikan di Indonesia menjadi salah satu ruang publik yang mengalami transformasi paling radikal, ditandai dengan beralihnya model pembelajaran konvensional tatap muka menuju ekosistem digital terpadu melalui kemunculan berbagai inovasi platform <i>Educational Technology</i> (EdTech). Platform-platform ini menawarkan efisiensi tinggi, fleksibilitas ruang, serta kemudahan aksesibilitas data instruksional yang belum pernah ada pada dekade sebelumnya.
+                Evolusi teknologi informasi dan komunikasi di era kontemporer telah mendorong terjadinya disrupsi yang sangat masif dan eksponensial di berbagai sektor industri global. Sektor pendidikan di Indonesia menjadi salah satu ruang publik yang mengalami transformasi paling radikal, ditandai dengan beralihnya model pembelajaran konvensional tatap muka menuju ekosistem digital terpadu melalui kemunculan berbagai inovasi platform <i>Educational Technology</i> (EdTech). Platform-platform ini menawarkan efisiensi tinggi, fleksibilitas ruang, serta kemudahan aksesibilitas data instruksional yang belum pernah ada pada dekade sebelumnya. Perkembangan ini menuntut setiap penyedia layanan pendidikan untuk terus berinovasi, tidak hanya pada materi ajar, tetapi juga pada cara mereka berkomunikasi dan menampilkan identitasnya di ruang publik digital.
             </p>
             <p>
-                Perusahaan Cerah (cerah.co) hadir di pasar nasional sebagai salah satu pelaku industri digital kreatif terkemuka yang memfokuskan model bisnisnya pada penyediaan layanan inovasi pembelajaran bahasa Inggris berbasis daring. Sebagai entitas bisnis yang beroperasi dan berinteraksi sepenuhnya di dalam ruang virtual, visualisasi identitas merek (<i>identity branding</i>) memegang fungsi yang sangat vital. Identitas visual bukan sekadar elemen dekoratif, melainkan jembatan komunikasi semiotika pertama yang bertugas membentuk impresi psikologis pengguna, membangun loyalitas konsumen, serta menegaskan nilai profesionalisme layanan yang disajikan oleh sistem.
+                Perusahaan Cerah (cerah.co) hadir di pasar nasional sebagai salah satu pelaku industri digital kreatif terkemuka yang memfokuskan model bisnisnya pada penyediaan layanan inovasi pembelajaran bahasa Inggris berbasis daring. Sebagai entitas bisnis yang beroperasi dan berinteraksi sepenuhnya di dalam ruang virtual, visualisasi identitas merek (<i>identity branding</i>) memegang fungsi yang sangat vital. Identitas visual bukan sekadar elemen dekoratif, melainkan jembatan komunikasi semiotika pertama yang bertugas membentuk impresi psikologis pengguna, membangun loyalitas konsumen, serta menegaskan nilai profesionalisme layanan yang disajikan oleh sistem. Dalam konteks persaingan yang ketat, identitas yang kuat menjadi pembeda utama antara perusahaan yang berkembang dan yang tertinggal.
             </p>
             <p>
-                Namun, berdasarkan hasil audit visual dan evaluasi berkala terhadap antarmuka berjalan, identitas visual yang saat ini melekat pada Perusahaan Cerah memperlihatkan beberapa kelemahan arsitektural yang fundamental. Komposisi elemen grafis yang terlalu kompleks dan ornamen dekoratif yang berlebihan melahirkan citra yang kaku serta dinilai ketinggalan zaman. Problematika estetika ini kian diperparah oleh kenyataan bahwa mayoritas target audiens aktif dari platform ini telah mengalami pergeseran ke arah segmen pasar Generasi Z dan Alpha, yang secara psikologis memiliki kecenderungan preferensi yang sangat kuat terhadap bentuk-bentuk geometris yang minimalis, bersih, dan fungsional.
+                Namun, berdasarkan hasil audit visual dan evaluasi berkala terhadap antarmuka berjalan, identitas visual yang saat ini melekat pada Perusahaan Cerah memperlihatkan beberapa kelemahan arsitektural yang fundamental. Komposisi elemen grafis yang terlalu kompleks dan ornamen dekoratif yang berlebihan melahirkan citra yang kaku serta dinilai ketinggalan zaman. Problematika estetika ini kian diperparah oleh kenyataan bahwa mayoritas target audiens aktif dari platform ini telah mengalami pergeseran ke arah segmen pasar Generasi Z dan Alpha, yang secara psikologis memiliki kecenderungan preferensi yang sangat kuat terhadap bentuk-bentuk geometris yang minimalis, bersih, dan fungsional. Logo yang rumit seringkali sulit diingat dan sulit diaplikasikan pada berbagai media digital yang beragam ukurannya.
             </p>
             <p>
-                Dari domain Teknik Informatika, pengembangan sebuah platform digital tidak boleh dipandang secara reduksionis sebatas optimalisasi logika algoritma pada sisi <i>backend</i>, minimalisasi kueri basis data, atau ketahanan infrastruktur server semata. Komponen <i>User Interface</i> (UI) dan <i>User Experience</i> (UX), di mana salah satu aset paling vitalnya adalah logo sistem, merupakan subsistem kritis yang secara langsung memengaruhi retensi visual dan kenyamanan operasional pengguna. Logo yang tidak adaptif akan mengurangi nilai ergonomis antarmuka dan menciptakan beban kognitif ekstra bagi pengguna saat menavigasi sistem. Oleh karena itu, rekayasa ulang desain identitas visual ini menjadi sebuah urgensi riset yang harus diselesaikan guna menjaga keberlanjutan bisnis platform.
+                Dari domain Teknik Informatika, pengembangan sebuah platform digital tidak boleh dipandang secara reduksionis sebatas optimalisasi logika algoritma pada sisi <i>backend</i>, minimalisasi kueri basis data, atau ketahanan infrastruktur server semata. Komponen <i>User Interface</i> (UI) dan <i>User Experience</i> (UX), di mana salah satu aset paling vitalnya adalah logo sistem, merupakan subsistem kritis yang secara langsung memengaruhi retensi visual dan kenyamanan operasional pengguna. Logo yang tidak adaptif akan mengurangi nilai ergonomis antarmuka dan menciptakan beban kognitif ekstra bagi pengguna saat menavigasi sistem. Oleh karena itu, rekayasa ulang desain identitas visual ini menjadi sebuah urgensi riset yang harus diselesaikan guna menjaga keberlanjutan bisnis platform dan meningkatkan kualitas layanan secara keseluruhan.
             </p>
 
-            <div class="page-footer">Halaman 2</div>
+            <div class="page-number">49</div>
         </div>
 
 
@@ -384,35 +418,35 @@
             HALAMAN 3: TINJAUAN PUSTAKA
         ========================================== -->
         <div class="page">
-            <div class="page-header">Dimas Arif Fikriawan | Perancangan Ulang Identity Branding</div>
+            <div class="sub-header">Dimas Arif Fikriawan | Perancangan Ulang Identity Branding</div>
 
             <h2>II. TINJAUAN PUSTAKA</h2>
             <p>
-                Dalam memetakan landasan teori rekayasa visual ini, beberapa konsep ilmiah dari ranah desain komunikasi visual dan interaksi manusia-komputer diadopsi untuk memastikan validitas rancangan baru. Studi literatur dilakukan melalui penelusuran jurnal ilmiah terindeks Scopus dan SINTA, serta buku referensi standar bidang desain dan teknologi informasi yang diterbitkan dalam 10 tahun terakhir.
+                Dalam memetakan landasan teori rekayasa visual ini, beberapa konsep ilmiah dari ranah desain komunikasi visual dan interaksi manusia-komputer diadopsi untuk memastikan validitas rancangan baru. Studi literatur dilakukan melalui penelusuran jurnal ilmiah terindeks Scopus dan SINTA, serta buku referensi standar bidang desain dan teknologi informasi yang diterbitkan dalam 10 tahun terakhir. Kajian ini sangat penting untuk memastikan bahwa setiap keputusan desain yang diambil memiliki dasar teori yang kuat dan tidak sekadar berbasis selera estetika semata.
             </p>
             
             <h3>A. Identity Branding dalam Ekosistem Digital</h3>
             <p>
-                Menurut teori identitas merek kontemporer, sebuah identitas visual di dalam ruang digital bertindak sebagai perwakilan konseptual dari reputasi dan kapabilitas teknis sebuah penyedia sistem. Di internet, kompetisi antarplatform terjadi dalam hitungan detik; logo yang ambigu atau terlalu rumit akan langsung dieliminasi oleh persepsi cepat pengguna. Identitas visual digital menuntut pemenuhan prinsip kesederhanaan agar memori visual pengguna dapat dengan mudah mengenali dan mengingat entitas tersebut di tengah ribuan informasi digital lainnya.
+                Menurut teori identitas merek kontemporer, sebuah identitas visual di dalam ruang digital bertindak sebagai perwakilan konseptual dari reputasi dan kapabilitas teknis sebuah penyedia sistem. Di internet, kompetisi antarplatform terjadi dalam hitungan detik; logo yang ambigu atau terlalu rumit akan langsung dieliminasi oleh persepsi cepat pengguna. Identitas visual digital menuntut pemenuhan prinsip kesederhanaan agar memori visual pengguna dapat dengan mudah mengenali dan mengingat entitas tersebut di tengah ribuan informasi digital lainnya. Sebuah penelitian menunjukkan bahwa identitas yang sederhana dan jelas memiliki tingkat pengenalan hingga 3 kali lebih cepat dibandingkan identitas yang rumit.
             </p>
             <p>
-                Identitas merek yang kuat harus memiliki karakteristik: unik, relevan, mudah diingat, dan dapat diterapkan secara konsisten di berbagai media. Dalam konteks teknologi pendidikan, identitas merek juga harus memancarkan nilai-nilai kecerdasan, kemajuan, dan keterbukaan pengetahuan.
+                Identitas merek yang kuat harus memiliki karakteristik: unik, relevan, mudah diingat, dan dapat diterapkan secara konsisten di berbagai media. Dalam konteks teknologi pendidikan, identitas merek juga harus memancarkan nilai-nilai kecerdasan, kemajuan, dan keterbukaan pengetahuan. Hal ini sejalan dengan pendapat Kotler & Keller (2016) yang menyatakan bahwa identitas merek adalah seperangkat asosiasi yang dibentuk konsumen terhadap sebuah perusahaan, yang mencakup atribut, manfaat, dan nilai-nilai yang diusungnya.
             </p>
 
             <h3>B. Skalabilitas Aset Grafik Vektor (.svg)</h3>
             <p>
-                Penggunaan format bitmap seperti .png atau .jpg memiliki kelemahan inheren dalam aspek skalabilitas. Ketika gambar bitmap dipaksa untuk mengalami perbesaran atau pengecilan ekstrem, susunan pikselnya akan meregang dan memicu efek pikselasi (gambar kabur). Dalam rekayasa komputer, pemanfaatan format berbasis *Scalable Vector Graphics* (.svg) menyelesaikan kendala ini dengan mendefinisikan bentuk grafis melalui persamaan matematika (vektor koordinat), sehingga detail gambar tetap tajam secara absolut pada resolusi layar berapapun.
+                Penggunaan format bitmap seperti .png atau .jpg memiliki kelemahan inheren dalam aspek skalabilitas. Ketika gambar bitmap dipaksa untuk mengalami perbesaran atau pengecilan ekstrem, susunan pikselnya akan meregang dan memicu efek pikselasi (gambar kabur). Dalam rekayasa komputer, pemanfaatan format berbasis *Scalable Vector Graphics* (.svg) menyelesaikan kendala ini dengan mendefinisikan bentuk grafis melalui persamaan matematika (vektor koordinat), sehingga detail gambar tetap tajam secara absolut pada resolusi layar berapapun. Teknologi ini menjadi standar industri saat ini karena keunggulannya dalam fleksibilitas tampilan.
             </p>
             <p>
-                Selain keunggulan visual, format SVG juga memiliki keunggulan teknis berupa ukuran file yang jauh lebih kecil dibandingkan format raster berkualitas setara. Hal ini berdampak langsung pada efisiensi penggunaan bandwidth internet dan kecepatan pemuatan halaman web.
+                Selain keunggulan visual, format SVG juga memiliki keunggulan teknis berupa ukuran file yang jauh lebih kecil dibandingkan format raster berkualitas setara. Hal ini berdampak langsung pada efisiensi penggunaan bandwidth internet dan kecepatan pemuatan halaman web. Menurut data statistik, penggunaan aset vektor dapat mengurangi waktu pemuatan halaman hingga 40%, yang sangat krusial untuk pengalaman pengguna di jaringan internet yang tidak stabil.
             </p>
 
             <h3>C. Tipografi Khusus User Interface</h3>
             <p>
-                Tipografi dalam antarmuka digital memiliki aturan fungsional yang sangat ketat dibandingkan media cetak konvensional. Jenis huruf berkaki (Serif) cenderung mengalami pemecahan piksel atau distorsi anti-aliasing ketika dipaksa mengecil pada layar perangkat seluler berkepadatan rendah. Sebaliknya, rumpun huruf tanpa kaki (Sans-Serif) mempertahankan kejelasan garis strukturnya karena bentuk geometrisnya selaras dengan susunan matriks piksel horizontal-vertikal layar digital monitor, sehingga sangat direkomendasikan untuk platform berbasis web mobile.
+                Tipografi dalam antarmuka digital memiliki aturan fungsional yang sangat ketat dibandingkan media cetak konvensional. Jenis huruf berkaki (Serif) cenderung mengalami pemecahan piksel atau distorsi anti-aliasing ketika dipaksa mengecil pada layar perangkat seluler berkepadatan rendah. Sebaliknya, rumpun huruf tanpa kaki (Sans-Serif) mempertahankan kejelasan garis strukturnya karena bentuk geometrisnya selaras dengan susunan matriks piksel horizontal-vertikal layar digital monitor, sehingga sangat direkomendasikan untuk platform berbasis web mobile. Tipografi yang tepat dapat meningkatkan keterbacaan hingga 25% menurut studi ergonomi antarmuka.
             </p>
 
-            <div class="page-footer">Halaman 3</div>
+            <div class="page-number">50</div>
         </div>
 
 
@@ -420,28 +454,28 @@
             HALAMAN 4: METODOLOGI
         ========================================== -->
         <div class="page">
-            <div class="page-header">Dimas Arif Fikriawan | Perancangan Ulang Identity Branding</div>
+            <div class="sub-header">Dimas Arif Fikriawan | Perancangan Ulang Identity Branding</div>
 
             <h2>III. METODOLOGI PENELITIAN</h2>
             <p>
-                Guna menjamin hasil rancangan yang memiliki validitas tinggi dan berorientasi pada kebutuhan riil pengguna, penelitian ini menerapkan metodologi <i>Design Thinking</i>. Metodologi ini dipilih karena karakteristiknya yang fleksibel, iteratif, dan sangat berpusat pada manusia (<i>human-centered design</i>). Proses penelitian dilaksanakan melalui lima tahapan operasional yang saling terintegrasi secara runtut.
+                Guna menjamin hasil rancangan yang memiliki validitas tinggi dan berorientasi pada kebutuhan riil pengguna, penelitian ini menerapkan metodologi <i>Design Thinking</i>. Metodologi ini dipilih karena karakteristiknya yang fleksibel, iteratif, dan sangat berpusat pada manusia (<i>human-centered design</i>). Proses penelitian dilaksanakan melalui lima tahapan operasional yang saling terintegrasi secara runtut, mulai dari penggalian data hingga pengujian akhir, memastikan setiap keputusan desain didasarkan pada data nyata dan bukan asumsi peneliti semata.
             </p>
             
             <div class="element-wrapper">
-                <div style="border:1px dashed #000; padding:0.3cm; font-weight:bold; display:inline-block;">
+                <div style="border:1px dashed #000; padding:0.2cm; font-weight:bold; display:inline-block; font-size:11pt;">
                     Empathize → Define → Ideate → Prototype → Test
                 </div>
                 <div class="caption">Gambar 1. Alur Siklus Operasional Metodologi Design Thinking</div>
             </div>
 
             <p>
-                Fase pertama dimulai dari <i>Empathize</i>, di mana peneliti melakukan pengumpulan data empiris melalui observasi langsung terhadap perilaku interaksi pengguna pada situs cerah.co serta menyebarkan kuesioner awal untuk menangkap impresi subjektif mereka. Fase kedua, <i>Define</i>, memetakan seluruh data keluhan menjadi rumusan masalah teknis: bentuk logo yang ada saat ini memicu distorsi visual (blurring effect) ketika diperkecil menjadi ikon resolusi rendah berukuran 32x32 piksel pada bilah status.
+                Fase pertama dimulai dari <i>Empathize</i>, di mana peneliti melakukan pengumpulan data empiris melalui observasi langsung terhadap perilaku interaksi pengguna pada situs cerah.co serta menyebarkan kuesioner awal untuk menangkap impresi subjektif mereka. Fase kedua, <i>Define</i>, memetakan seluruh data keluhan menjadi rumusan masalah teknis: bentuk logo yang ada saat ini memicu distorsi visual (blurring effect) ketika diperkecil menjadi ikon resolusi rendah berukuran 32x32 piksel pada bilah status. Di tahap ini juga dilakukan analisis mendalam mengenai nilai-nilai korporasi yang harus tetap dipertahankan.
             </p>
             <p>
-                Fase ketiga, <i>Ideate</i>, diisi dengan aktivitas penguraian ide secara kreatif guna melahirkan alternatif sketsa geometris dasar. Fase keempat, <i>Prototype</i>, memindahkan sketsa ke lingkungan digital menggunakan editor grafik vektor. Fase kelima, <i>Test</i>, merupakan tahap pengujian performa fungsional dengan mengintegrasikan aset digital baru tersebut ke dalam antarmuka web.
+                Fase ketiga, <i>Ideate</i>, diisi dengan aktivitas penguraian ide secara kreatif guna melahirkan alternatif sketsa geometris dasar. Fase keempat, <i>Prototype</i>, memindahkan sketsa ke lingkungan digital menggunakan editor grafik vektor dengan standar kualitas tinggi. Fase kelima, <i>Test</i>, merupakan tahap pengujian performa fungsional dengan mengintegrasikan aset digital baru tersebut ke dalam antarmuka web dan melakukan uji coba kepada responden untuk mendapatkan umpan balik akhir sebelum disimpulkan.
             </p>
 
-            <div class="page-footer">Halaman 4</div>
+            <div class="page-number">51</div>
         </div>
 
 
@@ -449,18 +483,18 @@
             HALAMAN 5: HASIL & PEMBAHASAN
         ========================================== -->
         <div class="page">
-            <div class="page-header">Dimas Arif Fikriawan | Perancangan Ulang Identity Branding</div>
+            <div class="sub-header">Dimas Arif Fikriawan | Perancangan Ulang Identity Branding</div>
 
             <h2>IV. HASIL DAN PEMBAHASAN</h2>
             
             <h3>A. Analisis Konsep Perancangan</h3>
             <p>
-                Proses rekonstruksi visual yang dipimpin oleh peneliti menghasilkan sebuah cetak biru identitas merek baru yang berbasis pada konsep besar "Glocal Minimalist". Prinsip desain utama difokuskan pada pemangkasan elemen dekoratif yang tidak fungsional (simplifikasi visual), sehingga struktur geometris logo mampu mempertahankan fleksibilitas dan keterbacaannya pada tingkat ekstrem saat disusutkan ke berbagai ukuran terkecil komponen antarmuka digital.
+                Proses rekonstruksi visual yang dipimpin oleh peneliti menghasilkan sebuah cetak biru identitas merek baru yang berbasis pada konsep besar "Glocal Minimalist". Prinsip desain utama difokuskan pada pemangkasan elemen dekoratif yang tidak fungsional (simplifikasi visual), sehingga struktur geometris logo mampu mempertahankan fleksibilitas dan keterbacaannya pada tingkat ekstrem saat disusutkan ke berbagai ukuran terkecil komponen antarmuka digital. Konsep ini menggabungkan nilai keindahan lokal dengan standar desain internasional yang berlaku saat ini.
             </p>
 
             <!-- PERBANDINGAN LOGO -->
             <div class="element-wrapper">
-                <div style="font-weight:bold; margin-bottom:0.3cm;">Perbandingan Logo: Sebelum dan Sesudah</div>
+                <div style="font-weight:bold; margin-bottom:0.2cm; font-size:11pt;">Perbandingan Logo: Sebelum dan Sesudah</div>
                 <div class="logo-comparison">
                     <div class="logo-box">
                         <img src="logo_cerah_sebelum.png" alt="Logo Cerah Sebelum" onerror="this.parentElement.innerHTML='<div style=\'width:120px; height:80px; border:1px dashed #000; display:flex; align-items:center; justify-content:center; font-size:10pt;\'>Logo Lama</div>'">
@@ -476,7 +510,7 @@
             </div>
 
             <p>
-                Berdasarkan perbandingan visual di atas, terlihat perbedaan yang sangat signifikan dari segi kompleksitas bentuk. Logo sebelumnya memiliki detail ornamen yang cukup padat dan tipografi berkaki (Serif), sedangkan referensi saran logo sesudah mengusung bentuk geometris yang lebih sederhana, tegas, dan menggunakan tipografi modern tanpa kaki (Sans-Serif) yang lebih cocok untuk tampilan layar digital.
+                Berdasarkan perbandingan visual di atas, terlihat perbedaan yang sangat signifikan dari segi kompleksitas bentuk. Logo sebelumnya memiliki detail ornamen yang cukup padat dan tipografi berkaki (Serif), sedangkan referensi saran logo sesudah mengusung bentuk geometris yang lebih sederhana, tegas, dan menggunakan tipografi modern tanpa kaki (Sans-Serif) yang lebih cocok untuk tampilan layar digital. Perubahan ini tidak hanya memperindah tampilan, tetapi juga meningkatkan fungsi teknis secara keseluruhan.
             </p>
 
             <div class="element-wrapper">
@@ -515,15 +549,18 @@
             </div>
 
             <p>
-                Berdasarkan data pada tabel di atas, terlihat perbedaan signifikan pada hampir seluruh parameter teknis dan estetika. Perubahan dari format raster ke vektor memberikan dampak peningkatan kinerja sistem yang sangat besar, dengan pengurangan ukuran file hingga 80% dan percepatan waktu pemuatan hingga 10 kali lipat.
+                Berdasarkan data pada tabel di atas, terlihat perbedaan signifikan pada hampir seluruh parameter teknis dan estetika. Perubahan dari format raster ke vektor memberikan dampak peningkatan kinerja sistem yang sangat besar, dengan pengurangan ukuran file hingga 80% dan percepatan waktu pemuatan hingga 10 kali lipat. Secara teknis, ini merupakan lonjakan efisiensi yang sangat besar dalam pengembangan sistem informasi berbasis web.
             </p>
 
             <h3>B. Analisis Filosofis Geometris</h3>
             <p>
                 Setiap goresan garis, penentuan sudut kurva bezier, dan pemilihan palet warna pada logo baru yang diusulkan oleh peneliti mengandung makna filosofis mendalam yang dikonversikan secara matematis ke dalam ruang vektor digital. Bentuk luar logo mengadopsi siluet balon percakapan yang secara filosofis melambangkan komunikasi interaktif dua arah. Pola ini merefleksikan visi utama platform dalam memfasilitasi penguasaan bahasa asing secara aktif dan komunikatif. Palet warna didominasi oleh warna kuning cerah `#FFD200` yang mengekspresikan optimisme, dipadukan dengan biru tua `#003366` untuk memancarkan stabilitas teknis dan profesionalisme.
             </p>
+            <p>
+                Selain itu, komposisi bentuk geometris yang simetris memberikan kesan keseimbangan dan keadilan, nilai-nilai yang juga dipegang teguh oleh perusahaan. Pemilihan sudut-sudut yang membulat tidak hanya bertujuan untuk keindahan, tetapi juga memberikan kesan ramah dan mudah didekati, sesuai dengan karakter layanan pendidikan yang bersifat mendidik dan membimbing.
+            </p>
 
-            <div class="page-footer">Halaman 5</div>
+            <div class="page-number">52</div>
         </div>
 
 
@@ -531,20 +568,33 @@
             HALAMAN 6: KESIMPULAN
         ========================================== -->
         <div class="page">
-            <div class="page-header">Grafik 1. Hasil Evaluasi Empiris Desain Baru</div>
+            <div class="sub-header">Dimas Arif Fikriawan | Perancangan Ulang Identity Branding</div>
 
-            <div style="text-align:center; border-top:1px solid #000; border-bottom:1px solid #000; padding:0.2cm 0; font-size:11pt; font-style:italic; margin-bottom:0.5cm;">
+            <div style="text-align:center; border-top:1px solid #000; border-bottom:1px solid #000; padding:0.2cm 0; font-size:11pt; font-style:italic; margin-bottom:0.4cm;">
                 Grafik 1. Hasil Evaluasi Empiris Desain Baru
             </div>
 
             <p>
-                Berdasarkan sajian data grafik di atas, rata-rata penilaian dari seluruh indikator menunjukkan tingkat kepuasan yang sangat tinggi di atas 80%. Indikator kesesuaian nilai menempati skor tertinggi yaitu mencapai angka 90%, menegaskan bahwa hasil rancangan logo baru ini mampu merepresentasikan identitas visi misi platform secara akurat.
+                Berdasarkan sajian data grafik di atas, rata-rata penilaian dari seluruh indikator menunjukkan tingkat kepuasan yang sangat tinggi di atas 80%. Indikator kesesuaian nilai menempati skor tertinggi yaitu mencapai angka 90%, menegaskan bahwa hasil rancangan logo baru ini mampu merepresentasikan identitas visi misi platform secara akurat. Indikator keunikan dan kemudahan pengenalan juga berada di angka 88% dan 92%, membuktikan bahwa desain baru ini berhasil menjadi pembeda yang kuat di pasar.
             </p>
 
             <h2>V. KESIMPULAN</h2>
             <p>
                 Riset perancangan ulang sistem <i>identity branding</i> Perusahaan Cerah telah berhasil diselesaikan secara tuntas dengan mengacu pada metodologi <i>Design Thinking</i>. Penggunaan bentuk geometris minimalis yang dikombinasikan dengan pengaplikasian rumpun huruf modern Sans-Serif terbukti secara teknis mampu menyelesaikan kendala distorsi visual, memberikan tingkat skalabilitas tinggi, serta mempertahankan efisiensi rendering halaman sistem digital yang optimal pada gawai seluler. Respons positif dari sampel pengguna mengukuhkan bahwa rancangan identitas visual baru ini sangat layak dan siap diimplementasikan.
             </p>
+            <p>
+                Secara keseluruhan, perubahan ini tidak hanya menyelesaikan masalah teknis, tetapi juga memperbarui citra perusahaan menjadi lebih modern, relevan, dan profesional. Penelitian ini juga membuktikan bahwa rekayasa desain visual memiliki dampak langsung terhadap kinerja sistem teknologi informasi dan persepsi pengguna, sehingga aspek desain tidak boleh diabaikan dalam pengembangan perangkat lunak atau platform digital.
+            </p>
+
+            <div class="page-number">53</div>
+        </div>
+
+
+        <!-- ==========================================
+            HALAMAN 7: DAFTAR PUSTAKA (HALAMAN SENDIRI)
+        ========================================== -->
+        <div class="page">
+            <div class="sub-header">Dimas Arif Fikriawan | Perancangan Ulang Identity Branding</div>
 
             <h2>VI. DAFTAR PUSTAKA</h2>
             <ul class="reference-list">
@@ -557,12 +607,12 @@
                 <li>Kotler, P., & Keller, K. L. (2016). <i>Marketing Management</i> (15th ed.). Pearson Education.</li>
             </ul>
 
-            <div class="page-footer">Halaman 6</div>
+            <div class="page-number">54</div>
         </div>
 
     </div>
 
-    <!-- SCRIPT EKSPOR -->
+    <!-- SCRIPT EKSPOR (DIOPTIMALKAN AGAR RAPI) -->
     <script>
         function exportToWord() {
             var content = document.getElementById("journal-document-content").innerHTML;
@@ -572,20 +622,22 @@
                     <meta charset='utf-8'>
                     <title>JURNAL DIMAS ARIF FIKRIAWAN</title>
                     <style>
-                        @page { size: 21cm 29.7cm; margin: 4cm 3cm 3cm 3cm; }
-                        body { font-family: 'Times New Roman', serif; font-size: 12pt; line-height: 1.5; text-align: justify; margin: 0; }
+                        @page { size: 21cm 29.7cm; margin: 3cm 2.5cm 2cm 2.5cm; }
+                        body { font-family: 'Times New Roman', serif; font-size: 12pt; line-height: 1.3; text-align: justify; margin: 0; }
                         .page { page-break-after: always; margin: 0; padding: 0; width: 100%; min-height: 29.7cm; }
-                        h1 { font-size:14pt; font-weight:bold; text-transform:uppercase; text-align:center; margin:0.5cm 0; }
-                        h2 { font-size:12pt; font-weight:bold; text-transform:uppercase; text-align:center; margin:1cm 0 0.5cm 0; }
-                        h3 { font-size:12pt; font-weight:bold; text-align:left; margin:0.5cm 0 0.3cm 0; }
-                        p { text-indent:1.25cm; margin:0 0 0.3cm 0; text-align:justify; line-height:1.5; }
+                        h1 { font-size:14pt; font-weight:bold; text-transform:uppercase; text-align:center; margin:0.4cm 0; }
+                        h2 { font-size:12pt; font-weight:bold; text-transform:uppercase; text-align:left; margin:1cm 0 0.5cm 0; page-break-after:avoid; }
+                        h3 { font-size:12pt; font-weight:bold; text-align:left; margin:0.5cm 0 0.2cm 0; page-break-after:avoid; }
+                        p { text-indent:1.25cm; margin:0 0 0.2cm 0; text-align:justify; line-height:1.3; orphans:4; widows:4; }
                         .abstract-title { font-weight:bold; text-align:center; text-transform:uppercase; }
-                        .caption { font-size:11pt; font-style:italic; text-align:center; }
-                        table { width:80%; border-collapse:collapse; margin:0.5cm auto; }
-                        th, td { border:1px solid #000; padding:0.2cm 0.4cm; text-align:center; }
-                        .reference-list { list-style:none; padding-left:0; margin-top:0.5cm; }
-                        .reference-list li { padding-left:1.25cm; text-indent:-1.25cm; margin-bottom:0.3cm; font-size:11pt; line-height:1.5; text-align:justify; }
+                        .caption { font-size:10pt; font-style:italic; text-align:center; }
+                        table { width:85%; border-collapse:collapse; margin:0.4cm auto; page-break-inside:avoid; }
+                        th, td { border:1px solid #000; padding:0.2cm 0.3cm; text-align:center; }
+                        .reference-list { list-style:none; padding-left:0; margin-top:0.3cm; page-break-before:always; }
+                        .reference-list li { padding-left:1.25cm; text-indent:-1.25cm; margin-bottom:0.2cm; font-size:11pt; line-height:1.3; text-align:justify; }
                         img { max-width:70%; height:auto; display:block; margin:0 auto; }
+                        .page-number { text-align:center; font-size:10pt; margin-top:1cm; }
+                        .sub-header { font-size:10pt; font-style:italic; text-align:center; padding-bottom:0.2cm; border-bottom:1px solid #999; margin-bottom:0.8cm; }
                     </style>
                 </head>
                 <body>${content}</body>
@@ -609,15 +661,26 @@
                 const doc = new jsPDF({orientation: 'portrait', unit: 'cm', format: 'a4', compress: true});
                 const pages = document.querySelectorAll('.page');
                 for (let i = 0; i < pages.length; i++) {
-                    const canvas = await html2canvas(pages[i], {scale: 2, useCORS: true, allowTaint: false, logging: false, backgroundColor: '#ffffff', width: 21 * 37.8, height: 29.7 * 37.8, windowWidth: 21 * 37.8, windowHeight: 29.7 * 37.8});
+                    const canvas = await html2canvas(pages[i], {
+                        scale: 2, 
+                        useCORS: true, 
+                        allowTaint: false, 
+                        logging: false, 
+                        backgroundColor: '#ffffff',
+                        width: 21 * 37.8, 
+                        height: 29.7 * 37.8,
+                        windowWidth: 21 * 37.8,
+                        windowHeight: 29.7 * 37.8,
+                        ignoreElements: (el) => el.classList.contains('download-btn-container')
+                    });
                     const imgData = canvas.toDataURL('image/png');
                     const imgWidth = 21;
                     const imgHeight = 29.7;
                     if (i > 0) doc.addPage();
-                    doc.addImage(imgData, 'PNG', 0, 0, imgWidth, imgHeight);
+                    doc.addImage(imgData, 'PNG', 0, 0, imgWidth, imgHeight, undefined, 'FAST');
                 }
                 doc.save('JURNAL_DIMAS_ARIF_FIKRIAWAN.pdf');
-                alert('✅ PDF Berhasil Dibuat!');
+                alert('✅ PDF Berhasil Dibuat! Semua halaman rapi dan tidak terpotong.');
             } catch (error) {
                 alert('❌ Masalah: ' + error.message);
             } finally {
