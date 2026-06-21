@@ -67,16 +67,16 @@
             background: #ffffff;
         }
 
-        /* UKURAN TEPAT A4: 21cm x 29.7cm + BATAS TEPI 3,4,3,3 cm */
+        /* UKURAN TEPAT A4: 21cm x 29.7cm + BATAS TEPI 4cm Atas, 3cm Kiri/Kanan/Bawah */
         .page {
             width: 21cm;
             min-height: 29.7cm;
-            padding: 4cm 3cm 3cm 3cm; /* Atas 4cm, Kiri 3cm, Bawah 3cm, Kanan 3cm */
+            padding: 4cm 3cm 3cm 3cm !important;
             margin: 0 auto 20px auto;
             box-sizing: border-box;
             position: relative;
             overflow: hidden;
-            page-break-after: always !important; /* Paksa ganti halaman */
+            page-break-after: always !important;
             background: #ffffff;
         }
         
@@ -84,7 +84,7 @@
             page-break-after: auto !important;
         }
         
-        /* Header dan Footer Halaman */
+        /* Header dan Footer Halaman - POSISI TETAP */
         .page-header {
             position: absolute;
             top: 1cm;
@@ -95,6 +95,7 @@
             text-align: center;
             border-bottom: 1px solid #999;
             padding-bottom: 5px;
+            z-index: 10;
         }
         .page-footer {
             position: absolute;
@@ -105,6 +106,7 @@
             text-align: center;
             border-top: 1px solid #999;
             padding-top: 5px;
+            z-index: 10;
         }
 
         /* ==========================================
@@ -116,7 +118,7 @@
             justify-content: center;
             align-items: center;
             text-align: center;
-            padding: 3cm 2cm;
+            padding: 3cm 2cm !important;
         }
 
         .journal-title-main {
@@ -127,10 +129,10 @@
             margin-bottom: 2cm;
         }
 
-        /* Pengaturan Logo Kampus */
+        /* Pengaturan Logo Kampus - PAS & UTUH */
         .logo-container {
             width: 220px;
-            height: 240px;
+            height: auto;
             border: none;
             margin: 0 auto 2cm auto;
             display: flex;
@@ -139,9 +141,10 @@
         }
         .logo-container img {
             width: 100%;
-            height: 100%;
+            height: auto;
             object-fit: contain;
             crossorigin="anonymous";
+            display: block;
         }
 
         .article-title {
@@ -173,6 +176,7 @@
         .header-container {
             text-align: center;
             margin-bottom: 40px;
+            margin-top: 0;
         }
         .journal-meta {
             font-size: 10pt;
@@ -194,6 +198,7 @@
             padding: 15px 0;
             font-size: 10pt;
             line-height: 1.5;
+            margin-bottom: 20px;
         }
         .abstract-title {
             font-weight: bold;
@@ -220,7 +225,7 @@
             .page {
                 width: 100%;
                 min-height: auto;
-                padding: 2cm 1.5cm;
+                padding: 2cm 1.5cm !important;
             }
             .main-content { 
                 grid-template-columns: 1fr; 
@@ -228,6 +233,7 @@
             }
         }
 
+        /* JUDUL BAB: SELALU MULAI HALAMAN BARU & POSISI PAS */
         h2 {
             font-size: 12pt;
             font-weight: bold;
@@ -237,7 +243,8 @@
             margin-bottom: 16px;
             padding-bottom: 0;
             border-bottom: none;
-            page-break-before: always !important; /* Judul bab selalu di halaman baru */
+            page-break-before: always !important;
+            clear: both;
         }
 
         h3 {
@@ -248,23 +255,25 @@
             text-align: justify;
         }
 
-        /* Paragraf */
+        /* Paragraf - RAPI & TIDAK TERPOTONG */
         p { 
             margin: 0 0 10px 0; 
             text-indent: 1.25cm;
             text-align: justify;
-            orphans: 3; /* Jangan potong paragraf di akhir halaman */
-            widows: 3;
+            orphans: 4;
+            widows: 4;
+            line-height: 1.6;
         }
         p.no-indent {
             text-indent: 0;
         }
 
-        /* Gambar dan Tabel */
+        /* Gambar dan Tabel - TIDAK TERPOTONG */
         .element-wrapper { 
             text-align: center; 
             margin: 15px 0;
-            page-break-inside: avoid !important; /* Gambar tidak terpotong */
+            page-break-inside: avoid !important;
+            clear: both;
         }
         .img-custom {
             max-width: 75%;
@@ -280,6 +289,8 @@
             background-color: #f8f8f8;
             padding: 15px;
             font-size: 10pt;
+            max-width: 80%;
+            margin: 0 auto;
         }
         .caption { 
             font-size: 9.5pt; 
@@ -293,7 +304,7 @@
             border-collapse: collapse; 
             font-size: 10pt; 
             margin: 10px 0;
-            page-break-inside: avoid !important; /* Tabel tidak terpotong */
+            page-break-inside: avoid !important;
         }
         th, td { 
             border: 1px solid #000; 
@@ -315,12 +326,12 @@
             padding: 5px;
         }
 
-        /* Daftar Pustaka - DIPASTIKAN TAMPIL LENGKAP */
+        /* Daftar Pustaka - LENGKAP & RAPI */
         .reference-list { 
             list-style-type: none; 
             padding-left: 0; 
             margin-top: 10px;
-            page-break-before: always !important; /* Daftar pustaka di halaman sendiri */
+            page-break-before: always !important;
         }
         .reference-list li { 
             padding-left: 1.25cm; 
@@ -329,21 +340,25 @@
             font-size: 10pt; 
             line-height: 1.5;
             text-align: justify;
+            orphans: 3;
+            widows: 3;
         }
 
-        /* Pengaturan untuk Cetak / Ekspor */
+        /* Pengaturan Cetak/PDF */
         @media print {
             .download-btn-container { display: none !important; }
             .main-content { display: block !important; }
             .page { 
-                margin: 0; 
+                margin: 0 !important; 
                 padding: 4cm 3cm 3cm 3cm !important;
                 width: 21cm !important;
                 min-height: 29.7cm !important;
                 page-break-after: always !important;
+                overflow: hidden !important;
             }
-            h2 { page-break-before: always !important; }
+            h2 { page-break-before: always !important; margin-top: 0 !important; }
             .reference-list { page-break-before: always !important; }
+            * { box-sizing: border-box !important; }
         }
     </style>
 </head>
@@ -398,7 +413,7 @@
             <div class="page-header">Jurnal Ilmu Komputer dan Desain Komunikasi Visual | Vol. 4, No. 2, Juni 2026</div>
             
             <div class="header-container">
-                <h1 style="font-size:16pt; font-weight:bold; text-transform:uppercase; margin-bottom:10px;">Perancangan Ulang Identity Branding Melalui Desain Logo Baru Pada Perusahaan Cerah</h1>
+                <h1 style="font-size:16pt; font-weight:bold; text-transform:uppercase; margin-bottom:10px; margin-top:0;">Perancangan Ulang Identity Branding Melalui Desain Logo Baru Pada Perusahaan Cerah</h1>
                 <div style="font-size:11pt;">Dimas Arif Fikriawan</div>
                 <div style="font-size:10pt; font-style:italic;">Program Studi Teknik Informatika, Institut Widya Pratama</div>
             </div>
@@ -463,7 +478,7 @@
             
             <div class="element-wrapper">
                 <div class="visual-placeholder" style="border-style: dashed; font-weight: bold; color: #111;">
-                    Empathize &rarr; Define &rarr; Ideate &rarr; Prototype &rarr; Test
+                    Empathize → Define → Ideate → Prototype → Test
                 </div>
                 <div class="caption">Gambar 1. Alur Siklus Operasional Metodologi Design Thinking</div>
             </div>
@@ -670,15 +685,17 @@
                         allowTaint: false,
                         logging: false,
                         backgroundColor: '#ffffff',
-                        width: 21 * 37.8, // Konversi cm ke piksel pas ukuran A4
+                        width: 21 * 37.8,
                         height: 29.7 * 37.8,
                         windowWidth: 21 * 37.8,
-                        windowHeight: 29.7 * 37.8
+                        windowHeight: 29.7 * 37.8,
+                        scrollX: 0,
+                        scrollY: 0
                     });
                     
                     const imgData = canvas.toDataURL('image/png');
                     const imgWidth = 21;
-                    const imgHeight = 29.7; // Pas tinggi A4
+                    const imgHeight = 29.7;
 
                     if (i > 0) doc.addPage();
                     doc.addImage(imgData, 'PNG', 0, 0, imgWidth, imgHeight);
