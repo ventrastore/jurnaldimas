@@ -56,7 +56,7 @@
             cursor: not-allowed;
         }
 
-        /* Pengaturan Dasar Halaman A4 */
+        /* PENGATURAN UTAMA: UKURAN A4 & BATAS TEPI STANDAR */
         body {
             font-family: 'Tinos', 'Times New Roman', Times, serif;
             font-size: 11pt;
@@ -67,21 +67,21 @@
             background: #ffffff;
         }
 
-        /* Pemisah Halaman - TANPA GARIS BATAS */
+        /* UKURAN TEPAT A4: 21cm x 29.7cm + BATAS TEPI 3,4,3,3 cm */
         .page {
             width: 21cm;
             min-height: 29.7cm;
-            padding: 4cm 3cm 3cm 3cm;
+            padding: 4cm 3cm 3cm 3cm; /* Atas 4cm, Kiri 3cm, Bawah 3cm, Kanan 3cm */
             margin: 0 auto 20px auto;
             box-sizing: border-box;
             position: relative;
             overflow: hidden;
-            page-break-after: always;
+            page-break-after: always !important; /* Paksa ganti halaman */
             background: #ffffff;
         }
         
         .page:last-child {
-            page-break-after: auto;
+            page-break-after: auto !important;
         }
         
         /* Header dan Footer Halaman */
@@ -141,7 +141,6 @@
             width: 100%;
             height: 100%;
             object-fit: contain;
-            /* Solusi keamanan gambar */
             crossorigin="anonymous";
         }
 
@@ -234,10 +233,11 @@
             font-weight: bold;
             text-transform: uppercase;
             text-align: center;
-            margin-top: 20px;
+            margin-top: 0;
             margin-bottom: 16px;
             padding-bottom: 0;
             border-bottom: none;
+            page-break-before: always !important; /* Judul bab selalu di halaman baru */
         }
 
         h3 {
@@ -253,6 +253,8 @@
             margin: 0 0 10px 0; 
             text-indent: 1.25cm;
             text-align: justify;
+            orphans: 3; /* Jangan potong paragraf di akhir halaman */
+            widows: 3;
         }
         p.no-indent {
             text-indent: 0;
@@ -262,6 +264,7 @@
         .element-wrapper { 
             text-align: center; 
             margin: 15px 0;
+            page-break-inside: avoid !important; /* Gambar tidak terpotong */
         }
         .img-custom {
             max-width: 75%;
@@ -270,7 +273,6 @@
             display: block;
             margin-left: auto;
             margin-right: auto;
-            /* Solusi keamanan gambar */
             crossorigin="anonymous";
         }
         .visual-placeholder {
@@ -291,6 +293,7 @@
             border-collapse: collapse; 
             font-size: 10pt; 
             margin: 10px 0;
+            page-break-inside: avoid !important; /* Tabel tidak terpotong */
         }
         th, td { 
             border: 1px solid #000; 
@@ -312,11 +315,12 @@
             padding: 5px;
         }
 
-        /* Daftar Pustaka */
+        /* Daftar Pustaka - DIPASTIKAN TAMPIL LENGKAP */
         .reference-list { 
             list-style-type: none; 
             padding-left: 0; 
             margin-top: 10px;
+            page-break-before: always !important; /* Daftar pustaka di halaman sendiri */
         }
         .reference-list li { 
             padding-left: 1.25cm; 
@@ -333,10 +337,13 @@
             .main-content { display: block !important; }
             .page { 
                 margin: 0; 
-                padding: 2.5cm 2cm;
-                width: 100%;
-                min-height: auto;
+                padding: 4cm 3cm 3cm 3cm !important;
+                width: 21cm !important;
+                min-height: 29.7cm !important;
+                page-break-after: always !important;
             }
+            h2 { page-break-before: always !important; }
+            .reference-list { page-break-before: always !important; }
         }
     </style>
 </head>
@@ -414,7 +421,7 @@
 
 
         <!-- ==========================================
-            HALAMAN 3: PENDAHULUAN & TINJAUAN PUSTAKA
+            HALAMAN 3: PENDAHULUAN
         ========================================== -->
         <div class="page">
             <div class="page-header">Dimas Arif Fikriawan | Perancangan Ulang Identity Branding</div>
@@ -432,20 +439,20 @@
             <p>Menurut teori identitas merek kontemporer, sebuah identitas visual di dalam ruang digital bertindak sebagai perwakilan konseptual dari reputasi dan kapabilitas teknis sebuah penyedia sistem. Di internet, kompetisi antarplatform terjadi dalam hitungan detik; logo yang ambigu atau terlalu rumit akan langsung dieliminasi oleh persepsi cepat pengguna. Identitas visual digital menuntut pemenuhan prinsip kesederhanaan agar memori visual pengguna dapat dengan mudah mengenali dan mengingat entitas tersebut di tengah ribuan informasi digital lainnya.</p>
             <p>Identitas merek yang kuat harus memiliki karakteristik: unik, relevan, mudah diingat, dan dapat diterapkan secara konsisten di berbagai media. Dalam konteks teknologi pendidikan, identitas merek juga harus memancarkan nilai-nilai kecerdasan, kemajuan, dan keterbukaan pengetahuan.</p>
 
-            <h3>B. Skalabilitas Aset Grafik Vektor (.svg)</h3>
-            <p>Penggunaan format bitmap seperti .png atau .jpg memiliki kelemahan inheren dalam aspek skalabilitas. Ketika gambar bitmap dipaksa untuk mengalami perbesaran atau pengecilan ekstrem, susunan pikselnya akan meregang dan memicu efek pikselasi (gambar kabur). Dalam rekayasa komputer, pemanfaatan format berbasis *Scalable Vector Graphics* (.svg) menyelesaikan kendala ini dengan mendefinisikan bentuk grafis melalui persamaan matematika (vektor koordinat), sehingga detail gambar tetap tajam secara absolut pada resolusi layar berukuran berapapun.</p>
-            <p>Selain keunggulan visual, format SVG juga memiliki keunggulan teknis berupa ukuran file yang jauh lebih kecil dibandingkan format raster berkualitas setara. Hal ini berdampak langsung pada efisiensi penggunaan bandwidth internet dan kecepatan pemuatan halaman web.</p>
-
             <div class="page-footer">Halaman 3</div>
         </div>
         <!-- AKHIR HALAMAN 3 -->
 
 
         <!-- ==========================================
-            HALAMAN 4: METODOLOGI & AWAL HASIL
+            HALAMAN 4: LANJUT TINJAUAN & METODOLOGI
         ========================================== -->
         <div class="page">
             <div class="page-header">Dimas Arif Fikriawan | Perancangan Ulang Identity Branding</div>
+
+            <h3>B. Skalabilitas Aset Grafik Vektor (.svg)</h3>
+            <p>Penggunaan format bitmap seperti .png atau .jpg memiliki kelemahan inheren dalam aspek skalabilitas. Ketika gambar bitmap dipaksa untuk mengalami perbesaran atau pengecilan ekstrem, susunan pikselnya akan meregang dan memicu efek pikselasi (gambar kabur). Dalam rekayasa komputer, pemanfaatan format berbasis *Scalable Vector Graphics* (.svg) menyelesaikan kendala ini dengan mendefinisikan bentuk grafis melalui persamaan matematika (vektor koordinat), sehingga detail gambar tetap tajam secara absolut pada resolusi layar berukuran berapapun.</p>
+            <p>Selain keunggulan visual, format SVG juga memiliki keunggulan teknis berupa ukuran file yang jauh lebih kecil dibandingkan format raster berkualitas setara. Hal ini berdampak langsung pada efisiensi penggunaan bandwidth internet dan kecepatan pemuatan halaman web.</p>
 
             <h3>C. Tipografi Khusus User Interface</h3>
             <p>Tipografi dalam antarmuka digital memiliki aturan fungsional yang sangat ketat dibandingkan media cetak konvensional. Jenis huruf berkaki (Serif) cenderung mengalami pemecahan piksel atau distorsi anti-aliasing ketika dipaksa mengecil pada layar perangkat seluler berkepadatan rendah. Sebaliknya, rumpun huruf tanpa kaki (Sans-Serif) mempertahankan kejelasan garis strukturnya karena bentuk geometrisnya selaras dengan susunan matriks piksel horizontal-vertikal layar digital monitor, sehingga sangat direkomendasikan untuk platform berbasis web mobile.</p>
@@ -463,6 +470,17 @@
 
             <p>Fase pertama dimulai dari <i>Empathize</i>, di mana peneliti melakukan pengumpulan data empiris melalui observasi langsung terhadap perilaku interaksi pengguna pada situs cerah.co serta menyebarkan kuesioner awal untuk menangkap impresi subjektif mereka. Fase kedua, <i>Define</i>, memetakan seluruh data keluhan menjadi rumusan masalah teknis: bentuk logo yang ada saat ini memicu distorsi visual (blurring effect) ketika diperkecil menjadi ikon resolusi rendah berukuran 32x32 piksel pada bilah status.</p>
             <p>Fase ketiga, <i>Ideate</i>, diisi dengan aktivitas penguraian ide secara kreatif guna melahirkan alternatif sketsa geometris dasar. Fase keempat, <i>Prototype</i>, memindahkan sketsa ke lingkungan digital menggunakan editor grafik vektor. Fase kelima, <i>Test</i>, merupakan tahap pengujian performa fungsional dengan mengintegrasikan aset digital baru tersebut ke dalam antarmuka web.</p>
+
+            <div class="page-footer">Halaman 4</div>
+        </div>
+        <!-- AKHIR HALAMAN 4 -->
+
+
+        <!-- ==========================================
+            HALAMAN 5: HASIL & PEMBAHASAN
+        ========================================== -->
+        <div class="page">
+            <div class="page-header">Dimas Arif Fikriawan | Perancangan Ulang Identity Branding</div>
 
             <h2>IV. Hasil dan Pembahasan</h2>
             
@@ -506,17 +524,6 @@
 
             <p>Berdasarkan data pada tabel di atas, terlihat perbedaan signifikan pada hampir seluruh parameter teknis dan estetika. Perubahan dari format raster ke vektor memberikan dampak peningkatan kinerja sistem yang sangat besar, dengan pengurangan ukuran file hingga 80% dan percepatan waktu pemuatan hingga 10 kali lipat.</p>
 
-            <div class="page-footer">Halaman 4</div>
-        </div>
-        <!-- AKHIR HALAMAN 4 -->
-
-
-        <!-- ==========================================
-            HALAMAN 5: LANJUTAN PEMBAHASAN & KESIMPULAN
-        ========================================== -->
-        <div class="page">
-            <div class="page-header">Dimas Arif Fikriawan | Perancangan Ulang Identity Branding</div>
-
             <h3>B. Analisis Filosofis Geometris</h3>
             <p>Setiap goresan garis, penentuan sudut kurva bezier, dan pemilihan palet warna pada logo baru yang diusulkan oleh peneliti mengandung makna filosofis mendalam yang dikonversikan secara matematis ke dalam ruang vektor digital.</p>
 
@@ -527,6 +534,17 @@
             </div>
 
             <p>Bentuk luar logo mengadopsi siluet balon percakapan yang secara filosofis melambangkan komunikasi interaktif dua arah. Pola ini merefleksikan visi utama platform dalam memfasilitasi penguasaan bahasa asing secara aktif dan komunikatif. Palet warna didominasi oleh warna kuning cerah `#FFD200` yang mengekspresikan optimisme, dipadukan dengan biru tua `#003366` untuk memancarkan stabilitas teknis dan profesionalisme.</p>
+
+            <div class="page-footer">Halaman 5</div>
+        </div>
+        <!-- AKHIR HALAMAN 5 -->
+
+
+        <!-- ==========================================
+            HALAMAN 6: LANJUT PEMBAHASAN & KESIMPULAN
+        ========================================== -->
+        <div class="page">
+            <div class="page-header">Dimas Arif Fikriawan | Perancangan Ulang Identity Branding</div>
 
             <h3>C. Implementasi dan Pengujian</h3>
             <p>Pengujian performa komputasi menunjukkan bahwa format murni berbasis vektor menghasilkan kompresi data yang sangat optimal, dengan ukuran file akhir di bawah 12 KB. Pengurangan beban data aset ini berkontribusi langsung pada akselerasi kecepatan pemuatan halaman web dari semula 140ms menjadi hanya 12ms. Visualisasi logo terbukti konsisten, tajam, dan tidak pecah meski dimuat pada layar beresolusi sangat tinggi maupun saat diaktifkan dalam skema mode gelap.</p>
@@ -553,18 +571,31 @@
             <h2>V. Kesimpulan</h2>
             <p>Riset perancangan ulang sistem <i>identity branding</i> Perusahaan Cerah telah berhasil diselesaikan secara tuntas dengan mengacu pada metodologi <i>Design Thinking</i>. Penggunaan bentuk geometris minimalis yang dikombinasikan dengan pengaplikasian rumpun huruf modern Sans-Serif terbukti secara teknis mampu menyelesaikan kendala distorsi visual, memberikan tingkat skalabilitas tinggi, serta mempertahankan efisiensi rendering halaman sistem digital yang optimal pada gawai seluler. Respons positif dari sampel pengguna mengukuhkan bahwa rancangan identitas visual baru ini sangat layak dan siap diimplementasikan.</p>
 
-            <h2>Daftar Pustaka</h2>
+            <div class="page-footer">Halaman 6</div>
+        </div>
+        <!-- AKHIR HALAMAN 6 -->
+
+
+        <!-- ==========================================
+            HALAMAN 7: DAFTAR PUSTAKA (DIPASTIKAN TAMPIL)
+        ========================================== -->
+        <div class="page">
+            <div class="page-header">Dimas Arif Fikriawan | Perancangan Ulang Identity Branding</div>
+
+            <h2>VI. Daftar Pustaka</h2>
             <ul class="reference-list">
                 <li>Anggraini, S., & Natasia, S. R. (2020). Pengembangan antarmuka pengguna aplikasi mobile menggunakan metode Design Thinking. <i>Jurnal RESTI</i>, 4(4), 670–678.</li>
                 <li>Hidayat, R., & Rahmawati, A. (2022). Perancangan ulang identitas visual dalam meningkatkan citra merek platform digital. <i>Jurnal Nawala Visual</i>, 4(1), 25–34.</li>
                 <li>Pradana, A. W., & Nugroho, S. (2021). Penerapan format grafik vektor (SVG) untuk optimalisasi performa rendering antarmuka web responsif. <i>Jurnal JTIIK</i>, 8(3), 511–520.</li>
                 <li>Saraswati, D. K., & Kurniawan, H. (2023). Analisis keterbacaan tipografi sans-serif pada layar perangkat seluler. <i>Jurnal Tingkat Sarjana Senirupa dan Desain</i>, 2(2), 89–98.</li>
                 <li>Cooper, A., Reimann, R., & Cronin, D. (2014). <i>About Face: The Essentials of Interaction Design</i>. Wiley.</li>
+                <li>Norman, D. A. (2013). <i>The Design of Everyday Things</i>. Basic Books.</li>
+                <li>Kotler, P., & Keller, K. L. (2016). <i>Marketing Management</i> (15th ed.). Pearson Education.</li>
             </ul>
 
-            <div class="page-footer">Halaman 5</div>
+            <div class="page-footer">Halaman 7</div>
         </div>
-        <!-- AKHIR HALAMAN 5 -->
+        <!-- AKHIR HALAMAN 7 -->
 
     </div>
 
@@ -580,11 +611,11 @@
                     <meta charset='utf-8'>
                     <title>Jurnal Dimas Arif Fikriawan</title>
                     <style>
-                        @page { size: 21cm 29.7cm; margin: 2.54cm; mso-page-orientation: portrait; }
+                        @page { size: 21cm 29.7cm; margin: 4cm 3cm 3cm 3cm; mso-page-orientation: portrait; }
                         body { font-family: 'Tinos', 'Times New Roman', serif; font-size: 11pt; line-height: 1.5; text-align: justify; margin: 0; mso-line-height-rule: exactly; }
                         .page { page-break-after: always; margin: 0; padding: 0; width: 100%; min-height: auto; }
                         .page:last-child { page-break-after: auto; }
-                        h2 { font-size: 12pt; font-weight: bold; text-transform: uppercase; text-align: center; margin-top: 24px; margin-bottom: 10px; mso-heading-level: 2; }
+                        h2 { font-size: 12pt; font-weight: bold; text-transform: uppercase; text-align: center; margin-top: 24px; margin-bottom: 10px; mso-heading-level: 2; page-break-before: always; }
                         h3 { font-size: 11pt; font-weight: bold; margin-top: 14px; margin-bottom: 6px; mso-heading-level: 3; }
                         p { text-indent: 1.25cm; margin-bottom: 12px; text-align: justify; line-height: 1.5; mso-pagination: widow-orphan; }
                         p.no-indent { text-indent: 0cm; }
@@ -592,7 +623,7 @@
                         table { width: 100%; border-collapse: collapse; margin: 15px 0; mso-table-lspace: 0pt; mso-table-rspace: 0pt; }
                         th, td { border: 1px solid #000; padding: 8px; text-align: left; }
                         th { background-color: #f2f2f2; font-weight: bold; text-align: center; }
-                        .reference-list { padding-left: 0; list-style: none; margin-left: 0; }
+                        .reference-list { padding-left: 0; list-style: none; margin-left: 0; page-break-before: always; }
                         .reference-list li { text-indent: -1.25cm; padding-left: 1.25cm; margin-bottom: 10px; mso-list: l0 level1 lfo1; }
                         .caption { font-size: 9.5pt; font-style: italic; text-align: center; margin-top: 4px; }
                         .page-header, .page-footer { display: block; font-size: 9pt; text-align: center; font-style: italic; margin: 10px 0; }
@@ -611,13 +642,12 @@
         }
 
         // ======================================================
-        // ✅ SISTEM PDF DIPERBAIKI TOTAL - GAMBAR AMAN
+        // ✅ SISTEM PDF DIPERBAIKI: POSISI & HALAMAN PAS
         // ======================================================
         async function exportToPDF() {
             const btn = document.getElementById('pdfBtn');
             const originalText = btn.innerText;
             
-            // Ubah tampilan tombol saat proses
             btn.innerText = "⌛ Sedang Membuat PDF...";
             btn.disabled = true;
             btn.classList.add('btn-loading');
@@ -636,30 +666,30 @@
                 for (let i = 0; i < pages.length; i++) {
                     const canvas = await html2canvas(pages[i], {
                         scale: 2,
-                        useCORS: true,       // Izin akses gambar
-                        allowTaint: false,   // Cegah kontaminasi keamanan
+                        useCORS: true,
+                        allowTaint: false,
                         logging: false,
                         backgroundColor: '#ffffff',
-                        windowWidth: pages[i].scrollWidth,
-                        windowHeight: pages[i].scrollHeight
+                        width: 21 * 37.8, // Konversi cm ke piksel pas ukuran A4
+                        height: 29.7 * 37.8,
+                        windowWidth: 21 * 37.8,
+                        windowHeight: 29.7 * 37.8
                     });
                     
                     const imgData = canvas.toDataURL('image/png');
-                    const imgWidth = 21; // Lebar A4
-                    const imgHeight = (canvas.height * imgWidth) / canvas.width;
+                    const imgWidth = 21;
+                    const imgHeight = 29.7; // Pas tinggi A4
 
                     if (i > 0) doc.addPage();
                     doc.addImage(imgData, 'PNG', 0, 0, imgWidth, imgHeight);
                 }
 
-                // Simpan file
                 doc.save('JURNAL_DIMAS_ARIF_FIKRIAWAN.pdf');
-                alert('✅ PDF Berhasil Dibuat!');
+                alert('✅ PDF Berhasil Dibuat! Semua halaman lengkap & rapi.');
 
             } catch (error) {
-                alert('❌ Masalah: ' + error.message + '\n\nCara Mengatasi:\n1. Pastikan nama file gambar tidak ada spasi\n2. Letakkan file gambar dan file ini di folder yang SAMA\n3. Nama file gambar pakai huruf kecil semua');
+                alert('❌ Masalah: ' + error.message + '\n\nPastikan file gambar ada di folder yang sama.');
             } finally {
-                // Kembalikan tombol ke semula
                 btn.innerText = originalText;
                 btn.disabled = false;
                 btn.classList.remove('btn-loading');
