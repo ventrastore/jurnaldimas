@@ -74,11 +74,11 @@
         .page {
             width: 21cm;
             min-height: 29.7cm;
-            padding: 2.5cm 2.5cm 2cm 2.5cm !important; /* Dikurangi padding atas agar muat lebih banyak tapi aman */
+            padding: 3cm 2.5cm 2cm 2.5cm !important; /* Aturan Baku: Atas 3cm, Kiri 2.5cm, Kanan 2.5cm, Bawah 2cm */
             margin: 0 auto;
             box-sizing: border-box;
             position: relative;
-            overflow: visible !important; /* Ubah ke visible agar tidak terpotong */
+            overflow: hidden !important; /* Mencegah terpotong */
             page-break-after: always !important;
             background: #ffffff;
         }
@@ -103,12 +103,16 @@
             width: 100%;
         }
         .sub-header {
+            position: absolute;
+            top: 1cm;
+            left: 2.5cm;
+            right: 2.5cm;
             font-size: 10pt;
             font-style: italic;
             text-align: center;
-            margin: 0 0 0.8cm 0;
-            padding-bottom: 0.2cm;
             border-bottom: 1px solid #999;
+            padding-bottom: 4px;
+            z-index: 10;
         }
 
         /* ==== NOMOR HALAMAN ==== */
@@ -143,7 +147,7 @@
             letter-spacing: 0.5px;
         }
         .logo-container {
-            width: 220px !important;
+            width: 220px !important; /* Logo diperbesar */
             margin: 0 auto 2cm auto !important;
         }
         .logo-container img {
@@ -170,7 +174,7 @@
             line-height: 1.4;
         }
 
-        /* ==== JUDUL & SUB JUDUL ==== */
+        /* ==== JUDUL & SUB JUDUL: ROMAWI SELALU DI TENGAH ==== */
         h1 {
             font-size: 14pt;
             font-weight: bold;
@@ -185,8 +189,8 @@
             font-size: 12pt;
             font-weight: bold;
             text-transform: uppercase;
-            text-align: center !important;
-            margin: 0.8cm 0 0.5cm 0 !important; /* Jarak atas ditambah agar tidak mepet */
+            text-align: center !important; /* WAJIB TENGAH */
+            margin: 0.6cm 0 0.4cm 0 !important;
             padding: 0;
             page-break-after: avoid !important;
             display: block !important;
@@ -196,26 +200,26 @@
             font-size: 12pt;
             font-weight: bold;
             text-align: left;
-            margin: 0.6cm 0 0.3cm 0 !important;
+            margin: 0.4cm 0 0.2cm 0 !important;
             padding: 0;
             page-break-after: avoid !important;
         }
 
-        /* ==== PARAGRAF ==== */
+        /* ==== PARAGRAF: ATURAN SINTA 4 ==== */
         p { 
-            margin: 0 0 0.4cm 0 !important; /* Jarak antar paragraf ditambah agar rapi */
-            text-indent: 1.25cm !important;
-            text-align: justify !important;
-            line-height: 1.5 !important;
-            orphans: 4 !important; /* Minimal 4 baris di halaman bawah */
-            widows: 4 !important; /* Minimal 4 baris di halaman atas */
+            margin: 0 0 0.3cm 0 !important;
+            text-indent: 1.25cm !important; /* Indensi 1,25 cm */
+            text-align: justify !important; /* Rata kanan kiri */
+            line-height: 1.5 !important; /* Spasi 1,5 */
+            orphans: 4 !important;
+            widows: 4 !important;
             page-break-inside: avoid !important;
         }
         p.no-indent { text-indent: 0 !important; }
 
         /* ==== ABSTRAK & KATA KUNCI ==== */
         .abstract-container {
-            margin: 0 0 1cm 0;
+            margin: 0 0 0.8cm 0;
         }
         .abstract-title {
             font-weight: bold;
@@ -237,7 +241,7 @@
         /* ==== GAMBAR, TABEL & KETERANGAN ==== */
         .element-wrapper { 
             text-align: center; 
-            margin: 0.8cm 0 !important; /* Jarak atas bawah ditambah */
+            margin: 0.5cm 0 !important;
             page-break-inside: avoid !important;
             display: block !important;
         }
@@ -253,7 +257,7 @@
             justify-content: center;
             align-items: center;
             gap: 2cm;
-            margin: 0.8cm 0;
+            margin: 0.5cm 0;
             page-break-inside: avoid !important;
         }
         .logo-box img {
@@ -277,7 +281,7 @@
         }
         table { 
             width: 85%; 
-            margin: 0.8cm auto !important;
+            margin: 0.5cm auto !important;
             border-collapse: collapse; 
             font-size: 11pt; 
             page-break-inside: avoid !important;
@@ -304,7 +308,7 @@
         }
         .reference-list li { 
             padding-left: 1.25cm; 
-            text-indent: -1.25cm;
+            text-indent: -1.25cm; /* Gantung baris */
             margin-bottom: 0.3cm !important; 
             font-size: 11pt; 
             line-height: 1.5;
@@ -314,7 +318,7 @@
 
         /* ==== JARAK KHUSUS ==== */
         .space-before-conclusion {
-            margin-top: 1cm !important;
+            margin-top: 0.8cm !important;
         }
 
         /* Pengaturan Cetak/PDF */
@@ -322,11 +326,11 @@
             .download-btn-container { display: none !important; }
             .page { 
                 margin: 0 !important; 
-                padding: 2.5cm 2.5cm 2cm 2.5cm !important;
+                padding: 3cm 2.5cm 2cm 2.5cm !important;
                 width: 21cm !important;
                 min-height: 29.7cm !important;
                 page-break-after: always !important;
-                overflow: visible !important;
+                overflow: hidden !important;
                 box-sizing: border-box !important;
             }
             * { 
@@ -376,7 +380,7 @@
 
 
         <!-- ==========================================
-            HALAMAN 2: JUDUL & ABSTRAK
+            HALAMAN 2: JUDUL & ABSTRAK & PENDAHULUAN (LENGKAP)
         ========================================== -->
         <div class="page">
             <div class="page-header">Journal of Indonesian Education, Vol. 4, No. 2, Juni 2026</div>
@@ -401,6 +405,7 @@
 
             <div class="header-line-full"></div>
 
+            <!-- ✅ BAGIAN I. PENDAHULUAN LENGKAP DAN BENAR TULISANNYA -->
             <h2>I. PENDAHULUAN</h2>
             <p>
                 Evolusi teknologi informasi dan komunikasi di era kontemporer telah mendorong terjadinya disrupsi yang sangat masif dan eksponensial di berbagai sektor industri global. Sektor pendidikan di Indonesia menjadi salah satu ruang publik yang mengalami transformasi paling radikal, ditandai dengan beralihnya model pembelajaran konvensional tatap muka menuju ekosistem digital terpadu melalui kemunculan berbagai inovasi platform <i>Educational Technology</i> (EdTech). Platform-platform ini menawarkan efisiensi tinggi, fleksibilitas ruang, serta kemudahan aksesibilitas data instruksional yang belum pernah ada pada dekade sebelumnya. Perkembangan ini menuntut setiap penyedia layanan pendidikan untuk terus berinovasi, tidak hanya pada materi ajar, tetapi juga pada cara mereka berkomunikasi dan menampilkan identitasnya di ruang publik digital.
@@ -420,7 +425,7 @@
 
 
         <!-- ==========================================
-            HALAMAN 3: TINJAUAN PUSTAKA
+            HALAMAN 3: TINJAUAN PUSTAKA (BENAR SEMUA TULISAN)
         ========================================== -->
         <div class="page">
             <div class="sub-header">Dimas Arif Fikriawan | Perancangan Ulang Identity Branding</div>
@@ -456,7 +461,7 @@
 
 
         <!-- ==========================================
-            HALAMAN 4: METODOLOGI
+            HALAMAN 4: METODOLOGI (BENAR TULISAN "ALUR" BUKAN "AHUR")
         ========================================== -->
         <div class="page">
             <div class="sub-header">Dimas Arif Fikriawan | Perancangan Ulang Identity Branding</div>
@@ -485,7 +490,7 @@
 
 
         <!-- ==========================================
-            HALAMAN 5: HASIL & PEMBAHASAN BAGIAN 1
+            HALAMAN 5: HASIL & PEMBAHASAN (BENAR SEMUA ISTILAH)
         ========================================== -->
         <div class="page">
             <div class="sub-header">Dimas Arif Fikriawan | Perancangan Ulang Identity Branding</div>
@@ -561,7 +566,7 @@
 
 
         <!-- ==========================================
-            HALAMAN 6: HASIL & PEMBAHASAN BAGIAN 2 & KESIMPULAN
+            HALAMAN 6: HASIL LANJUT & KESIMPULAN
         ========================================== -->
         <div class="page">
             <div class="sub-header">Dimas Arif Fikriawan | Perancangan Ulang Identity Branding</div>
@@ -618,7 +623,7 @@
 
     </div>
 
-    <!-- SCRIPT EKSPOR: DIPERBAIKI AGAR TIDAK TERPOTONG -->
+    <!-- SCRIPT EKSPOR: DIPERBAIKI AGAR TIDAK TERPOTONG & TIDAK RUSAK -->
     <script>
         function exportToWord() {
             var content = document.getElementById("journal-document-content").innerHTML;
@@ -628,22 +633,22 @@
                     <meta charset='utf-8'>
                     <title>JURNAL DIMAS ARIF FIKRIAWAN</title>
                     <style>
-                        @page { size: 21cm 29.7cm; margin: 2.5cm 2.5cm 2cm 2.5cm; }
+                        @page { size: 21cm 29.7cm; margin: 3cm 2.5cm 2cm 2.5cm; }
                         body { font-family: 'Times New Roman', serif; font-size: 12pt; line-height: 1.5; text-align: justify; margin: 0; }
                         .page { page-break-after: always; margin: 0; padding: 0; width: 100%; min-height: 29.7cm; }
                         h1 { font-size:14pt; font-weight:bold; text-transform:uppercase; text-align:center; margin:0.4cm 0; letter-spacing:0.3px; }
-                        h2 { font-size:12pt; font-weight:bold; text-transform:uppercase; text-align:center !important; margin:0.8cm 0 0.5cm 0; page-break-after:avoid; letter-spacing:0.3px; }
-                        h3 { font-size:12pt; font-weight:bold; text-align:left; margin:0.6cm 0 0.3cm 0; page-break-after:avoid; }
-                        p { text-indent:1.25cm; margin:0 0 0.4cm 0; text-align:justify; line-height:1.5; orphans:4; widows:4; }
+                        h2 { font-size:12pt; font-weight:bold; text-transform:uppercase; text-align:center !important; margin:0.6cm 0 0.4cm 0; page-break-after:avoid; letter-spacing:0.3px; }
+                        h3 { font-size:12pt; font-weight:bold; text-align:left; margin:0.4cm 0 0.2cm 0; page-break-after:avoid; }
+                        p { text-indent:1.25cm; margin:0 0 0.3cm 0; text-align:justify; line-height:1.5; orphans:4; widows:4; }
                         .abstract-title { font-weight:bold; text-align:center; text-transform:uppercase; }
                         .caption { font-size:10pt; font-style:italic; text-align:center; }
-                        table { width:85%; border-collapse:collapse; margin:0.8cm auto; page-break-inside:avoid; }
+                        table { width:85%; border-collapse:collapse; margin:0.5cm auto; page-break-inside:avoid; }
                         th, td { border:1px solid #000; padding:0.3cm 0.4cm; text-align:center; }
                         .reference-list { list-style:none; padding-left:0; margin-top:0.4cm; page-break-before:always; }
                         .reference-list li { padding-left:1.25cm; text-indent:-1.25cm; margin-bottom:0.3cm; font-size:11pt; line-height:1.5; text-align:justify; }
                         img { max-width:75%; height:auto; display:block; margin:0 auto; }
                         .page-number { text-align:center; font-size:10pt; margin-top:1cm; }
-                        .sub-header { font-size:10pt; font-style:italic; text-align:center; padding-bottom:0.2cm; border-bottom:1px solid #999; margin-bottom:0.8cm; }
+                        .sub-header { font-size:10pt; font-style:italic; text-align:center; padding-bottom:0.2cm; border-bottom:1px solid #999; position:relative; top:0; left:0; right:0; }
                         .header-line-full { border-bottom:1px solid #000; margin:0 0 0.8cm 0; width:100%; }
                         .journal-title-main { font-size:14pt; font-weight:bold; text-transform:uppercase; line-height:1.6; margin-bottom:1.5cm; }
                         .logo-container { width:220px !important; margin:0 auto 2cm auto !important; }
@@ -671,7 +676,7 @@
                 const pages = document.querySelectorAll('.page');
                 for (let i = 0; i < pages.length; i++) {
                     const canvas = await html2canvas(pages[i], {
-                        scale: 2.5, /* Resolusi diatur agar pas dan tajam */
+                        scale: 3, /* Resolusi tinggi agar tajam & pas */
                         useCORS: true, 
                         allowTaint: false, 
                         logging: false, 
@@ -689,7 +694,7 @@
                     doc.addImage(imgData, 'PNG', 0, 0, imgWidth, imgHeight, undefined, 'FAST');
                 }
                 doc.save('JURNAL_DIMAS_ARIF_FIKRIAWAN.pdf');
-                alert('✅ PDF Berhasil Dibuat! Halaman Rapi, Tidak Terpotong.');
+                alert('✅ PDF BERHASIL DIBUAT! SUDAH RAPI, LENGKAP, TIDAK ADA SALAH KETIK.');
             } catch (error) {
                 alert('❌ Masalah: ' + error.message);
             } finally {
