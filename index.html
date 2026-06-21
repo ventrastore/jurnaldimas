@@ -10,15 +10,18 @@
 
   <style>
     * { box-sizing: border-box; }
+
     html, body {
       margin: 0;
       padding: 0;
-      background: #d9d9d9;
+      background: #d8d8d8;
       color: #000;
       font-family: "Times New Roman", Times, serif;
       font-size: 12pt;
-      line-height: 1.5;
+      line-height: 1.45;
       text-align: justify;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
     }
 
     .download-btn-container {
@@ -42,6 +45,7 @@
       cursor: pointer;
       box-shadow: 0 4px 10px rgba(0,0,0,0.15);
       transition: 0.2s ease;
+      font-family: "Times New Roman", serif;
     }
 
     .btn-download:hover {
@@ -59,6 +63,7 @@
     .btn-pdf:hover {
       background: #e53935;
       border-color: #e53935;
+      color: #fff;
     }
 
     .btn-loading {
@@ -73,13 +78,14 @@
     .page {
       width: 210mm;
       min-height: 297mm;
-      margin: 0 auto 14px auto;
+      margin: 0 auto 10px auto;
       background: #fff;
-      padding: 30mm 25mm 20mm 25mm;
+      padding: 25mm 22mm 18mm 22mm;
       position: relative;
       overflow: hidden;
       page-break-after: always;
       box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+      box-sizing: border-box;
     }
 
     .page:last-child {
@@ -92,27 +98,32 @@
       align-items: center;
       text-align: center;
       justify-content: flex-start;
-      padding-top: 24mm;
+      padding-top: 18mm;
     }
 
     .journal-title-main {
       font-size: 14pt;
       font-weight: bold;
       text-transform: uppercase;
-      line-height: 1.6;
-      margin: 0 0 14mm 0;
-      letter-spacing: 0.4px;
-    }
-
-    .logo-container {
-      width: 40mm;
-      margin: 0 auto 15mm auto;
+      line-height: 1.55;
+      margin: 0 0 12mm 0;
+      letter-spacing: 0.3px;
       text-align: center;
     }
 
+    .logo-container {
+      width: 320px;
+      height: 340px;
+      margin: 0 auto 12mm auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
     .logo-container img {
-      width: 100%;
-      height: auto;
+      width: 320px;
+      height: 340px;
+      object-fit: contain;
       display: block;
     }
 
@@ -121,7 +132,7 @@
       font-weight: bold;
       text-transform: uppercase;
       line-height: 1.45;
-      margin: 0 0 16mm 0;
+      margin: 0 0 14mm 0;
       max-width: 160mm;
       text-align: center;
     }
@@ -130,20 +141,22 @@
       font-size: 12pt;
       font-weight: bold;
       margin-bottom: 2mm;
+      text-align: center;
     }
 
     .author-affiliation {
       font-size: 11pt;
       font-style: italic;
-      line-height: 1.4;
+      line-height: 1.35;
+      text-align: center;
     }
 
     .page-header,
     .sub-header {
       position: absolute;
       top: 10mm;
-      left: 25mm;
-      right: 25mm;
+      left: 22mm;
+      right: 22mm;
       text-align: center;
       font-size: 9.5pt;
       font-style: italic;
@@ -179,21 +192,21 @@
       font-weight: bold;
       text-transform: uppercase;
       text-align: center;
-      margin: 6mm 0 4mm 0;
+      margin: 4mm 0 3mm 0;
     }
 
     h3 {
       font-size: 12pt;
       font-weight: bold;
       text-align: left;
-      margin: 4mm 0 2mm 0;
+      margin: 3mm 0 1.5mm 0;
     }
 
     p {
-      margin: 0 0 3mm 0;
+      margin: 0 0 2.5mm 0;
       text-indent: 12.5mm;
       text-align: justify;
-      line-height: 1.5;
+      line-height: 1.45;
       orphans: 3;
       widows: 3;
     }
@@ -203,10 +216,10 @@
     }
 
     .abstract-container {
-      margin-bottom: 8mm;
+      margin-bottom: 6mm;
       border-top: 0.3mm solid #000;
       border-bottom: 0.3mm solid #000;
-      padding: 4mm 0;
+      padding: 3mm 0;
     }
 
     .abstract-title {
@@ -214,19 +227,19 @@
       text-transform: uppercase;
       text-align: center;
       font-size: 12pt;
-      margin-bottom: 3mm;
+      margin-bottom: 2mm;
     }
 
     .keywords {
-      margin-top: 3mm;
+      margin-top: 2mm;
       font-size: 11pt;
-      line-height: 1.4;
+      line-height: 1.35;
       text-indent: 12.5mm;
     }
 
     .element-wrapper {
       text-align: center;
-      margin: 5mm 0;
+      margin: 4mm 0;
       page-break-inside: avoid;
     }
 
@@ -241,8 +254,8 @@
       display: flex;
       justify-content: center;
       align-items: flex-start;
-      gap: 18mm;
-      margin: 4mm 0;
+      gap: 14mm;
+      margin: 3mm 0;
       flex-wrap: wrap;
     }
 
@@ -266,8 +279,8 @@
     }
 
     table {
-      width: 90%;
-      margin: 5mm auto;
+      width: 95%;
+      margin: 4mm auto;
       border-collapse: collapse;
       font-size: 11pt;
       page-break-inside: avoid;
@@ -275,7 +288,7 @@
 
     th, td {
       border: 0.3mm solid #000;
-      padding: 3mm 4mm;
+      padding: 2.5mm 3.5mm;
       text-align: center;
       vertical-align: middle;
     }
@@ -294,23 +307,25 @@
     .reference-list li {
       padding-left: 12.5mm;
       text-indent: -12.5mm;
-      margin-bottom: 3mm;
+      margin-bottom: 2.5mm;
       font-size: 11pt;
-      line-height: 1.5;
+      line-height: 1.45;
       text-align: justify;
       page-break-inside: avoid;
     }
 
     .space-before-conclusion {
-      margin-top: 8mm;
+      margin-top: 6mm;
     }
 
     .box-note {
       border: 0.3mm solid #000;
-      padding: 4mm;
+      padding: 3mm 4mm;
       margin: 4mm 0;
       font-size: 11pt;
     }
+
+    a { color: inherit; text-decoration: none; }
 
     @media print {
       body { background: #fff; }
@@ -341,7 +356,7 @@
 
       <div class="logo-container">
         <img src="logokampus.png" alt="Logo Kampus"
-             onerror="this.onerror=null;this.outerHTML='<div style=&quot;width:40mm;height:40mm;border:1px solid #000;display:flex;align-items:center;justify-content:center;font-size:10pt;margin:0 auto;&quot;>Logo Kampus</div>';">
+             onerror="this.onerror=null;this.outerHTML='<div style=&quot;width:320px;height:340px;border:1px solid #000;display:flex;align-items:center;justify-content:center;font-size:10pt;margin:0 auto;&quot;>Logo Kampus</div>';">
       </div>
 
       <div class="article-title">
@@ -353,6 +368,7 @@
         NIM 24.240.0075<br>
         Program Studi Teknik Informatika<br>
         Institut Widya Pratama<br>
+        Email: <a href="mailto:dimasfikriawan0@gmail.com">dimasfikriawan0@gmail.com</a><br>
         Tahun 2026
       </div>
     </div>
@@ -436,13 +452,11 @@
         <div class="logo-comparison">
           <div class="logo-box">
             <img src="logosebelum.png" alt="Logo Sebelum"
-                 onerror="this.onerror=null;this.outerHTML='<div style=&quot;width:42mm;height:42mm;border:1px dashed #000;display:flex;align-items:center;justify-content:center;font-size:10pt;margin:0 auto;&quot;>Logo Lama</div><div class=&quot;logo-label&quot;>Logo Sebelum</div>';">
-            <div class="logo-label">Logo Sebelum</div>
+                 onerror="this.onerror=null;this.outerHTML='<div style=&quot;width:42mm;height:42mm;border:1px dashed #000;display:flex;align-items:center;justify-content:center;font-size:10pt;margin:0 auto;&quot;>Logo Lama</div>';">
           </div>
           <div class="logo-box">
             <img src="logosesudah.png" alt="Logo Sesudah"
-                 onerror="this.onerror=null;this.outerHTML='<div style=&quot;width:42mm;height:42mm;border:1px dashed #000;display:flex;align-items:center;justify-content:center;font-size:10pt;margin:0 auto;&quot;>Logo Baru</div><div class=&quot;logo-label&quot;>Logo Sesudah</div>';">
-            <div class="logo-label">Logo Sesudah</div>
+                 onerror="this.onerror=null;this.outerHTML='<div style=&quot;width:42mm;height:42mm;border:1px dashed #000;display:flex;align-items:center;justify-content:center;font-size:10pt;margin:0 auto;&quot;>Logo Baru</div>';">
           </div>
         </div>
         <div class="caption">Gambar 2. Perbandingan Logo Sebelum dan Sesudah</div>
@@ -591,20 +605,20 @@
           <meta charset="utf-8">
           <title>Jurnal Dimas Arif Fikriawan</title>
           <style>
-            @page { size: A4; margin: 30mm 25mm 20mm 25mm; }
-            body { font-family: "Times New Roman", serif; font-size: 12pt; line-height: 1.5; text-align: justify; }
+            @page { size: A4; margin: 25mm 22mm 18mm 22mm; }
+            body { font-family: "Times New Roman", serif; font-size: 12pt; line-height: 1.45; text-align: justify; }
             .page { page-break-after: always; width: 100%; min-height: 297mm; }
             .page:last-child { page-break-after: auto; }
             h1 { font-size: 14pt; font-weight: bold; text-transform: uppercase; text-align: center; }
             h2 { font-size: 12pt; font-weight: bold; text-transform: uppercase; text-align: center; }
             h3 { font-size: 12pt; font-weight: bold; text-align: left; }
-            p { text-indent: 12.5mm; margin: 0 0 3mm 0; }
+            p { text-indent: 12.5mm; margin: 0 0 2.5mm 0; }
             p.no-indent { text-indent: 0; }
             .caption { font-size: 10pt; font-style: italic; text-align: center; }
-            table { width: 90%; border-collapse: collapse; margin: 5mm auto; }
-            th, td { border: 1px solid #000; padding: 3mm 4mm; text-align: center; }
+            table { width: 95%; border-collapse: collapse; margin: 4mm auto; }
+            th, td { border: 1px solid #000; padding: 2.5mm 3.5mm; text-align: center; }
             .reference-list { list-style: none; padding-left: 0; }
-            .reference-list li { padding-left: 12.5mm; text-indent: -12.5mm; margin-bottom: 3mm; }
+            .reference-list li { padding-left: 12.5mm; text-indent: -12.5mm; margin-bottom: 2.5mm; }
           </style>
         </head>
         <body>${content}</body>
