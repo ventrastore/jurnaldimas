@@ -16,114 +16,100 @@
         /* TOMBOL UNDUH */
         .download-btn-container {
             position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 9999;
+            top: 10px;
+            right: 10px;
+            z-index: 99999;
             display: flex;
-            gap: 10px;
+            gap: 8px;
             flex-direction: column;
         }
         .btn-download {
             background-color: #003366;
             color: #FFD200;
             border: 2px solid #003366;
-            padding: 12px 24px;
+            padding: 10px 20px;
             font-size: 11pt;
             font-weight: bold;
             font-family: 'Times New Roman', serif;
-            border-radius: 6px;
+            border-radius: 4px;
             cursor: pointer;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-            transition: all 0.2s ease;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
         }
         .btn-download:hover {
             background-color: #FFD200;
             color: #003366;
-            transform: translateY(-2px);
         }
-        .btn-pdf {
-            background-color: #c00000;
-            color: #ffffff;
-            border-color: #c00000;
-        }
-        .btn-pdf:hover {
-            background-color: #ff4444;
-            color: #ffffff;
-            border-color: #ff4444;
-        }
-        .btn-loading {
-            opacity: 0.7;
-            cursor: not-allowed;
-        }
+        .btn-pdf { background-color: #c00000; color: #fff; border-color: #c00000; }
+        .btn-pdf:hover { background-color: #ff4444; color: #fff; border-color: #ff4444; }
+        .btn-loading { opacity: 0.7; cursor: not-allowed; }
 
-        /* ==== PENGATURAN UTAMA: STANDAR SINTA 4 & JURNAL ILMIAH ==== */
+        /* ==== PENGATURAN UTAMA ==== */
         body {
             font-family: 'Times New Roman', Times, serif !important;
             font-size: 12pt !important;
             line-height: 1.5 !important;
-            color: #000000;
+            color: #000;
+            background: #fff;
             margin: 0;
             padding: 0;
-            background: #ffffff;
             text-align: justify !important;
-            -webkit-print-color-adjust: exact !important;
-            print-color-adjust: exact !important;
         }
 
-        /* UKURAN KERTAS A4 & BATAS TEPI PRESISI (Aturan SINTA 4) */
+        /* UKURAN KERTAS A4 & BATAS TEPI BAKU */
         .page {
-            width: 21cm;
-            min-height: 29.7cm;
-            padding: 3cm 2.5cm 2cm 2.5cm !important; /* Aturan Baku: Atas 3cm, Kiri 2.5cm, Kanan 2.5cm, Bawah 2cm */
-            margin: 0 auto;
+            width: 210mm;
+            min-height: 297mm;
+            padding: 30mm 25mm 20mm 25mm !important; /* Atas 3cm, Kiri 2.5cm, Kanan 2.5cm, Bawah 2cm */
+            margin: 0 auto 10mm auto;
             box-sizing: border-box;
             position: relative;
-            overflow: hidden !important; /* Mencegah terpotong */
+            overflow: visible !important;
             page-break-after: always !important;
             background: #ffffff;
         }
         .page:last-child { page-break-after: auto !important; }
 
-        /* ==== HEADER & GARIS PEMISAH ==== */
+        /* ==== HEADER & SUB HEADER (DIPERBAIKI POSISINYA AGAR TIDAK GANGGU TEKS) ==== */
         .page-header {
             position: absolute;
-            top: 1cm;
-            left: 2.5cm;
-            right: 2.5cm;
+            top: 10mm;
+            left: 25mm;
+            right: 25mm;
             font-size: 9pt;
             font-style: italic;
             text-align: center;
             border-bottom: 1px solid #999;
-            padding-bottom: 4px;
+            padding-bottom: 3px;
             z-index: 10;
-        }
-        .header-line-full {
-            border-bottom: 1px solid #000;
-            margin: 0 0 0.8cm 0;
-            width: 100%;
+            background: #fff;
         }
         .sub-header {
             position: absolute;
-            top: 1cm;
-            left: 2.5cm;
-            right: 2.5cm;
-            font-size: 10pt;
+            top: 10mm;
+            left: 25mm;
+            right: 25mm;
+            font-size: 9pt;
             font-style: italic;
             text-align: center;
             border-bottom: 1px solid #999;
-            padding-bottom: 4px;
+            padding-bottom: 3px;
             z-index: 10;
+            background: #fff;
+        }
+        .header-line-full {
+            border-bottom: 1px solid #000;
+            margin: 0 0 8mm 0;
+            width: 100%;
         }
 
         /* ==== NOMOR HALAMAN ==== */
         .page-number {
             position: absolute;
-            bottom: 1cm;
+            bottom: 10mm;
             left: 0;
             right: 0;
             text-align: center;
             font-size: 10pt;
-            font-weight: normal;
         }
 
         /* ==== HALAMAN SAMPUL ==== */
@@ -133,223 +119,141 @@
             justify-content: flex-start;
             align-items: center;
             text-align: center;
-            min-height: 29.7cm;
-            padding: 2cm 2cm 0 2cm !important;
-            box-sizing: border-box;
+            padding: 20mm !important;
         }
         .journal-title-main {
             font-size: 14pt;
             font-weight: bold;
             text-transform: uppercase;
             line-height: 1.6;
-            margin-top: 0 !important;
-            margin-bottom: 1.5cm !important;
-            letter-spacing: 0.5px;
+            margin: 0 0 15mm 0;
         }
-        .logo-container {
-            width: 220px !important; /* Logo diperbesar */
-            margin: 0 auto 2cm auto !important;
-        }
-        .logo-container img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
+        .logo-container { width: 220px; margin: 0 0 20mm 0; }
+        .logo-container img { width: 100%; height: auto; }
         .article-title {
             font-size: 14pt;
             font-weight: bold;
             text-transform: uppercase;
             line-height: 1.5;
-            margin-bottom: 2.5cm !important;
-            max-width: 18cm;
+            margin: 0 0 25mm 0;
+            max-width: 180mm;
         }
-        .author-name {
-            font-size: 12pt;
-            font-weight: bold;
-            margin-bottom: 0.3cm;
-        }
-        .author-affiliation {
-            font-size: 11pt;
-            font-style: italic;
-            line-height: 1.4;
-        }
+        .author-name { font-size: 12pt; font-weight: bold; margin: 0 0 3mm 0; }
+        .author-affiliation { font-size: 11pt; font-style: italic; line-height: 1.4; }
 
-        /* ==== JUDUL & SUB JUDUL: ROMAWI SELALU DI TENGAH ==== */
+        /* ==== JUDUL & SUB JUDUL ==== */
         h1 {
             font-size: 14pt;
             font-weight: bold;
             text-transform: uppercase;
             text-align: center;
-            margin: 0 0 0.6cm 0;
-            padding: 0;
+            margin: 0 0 6mm 0;
             page-break-after: avoid !important;
-            letter-spacing: 0.3px;
         }
         h2 {
             font-size: 12pt;
             font-weight: bold;
             text-transform: uppercase;
-            text-align: center !important; /* WAJIB TENGAH */
-            margin: 0.6cm 0 0.4cm 0 !important;
-            padding: 0;
+            text-align: center !important;
+            margin: 8mm 0 4mm 0 !important;
             page-break-after: avoid !important;
-            display: block !important;
-            letter-spacing: 0.3px;
         }
         h3 {
             font-size: 12pt;
             font-weight: bold;
             text-align: left;
-            margin: 0.4cm 0 0.2cm 0 !important;
-            padding: 0;
+            margin: 6mm 0 2mm 0 !important;
             page-break-after: avoid !important;
         }
 
         /* ==== PARAGRAF: ATURAN SINTA 4 ==== */
         p { 
-            margin: 0 0 0.3cm 0 !important;
-            text-indent: 1.25cm !important; /* Indensi 1,25 cm */
-            text-align: justify !important; /* Rata kanan kiri */
-            line-height: 1.5 !important; /* Spasi 1,5 */
-            orphans: 4 !important;
-            widows: 4 !important;
+            margin: 0 0 3mm 0 !important;
+            text-indent: 12.5mm !important; /* Indensi 1,25 cm */
+            text-align: justify !important;
+            line-height: 1.5 !important;
+            orphans: 3 !important;
+            widows: 3 !important;
             page-break-inside: avoid !important;
         }
         p.no-indent { text-indent: 0 !important; }
 
-        /* ==== ABSTRAK & KATA KUNCI ==== */
-        .abstract-container {
-            margin: 0 0 0.8cm 0;
-        }
-        .abstract-title {
-            font-weight: bold;
-            text-transform: uppercase;
-            text-align: center;
-            margin-bottom: 0.3cm;
-            font-size: 12pt;
-        }
-        .keywords {
-            margin-top: 0.3cm;
-            font-size: 11pt;
-            line-height: 1.4;
-            text-indent: 1.25cm;
-        }
-        .keywords b {
-            font-style: normal;
-        }
+        /* ==== ABSTRAK ==== */
+        .abstract-container { margin: 0 0 8mm 0; }
+        .abstract-title { font-weight: bold; text-transform: uppercase; text-align: center; margin: 0 0 3mm 0; font-size: 12pt; }
+        .keywords { margin-top: 3mm; font-size: 11pt; line-height: 1.4; text-indent: 12.5mm; }
 
-        /* ==== GAMBAR, TABEL & KETERANGAN ==== */
+        /* ==== GAMBAR & TABEL ==== */
         .element-wrapper { 
             text-align: center; 
-            margin: 0.5cm 0 !important;
+            margin: 5mm 0 !important;
             page-break-inside: avoid !important;
-            display: block !important;
-        }
-        .img-custom {
-            max-width: 75%;
-            height: auto;
-            display: block;
-            margin: 0 auto;
-            border: none;
         }
         .logo-comparison {
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 2cm;
-            margin: 0.5cm 0;
+            gap: 20mm;
+            margin: 5mm 0;
             page-break-inside: avoid !important;
         }
-        .logo-box img {
-            max-width: 130px;
-            border: 1px solid #ccc;
-            padding: 6px;
-            background: #fff;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-        }
-        .logo-label {
-            font-size: 11pt;
-            font-weight: bold;
-            margin-top: 0.3cm;
-        }
-        .caption { 
-            font-size: 10pt; 
-            font-style: italic; 
-            margin-top: 0.2cm; 
-            text-align: center;
-            page-break-before: avoid !important;
-        }
+        .logo-box img { max-width: 130px; border: 1px solid #ccc; padding: 5px; background: #fff; }
+        .logo-label { font-size: 11pt; font-weight: bold; margin-top: 3mm; }
+        .caption { font-size: 10pt; font-style: italic; margin-top: 2mm; text-align: center; }
         table { 
             width: 85%; 
-            margin: 0.5cm auto !important;
+            margin: 5mm auto !important;
             border-collapse: collapse; 
             font-size: 11pt; 
             page-break-inside: avoid !important;
-            display: table !important;
-            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
         }
         th, td { 
             border: 1px solid #000; 
-            padding: 0.3cm 0.4cm;
+            padding: 3mm 4mm;
             text-align: center;
             vertical-align: middle;
         }
-        th { 
-            background-color: #f5f5f5; 
-            font-weight: bold;
-        }
+        th { background-color: #f5f5f5; font-weight: bold; }
 
         /* ==== DAFTAR PUSTAKA ==== */
         .reference-list { 
             list-style-type: none; 
             padding-left: 0; 
-            margin-top: 0.4cm !important;
+            margin-top: 4mm !important;
             page-break-before: always !important;
         }
         .reference-list li { 
-            padding-left: 1.25cm; 
-            text-indent: -1.25cm; /* Gantung baris */
-            margin-bottom: 0.3cm !important; 
+            padding-left: 12.5mm; 
+            text-indent: -12.5mm; 
+            margin-bottom: 3mm !important; 
             font-size: 11pt; 
             line-height: 1.5;
             text-align: justify;
             page-break-inside: avoid !important;
         }
 
-        /* ==== JARAK KHUSUS ==== */
-        .space-before-conclusion {
-            margin-top: 0.8cm !important;
-        }
-
-        /* Pengaturan Cetak/PDF */
+        /* ==== CETAK/PDF ==== */
         @media print {
             .download-btn-container { display: none !important; }
             .page { 
                 margin: 0 !important; 
-                padding: 3cm 2.5cm 2cm 2.5cm !important;
-                width: 21cm !important;
-                min-height: 29.7cm !important;
+                padding: 30mm 25mm 20mm 25mm !important;
+                width: 210mm !important;
+                min-height: 297mm !important;
                 page-break-after: always !important;
-                overflow: hidden !important;
-                box-sizing: border-box !important;
+                overflow: visible !important;
             }
-            * { 
-                box-sizing: border-box !important; 
-                page-break-inside: avoid !important;
-                orphans: 4 !important;
-                widows: 4 !important;
-            }
+            * { page-break-inside: avoid !important; orphans: 3 !important; widows: 3 !important; }
             h2, h3 { page-break-after: avoid !important; }
-            table, figure { page-break-inside: avoid !important; }
         }
     </style>
 </head>
 <body>
 
     <!-- TOMBOL EKSPOR -->
-    <div class="download-btn-container" id="action-layer">
-        <button class="btn-download" onclick="exportToWord()">📥 Unduh Format Word (.doc)</button>
-        <button class="btn-download btn-pdf" id="pdfBtn" onclick="exportToPDF()">📄 Unduh Format PDF (.pdf)</button>
+    <div class="download-btn-container">
+        <button class="btn-download" onclick="exportToWord()">📥 Unduh Word (.doc)</button>
+        <button class="btn-download btn-pdf" id="pdfBtn" onclick="exportToPDF()">📄 Unduh PDF (.pdf)</button>
     </div>
 
     <div id="journal-document-content">
@@ -387,9 +291,9 @@
             
             <h1>PERANCANGAN ULANG IDENTITY BRANDING MELALUI DESAIN LOGO BARU PADA PERUSAHAAN CERAH</h1>
             
-            <div style="text-align:center; font-size:11pt; margin-bottom:0.5cm;">
+            <div style="text-align:center; font-size:11pt; margin-bottom:5mm;">
                 Dimas Arif Fikriawan<br>
-                Program Studi Teknik Informatika, Institut Widya Pratama<br>
+                Program Studi Teknik Informatika, Institut Widya Pratama
             </div>
 
             <div class="abstract-container">
@@ -405,7 +309,7 @@
 
             <div class="header-line-full"></div>
 
-            <!-- ✅ BAGIAN I. PENDAHULUAN LENGKAP DAN BENAR TULISANNYA -->
+            <!-- ✅ BAGIAN I. PENDAHULUAN LENGKAP TIDAK TERPOTONG -->
             <h2>I. PENDAHULUAN</h2>
             <p>
                 Evolusi teknologi informasi dan komunikasi di era kontemporer telah mendorong terjadinya disrupsi yang sangat masif dan eksponensial di berbagai sektor industri global. Sektor pendidikan di Indonesia menjadi salah satu ruang publik yang mengalami transformasi paling radikal, ditandai dengan beralihnya model pembelajaran konvensional tatap muka menuju ekosistem digital terpadu melalui kemunculan berbagai inovasi platform <i>Educational Technology</i> (EdTech). Platform-platform ini menawarkan efisiensi tinggi, fleksibilitas ruang, serta kemudahan aksesibilitas data instruksional yang belum pernah ada pada dekade sebelumnya. Perkembangan ini menuntut setiap penyedia layanan pendidikan untuk terus berinovasi, tidak hanya pada materi ajar, tetapi juga pada cara mereka berkomunikasi dan menampilkan identitasnya di ruang publik digital.
@@ -425,7 +329,7 @@
 
 
         <!-- ==========================================
-            HALAMAN 3: TINJAUAN PUSTAKA (BENAR SEMUA TULISAN)
+            HALAMAN 3: TINJAUAN PUSTAKA
         ========================================== -->
         <div class="page">
             <div class="sub-header">Dimas Arif Fikriawan | Perancangan Ulang Identity Branding</div>
@@ -461,7 +365,7 @@
 
 
         <!-- ==========================================
-            HALAMAN 4: METODOLOGI (BENAR TULISAN "ALUR" BUKAN "AHUR")
+            HALAMAN 4: METODOLOGI
         ========================================== -->
         <div class="page">
             <div class="sub-header">Dimas Arif Fikriawan | Perancangan Ulang Identity Branding</div>
@@ -472,7 +376,7 @@
             </p>
             
             <div class="element-wrapper">
-                <div style="border:1px dashed #000; padding:0.25cm; font-weight:bold; display:inline-block; font-size:11pt; border-radius:3px;">
+                <div style="border:1px dashed #000; padding:2.5mm; font-weight:bold; display:inline-block; font-size:11pt; border-radius:3px;">
                     Empathize → Define → Ideate → Prototype → Test
                 </div>
                 <div class="caption">Gambar 1. Alur Siklus Operasional Metodologi Design Thinking</div>
@@ -490,7 +394,7 @@
 
 
         <!-- ==========================================
-            HALAMAN 5: HASIL & PEMBAHASAN (BENAR SEMUA ISTILAH)
+            HALAMAN 5: HASIL & PEMBAHASAN
         ========================================== -->
         <div class="page">
             <div class="sub-header">Dimas Arif Fikriawan | Perancangan Ulang Identity Branding</div>
@@ -503,7 +407,7 @@
             </p>
 
             <div class="element-wrapper">
-                <div style="font-weight:bold; margin-bottom:0.3cm; font-size:11pt;">Perbandingan Logo: Sebelum dan Sesudah</div>
+                <div style="font-weight:bold; margin-bottom:3mm; font-size:11pt;">Perbandingan Logo: Sebelum dan Sesudah</div>
                 <div class="logo-comparison">
                     <div class="logo-box">
                         <img src="logo_cerah_sebelum.png" alt="Logo Cerah Sebelum" onerror="this.parentElement.innerHTML='<div style=\'width:130px; height:90px; border:1px dashed #000; display:flex; align-items:center; justify-content:center; font-size:10pt;\'>Logo Lama</div>'">
@@ -566,7 +470,7 @@
 
 
         <!-- ==========================================
-            HALAMAN 6: HASIL LANJUT & KESIMPULAN
+            HALAMAN 6: ANALISIS & KESIMPULAN
         ========================================== -->
         <div class="page">
             <div class="sub-header">Dimas Arif Fikriawan | Perancangan Ulang Identity Branding</div>
@@ -579,15 +483,13 @@
                 Selain itu, komposisi bentuk geometris yang simetris memberikan kesan keseimbangan dan keadilan, nilai-nilai yang juga dipegang teguh oleh perusahaan. Pemilihan sudut-sudut yang membulat tidak hanya bertujuan untuk keindahan, tetapi juga memberikan kesan ramah dan mudah didekati, sesuai dengan karakter layanan pendidikan yang bersifat mendidik dan membimbing.
             </p>
 
-            <div style="text-align:center; border-top:1px solid #000; border-bottom:1px solid #000; padding:0.25cm 0; font-size:11pt; font-style:italic; margin:0.8cm 0; border-radius:2px;">
+            <div style="text-align:center; border-top:1px solid #000; border-bottom:1px solid #000; padding:2.5mm 0; font-size:11pt; font-style:italic; margin:8mm 0; border-radius:2px;">
                 Grafik 1. Hasil Evaluasi Empiris Desain Baru
             </div>
 
             <p>
                 Berdasarkan sajian data grafik di atas, rata-rata penilaian dari seluruh indikator menunjukkan tingkat kepuasan yang sangat tinggi di atas 80%. Indikator kesesuaian nilai menempati skor tertinggi yaitu mencapai angka 90%, menegaskan bahwa hasil rancangan logo baru ini mampu merepresentasikan identitas visi misi platform secara akurat. Indikator keunikan dan kemudahan pengenalan juga berada di angka 88% dan 92%, membuktikan bahwa desain baru ini berhasil menjadi pembeda yang kuat di pasar.
             </p>
-
-            <div class="space-before-conclusion"></div>
 
             <h2>V. KESIMPULAN</h2>
             <p>
@@ -623,7 +525,7 @@
 
     </div>
 
-    <!-- SCRIPT EKSPOR: DIPERBAIKI AGAR TIDAK TERPOTONG & TIDAK RUSAK -->
+    <!-- SCRIPT EKSPOR: DIPERBAIKI TOTAL AGAR TIDAK TERPOTONG -->
     <script>
         function exportToWord() {
             var content = document.getElementById("journal-document-content").innerHTML;
@@ -631,15 +533,15 @@
                 <html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'>
                 <head>
                     <meta charset='utf-8'>
-                    <title>JURNAL DIMAS ARIF FIKRIAWAN</title>
+                    <title>JURNAL_DIMAS_ARIF_FIKRIAWAN</title>
                     <style>
                         @page { size: 21cm 29.7cm; margin: 3cm 2.5cm 2cm 2.5cm; }
                         body { font-family: 'Times New Roman', serif; font-size: 12pt; line-height: 1.5; text-align: justify; margin: 0; }
                         .page { page-break-after: always; margin: 0; padding: 0; width: 100%; min-height: 29.7cm; }
-                        h1 { font-size:14pt; font-weight:bold; text-transform:uppercase; text-align:center; margin:0.4cm 0; letter-spacing:0.3px; }
-                        h2 { font-size:12pt; font-weight:bold; text-transform:uppercase; text-align:center !important; margin:0.6cm 0 0.4cm 0; page-break-after:avoid; letter-spacing:0.3px; }
-                        h3 { font-size:12pt; font-weight:bold; text-align:left; margin:0.4cm 0 0.2cm 0; page-break-after:avoid; }
-                        p { text-indent:1.25cm; margin:0 0 0.3cm 0; text-align:justify; line-height:1.5; orphans:4; widows:4; }
+                        h1 { font-size:14pt; font-weight:bold; text-transform:uppercase; text-align:center; margin:0.4cm 0; }
+                        h2 { font-size:12pt; font-weight:bold; text-transform:uppercase; text-align:center !important; margin:0.8cm 0 0.4cm 0; page-break-after:avoid; }
+                        h3 { font-size:12pt; font-weight:bold; text-align:left; margin:0.6cm 0 0.2cm 0; page-break-after:avoid; }
+                        p { text-indent:1.25cm; margin:0 0 0.3cm 0; text-align:justify; line-height:1.5; orphans:3; widows:3; }
                         .abstract-title { font-weight:bold; text-align:center; text-transform:uppercase; }
                         .caption { font-size:10pt; font-style:italic; text-align:center; }
                         table { width:85%; border-collapse:collapse; margin:0.5cm auto; page-break-inside:avoid; }
@@ -648,10 +550,10 @@
                         .reference-list li { padding-left:1.25cm; text-indent:-1.25cm; margin-bottom:0.3cm; font-size:11pt; line-height:1.5; text-align:justify; }
                         img { max-width:75%; height:auto; display:block; margin:0 auto; }
                         .page-number { text-align:center; font-size:10pt; margin-top:1cm; }
-                        .sub-header { font-size:10pt; font-style:italic; text-align:center; padding-bottom:0.2cm; border-bottom:1px solid #999; position:relative; top:0; left:0; right:0; }
+                        .sub-header { font-size:9pt; font-style:italic; text-align:center; padding-bottom:0.2cm; border-bottom:1px solid #999; position:relative; margin-bottom:0.8cm; }
                         .header-line-full { border-bottom:1px solid #000; margin:0 0 0.8cm 0; width:100%; }
                         .journal-title-main { font-size:14pt; font-weight:bold; text-transform:uppercase; line-height:1.6; margin-bottom:1.5cm; }
-                        .logo-container { width:220px !important; margin:0 auto 2cm auto !important; }
+                        .logo-container { width:220px; margin:0 auto 2cm auto; }
                     </style>
                 </head>
                 <body>${content}</body>
@@ -667,36 +569,34 @@
         async function exportToPDF() {
             const btn = document.getElementById('pdfBtn');
             const originalText = btn.innerText;
-            btn.innerText = "⌛ Sedang Membuat PDF...";
+            btn.innerText = "⌛ Memproses...";
             btn.disabled = true;
             btn.classList.add('btn-loading');
             try {
                 const { jsPDF } = window.jspdf;
-                const doc = new jsPDF({orientation: 'portrait', unit: 'cm', format: 'a4', compress: true});
+                const doc = new jsPDF({orientation: 'portrait', unit: 'mm', format: 'a4', compress: true});
                 const pages = document.querySelectorAll('.page');
+                
                 for (let i = 0; i < pages.length; i++) {
                     const canvas = await html2canvas(pages[i], {
-                        scale: 3, /* Resolusi tinggi agar tajam & pas */
+                        scale: 2, /* Skala pas, tidak kepotong */
                         useCORS: true, 
                         allowTaint: false, 
                         logging: false, 
                         backgroundColor: '#ffffff',
-                        width: 21 * 37.8, 
-                        height: 29.7 * 37.8,
-                        windowWidth: 21 * 37.8,
-                        windowHeight: 29.7 * 37.8,
-                        ignoreElements: (el) => el.classList.contains('download-btn-container')
+                        width: 210, 
+                        height: 297,
+                        windowWidth: 210,
+                        windowHeight: 297
                     });
                     const imgData = canvas.toDataURL('image/png');
-                    const imgWidth = 21;
-                    const imgHeight = 29.7;
                     if (i > 0) doc.addPage();
-                    doc.addImage(imgData, 'PNG', 0, 0, imgWidth, imgHeight, undefined, 'FAST');
+                    doc.addImage(imgData, 'PNG', 0, 0, 210, 297);
                 }
                 doc.save('JURNAL_DIMAS_ARIF_FIKRIAWAN.pdf');
-                alert('✅ PDF BERHASIL DIBUAT! SUDAH RAPI, LENGKAP, TIDAK ADA SALAH KETIK.');
+                alert('✅ BERHASIL! SUDAH RAPI & LENGKAP');
             } catch (error) {
-                alert('❌ Masalah: ' + error.message);
+                alert('❌ Error: ' + error.message);
             } finally {
                 btn.innerText = originalText;
                 btn.disabled = false;
