@@ -107,9 +107,10 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: flex-start;
+      justify-content: center;
       text-align: center;
-      padding-top: 18mm;
+      padding-top: 10mm;
+      padding-bottom: 10mm;
     }
 
     .cover-journal-title {
@@ -117,15 +118,15 @@
       font-weight: bold;
       text-transform: uppercase;
       line-height: 1.5;
-      margin-bottom: 10mm;
+      margin-bottom: 8mm;
       letter-spacing: 0.4px;
       word-spacing: 1px;
     }
 
     .cover-logo-container {
       width: 100%;
-      max-width: 300px;
-      margin: 0 auto 10mm auto;
+      max-width: 250px;
+      margin: 0 auto 8mm auto;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -134,7 +135,7 @@
     .cover-logo-container img {
       width: 100%;
       height: auto;
-      max-width: 300px;
+      max-width: 250px;
       aspect-ratio: auto;
       object-fit: contain;
       display: block;
@@ -150,25 +151,66 @@
       letter-spacing: 0.3px;
     }
 
-    .cover-authors {
+    /* ===== BAGIAN 1: NAMA & NIM (RAPAT) ===== */
+    .cover-section-1 {
+      margin-bottom: 8mm;
+      line-height: 1.4;
+    }
+
+    .cover-section-1 .name {
       font-size: 11pt;
       font-weight: bold;
-      margin-bottom: 6mm;
     }
 
-    .cover-info {
-      font-size: 10.5pt;
-      line-height: 1.6;
-      margin-bottom: 4mm;
-    }
-
-    .cover-info b {
+    .cover-section-1 .nim {
       font-size: 11pt;
+      font-weight: normal;
+    }
+
+    /* ===== BAGIAN 2: PRODI & ALAMAT (RAPAT, BERJARAK DENGAN BAGIAN 1) ===== */
+    .cover-section-2 {
+      margin-bottom: 12mm;
+      line-height: 1.6;
+      font-size: 10.5pt;
+    }
+
+    .cover-section-2 .prodi {
+      font-weight: bold;
+      font-size: 11pt;
+    }
+
+    .cover-section-2 .institusi {
+      font-weight: bold;
+      font-size: 11pt;
+    }
+
+    .cover-section-2 .alamat {
+      font-size: 10.5pt;
+    }
+
+    .cover-section-2 .telepon {
+      font-size: 10.5pt;
+    }
+
+    .cover-section-2 .email {
+      font-size: 10.5pt;
+    }
+
+    .cover-section-2 .email a {
+      color: #003366;
+      text-decoration: none;
+    }
+
+    /* ===== BAGIAN 3: TAHUN (BAWAH SENDIRI, BERJARAK) ===== */
+    .cover-section-3 {
+      margin-top: 4mm;
+      font-size: 11pt;
+      font-weight: bold;
     }
 
     .cover-footer {
       margin-top: auto;
-      margin-bottom: 10mm;
+      margin-bottom: 5mm;
       font-size: 10pt;
       line-height: 1.5;
     }
@@ -447,7 +489,7 @@
       </div>
 
       <div class="cover-logo-container">
-        <img src="logokampus.png" alt="Logo Kampus" onerror="this.onerror=null;this.outerHTML='<div style=&quot;width:280px;height:auto;aspect-ratio:1/1;border:1px solid #000;display:flex;align-items:center;justify-content:center;font-size:10pt;margin:0 auto;background:#fafafa;&quot;>Logo Institut Widya Pratama</div>';">
+        <img src="logokampus.png" alt="Logo Kampus" onerror="this.onerror=null;this.outerHTML='<div style=&quot;width:250px;height:auto;aspect-ratio:1/1;border:1px solid #000;display:flex;align-items:center;justify-content:center;font-size:10pt;margin:0 auto;background:#fafafa;&quot;>Logo Institut Widya Pratama</div>';">
       </div>
 
       <div class="cover-article-title">
@@ -456,25 +498,28 @@
         PADA PERUSAHAAN CERAH
       </div>
 
-      <div class="cover-authors">Dimas Arif Fikriawan</div>
-
-      <div class="cover-info">
-        NIM 24.240.0075<br>
+      <!-- BAGIAN 1: NAMA & NIM (RAPAT) -->
+      <div class="cover-section-1">
+        <div class="name">Dimas Arif Fikriawan</div>
+        <div class="nim">NIM 24.240.0075</div>
       </div>
 
-      <div class="cover-info">
-        <b>Program Studi Teknik Informatika</b><br>
-        Institut Widya Pratama<br>
-        Jl. Patriot No. 25 - Kota Pekalongan<br>
-        (0285) 427816 / 427817
+      <!-- BAGIAN 2: PRODI & ALAMAT (RAPAT, BERJARAK DENGAN BAGIAN 1) -->
+      <div class="cover-section-2">
+        <div class="prodi">Program Studi Teknik Informatika</div>
+        <div class="institusi">Institut Widya Pratama</div>
+        <div class="alamat">Jl. Patriot No. 25 - Kota Pekalongan</div>
+        <div class="telepon">(0285) 427816 / 427817</div>
+        <div class="email">Email: <a href="mailto:akademik@iwima.ac.id">akademik@iwima.ac.id</a></div>
       </div>
 
-      <div class="cover-info">
-        Email: <a href="mailto:akademik@iwima.ac.id">akademik@iwima.ac.id</a>
+      <!-- BAGIAN 3: TAHUN (BAWAH SENDIRI, BERJARAK) -->
+      <div class="cover-section-3">
+        Tahun 2026
       </div>
 
       <div class="cover-footer">
-        <b>Tahun 2026</b>
+        &nbsp;
       </div>
     </div>
 
