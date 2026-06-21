@@ -73,6 +73,9 @@
 
     #journal-document-content {
       width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
     /* ===== SEMUA HALAMAN ===== */
@@ -514,7 +517,7 @@
       <div class="abstract-col">
         <div class="abstract-label">Abstract</div>
         <p class="no-indent" style="font-size:9.5pt; text-indent:0;">
-          <i>Perusahaan Cerah is a growing digital education provider, yet amid rising competition, its current visual identity has begun to feel less suitable. Its complex form is hard to read when scaled down and lacks flexibility across mobile devices. This study aims to redesign its identity branding by creating a new logo that is simpler, more modern, and adaptable, while preserving the company’s core character. The research uses Design Thinking, covering needs analysis, problem definition, ideation, prototyping, and testing. The new logo is clearer, more memorable, and works well across both digital and print media. This redesign is expected to strengthen the company’s professional image and improve its competitiveness in the digital age.</i>
+          <i>Perusahaan Cerah is a growing digital education provider, yet amid rising competition, its current visual identity has begun to feel less suitable. Its complex form is hard to read when scaled down and lacks flexibility across mobile devices. This study aims to redesign its identity branding by creating a new logo that is simpler, more modern, and adaptable, while preserving the company's core character. The research uses Design Thinking, covering needs analysis, problem definition, ideation, prototyping, and testing. The new logo is clearer, more memorable, and works well across both digital and print media. This redesign is expected to strengthen the company's professional image and improve its competitiveness in the digital age.</i>
         </p>
         <p class="keywords-text">
           <b>Keywords:</b> <i>redesign, brand identity, logo, visual design, Design Thinking.</i>
@@ -794,34 +797,59 @@
     btn.innerText = "Memproses...";
 
     const { jsPDF } = window.jspdf;
+
+    // Buat PDF dengan ukuran A4 (210mm x 297mm)
     const doc = new jsPDF({
       unit: "mm",
       format: "a4",
-      orientation: "portrait"
+      orientation: "portrait",
+      compress: true
     });
 
     const pages = document.querySelectorAll("#journal-document-content .page");
-    
+
     for (let i = 0; i < pages.length; i++) {
-      if (i > 0) doc.addPage();
-      
+      // Tambahkan halaman baru untuk halaman berikutnya
+      if (i > 0) {
+        doc.addPage();
+      }
+
+      // Tunggu sebentar untuk memastikan rendering selesai
+      await new Promise(resolve => setTimeout(resolve, 100));
+
+      // Tangkap halaman dengan html2canvas
       const canvas = await html2canvas(pages[i], {
-        scale: 2,
+        scale: 2.5,
         useCORS: true,
         logging: false,
-        width: pages[i].offsetWidth,
-        height: pages[i].offsetHeight
+        allowTaint: true,
+        backgroundColor: '#ffffff',
+        width: 210 * 2.5, // 210mm * 2.5
+        height: 297 * 2.5, // 297mm * 2.5
+        windowWidth: 210 * 2.5,
+        windowHeight: 297 * 2.5,
+        onclone: function(clonedDoc) {
+          // Pastikan semua elemen terlihat di clone
+          const clonedPages = clonedDoc.querySelectorAll('.page');
+          clonedPages.forEach(page => {
+            page.style.display = 'block';
+            page.style.visibility = 'visible';
+            page.style.opacity = '1';
+          });
+        }
       });
-      
-      const imgData = canvas.toDataURL("image/png");
-      const imgWidth = 210;
-      const imgHeight = (canvas.height * imgWidth) / canvas.width;
-      
-      doc.addImage(imgData, "PNG", 0, 0, imgWidth, imgHeight);
+
+      // Konversi canvas ke gambar
+      const imgData = canvas.toDataURL("image/png", 1.0);
+
+      // Tambahkan gambar ke PDF (ukuran penuh A4)
+      // 210mm x 297mm
+      doc.addImage(imgData, "PNG", 0, 0, 210, 297, undefined, "FAST");
     }
 
+    // Simpan PDF
     doc.save("Perancangan_Ulang_Identity_Branding.pdf");
-    
+
     btn.classList.remove("btn-loading");
     btn.innerText = "Unduh Format PDF";
   }
