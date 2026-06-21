@@ -125,15 +125,15 @@
         }
 
         /* ==========================================
-           ✅ HALAMAN SAMPUL: DIPERBAIKI - PRESISI TENGAH ATAS-BAWAH
+           ✅ HALAMAN SAMPUL: SUDAH PRESISI TENGAH
         ========================================== */
         .cover-page {
             display: flex;
             flex-direction: column;
-            justify-content: center; /* ✅ TENGAH VERTIKAL (ATAS-BAWAH) */
-            align-items: center;    /* ✅ TENGAH HORIZONTAL (KIRI-KANAN) */
+            justify-content: center;
+            align-items: center;
             text-align: center;
-            min-height: 29.7cm;     /* ✅ Tinggi penuh A4 */
+            min-height: 29.7cm;
             padding: 0 2cm !important;
             box-sizing: border-box;
         }
@@ -143,7 +143,7 @@
             font-weight: bold;
             text-transform: uppercase;
             line-height: 1.4;
-            margin-bottom: 2cm !important; /* ✅ Jarak pas ke LOGO */
+            margin-bottom: 2cm !important;
             margin-top: 0;
         }
 
@@ -151,7 +151,7 @@
             width: 180px;
             height: auto;
             border: none;
-            margin: 0 auto 2.2cm auto !important; /* ✅ Jarak pas ke JUDUL */
+            margin: 0 auto 2.2cm auto !important;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -171,14 +171,14 @@
             font-weight: bold;
             text-transform: uppercase;
             line-height: 1.5;
-            margin-bottom: 2.2cm !important; /* ✅ Jarak pas ke NAMA */
+            margin-bottom: 2.2cm !important;
             max-width: 100%;
         }
 
         .author-info {
             font-size: 11pt;
             line-height: 1.4;
-            margin-bottom: 2cm !important; /* ✅ Jarak pas ke INSTITUSI */
+            margin-bottom: 2cm !important;
         }
         .author-name {
             font-weight: bold;
@@ -336,6 +336,30 @@
             margin-right: auto;
             crossorigin="anonymous";
         }
+        /* ✅ TAMBAHAN: GAYA UNTUK PERBANDINGAN LOGO */
+        .logo-comparison {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 3cm;
+            margin: 15px 0;
+            flex-wrap: wrap;
+        }
+        .logo-box {
+            text-align: center;
+        }
+        .logo-box img {
+            max-width: 120px;
+            height: auto;
+            margin-bottom: 8px;
+            border: 1px solid #ddd;
+            padding: 5px;
+            background: #fff;
+        }
+        .logo-label {
+            font-size: 10pt;
+            font-weight: bold;
+        }
         .visual-placeholder {
             border: 1px dashed #000;
             background-color: #f8f8f8;
@@ -403,7 +427,7 @@
             .main-content { display: block !important; }
             .page { 
                 margin: 0 !important; 
-                padding: 0 !important; /* ✅ Sampul tanpa padding agar pas tengah */
+                padding: 0 !important;
                 width: 21cm !important;
                 min-height: 29.7cm !important;
                 page-break-after: always !important;
@@ -436,7 +460,6 @@
                 VOL. 4, NO. 2, JUNI 2026
             </div>
 
-            <!-- ✅ LOGO: POSISI TENGAH PAS -->
             <div class="logo-container">
                 <img src="logo_kampus.png" alt="Logo Institut Widya Pratama" onerror="this.style.display='none'">
             </div>
@@ -506,7 +529,7 @@
 
 
         <!-- ==========================================
-            HALAMAN 4: TINJAUAN PUSTAKA - ✅ BAGIAN C LENGKAP UTUH 100%
+            HALAMAN 4: TINJAUAN PUSTAKA
         ========================================== -->
         <div class="page">
             <div class="page-header">Dimas Arif Fikriawan | Perancangan Ulang Identity Branding</div>
@@ -522,13 +545,11 @@
             <p>Penggunaan format bitmap seperti .png atau .jpg memiliki kelemahan inheren dalam aspek skalabilitas. Ketika gambar bitmap dipaksa untuk mengalami perbesaran atau pengecilan ekstrem, susunan pikselnya akan meregang dan memicu efek pikselasi (gambar kabur). Dalam rekayasa komputer, pemanfaatan format berbasis *Scalable Vector Graphics* (.svg) menyelesaikan kendala ini dengan mendefinisikan bentuk grafis melalui persamaan matematika (vektor koordinat), sehingga detail gambar tetap tajam secara absolut pada resolusi layar berapapun.</p>
             <p>Selain keunggulan visual, format SVG juga memiliki keunggulan teknis berupa ukuran file yang jauh lebih kecil dibandingkan format raster berkualitas setara. Hal ini berdampak langsung pada efisiensi penggunaan bandwidth internet dan kecepatan pemuatan halaman web.</p>
 
-            <!-- ✅ BAGIAN C. TIPOGRAFI KHUSUS: LENGKAP TANPA POTONG, PERSIS CONTOH 100% -->
             <div class="section-c">
                 <h3>C. Tipografi Khusus User Interface</h3>
                 <p>Tipografi dalam antarmuka digital memiliki aturan fungsional yang sangat ketat dibandingkan media cetak konvensional. Jenis huruf berkaki (Serif) cenderung mengalami pemecahan piksel atau distorsi anti-aliasing ketika dipaksa mengecil pada layar perangkat seluler berkepadatan rendah. Sebaliknya, rumpun huruf tanpa kaki (Sans-Serif) mempertahankan kejelasan garis strukturnya karena bentuk geometrisnya selaras dengan susunan matriks piksel horizontal-vertikal layar digital monitor, sehingga sangat direkomendasikan untuk platform berbasis web mobile.</p>
             </div>
 
-            <!-- ✅ GARIS NAMA: POSISI PERSIS DI BAWAHNYA, JARAK PAS -->
             <div class="name-divider">Dimas Arif Fikriawan | Perancangan Ulang Identity Branding</div>
 
             <h2>III. METODOLOGI PENELITIAN</h2>
@@ -564,7 +585,7 @@
 
 
         <!-- ==========================================
-            HALAMAN 6: HASIL & PEMBAHASAN
+            HALAMAN 6: HASIL & PEMBAHASAN - ✅ DITAMBAH: LOGO SEBELUM & SESUDAH
         ========================================== -->
         <div class="page">
             <div class="page-header">Dimas Arif Fikriawan | Perancangan Ulang Identity Branding</div>
@@ -574,13 +595,34 @@
             <h3>A. Analisis Konsep Perancangan</h3>
             <p>Proses rekonstruksi visual yang dipimpin oleh peneliti menghasilkan sebuah cetak biru identitas merek baru yang berbasis pada konsep besar "Glocal Minimalist". Prinsip desain utama difokuskan pada pemangkasan elemen dekoratif yang tidak fungsional (simplifikasi visual), sehingga struktur geometris logo mampu mempertahankan fleksibilitas dan keterbacaannya pada tingkat ekstrem saat disusutkan ke berbagai ukuran terkecil komponen antarmuka digital.</p>
 
+            <!-- ✅ BAGIAN PERBANDINGAN LOGO: SEBELUM DAN SESUDAH -->
+            <div class="element-wrapper">
+                <h4 style="text-align:center; margin-bottom:10px; text-decoration:underline;">Perbandingan Logo: Sebelum dan Sesudah</h4>
+                <div class="logo-comparison">
+                    <div class="logo-box">
+                        <!-- Logo Cerah Sebelum -->
+                        <img src="logo_cerah_sebelum.png" alt="Logo Cerah Sebelum Perancangan" onerror="this.parentElement.innerHTML='<div class=\'visual-placeholder\' style=\'width:120px; height:80px; margin:0 auto;\'>Logo Lama Cerah</div>'">
+                        <div class="logo-label">Logo Sebelum</div>
+                    </div>
+                    <div style="font-weight:bold; font-size:14pt;">→</div>
+                    <div class="logo-box">
+                        <!-- Referensi Saran Logo Sesudah -->
+                        <img src="logo_cerah_sesudah.png" alt="Referensi Saran Logo Baru Cerah" onerror="this.parentElement.innerHTML='<div class=\'visual-placeholder\' style=\'width:120px; height:80px; margin:0 auto;\'>Saran Logo Baru</div>'">
+                        <div class="logo-label">Saran Logo Sesudah</div>
+                    </div>
+                </div>
+                <div class="caption">Gambar 2. Perbandingan Tampilan Logo Cerah Sebelum dan Referensi Saran Logo Baru</div>
+            </div>
+
+            <p>Berdasarkan perbandingan visual di atas, terlihat perbedaan yang sangat signifikan dari segi kompleksitas bentuk. Logo sebelumnya memiliki detail ornamen yang cukup padat dan tipografi berkaki (Serif), sedangkan referensi saran logo sesudah mengusung bentuk geometris yang lebih sederhana, tegas, dan menggunakan tipografi modern tanpa kaki (Sans-Serif) yang lebih cocok untuk tampilan layar digital.</p>
+
             <div class="element-wrapper">
                 <table>
                     <thead>
                         <tr>
                             <th>Parameter Matriks Teknis</th>
-                            <th>Logo Lama</th>
-                            <th>Logo Baru</th>
+                            <th>Logo Lama (Sebelum)</th>
+                            <th>Logo Baru (Saran)</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -606,7 +648,7 @@
                         </tr>
                     </tbody>
                 </table>
-                <div class="caption">Tabel 1. Komparasi Karakteristik Visual</div>
+                <div class="caption">Tabel 1. Komparasi Karakteristik Visual Sebelum dan Sesudah</div>
             </div>
 
             <p>Berdasarkan data pada tabel di atas, terlihat perbedaan signifikan pada hampir seluruh parameter teknis dan estetika. Perubahan dari format raster ke vektor memberikan dampak peningkatan kinerja sistem yang sangat besar, dengan pengurangan ukuran file hingga 80% dan percepatan waktu pemuatan hingga 10 kali lipat.</p>
@@ -614,15 +656,8 @@
             <h3>B. Analisis Filosofis Geometris</h3>
             <p>Setiap goresan garis, penentuan sudut kurva bezier, dan pemilihan palet warna pada logo baru yang diusulkan oleh peneliti mengandung makna filosofis mendalam yang dikonversikan secara matematis ke dalam ruang vektor digital.</p>
 
-            <!-- TEMPAT GAMBAR ANDA SENDIRI -->
-            <div class="element-wrapper">
-                <img src="gambar_logo_anda.png" alt="Hasil Rekayasa Visual Geometris Logo Baru" class="img-custom">
-                <div class="caption">Gambar 2. Hasil Rekayasa Visual Geometris Logo Baru Kontemporer</div>
-            </div>
-
             <p>Bentuk luar logo mengadopsi siluet balon percakapan yang secara filosofis melambangkan komunikasi interaktif dua arah. Pola ini merefleksikan visi utama platform dalam memfasilitasi penguasaan bahasa asing secara aktif dan komunikatif. Palet warna didominasi oleh warna kuning cerah `#FFD200` yang mengekspresikan optimisme, dipadukan dengan biru tua `#003366` untuk memancarkan stabilitas teknis dan profesionalisme.</p>
 
-            <!-- ✅ GARIS NAMA: JARAK PAS -->
             <div class="name-divider">Dimas Arif Fikriawan | Perancangan Ulang Identity Branding</div>
 
             <div class="page-footer">Halaman 6</div>
@@ -631,7 +666,7 @@
 
 
         <!-- ==========================================
-            HALAMAN 7: HASIL & KESIMPULAN - ✅ JARAK KESIMPULAN SUDAH PAS
+            HALAMAN 7: HASIL & KESIMPULAN
         ========================================== -->
         <div class="page">
             <div class="page-header">Grafik 1. Hasil Evaluasi Empiris Desain Baru</div>
@@ -642,7 +677,6 @@
 
             <p>Berdasarkan sajian data grafik di atas, rata-rata penilaian dari seluruh indikator menunjukkan tingkat kepuasan yang sangat tinggi di atas 80%. Indikator kesesuaian nilai menempati skor tertinggi yaitu mencapai angka 90%, menegaskan bahwa hasil rancangan logo baru ini mampu merepresentasikan identitas visi misi platform secara akurat.</p>
 
-            <!-- ✅ JARAK KESIMPULAN SUDAH PAS -->
             <h2 class="kesimpulan">V. KESIMPULAN</h2>
             <p>Riset perancangan ulang sistem <i>identity branding</i> Perusahaan Cerah telah berhasil diselesaikan secara tuntas dengan mengacu pada metodologi <i>Design Thinking</i>. Penggunaan bentuk geometris minimalis yang dikombinasikan dengan pengaplikasian rumpun huruf modern Sans-Serif terbukti secara teknis mampu menyelesaikan kendala distorsi visual, memberikan tingkat skalabilitas tinggi, serta mempertahankan efisiensi rendering halaman sistem digital yang optimal pada gawai seluler. Respons positif dari sampel pengguna mengukuhkan bahwa rancangan identitas visual baru ini sangat layak dan siap diimplementasikan.</p>
 
@@ -707,6 +741,7 @@
                         .name-divider { display: block; font-size: 9pt; text-align: center; font-style: italic; border-top: 1px solid #999; padding-top: 4px; margin: 12px 0 20px 0; }
                         img { max-width: 75% !important; height: auto !important; display: block !important; margin-left: auto !important; margin-right: auto !important; border: none !important; mso-wrap-style: square; }
                         .logo-container img { max-width: 180px !important; height: auto !important; }
+                        .logo-comparison { display: flex; justify-content: center; align-items: center; gap: 2cm; margin: 15px 0; text-align: center; }
                     </style>
                 </head>
                 <body>${content}</body>
@@ -719,9 +754,6 @@
             document.body.appendChild(a); a.click(); document.body.removeChild(a); URL.revokeObjectURL(url);
         }
 
-        // ======================================================
-        // ✅ SISTEM PDF DIPERBAIKI: TIDAK TERPOTONG, JARAK RATA
-        // ======================================================
         async function exportToPDF() {
             const btn = document.getElementById('pdfBtn');
             const originalText = btn.innerText;
