@@ -75,7 +75,7 @@
       width: 100%;
     }
 
-    /* ===== HALAMAN ARTIKEL ===== */
+    /* ===== SEMUA HALAMAN ===== */
     .page {
       width: 210mm;
       min-height: 297mm;
@@ -95,7 +95,78 @@
       margin-bottom: 0;
     }
 
-    /* ===== HEADER JURNAL (GARIS TEBAL ATAS & BAWAH) ===== */
+    /* ===== HALAMAN SAMPUL (COVER) ===== */
+    .cover-page {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      text-align: center;
+      padding-top: 18mm;
+    }
+
+    .cover-journal-title {
+      font-size: 14pt;
+      font-weight: bold;
+      text-transform: uppercase;
+      line-height: 1.5;
+      margin-bottom: 10mm;
+      letter-spacing: 0.4px;
+      word-spacing: 1px;
+    }
+
+    .cover-logo-container {
+      width: 100%;
+      max-width: 300px;
+      margin: 0 auto 10mm auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .cover-logo-container img {
+      width: 100%;
+      height: auto;
+      max-width: 300px;
+      aspect-ratio: auto;
+      object-fit: contain;
+      display: block;
+    }
+
+    .cover-article-title {
+      font-size: 13pt;
+      font-weight: bold;
+      line-height: 1.45;
+      margin: 0 0 10mm 0;
+      max-width: 150mm;
+      text-align: center;
+      letter-spacing: 0.3px;
+    }
+
+    .cover-authors {
+      font-size: 11pt;
+      font-weight: bold;
+      margin-bottom: 6mm;
+    }
+
+    .cover-info {
+      font-size: 10.5pt;
+      line-height: 1.6;
+      margin-bottom: 4mm;
+    }
+
+    .cover-info b {
+      font-size: 11pt;
+    }
+
+    .cover-footer {
+      margin-top: auto;
+      margin-bottom: 10mm;
+      font-size: 10pt;
+      line-height: 1.5;
+    }
+
+    /* ===== HEADER JURNAL ===== */
     .journal-header {
       text-align: center;
       margin-bottom: 4mm;
@@ -358,7 +429,48 @@
 
 <div id="journal-document-content">
 
-  <!-- ========== HALAMAN 1 ========== -->
+  <!-- ========== HALAMAN SAMPUL (COVER) ========== -->
+  <div class="page cover-page">
+    <div class="cover-journal-title">
+      JOURNAL OF INDONESIAN EDUCATION<br>
+      <span style="font-size:11pt;">JIKOM-DKV</span><br>
+      <span style="font-size:10pt;">VOLUME 4, NOMOR 2, JUNI 2026</span>
+    </div>
+
+    <div class="cover-logo-container">
+      <img src="logokampus.png" alt="Logo Kampus"
+           onerror="this.onerror=null;this.outerHTML='<div style=&quot;width:280px;height:auto;aspect-ratio:1/1;border:1px solid #000;display:flex;align-items:center;justify-content:center;font-size:10pt;margin:0 auto;background:#fafafa;&quot;>Logo Kampus</div>';">
+    </div>
+
+    <div class="cover-article-title">
+      PERANCANGAN ULANG IDENTITY BRANDING<br>
+      MELALUI DESAIN LOGO BARU<br>
+      PADA PERUSAHAAN CERAH
+    </div>
+
+    <div class="cover-authors">Dimas Arif Fikriawan</div>
+
+    <div class="cover-info">
+      NIM 24.240.0075<br>
+    </div>
+
+    <div class="cover-info">
+      <b>Program Studi Teknik Informatika</b><br>
+      Institut Widya Pratama<br>
+      Jl. Raya Widya No. 12, Kota Semarang<br>
+      Jawa Tengah 50275, Indonesia
+    </div>
+
+    <div class="cover-info">
+      Email: <a href="mailto:dimasfikriawan0@gmail.com">dimasfikriawan0@gmail.com</a>
+    </div>
+
+    <div class="cover-footer">
+      <b>Tahun 2026</b>
+    </div>
+  </div>
+
+  <!-- ========== HALAMAN 1 : ARTIKEL ========== -->
   <div class="page">
 
     <!-- HEADER JURNAL -->
@@ -647,6 +759,7 @@
           body { font-family: "Times New Roman", serif; font-size: 11pt; line-height: 1.5; text-align: justify; }
           .page { page-break-after: always; width: 100%; min-height: 297mm; }
           .page:last-child { page-break-after: auto; }
+          .cover-page { text-align: center; }
           h1 { font-size: 12pt; font-weight: bold; text-align: left; }
           h2 { font-size: 11pt; font-weight: bold; text-align: left; }
           h3 { font-size: 11pt; font-weight: bold; font-style: italic; text-align: left; }
