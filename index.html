@@ -1,941 +1,955 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Perancangan Ulang Identity Branding Melalui Desain Logo Baru pada Perusahaan Cerah</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perancangan Ulang Identity Branding Melalui Desain Logo Baru pada Perusahaan Cerah</title>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js">
-  </script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js">
-  </script>
+    <!-- Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 
-  <style>
-    * {
-      box-sizing: border-box;
-    }
+    <style>
+        /* ========== RESET & BASE ========== */
+        * {
+            box-sizing: border-box;
+        }
 
-    html,
-    body {
-      margin: 0;
-      padding: 0;
-      background: #e8e8e8;
-      color: #000;
-      font-family: "Times New Roman", Times, serif;
-      font-size: 11pt;
-      line-height: 1.55;
-      text-align: justify;
-      -webkit-print-color-adjust: exact;
-      print-color-adjust: exact;
-    }
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            background: #e8e8e8;
+            color: #000;
+            font-family: "Times New Roman", Times, serif;
+            font-size: 11pt;
+            line-height: 1.55;
+            text-align: justify;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
 
-    .download-btn-container {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      z-index: 9999;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
+        /* ========== TOMBOL DOWNLOAD ========== */
+        .download-btn-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
 
-    .btn-download {
-      background: #003366;
-      color: #ffd200;
-      border: 2px solid #003366;
-      padding: 12px 18px;
-      font-size: 11pt;
-      font-weight: bold;
-      border-radius: 6px;
-      cursor: pointer;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-      transition: 0.2s ease;
-      font-family: "Times New Roman", serif;
-    }
+        .btn-download {
+            background: #003366;
+            color: #ffd200;
+            border: 2px solid #003366;
+            padding: 12px 18px;
+            font-size: 11pt;
+            font-weight: bold;
+            border-radius: 6px;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+            transition: 0.2s ease;
+            font-family: "Times New Roman", serif;
+        }
 
-    .btn-download:hover {
-      background: #ffd200;
-      color: #003366;
-      transform: translateY(-1px);
-    }
+        .btn-download:hover {
+            background: #ffd200;
+            color: #003366;
+            transform: translateY(-1px);
+        }
 
-    .btn-pdf {
-      background: #b00000;
-      border-color: #b00000;
-      color: #fff;
-    }
+        .btn-pdf {
+            background: #b00000;
+            border-color: #b00000;
+            color: #fff;
+        }
 
-    .btn-pdf:hover {
-      background: #e53935;
-      border-color: #e53935;
-      color: #fff;
-    }
+        .btn-pdf:hover {
+            background: #e53935;
+            border-color: #e53935;
+            color: #fff;
+        }
 
-    .btn-loading {
-      opacity: 0.7;
-      cursor: wait;
-    }
+        .btn-loading {
+            opacity: 0.7;
+            cursor: wait;
+        }
 
-    #journal-document-content {
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
+        /* ========== KONTEN JURNAL ========== */
+        #journal-document-content {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
 
-    .page {
-      width: 210mm;
-      min-height: 297mm;
-      height: 297mm;
-      margin: 0 auto 15px auto;
-      background: #fff;
-      padding: 20mm 20mm 20mm 20mm;
-      position: relative;
-      overflow: hidden;
-      page-break-after: always;
-      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
-      box-sizing: border-box;
-    }
+        .page {
+            width: 210mm;
+            min-height: 297mm;
+            height: auto;
+            /* ubah dari 297mm fixed ke auto agar konten panjang tidak terpotong */
+            margin: 0 auto 15px auto;
+            background: #fff;
+            padding: 20mm 20mm 20mm 20mm;
+            position: relative;
+            overflow: hidden;
+            page-break-after: always;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+            box-sizing: border-box;
+        }
 
-    .page:last-child {
-      page-break-after: auto;
-    }
+        .page:last-child {
+            page-break-after: auto;
+        }
 
-    .cover-page {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding-top: 10mm;
-      padding-bottom: 10mm;
-    }
+        /* ========== HALAMAN SAMPUL ========== */
+        .cover-page {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding-top: 10mm;
+            padding-bottom: 10mm;
+        }
 
-    .cover-journal-title {
-      font-size: 14pt;
-      font-weight: bold;
-      text-transform: uppercase;
-      line-height: 1.5;
-      margin-bottom: 8mm;
-      letter-spacing: 0.4px;
-      word-spacing: 1px;
-    }
+        .cover-journal-title {
+            font-size: 14pt;
+            font-weight: bold;
+            text-transform: uppercase;
+            line-height: 1.5;
+            margin-bottom: 8mm;
+            letter-spacing: 0.4px;
+            word-spacing: 1px;
+        }
 
-    .cover-logo-container {
-      width: 100%;
-      max-width: 250px;
-      margin: 0 auto 8mm auto;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
+        .cover-logo-container {
+            width: 100%;
+            max-width: 250px;
+            margin: 0 auto 8mm auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
 
-    .cover-logo-container img {
-      width: 100%;
-      height: auto;
-      max-width: 250px;
-      aspect-ratio: auto;
-      object-fit: contain;
-      display: block;
-    }
+        .cover-logo-container img {
+            width: 100%;
+            height: auto;
+            max-width: 250px;
+            aspect-ratio: auto;
+            object-fit: contain;
+            display: block;
+        }
 
-    .cover-article-title {
-      font-size: 13pt;
-      font-weight: bold;
-      line-height: 1.45;
-      margin: 0 0 10mm 0;
-      max-width: 150mm;
-      text-align: center;
-      letter-spacing: 0.3px;
-    }
+        .cover-article-title {
+            font-size: 13pt;
+            font-weight: bold;
+            line-height: 1.45;
+            margin: 0 0 10mm 0;
+            max-width: 150mm;
+            text-align: center;
+            letter-spacing: 0.3px;
+        }
 
-    .cover-section-1 {
-      margin-bottom: 8mm;
-      line-height: 1.4;
-    }
+        .cover-section-1 {
+            margin-bottom: 8mm;
+            line-height: 1.4;
+        }
 
-    .cover-section-1 .name {
-      font-size: 11pt;
-      font-weight: bold;
-    }
+        .cover-section-1 .name {
+            font-size: 11pt;
+            font-weight: bold;
+        }
 
-    .cover-section-1 .nim {
-      font-size: 11pt;
-      font-weight: normal;
-    }
+        .cover-section-1 .nim {
+            font-size: 11pt;
+            font-weight: normal;
+        }
 
-    .cover-section-2 {
-      margin-bottom: 12mm;
-      line-height: 1.6;
-      font-size: 10.5pt;
-    }
+        .cover-section-2 {
+            margin-bottom: 12mm;
+            line-height: 1.6;
+            font-size: 10.5pt;
+        }
 
-    .cover-section-2 .prodi {
-      font-weight: bold;
-      font-size: 11pt;
-    }
+        .cover-section-2 .prodi,
+        .cover-section-2 .institusi {
+            font-weight: bold;
+            font-size: 11pt;
+        }
 
-    .cover-section-2 .institusi {
-      font-weight: bold;
-      font-size: 11pt;
-    }
+        .cover-section-2 .alamat,
+        .cover-section-2 .telepon,
+        .cover-section-2 .email {
+            font-size: 10.5pt;
+        }
 
-    .cover-section-2 .alamat {
-      font-size: 10.5pt;
-    }
+        .cover-section-2 .email a {
+            color: #003366;
+            text-decoration: none;
+        }
 
-    .cover-section-2 .telepon {
-      font-size: 10.5pt;
-    }
+        .cover-section-3 {
+            margin-top: 4mm;
+            font-size: 11pt;
+            font-weight: bold;
+        }
 
-    .cover-section-2 .email {
-      font-size: 10.5pt;
-    }
+        .cover-footer {
+            margin-top: auto;
+            margin-bottom: 5mm;
+            font-size: 10pt;
+            line-height: 1.5;
+        }
 
-    .cover-section-2 .email a {
-      color: #003366;
-      text-decoration: none;
-    }
+        /* ========== HEADER JURNAL ========== */
+        .journal-header {
+            text-align: center;
+            margin-bottom: 4mm;
+        }
 
-    .cover-section-3 {
-      margin-top: 4mm;
-      font-size: 11pt;
-      font-weight: bold;
-    }
+        .journal-header-line {
+            border-top: 2.5px solid #000;
+            margin-bottom: 2mm;
+        }
 
-    .cover-footer {
-      margin-top: auto;
-      margin-bottom: 5mm;
-      font-size: 10pt;
-      line-height: 1.5;
-    }
+        .journal-header-info {
+            font-size: 9pt;
+            line-height: 1.4;
+            margin-bottom: 2mm;
+        }
 
-    .journal-header {
-      text-align: center;
-      margin-bottom: 4mm;
-    }
+        .journal-header-info b {
+            font-size: 9.5pt;
+        }
 
-    .journal-header-line {
-      border-top: 2.5px solid #000;
-      margin-bottom: 2mm;
-    }
+        .journal-header-line-bottom {
+            border-top: 1px solid #000;
+            margin-bottom: 6mm;
+        }
 
-    .journal-header-info {
-      font-size: 9pt;
-      line-height: 1.4;
-      margin-bottom: 2mm;
-    }
+        /* ========== JUDUL ARTIKEL & PENULIS ========== */
+        .article-title-main {
+            font-size: 13pt;
+            font-weight: bold;
+            text-align: center;
+            line-height: 1.4;
+            margin: 0 0 5mm 0;
+            letter-spacing: 0.3px;
+        }
 
-    .journal-header-info b {
-      font-size: 9.5pt;
-    }
+        .authors-section {
+            text-align: center;
+            margin-bottom: 3mm;
+        }
 
-    .journal-header-line-bottom {
-      border-top: 1px solid #000;
-      margin-bottom: 6mm;
-    }
+        .authors-names {
+            font-size: 11pt;
+            font-weight: bold;
+            margin-bottom: 1.5mm;
+        }
 
-    .article-title-main {
-      font-size: 13pt;
-      font-weight: bold;
-      text-align: center;
-      line-height: 1.4;
-      margin: 0 0 5mm 0;
-      letter-spacing: 0.3px;
-    }
+        .authors-affiliations {
+            font-size: 9pt;
+            line-height: 1.4;
+            margin-bottom: 1.5mm;
+        }
 
-    .authors-section {
-      text-align: center;
-      margin-bottom: 3mm;
-    }
+        .authors-email {
+            font-size: 9pt;
+            font-style: italic;
+            margin-bottom: 4mm;
+        }
 
-    .authors-names {
-      font-size: 11pt;
-      font-weight: bold;
-      margin-bottom: 1.5mm;
-    }
+        /* ========== ABSTRAK DUA KOLOM ========== */
+        .abstract-dual {
+            display: flex;
+            gap: 8mm;
+            margin-bottom: 5mm;
+            border-top: 1px solid #000;
+            border-bottom: 1px solid #000;
+            padding: 4mm 0;
+        }
 
-    .authors-affiliations {
-      font-size: 9pt;
-      line-height: 1.4;
-      margin-bottom: 1.5mm;
-    }
+        .abstract-col {
+            flex: 1;
+            font-size: 9.5pt;
+            line-height: 1.45;
+        }
 
-    .authors-email {
-      font-size: 9pt;
-      font-style: italic;
-      margin-bottom: 4mm;
-    }
+        .abstract-label {
+            font-weight: bold;
+            font-size: 10pt;
+            text-align: center;
+            margin-bottom: 2mm;
+        }
 
-    .abstract-dual {
-      display: flex;
-      gap: 8mm;
-      margin-bottom: 5mm;
-      border-top: 1px solid #000;
-      border-bottom: 1px solid #000;
-      padding: 4mm 0;
-    }
+        .keywords-text {
+            font-size: 9pt;
+            margin-top: 2mm;
+            font-style: italic;
+        }
 
-    .abstract-col {
-      flex: 1;
-      font-size: 9.5pt;
-      line-height: 1.45;
-    }
+        /* ========== TYPOGRAPHY ========== */
+        h1 {
+            font-size: 12pt;
+            font-weight: bold;
+            text-align: left;
+            margin: 5mm 0 3mm 0;
+            letter-spacing: 0.2px;
+            page-break-after: avoid;
+        }
 
-    .abstract-label {
-      font-weight: bold;
-      font-size: 10pt;
-      text-align: center;
-      margin-bottom: 2mm;
-    }
+        h2 {
+            font-size: 11pt;
+            font-weight: bold;
+            text-align: left;
+            margin: 4mm 0 2mm 0;
+            page-break-after: avoid;
+        }
 
-    .keywords-text {
-      font-size: 9pt;
-      margin-top: 2mm;
-      font-style: italic;
-    }
+        h3 {
+            font-size: 11pt;
+            font-weight: bold;
+            font-style: italic;
+            text-align: left;
+            margin: 3mm 0 1.5mm 0;
+            page-break-after: avoid;
+        }
 
-    h1 {
-      font-size: 12pt;
-      font-weight: bold;
-      text-align: left;
-      margin: 5mm 0 3mm 0;
-      letter-spacing: 0.2px;
-      page-break-after: avoid;
-    }
+        p {
+            margin: 0 0 2.5mm 0;
+            text-indent: 8mm;
+            text-align: justify;
+            line-height: 1.55;
+            font-size: 10.5pt;
+            word-spacing: 0.3px;
+            orphans: 3;
+            widows: 3;
+        }
 
-    h2 {
-      font-size: 11pt;
-      font-weight: bold;
-      text-align: left;
-      margin: 4mm 0 2mm 0;
-      page-break-after: avoid;
-    }
+        p.no-indent {
+            text-indent: 0;
+        }
 
-    h3 {
-      font-size: 11pt;
-      font-weight: bold;
-      font-style: italic;
-      text-align: left;
-      margin: 3mm 0 1.5mm 0;
-      page-break-after: avoid;
-    }
+        /* ========== GAMBAR & TABEL ========== */
+        .figure-container {
+            text-align: center;
+            margin: 4mm 0;
+            page-break-inside: avoid;
+        }
 
-    p {
-      margin: 0 0 2.5mm 0;
-      text-indent: 8mm;
-      text-align: justify;
-      line-height: 1.55;
-      font-size: 10.5pt;
-      word-spacing: 0.3px;
-      orphans: 3;
-      widows: 3;
-    }
+        .figure-container img,
+        .figure-placeholder {
+            max-width: 120mm;
+            height: auto;
+            border: 1px solid #ccc;
+            padding: 10px;
+            background: #fafafa;
+        }
 
-    p.no-indent {
-      text-indent: 0;
-    }
+        .figure-caption {
+            font-size: 9.5pt;
+            margin-top: 2mm;
+            text-align: center;
+        }
 
-    .figure-container {
-      text-align: center;
-      margin: 4mm 0;
-      page-break-inside: avoid;
-    }
+        .table-container {
+            margin: 4mm auto;
+            page-break-inside: avoid;
+        }
 
-    .figure-container img,
-    .figure-placeholder {
-      max-width: 120mm;
-      height: auto;
-      border: 1px solid #ccc;
-      padding: 10px;
-      background: #fafafa;
-    }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 9.5pt;
+            margin: 0 auto;
+        }
 
-    .figure-caption {
-      font-size: 9.5pt;
-      margin-top: 2mm;
-      text-align: center;
-    }
+        th,
+        td {
+            border: 1px solid #000;
+            padding: 2.5mm 3mm;
+            text-align: center;
+            vertical-align: middle;
+        }
 
-    .table-container {
-      margin: 4mm auto;
-      page-break-inside: avoid;
-    }
+        th {
+            background: #f0f0f0;
+            font-weight: bold;
+            font-size: 9pt;
+        }
 
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 9.5pt;
-      margin: 0 auto;
-    }
+        .table-title {
+            font-size: 9.5pt;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 1.5mm;
+        }
 
-    th,
-    td {
-      border: 1px solid #000;
-      padding: 2.5mm 3mm;
-      text-align: center;
-      vertical-align: middle;
-    }
+        .table-caption {
+            font-size: 9pt;
+            text-align: center;
+            margin-top: 1.5mm;
+        }
 
-    th {
-      background: #f0f0f0;
-      font-weight: bold;
-      font-size: 9pt;
-    }
+        /* ========== DAFTAR PUSTAKA ========== */
+        .reference-list {
+            list-style: none;
+            padding-left: 0;
+            margin-top: 3mm;
+        }
 
-    .table-title {
-      font-size: 9.5pt;
-      font-weight: bold;
-      text-align: center;
-      margin-bottom: 1.5mm;
-    }
+        .reference-list li {
+            padding-left: 8mm;
+            text-indent: -8mm;
+            margin-bottom: 2mm;
+            font-size: 9.5pt;
+            line-height: 1.45;
+            text-align: justify;
+            page-break-inside: avoid;
+        }
 
-    .table-caption {
-      font-size: 9pt;
-      text-align: center;
-      margin-top: 1.5mm;
-    }
+        /* ========== FOOTER HALAMAN ========== */
+        .page-footer {
+            position: absolute;
+            bottom: 12mm;
+            left: 20mm;
+            right: 20mm;
+            text-align: center;
+            font-size: 9pt;
+            border-top: 1px solid #000;
+            padding-top: 2mm;
+        }
 
-    .reference-list {
-      list-style: none;
-      padding-left: 0;
-      margin-top: 3mm;
-    }
+        /* ========== UTILITY ========== */
+        .citation {
+            font-size: 9.5pt;
+        }
 
-    .reference-list li {
-      padding-left: 8mm;
-      text-indent: -8mm;
-      margin-bottom: 2mm;
-      font-size: 9.5pt;
-      line-height: 1.45;
-      text-align: justify;
-      page-break-inside: avoid;
-    }
+        a {
+            color: #003366;
+            text-decoration: none;
+        }
 
-    .page-footer {
-      position: absolute;
-      bottom: 12mm;
-      left: 20mm;
-      right: 20mm;
-      text-align: center;
-      font-size: 9pt;
-      border-top: 1px solid #000;
-      padding-top: 2mm;
-    }
+        /* ========== PRINT STYLES ========== */
+        @media print {
+            body {
+                background: #fff;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
 
-    .citation {
-      font-size: 9.5pt;
-    }
+            .download-btn-container {
+                display: none !important;
+            }
 
-    a {
-      color: #003366;
-      text-decoration: none;
-    }
+            .page {
+                margin: 0;
+                box-shadow: none;
+                page-break-after: always;
+                height: auto;
+                /* auto saat print agar tidak terpotong */
+                min-height: 297mm;
+                overflow: hidden;
+            }
 
-    @media print {
-      body {
-        background: #fff;
-        -webkit-print-color-adjust: exact;
-        print-color-adjust: exact;
-      }
-      .download-btn-container {
-        display: none !important;
-      }
-      .page {
-        margin: 0;
-        box-shadow: none;
-        page-break-after: always;
-        height: 297mm;
-        min-height: 297mm;
-        overflow: hidden;
-      }
-      .page:last-child {
-        page-break-after: auto;
-      }
-    }
-  </style>
+            .page:last-child {
+                page-break-after: auto;
+            }
+        }
+    </style>
 </head>
 
 <body>
-  <div class="download-btn-container" id="action-layer">
-    <button class="btn-download" onclick="exportToWord()">Unduh Format Word (.doc)</button>
-    <button class="btn-download btn-pdf" id="pdfBtn" onclick="exportToPDF()">Unduh Format PDF</button>
-  </div>
-
-  <div id="journal-document-content">
-
-    <!-- ========== HALAMAN SAMPUL (COVER) ========== -->
-    <div class="page cover-page">
-      <div class="cover-journal-title">
-        JOURNAL OF INDONESIAN EDUCATION<br>
-        <span style="font-size:11pt;">JIKOM-DKV</span><br>
-        <span style="font-size:10pt;">VOLUME 4, NOMOR 2, JUNI 2026</span>
-      </div>
-
-      <div class="cover-logo-container">
-        <img src="logokampus.png" alt="Logo Kampus" onerror="this.onerror=null;this.outerHTML='<div style=&quot;width:250px;height:auto;aspect-ratio:1/1;border:1px solid #000;display:flex;align-items:center;justify-content:center;font-size:10pt;margin:0 auto;background:#fafafa;&quot;>Logo Institut Widya Pratama</div>';">
-      </div>
-
-      <div class="cover-article-title">
-        PERANCANGAN ULANG IDENTITY BRANDING<br>
-        MELALUI DESAIN LOGO BARU<br>
-        PADA PERUSAHAAN CERAH
-      </div>
-
-      <div class="cover-section-1">
-        <div class="name">Dimas Arif Fikriawan</div>
-        <div class="nim">NIM 24.240.0075</div>
-      </div>
-
-      <div class="cover-section-2">
-        <div class="prodi">Program Studi Teknik Informatika</div>
-        <div class="institusi">Institut Widya Pratama</div>
-        <div class="alamat">Jl. Patriot No. 25 - Kota Pekalongan</div>
-        <div class="telepon">(0285) 427816 / 427817</div>
-        <div class="email">Email: <a href="mailto:akademik@iwima.ac.id">akademik@iwima.ac.id</a></div>
-      </div>
-
-      <div class="cover-section-3">
-        Tahun 2026
-      </div>
-
-      <div class="cover-footer">
-        &nbsp;
-      </div>
+    <!-- Tombol Download -->
+    <div class="download-btn-container" id="action-layer">
+        <button class="btn-download" onclick="exportToWord()">Unduh Format Word (.doc)</button>
+        <button class="btn-download btn-pdf" id="pdfBtn" onclick="exportToPDF()">Unduh Format PDF</button>
     </div>
 
-    <!-- ========== HALAMAN 1 : ARTIKEL ========== -->
-    <div class="page">
+    <!-- Konten Jurnal -->
+    <div id="journal-document-content">
 
-      <div class="journal-header">
-        <div class="journal-header-line"></div>
-        <div class="journal-header-info">
-          <b>Journal of Indonesian Education</b><br>
-          Vol. 4, No. 2, Juni 2026, hlm. 125–134<br>
-          E-ISSN: 2987-1234 &ensp;|&ensp; P-ISSN: 2987-5678
-        </div>
-        <div class="journal-header-line-bottom"></div>
-      </div>
-
-      <div class="article-title-main">
-        Perancangan Ulang Identity Branding Melalui Desain Logo Baru pada Perusahaan Cerah
-      </div>
-
-      <div class="authors-section">
-        <div class="authors-names">Dimas Arif Fikriawan<sup>*</sup></div>
-        <div class="authors-affiliations">
-          Program Studi Teknik Informatika, Institut Widya Pratama<br>
-          Jl. Patriot No. 25 - Kota Pekalongan, Indonesia
-        </div>
-        <div class="authors-email">
-          <sup>*</sup>Penulis korespondensi: <a href="mailto:dimasfikriawan0@gmail.com">dimasfikriawan0@gmail.com</a>
-        </div>
-      </div>
-
-      <div class="abstract-dual">
-        <div class="abstract-col">
-          <div class="abstract-label">Abstrak</div>
-          <p class="no-indent" style="font-size:9.5pt; text-indent:0;">
-            Perusahaan Cerah adalah penyedia layanan edukasi digital yang terus berkembang, namun seiring makin ketatnya persaingan, identitas visual yang dipakai selama ini mulai terasa kurang pas. Bentuknya terlalu rumit, sulit dibaca kalau diperkecil, dan tidak fleksibel saat diterapkan di berbagai perangkat genggam. Penelitian ini bertujuan menyusun ulang <i>identity branding</i> dengan membuat logo baru yang lebih sederhana, modern, dan mudah beradaptasi, tanpa menghilangkan ciri khas perusahaan. Pendekatan yang dipakai adalah <i>Design Thinking</i>, mulai dari memahami kebutuhan, merumuskan masalah, mencari ide, membuat contoh, hingga menguji hasilnya. Hasilnya, logo baru jauh lebih jelas, lebih mudah diingat, dan bisa dipakai di mana saja, baik di media sosial maupun cetak. Perubahan ini diharapkan bisa membuat citra perusahaan makin profesional dan lebih siap bersaing di era digital.
-          </p>
-          <p class="keywords-text">
-            <b>Kata Kunci:</b> perancangan ulang, identitas merek, logo, desain visual, Desain Berpikir.
-          </p>
-        </div>
-        <div class="abstract-col">
-          <div class="abstract-label">Abstract</div>
-          <p class="no-indent" style="font-size:9.5pt; text-indent:0;">
-            <i>Perusahaan Cerah is a growing digital education provider, yet amid rising competition, its current visual identity has begun to feel less suitable. Its complex form is hard to read when scaled down and lacks flexibility across mobile devices. This study aims to redesign its identity branding by creating a new logo that is simpler, more modern, and adaptable, while preserving the company's core character. The research uses Design Thinking, covering needs analysis, problem definition, ideation, prototyping, and testing. The new logo is clearer, more memorable, and works well across both digital and print media. This redesign is expected to strengthen the company's professional image and improve its competitiveness in the digital age.</i>
-          </p>
-          <p class="keywords-text">
-            <b>Keywords:</b> <i>redesign, brand identity, logo, visual design, Design Thinking.</i>
-          </p>
-        </div>
-      </div>
-
-      <h1>1. PENDAHULUAN</h1>
-
-      <p>Perkembangan teknologi yang sangat cepat belakangan ini mengubah cara perusahaan berkomunikasi dengan masyarakat. Di dunia industri digital, logo bukan lagi sekadar tanda pengenal, melainkan alat komunikasi penting yang bisa membentuk pandangan orang terhadap kualitas layanan dan kredibilitas perusahaan <span class="citation">(Wheeler, 2018)</span>. Karena itu, desain logo harus bisa terlihat jelas baik saat dicetak besar maupun saat dipasang kecil di layar ponsel.</p>
-
-      <p>Perusahaan Cerah, sebagai platform berbasis teknologi, membutuhkan identitas visual yang lebih luwes agar tetap relevan dengan selera pengguna masa kini. Desain lama yang terlalu banyak detail ternyata menyulitkan saat dipakai di antarmuka <i>mobile</i> dan membuat pesan yang ingin disampaikan jadi kurang tegas. Dari situ muncul kebutuhan untuk mendesain ulang logo agar lebih sederhana, garisnya tegas, dan bentuknya konsisten di mana saja <span class="citation">(Rustan, 2019)</span>.</p>
-
-      <p>Penelitian ini cukup penting karena identitas visual yang kuat bisa membantu membangun kepercayaan, membuat orang lebih mudah mengingat merek, dan membuat pengalaman pengguna jadi lebih baik. Jadi, pembuatan logo baru ini bukan cuma soal keindahan, tapi juga soal fungsi yang mendukung kemajuan perusahaan.</p>
-
-      <p>Selain itu, kebiasaan pengguna yang kini lebih banyak mengakses lewat ponsel menuntut setiap elemen desain harus langsung dikenali dalam sekejap. Logo yang terlalu rumit sering kali kehilangan maknanya kalau diperkecil <span class="citation">(Pradana &amp; Nugroho, 2021)</span>. Hal inilah yang mendasari kenapa perancangan ulang ini perlu dilakukan, supaya identitas visual tetap efektif di segala situasi.</p>
-
-      <p>Berdasarkan hal-hal tersebut, masalah yang ingin dijawab dalam penelitian ini adalah: (1) Bagaimana merancang ulang logo Perusahaan Cerah agar lebih sederhana, mudah dikenali, dan fleksibel? (2) Apakah logo baru yang dihasilkan lebih jelas dan lebih bisa disesuaikan ukurannya dibanding yang lama? Tujuannya jelas: mendapatkan desain baru yang lebih modern, pas untuk dipakai di media apa saja, dan terbukti lebih efektif dalam membangun citra perusahaan.</p>
-
-      <div class="page-footer">
-        Journal of Indonesian Education, Vol. 4, No. 2, Juni 2026 &ensp;|&ensp; 125
-      </div>
-    </div>
-
-    <!-- ========== HALAMAN 2 ========== -->
-    <div class="page">
-
-      <h1>2. TINJAUAN PUSTAKA</h1>
-
-      <h2>2.1. Identitas Merek di Dunia Digital</h2>
-
-      <p><i>Identity branding</i> adalah sekumpulan elemen visual dan konsep yang dipakai untuk membangun persepsi publik terhadap sebuah organisasi. Mulai dari logo, warna, jenis huruf, sampai cara berkomunikasi harus serasi dan satu nada. Dalam desain masa kini, identitas yang baik harus mudah diingat, bisa dipakai di banyak tempat, dan tepat menggambarkan nilai-nilai perusahaan <span class="citation">(Wheeler, 2018)</span>.</p>
-
-      <p>Di dunia digital, logo sering kali menjadi hal pertama yang dilihat pengguna. Identitas yang sederhana dan kuat biasanya lebih cepat melekat di ingatan dibanding yang penuh detail. Itulah sebabnya strategi <i>branding</i> digital sangat menekankan kejelasan, keseragaman, dan kesesuaian dengan tempat logo itu dipasang <span class="citation">(Rowe, 2019)</span>.</p>
-
-      <p>Kalau seluruh elemen visual selaras, perusahaan akan terlihat lebih rapi dan terpercaya. Konsistensi ini membuat orang makin yakin dan makin mudah mengingat siapa perusahaan itu dan apa yang ditawarkannya <span class="citation">(Kotler &amp; Keller, 2016)</span>.</p>
-
-      <h2>2.2. Keunggulan Format Vektor</h2>
-
-      <p>Gambar berformat vektor seperti SVG punya kelebihan utama: bisa diperbesar atau diperkecil sepuasnya tanpa pecah atau buram. Ini sangat cocok untuk kebutuhan layar digital yang ukurannya bermacam-macam. Selain itu, ukuran filenya kecil, jadi tidak membebani kecepatan buka halaman <span class="citation">(Pradana &amp; Nugroho, 2021)</span>.</p>
-
-      <p>Karena sifatnya itu, satu desain saja sudah cukup untuk dipakai di situs web, aplikasi, spanduk, hingga barang cetakan. Tidak perlu membuat banyak versi ukuran, yang tentu saja menghemat waktu dan tenaga.</p>
-
-      <h2>2.3. Pemilihan Huruf untuk Media Digital</h2>
-
-      <p>Jenis huruf sangat berpengaruh pada kesan yang muncul dan kenyamanan membaca. Huruf <i>sans-serif</i> sering dipilih untuk tampilan layar karena bentuknya bersih, sederhana, dan tetap jelas meski ukurannya kecil <span class="citation">(Saraswati &amp; Kurniawan, 2023)</span>. Dengan pilihan yang tepat, tampilan akan terasa lebih rapi dan modern.</p>
-
-      <p>Selain kejelasan, bentuk huruf juga menyampaikan suasana. Ada yang memberi kesan resmi, ada yang terasa akrab, ada yang tegas, ada yang inovatif. Karena itu, pemilihan jenis huruf tidak boleh asal, harus disesuaikan dengan karakter dan visi perusahaan.</p>
-
-      <h2>2.4. Psikologi Warna dalam Desain Merek</h2>
-
-      <p>Warna punya kekuatan besar dalam membangun perasaan dan kesan di benak orang. Biru sering dikaitkan dengan kepercayaan dan kestabilan, kuning dengan semangat dan optimisme. Gabungan warna yang pas bisa membuat logo makin menarik sekaligus memperkuat pesan yang ingin disampaikan <span class="citation">(Rustan, 2019)</span>.</p>
-
-      <p>Warna yang baik tidak cuma enak dilihat, tapi juga harus tetap terbaca jelas di latar belakang terang maupun gelap, serta mudah diterapkan di berbagai jenis media visual.</p>
-
-      <h2>2.5. Metode Design Thinking dalam Desain</h2>
-
-      <p><i>Design Thinking</i> adalah cara merancang yang berpusat pada kebutuhan manusia dan dilakukan berulang kali sampai hasilnya pas. Ada lima tahapan: pahami kebutuhan, rumuskan masalah, cari ide, buat contoh, dan uji coba <span class="citation">(Anggraini &amp; Natasia, 2020)</span>. Dalam pembuatan logo, cara ini memungkinkan kita bereksperimen dengan banyak ide namun tetap terarah pada apa yang dibutuhkan pengguna.</p>
-
-      <h2>2.6. Penelitian Sebelumnya</h2>
-
-      <p>Hidayat dan Rahmawati <span class="citation">(2022)</span> pernah meneliti perubahan identitas visual dan menemukan bahwa penyederhanaan bentuk sangat meningkatkan kejelasan logo saat dipakai ukuran kecil. Penelitian itu juga membuktikan bahwa konsistensi bentuk di berbagai media sangat berpengaruh pada pengenalan merek. Di sisi lain, Pradana dan Nugroho <span class="citation">(2021)</span> menekankan pentingnya format vektor agar kualitas gambar tetap terjaga di semua resolusi. Kedua hasil ini menjadi acuan utama dalam penelitian ini.</p>
-
-      <div class="page-footer">
-        Journal of Indonesian Education, Vol. 4, No. 2, Juni 2026 &ensp;|&ensp; 126
-      </div>
-    </div>
-
-    <!-- ========== HALAMAN 3 ========== -->
-    <div class="page">
-
-      <h1>3. METODOLOGI PENELITIAN</h1>
-
-      <p>Penelitian ini menggunakan metode <i>Design Thinking</i> karena cara ini memberi ruang luas untuk berkreasi, namun tetap teratur dan berpusat pada kebutuhan pemakai. Tahapannya dilakukan berurutan supaya hasil desain tidak cuma indah dipandang, tapi juga benar-benar berguna dan pas dipakai di lapangan <span class="citation">(Anggraini &amp; Natasia, 2020)</span>.</p>
-
-      <p>Metode ini cocok sekali karena bisa menyeimbangkan keindahan seni dan kebutuhan teknis. Dalam kasus desain logo, kita harus memastikan hasil akhirnya tidak cuma bagus, tapi juga sesuai dengan selera pengguna dan media yang dipakai <span class="citation">(Norman, 2013)</span>.</p>
-
-      <div class="figure-container">
-        <div class="figure-placeholder" style="display:inline-block; padding:8mm 10mm; border:1px dashed #000; background:#fafafa; font-weight:bold; font-size:10pt;">
-          Empathize &#8594; Define &#8594; Ideate &#8594; Prototype &#8594; Test
-        </div>
-        <div class="figure-caption"><b>Gambar 1.</b> Alur Metode <i>Design Thinking</i></div>
-      </div>
-
-      <p>Langkah pertama adalah memahami apa yang dibutuhkan pengguna dan seperti apa karakter media yang akan dipakai. Kemudian merumuskan apa saja kekurangan logo lama, terutama soal kerumitan bentuk dan keterbacaan saat kecil. Setelah itu, kita mengumpulkan banyak ide dan sketsa baru yang lebih sederhana.</p>
-
-      <p>Setelah ada ide yang terpilih, barulah dibuat bentuk digital menggunakan perangkat lunak desain vektor. Langkah terakhir adalah menguji apakah desain baru itu sudah cukup jelas, mudah diingat, dan memberi kesan yang pas bagi pengguna.</p>
-
-      <p>Pengumpulan datanya dilakukan dengan cara mengamati dan membandingkan logo lama dengan yang baru. Selain itu, penulis juga berpegang pada prinsip-prinsip desain yang baik: keseimbangan, kesatuan, kontras, penekanan, dan proporsi supaya hasilnya kuat secara visual <span class="citation">(Rustan, 2019)</span>.</p>
-
-      <p>Untuk menilai hasilnya, ada beberapa hal yang dilihat: seberapa rumit bentuknya, jenis huruf yang dipakai, jenis berkas, kemampuan diperbesar, dan seberapa jelas bentuknya. Penilaian ini dilakukan sendiri oleh penulis dan juga dikonfirmasi ke dua ahli desain grafis supaya hasilnya lebih terpercaya.</p>
-
-      <div class="page-footer">
-        Journal of Indonesian Education, Vol. 4, No. 2, Juni 2026 &ensp;|&ensp; 127
-      </div>
-    </div>
-
-    <!-- ========== HALAMAN 4 ========== -->
-    <div class="page">
-
-      <h1>4. HASIL DAN PEMBAHASAN</h1>
-
-      <h2>4.1. Hasil Perancangan</h2>
-
-      <p>Dari proses yang dilakukan, didapatkan desain baru yang lebih banyak menggunakan bentuk geometris sederhana dan komposisi yang seimbang. Bentuk yang ringkas ini membuat logo lebih mudah dipasang di mana saja, mulai dari ikon aplikasi, bagian atas situs, sampai materi promosi <span class="citation">(Hidayat &amp; Rahmawati, 2022)</span>.</p>
-
-      <p>Dalam pemilihan bentuk, diusahakan agar tetap ada kesan resmi namun tetap ramah. Ini penting karena perusahaan bergerak di bidang pendidikan, jadi harus terpercaya tapi juga tidak kaku. Bentuk akhirnya dirancang agar bisa mewakili kedua sisi itu sekaligus.</p>
-
-      <div class="figure-container">
-        <div class="figure-placeholder" style="display:inline-block; width:120mm; padding:6mm; text-align:center;">
-          <div style="display:flex; gap:10mm; justify-content:center; align-items:center;">
-            <div style="text-align:center;">
-              <div style="width:38mm; height:38mm; border:1px dashed #999; display:flex; align-items:center; justify-content:center; font-size:9pt; background:#f9f9f9;">Logo Lama</div>
-              <div style="font-size:9pt; margin-top:2mm;">(a) Sebelum</div>
+        <!-- ===== HALAMAN SAMPUL (COVER) ===== -->
+        <div class="page cover-page">
+            <div class="cover-journal-title">
+                JOURNAL OF INDONESIAN EDUCATION<br>
+                <span style="font-size:11pt;">JIKOM-DKV</span><br>
+                <span style="font-size:10pt;">VOLUME 4, NOMOR 2, JUNI 2026</span>
             </div>
-            <div style="text-align:center;">
-              <div style="width:38mm; height:38mm; border:1px dashed #999; display:flex; align-items:center; justify-content:center; font-size:9pt; background:#f9f9f9;">Logo Baru</div>
-              <div style="font-size:9pt; margin-top:2mm;">(b) Sesudah</div>
+
+            <div class="cover-logo-container">
+                <img src="logokampus.png" alt="Logo Kampus"
+                onerror="this.onerror=null;this.outerHTML='<div style=&quot;width:250px;height:auto;aspect-ratio:1/1;border:1px solid #000;display:flex;align-items:center;justify-content:center;font-size:10pt;margin:0 auto;background:#fafafa;&quot;>Logo Institut Widya Pratama</div>';">
             </div>
-          </div>
+
+            <div class="cover-article-title">
+                PERANCANGAN ULANG IDENTITY BRANDING<br>
+                MELALUI DESAIN LOGO BARU<br>
+                PADA PERUSAHAAN CERAH
+            </div>
+
+            <div class="cover-section-1">
+                <div class="name">Dimas Arif Fikriawan</div>
+                <div class="nim">NIM 24.240.0075</div>
+            </div>
+
+            <div class="cover-section-2">
+                <div class="prodi">Program Studi Teknik Informatika</div>
+                <div class="institusi">Institut Widya Pratama</div>
+                <div class="alamat">Jl. Patriot No. 25 - Kota Pekalongan</div>
+                <div class="telepon">(0285) 427816 / 427817</div>
+                <div class="email">Email: <a href="mailto:akademik@iwima.ac.id">akademik@iwima.ac.id</a></div>
+            </div>
+
+            <div class="cover-section-3">
+                Tahun 2026
+            </div>
+
+            <div class="cover-footer">
+                &nbsp;
+            </div>
         </div>
-        <div class="figure-caption"><b>Gambar 2.</b> Perbandingan Logo Lama dan Baru</div>
-      </div>
 
-      <div class="table-container">
-        <div class="table-title">Tabel 1. Perbandingan Kualitas Desain</div>
-        <table>
-          <thead>
-            <tr>
-              <th style="width:25%;">Aspek</th>
-              <th style="width:35%;">Logo Lama</th>
-              <th style="width:40%;">Logo Baru</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Kerumitan</td>
-              <td>Tinggi</td>
-              <td>Rendah</td>
-            </tr>
-            <tr>
-              <td>Jenis Huruf</td>
-              <td><i>Serif</i></td>
-              <td><i>Sans-serif</i></td>
-            </tr>
-            <tr>
-              <td>Format Berkas</td>
-              <td>Raster (PNG)</td>
-              <td>Vektor (SVG)</td>
-            </tr>
-            <tr>
-              <td>Kemampuan Ubah Ukuran</td>
-              <td>Terbatas</td>
-              <td>Sangat Baik</td>
-            </tr>
-            <tr>
-              <td>Kejelasan Bentuk</td>
-              <td>Cukup</td>
-              <td>Jelas</td>
-            </tr>
-          </tbody>
-        </table>
-        <div class="table-caption">Sumber: Hasil Analisis Penulis, 2026</div>
-      </div>
+        <!-- ===== HALAMAN 1 : ARTIKEL ===== -->
+        <div class="page">
+            <div class="journal-header">
+                <div class="journal-header-line"></div>
+                <div class="journal-header-info">
+                    <b>Journal of Indonesian Education</b><br>
+                    Vol. 4, No. 2, Juni 2026, hlm. 125–134<br>
+                    E-ISSN: 2987-1234 &ensp;|&ensp; P-ISSN: 2987-5678
+                </div>
+                <div class="journal-header-line-bottom"></div>
+            </div>
 
-      <p>Secara keseluruhan, logo baru terasa lebih rapi, lebih modern, dan enak dilihat di layar apa saja. Perubahan dari gambar biasa ke vektor juga membuat pemakaiannya jadi jauh lebih leluasa dan tidak perlu khawatir gambarnya rusak kalau diperbesar. Jadi, desain ini memang lebih pas untuk kebutuhan masa kini <span class="citation">(Pradana &amp; Nugroho, 2021)</span>.</p>
+            <div class="article-title-main">
+                Perancangan Ulang Identity Branding Melalui Desain Logo Baru pada Perusahaan Cerah
+            </div>
 
-      <p>Keunggulan teknis dari vektor ini sangat terasa, terutama saat dipakai di situs atau aplikasi. Gambar tetap tajam, tidak pecah, dan tidak berat saat dimuat. Hal ini sangat membantu dalam menjaga kualitas tampilan visual perusahaan.</p>
+            <div class="authors-section">
+                <div class="authors-names">Dimas Arif Fikriawan<sup>*</sup></div>
+                <div class="authors-affiliations">
+                    Program Studi Teknik Informatika, Institut Widya Pratama<br>
+                    Jl. Patriot No. 25 - Kota Pekalongan, Indonesia
+                </div>
+                <div class="authors-email">
+                    <sup>*</sup>Penulis korespondensi: <a href="mailto:dimasfikriawan0@gmail.com">dimasfikriawan0@gmail.com</a>
+                </div>
+            </div>
 
-      <p>Dari segi warna, pilihan yang dipakai juga lebih mudah dipahami dan memberi kesan seimbang antara dinamis dan profesional. Gabungan warna cerah dan gelap membuatnya tetap kuat dan mudah diingat, sekaligus mendukung citra perusahaan yang aktif namun terpercaya.</p>
+            <div class="abstract-dual">
+                <div class="abstract-col">
+                    <div class="abstract-label">Abstrak</div>
+                    <p class="no-indent" style="font-size:9.5pt; text-indent:0;">
+                        Perusahaan Cerah adalah penyedia layanan edukasi digital yang terus berkembang, namun seiring makin ketatnya persaingan, identitas visual yang dipakai selama ini mulai terasa kurang pas. Bentuknya terlalu rumit, sulit dibaca kalau diperkecil, dan tidak fleksibel saat diterapkan di berbagai perangkat genggam. Penelitian ini bertujuan menyusun ulang <i>identity branding</i> dengan membuat logo baru yang lebih sederhana, modern, dan mudah beradaptasi, tanpa menghilangkan ciri khas perusahaan. Pendekatan yang dipakai adalah <i>Design Thinking</i>, mulai dari memahami kebutuhan, merumuskan masalah, mencari ide, membuat contoh, hingga menguji hasilnya. Hasilnya, logo baru jauh lebih jelas, lebih mudah diingat, dan bisa dipakai di mana saja, baik di media sosial maupun cetak. Perubahan ini diharapkan bisa membuat citra perusahaan makin profesional dan lebih siap bersaing di era digital.
+                    </p>
+                    <p class="keywords-text">
+                        <b>Kata Kunci:</b> perancangan ulang, identitas merek, logo, desain visual, Desain Berpikir.
+                    </p>
+                </div>
+                <div class="abstract-col">
+                    <div class="abstract-label">Abstract</div>
+                    <p class="no-indent" style="font-size:9.5pt; text-indent:0;">
+                        <i>Perusahaan Cerah is a growing digital education provider, yet amid rising competition, its current visual identity has begun to feel less suitable. Its complex form is hard to read when scaled down and lacks flexibility across mobile devices. This study aims to redesign its identity branding by creating a new logo that is simpler, more modern, and adaptable, while preserving the company's core character. The research uses Design Thinking, covering needs analysis, problem definition, ideation, prototyping, and testing. The new logo is clearer, more memorable, and works well across both digital and print media. This redesign is expected to strengthen the company's professional image and improve its competitiveness in the digital age.</i>
+                    </p>
+                    <p class="keywords-text">
+                        <b>Keywords:</b> <i>redesign, brand identity, logo, visual design, Design Thinking.</i>
+                    </p>
+                </div>
+            </div>
 
-      <div class="page-footer">
-        Journal of Indonesian Education, Vol. 4, No. 2, Juni 2026 &ensp;|&ensp; 128
-      </div>
+            <h1>1. PENDAHULUAN</h1>
+
+            <p>Perkembangan teknologi yang sangat cepat belakangan ini mengubah cara perusahaan berkomunikasi dengan masyarakat. Di dunia industri digital, logo bukan lagi sekadar tanda pengenal, melainkan alat komunikasi penting yang bisa membentuk pandangan orang terhadap kualitas layanan dan kredibilitas perusahaan <span class="citation">(Wheeler, 2018)</span>. Karena itu, desain logo harus bisa terlihat jelas baik saat dicetak besar maupun saat dipasang kecil di layar ponsel.</p>
+
+            <p>Perusahaan Cerah, sebagai platform berbasis teknologi, membutuhkan identitas visual yang lebih luwes agar tetap relevan dengan selera pengguna masa kini. Desain lama yang terlalu banyak detail ternyata menyulitkan saat dipakai di antarmuka <i>mobile</i> dan membuat pesan yang ingin disampaikan jadi kurang tegas. Dari situ muncul kebutuhan untuk mendesain ulang logo agar lebih sederhana, garisnya tegas, dan bentuknya konsisten di mana saja <span class="citation">(Rustan, 2019)</span>.</p>
+
+            <p>Penelitian ini cukup penting karena identitas visual yang kuat bisa membantu membangun kepercayaan, membuat orang lebih mudah mengingat merek, dan membuat pengalaman pengguna jadi lebih baik. Jadi, pembuatan logo baru ini bukan cuma soal keindahan, tapi juga soal fungsi yang mendukung kemajuan perusahaan.</p>
+
+            <p>Selain itu, kebiasaan pengguna yang kini lebih banyak mengakses lewat ponsel menuntut setiap elemen desain harus langsung dikenali dalam sekejap. Logo yang terlalu rumit sering kali kehilangan maknanya kalau diperkecil <span class="citation">(Pradana &amp; Nugroho, 2021)</span>. Hal inilah yang mendasari kenapa perancangan ulang ini perlu dilakukan, supaya identitas visual tetap efektif di segala situasi.</p>
+
+            <p>Berdasarkan hal-hal tersebut, masalah yang ingin dijawab dalam penelitian ini adalah: (1) Bagaimana merancang ulang logo Perusahaan Cerah agar lebih sederhana, mudah dikenali, dan fleksibel? (2) Apakah logo baru yang dihasilkan lebih jelas dan lebih bisa disesuaikan ukurannya dibanding yang lama? Tujuannya jelas: mendapatkan desain baru yang lebih modern, pas untuk dipakai di media apa saja, dan terbukti lebih efektif dalam membangun citra perusahaan.</p>
+
+            <div class="page-footer">
+                Journal of Indonesian Education, Vol. 4, No. 2, Juni 2026 &ensp;|&ensp; 125
+            </div>
+        </div>
+
+        <!-- ===== HALAMAN 2 ===== -->
+        <div class="page">
+            <h1>2. TINJAUAN PUSTAKA</h1>
+
+            <h2>2.1. Identitas Merek di Dunia Digital</h2>
+
+            <p><i>Identity branding</i> adalah sekumpulan elemen visual dan konsep yang dipakai untuk membangun persepsi publik terhadap sebuah organisasi. Mulai dari logo, warna, jenis huruf, sampai cara berkomunikasi harus serasi dan satu nada. Dalam desain masa kini, identitas yang baik harus mudah diingat, bisa dipakai di banyak tempat, dan tepat menggambarkan nilai-nilai perusahaan <span class="citation">(Wheeler, 2018)</span>.</p>
+
+            <p>Di dunia digital, logo sering kali menjadi hal pertama yang dilihat pengguna. Identitas yang sederhana dan kuat biasanya lebih cepat melekat di ingatan dibanding yang penuh detail. Itulah sebabnya strategi <i>branding</i> digital sangat menekankan kejelasan, keseragaman, dan kesesuaian dengan tempat logo itu dipasang <span class="citation">(Rowe, 2019)</span>.</p>
+
+            <p>Kalau seluruh elemen visual selaras, perusahaan akan terlihat lebih rapi dan terpercaya. Konsistensi ini membuat orang makin yakin dan makin mudah mengingat siapa perusahaan itu dan apa yang ditawarkannya <span class="citation">(Kotler &amp; Keller, 2016)</span>.</p>
+
+            <h2>2.2. Keunggulan Format Vektor</h2>
+
+            <p>Gambar berformat vektor seperti SVG punya kelebihan utama: bisa diperbesar atau diperkecil sepuasnya tanpa pecah atau buram. Ini sangat cocok untuk kebutuhan layar digital yang ukurannya bermacam-macam. Selain itu, ukuran filenya kecil, jadi tidak membebani kecepatan buka halaman <span class="citation">(Pradana &amp; Nugroho, 2021)</span>.</p>
+
+            <p>Karena sifatnya itu, satu desain saja sudah cukup untuk dipakai di situs web, aplikasi, spanduk, hingga barang cetakan. Tidak perlu membuat banyak versi ukuran, yang tentu saja menghemat waktu dan tenaga.</p>
+
+            <h2>2.3. Pemilihan Huruf untuk Media Digital</h2>
+
+            <p>Jenis huruf sangat berpengaruh pada kesan yang muncul dan kenyamanan membaca. Huruf <i>sans-serif</i> sering dipilih untuk tampilan layar karena bentuknya bersih, sederhana, dan tetap jelas meski ukurannya kecil <span class="citation">(Saraswati &amp; Kurniawan, 2023)</span>. Dengan pilihan yang tepat, tampilan akan terasa lebih rapi dan modern.</p>
+
+            <p>Selain kejelasan, bentuk huruf juga menyampaikan suasana. Ada yang memberi kesan resmi, ada yang terasa akrab, ada yang tegas, ada yang inovatif. Karena itu, pemilihan jenis huruf tidak boleh asal, harus disesuaikan dengan karakter dan visi perusahaan.</p>
+
+            <h2>2.4. Psikologi Warna dalam Desain Merek</h2>
+
+            <p>Warna punya kekuatan besar dalam membangun perasaan dan kesan di benak orang. Biru sering dikaitkan dengan kepercayaan dan kestabilan, kuning dengan semangat dan optimisme. Gabungan warna yang pas bisa membuat logo makin menarik sekaligus memperkuat pesan yang ingin disampaikan <span class="citation">(Rustan, 2019)</span>.</p>
+
+            <p>Warna yang baik tidak cuma enak dilihat, tapi juga harus tetap terbaca jelas di latar belakang terang maupun gelap, serta mudah diterapkan di berbagai jenis media visual.</p>
+
+            <h2>2.5. Metode Design Thinking dalam Desain</h2>
+
+            <p><i>Design Thinking</i> adalah cara merancang yang berpusat pada kebutuhan manusia dan dilakukan berulang kali sampai hasilnya pas. Ada lima tahapan: pahami kebutuhan, rumuskan masalah, cari ide, buat contoh, dan uji coba <span class="citation">(Anggraini &amp; Natasia, 2020)</span>. Dalam pembuatan logo, cara ini memungkinkan kita bereksperimen dengan banyak ide namun tetap terarah pada apa yang dibutuhkan pengguna.</p>
+
+            <h2>2.6. Penelitian Sebelumnya</h2>
+
+            <p>Hidayat dan Rahmawati <span class="citation">(2022)</span> pernah meneliti perubahan identitas visual dan menemukan bahwa penyederhanaan bentuk sangat meningkatkan kejelasan logo saat dipakai ukuran kecil. Penelitian itu juga membuktikan bahwa konsistensi bentuk di berbagai media sangat berpengaruh pada pengenalan merek. Di sisi lain, Pradana dan Nugroho <span class="citation">(2021)</span> menekankan pentingnya format vektor agar kualitas gambar tetap terjaga di semua resolusi. Kedua hasil ini menjadi acuan utama dalam penelitian ini.</p>
+
+            <div class="page-footer">
+                Journal of Indonesian Education, Vol. 4, No. 2, Juni 2026 &ensp;|&ensp; 126
+            </div>
+        </div>
+
+        <!-- ===== HALAMAN 3 ===== -->
+        <div class="page">
+            <h1>3. METODOLOGI PENELITIAN</h1>
+
+            <p>Penelitian ini menggunakan metode <i>Design Thinking</i> karena cara ini memberi ruang luas untuk berkreasi, namun tetap teratur dan berpusat pada kebutuhan pemakai. Tahapannya dilakukan berurutan supaya hasil desain tidak cuma indah dipandang, tapi juga benar-benar berguna dan pas dipakai di lapangan <span class="citation">(Anggraini &amp; Natasia, 2020)</span>.</p>
+
+            <p>Metode ini cocok sekali karena bisa menyeimbangkan keindahan seni dan kebutuhan teknis. Dalam kasus desain logo, kita harus memastikan hasil akhirnya tidak cuma bagus, tapi juga sesuai dengan selera pengguna dan media yang dipakai <span class="citation">(Norman, 2013)</span>.</p>
+
+            <div class="figure-container">
+                <div class="figure-placeholder" style="display:inline-block; padding:8mm 10mm; border:1px dashed #000; background:#fafafa; font-weight:bold; font-size:10pt;">
+                    Empathize &#8594; Define &#8594; Ideate &#8594; Prototype &#8594; Test
+                </div>
+                <div class="figure-caption"><b>Gambar 1.</b> Alur Metode <i>Design Thinking</i></div>
+            </div>
+
+            <p>Langkah pertama adalah memahami apa yang dibutuhkan pengguna dan seperti apa karakter media yang akan dipakai. Kemudian merumuskan apa saja kekurangan logo lama, terutama soal kerumitan bentuk dan keterbacaan saat kecil. Setelah itu, kita mengumpulkan banyak ide dan sketsa baru yang lebih sederhana.</p>
+
+            <p>Setelah ada ide yang terpilih, barulah dibuat bentuk digital menggunakan perangkat lunak desain vektor. Langkah terakhir adalah menguji apakah desain baru itu sudah cukup jelas, mudah diingat, dan memberi kesan yang pas bagi pengguna.</p>
+
+            <p>Pengumpulan datanya dilakukan dengan cara mengamati dan membandingkan logo lama dengan yang baru. Selain itu, penulis juga berpegang pada prinsip-prinsip desain yang baik: keseimbangan, kesatuan, kontras, penekanan, dan proporsi supaya hasilnya kuat secara visual <span class="citation">(Rustan, 2019)</span>.</p>
+
+            <p>Untuk menilai hasilnya, ada beberapa hal yang dilihat: seberapa rumit bentuknya, jenis huruf yang dipakai, jenis berkas, kemampuan diperbesar, dan seberapa jelas bentuknya. Penilaian ini dilakukan sendiri oleh penulis dan juga dikonfirmasi ke dua ahli desain grafis supaya hasilnya lebih terpercaya.</p>
+
+            <div class="page-footer">
+                Journal of Indonesian Education, Vol. 4, No. 2, Juni 2026 &ensp;|&ensp; 127
+            </div>
+        </div>
+
+        <!-- ===== HALAMAN 4 ===== -->
+        <div class="page">
+            <h1>4. HASIL DAN PEMBAHASAN</h1>
+
+            <h2>4.1. Hasil Perancangan</h2>
+
+            <p>Dari proses yang dilakukan, didapatkan desain baru yang lebih banyak menggunakan bentuk geometris sederhana dan komposisi yang seimbang. Bentuk yang ringkas ini membuat logo lebih mudah dipasang di mana saja, mulai dari ikon aplikasi, bagian atas situs, sampai materi promosi <span class="citation">(Hidayat &amp; Rahmawati, 2022)</span>.</p>
+
+            <p>Dalam pemilihan bentuk, diusahakan agar tetap ada kesan resmi namun tetap ramah. Ini penting karena perusahaan bergerak di bidang pendidikan, jadi harus terpercaya tapi juga tidak kaku. Bentuk akhirnya dirancang agar bisa mewakili kedua sisi itu sekaligus.</p>
+
+            <div class="figure-container">
+                <div class="figure-placeholder" style="display:inline-block; width:120mm; padding:6mm; text-align:center;">
+                    <div style="display:flex; gap:10mm; justify-content:center; align-items:center;">
+                        <div style="text-align:center;">
+                            <div style="width:38mm; height:38mm; border:1px dashed #999; display:flex; align-items:center; justify-content:center; font-size:9pt; background:#f9f9f9;">Logo Lama</div>
+                            <div style="font-size:9pt; margin-top:2mm;">(a) Sebelum</div>
+                        </div>
+                        <div style="text-align:center;">
+                            <div style="width:38mm; height:38mm; border:1px dashed #999; display:flex; align-items:center; justify-content:center; font-size:9pt; background:#f9f9f9;">Logo Baru</div>
+                            <div style="font-size:9pt; margin-top:2mm;">(b) Sesudah</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="figure-caption"><b>Gambar 2.</b> Perbandingan Logo Lama dan Baru</div>
+            </div>
+
+            <div class="table-container">
+                <div class="table-title">Tabel 1. Perbandingan Kualitas Desain</div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width:25%;">Aspek</th>
+                            <th style="width:35%;">Logo Lama</th>
+                            <th style="width:40%;">Logo Baru</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Kerumitan</td>
+                            <td>Tinggi</td>
+                            <td>Rendah</td>
+                        </tr>
+                        <tr>
+                            <td>Jenis Huruf</td>
+                            <td><i>Serif</i></td>
+                            <td><i>Sans-serif</i></td>
+                        </tr>
+                        <tr>
+                            <td>Format Berkas</td>
+                            <td>Raster (PNG)</td>
+                            <td>Vektor (SVG)</td>
+                        </tr>
+                        <tr>
+                            <td>Kemampuan Ubah Ukuran</td>
+                            <td>Terbatas</td>
+                            <td>Sangat Baik</td>
+                        </tr>
+                        <tr>
+                            <td>Kejelasan Bentuk</td>
+                            <td>Cukup</td>
+                            <td>Jelas</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="table-caption">Sumber: Hasil Analisis Penulis, 2026</div>
+            </div>
+
+            <p>Secara keseluruhan, logo baru terasa lebih rapi, lebih modern, dan enak dilihat di layar apa saja. Perubahan dari gambar biasa ke vektor juga membuat pemakaiannya jadi jauh lebih leluasa dan tidak perlu khawatir gambarnya rusak kalau diperbesar. Jadi, desain ini memang lebih pas untuk kebutuhan masa kini <span class="citation">(Pradana &amp; Nugroho, 2021)</span>.</p>
+
+            <p>Keunggulan teknis dari vektor ini sangat terasa, terutama saat dipakai di situs atau aplikasi. Gambar tetap tajam, tidak pecah, dan tidak berat saat dimuat. Hal ini sangat membantu dalam menjaga kualitas tampilan visual perusahaan.</p>
+
+            <p>Dari segi warna, pilihan yang dipakai juga lebih mudah dipahami dan memberi kesan seimbang antara dinamis dan profesional. Gabungan warna cerah dan gelap membuatnya tetap kuat dan mudah diingat, sekaligus mendukung citra perusahaan yang aktif namun terpercaya.</p>
+
+            <div class="page-footer">
+                Journal of Indonesian Education, Vol. 4, No. 2, Juni 2026 &ensp;|&ensp; 128
+            </div>
+        </div>
+
+        <!-- ===== HALAMAN 5 ===== -->
+        <div class="page">
+            <h2>4.2. Makna Filosofis dan Visual</h2>
+
+            <p>Setiap bagian dari logo baru ini dirancang dengan maksud tertentu: bentuknya melambangkan komunikasi terbuka, garisnya tegas menunjukkan kestabilan, dan kesederhanaannya mewakili kemudahan akses. Warna yang dipilih memberi kesan optimis namun tetap serius dan bisa dipercaya. Bentuk yang simetris juga membantu membuatnya lebih mudah diingat dan terasa rapi <span class="citation">(Rowe, 2019)</span>.</p>
+
+            <p>Secara mendasar, bentuk yang sederhana lebih cepat dipahami oleh otak manusia. Ini sesuai prinsip desain yang baik: pesan harus sampai dengan cepat dan jelas. Jadi, perubahan ini bukan cuma soal tampilan, tapi juga soal seberapa efektif pesan yang ingin disampaikan sampai ke pengguna <span class="citation">(Rustan, 2019)</span>.</p>
+
+            <h2>4.3. Penilaian Kelayakan</h2>
+
+            <p>Penilaian dilakukan berdasarkan empat hal utama: seberapa sederhana, seberapa konsisten, seberapa luwes, dan seberapa menarik bentuknya. Hasilnya, logo baru unggul di semua poin dibanding yang lama. Ini menandakan bahwa tujuan awal penelitian sudah tercapai.</p>
+
+            <p>Karena bentuknya sederhana, logo ini mudah diletakkan di ruang sempit sekalipun. Konsistensi juga lebih mudah dijaga karena tidak ada elemen yang saling bertabrakan. Di dunia digital, hal ini sangat penting karena logo sering muncul di tempat yang sangat kecil, seperti ikon situs, tombol aplikasi, atau gambar profil <span class="citation">(Cooper et al., 2014)</span>.</p>
+
+            <p>Kelebihan terbesar tentu saja kemampuan ubah ukurannya. Tidak ada lagi gambar yang pecah saat diperbesar. Sementara itu, dari segi daya tarik, tampilan yang bersih dan minimalis sangat cocok dengan selera pengguna masa kini yang lebih menyukai kesederhanaan.</p>
+
+            <h2>4.4. Penerapan di Berbagai Media</h2>
+
+            <p>Logo baru ini bisa dipakai di situs web, aplikasi, spanduk, hingga barang cetakan tanpa perlu banyak diubah. Kemudahan ini sangat menguntungkan karena menghemat waktu pembuatan materi promosi. Kalau tampilannya seragam di mana-mana, perusahaan akan terlihat jauh lebih profesional dan teratur <span class="citation">(Hidayat &amp; Rahmawati, 2022)</span>.</p>
+
+            <p>Dalam dunia antarmuka pengguna, logo yang jelas dan ringan membantu orang mengenali merek lebih cepat. Ini berdampak positif pada kenyamanan penggunaan aplikasi atau situs, terutama di layar kecil. Identitas visual yang kuat membuat orang makin akrab dan makin percaya pada layanan yang ditawarkan.</p>
+
+            <p>Kalau semua media komunikasi memakai ciri yang sama, asosiasi yang terbentuk di benak orang akan makin kuat. Ini sangat membantu membangun merek yang kuat dalam jangka panjang.</p>
+
+            <h2>4.5. Dampak pada Citra Perusahaan</h2>
+
+            <p>Identitas visual yang rapi punya peran besar dalam membangun pandangan orang terhadap perusahaan. Logo yang baik memberi sinyal bahwa perusahaan itu teliti, berkualitas, dan konsisten. Di tengah persaingan yang ketat, kesan pertama dari tampilan visual ini bisa sangat menentukan <span class="citation">(Kotler &amp; Keller, 2016)</span>.</p>
+
+            <p>Di era digital, orang sering menilai kualitas layanan dari tampilan awal yang mereka lihat. Karena itu, desain yang rapi dan serasi memberi keuntungan tersendiri. Dengan bentuk baru yang lebih tegas dan jelas, persepsi positif terhadap perusahaan bisa meningkat.</p>
+
+            <div class="page-footer">
+                Journal of Indonesian Education, Vol. 4, No. 2, Juni 2026 &ensp;|&ensp; 129
+            </div>
+        </div>
+
+        <!-- ===== HALAMAN 6 ===== -->
+        <div class="page">
+            <h2>4.6. Hubungan Bentuk dan Kegunaan</h2>
+
+            <p>Desain yang baik selalu mempertemukan keindahan dan fungsi. Logo yang cuma indah tapi sulit dipakai tidak ada gunanya. Sebaliknya, logo yang sederhana, luwes, dan jelas akan sangat berguna untuk jangka panjang <span class="citation">(Norman, 2013)</span>.</p>
+
+            <p>Dalam kasus ini, fungsi utama logo adalah mewakili nama perusahaan secara singkat namun kuat. Logo baru berhasil melakukan itu karena bentuk, warna, dan tulisannya saling mendukung. Ini membuktikan bahwa desain identitas yang baik harus seimbang antara seni dan kebutuhan teknis.</p>
+
+            <p>Logo juga merupakan bagian dari strategi komunikasi. Identitas yang tepat bisa membantu mengarahkan pandangan publik ke arah yang diinginkan. Karena itu, berinvestasi pada desain yang baik adalah langkah cerdas untuk memperkuat posisi merek <span class="citation">(Wheeler, 2018)</span>.</p>
+
+            <h2>4.7. Analisis Kelayakan Teknis</h2>
+
+            <p>Ditinjau dari segi teknis, desain baru ini sangat layak dipakai di mana saja. Bentuknya sederhana jadi mudah dibuat ulang, warnanya fleksibel, dan tetap terlihat jelas di latar terang atau gelap. Ini tandanya desain ini siap dipakai di lapangan.</p>
+
+            <p>Selain itu, format vektor yang dipakai sangat cocok dengan sistem digital masa kini. Di situs atau aplikasi, gambar harus jelas tapi tidak boleh membebani sistem. Karena ukuran berkasnya kecil, kebutuhan ini terpenuhi dengan sangat baik <span class="citation">(Pradana &amp; Nugroho, 2021)</span>.</p>
+
+            <h2>4.8. Keterbatasan Penelitian</h2>
+
+            <p>Meskipun hasilnya sudah jauh lebih baik, tetap ada hal yang bisa dikembangkan lagi. Salah satunya adalah perlunya pengujian lebih luas dengan melibatkan banyak pengguna nyata. Penelitian selanjutnya bisa menggunakan survei supaya hasil penilaiannya lebih kuat secara data.</p>
+
+            <p>Hal lain yang perlu diperhatikan adalah konsistensi saat dipakai di media yang sangat beragam. Meskipun sudah dirancang luwes, pengawasan tetap diperlukan supaya semua tampilan tetap seragam. Pengembangan lanjutan masih sangat terbuka untuk dilakukan <span class="citation">(Hidayat &amp; Rahmawati, 2022)</span>.</p>
+
+            <h1>5. PENGEMBANGAN LEBIH LANJUT</h1>
+
+            <p>Perancangan ulang ini tidak berhenti pada satu logo saja. Bisa dikembangkan lagi menjadi satu sistem panduan lengkap yang mencakup aturan pakai logo, warna utama dan pendamping, jenis huruf resmi, dan cara mengatur ukuran. Panduan ini penting supaya semua orang yang memakai aset perusahaan melakukannya dengan cara yang sama <span class="citation">(Wheeler, 2018)</span>.</p>
+
+            <h2>5.1. Panduan Penggunaan</h2>
+
+            <p>Panduan ini nanti akan menjelaskan hal-hal rinci seperti seberapa jauh jarak aman logo dari benda lain, ukuran paling kecil yang masih boleh dipakai, dan aturan pemakaian warna. Hal kecil seperti ini sering diabaikan, padahal sangat menentukan kualitas hasil akhir. Logo yang baik harus tetap terlihat kuat walaupun diletakkan di ruang sempit <span class="citation">(Rustan, 2019)</span>.</p>
+
+            <h2>5.2. Adaptasi di Berbagai Platform</h2>
+
+            <p>Logo yang dibuat untuk zaman digital harus siap dipakai di mana saja. Di situs, harus jelas di bagian atas maupun di ikon kecil. Di media sosial, harus tetap terbaca meski kecil. Di cetakan, harus tajam dan warnanya pas. Semua ini sudah diperhitungkan dalam desain baru ini <span class="citation">(Rowe, 2019)</span>.</p>
+
+            <div class="page-footer">
+                Journal of Indonesian Education, Vol. 4, No. 2, Juni 2026 &ensp;|&ensp; 130
+            </div>
+        </div>
+
+        <!-- ===== HALAMAN 7 ===== -->
+        <div class="page">
+            <h1>6. KESIMPULAN DAN SARAN</h1>
+
+            <h2>6.1. Kesimpulan</h2>
+
+            <p>Berdasarkan apa yang sudah dibahas, bisa disimpulkan bahwa perubahan identitas visual Perusahaan Cerah berhasil menghasilkan logo baru yang jauh lebih sederhana, luwes, dan profesional. Pemakaian metode <i>Design Thinking</i> membuat prosesnya berjalan rapi, mulai dari mencari masalah sampai menguji hasil akhirnya.</p>
+
+            <p>Logo baru ini menunjukkan peningkatan nyata di lima hal utama: bentuknya tidak lagi rumit, memakai huruf yang lebih modern, berkasnya berformat vektor, bisa diubah ukurannya dengan bebas, dan bentuknya jauh lebih jelas dibanding yang lama. Ini membuktikan bahwa desain identitas yang baik sangat penting untuk membangun nama baik perusahaan dan mendukung komunikasi visual yang efektif di era digital.</p>
+
+            <p>Secara umum, perubahan ini menunjukkan bahwa identitas visual bukan sekadar hiasan, tapi aset penting yang menjaga reputasi dan kepercayaan pengguna. Pendekatan yang sederhana ternyata paling cocok untuk dunia yang serba cepat ini. Di tengah kebutuhan tampil di banyak perangkat berbeda, desain yang ringkas namun kuat adalah pilihan terbaik.</p>
+
+            <h2>6.2. Saran</h2>
+
+            <p>Dari hasil penelitian ini, ada beberapa hal yang bisa disarankan: (1) Penelitian selanjutnya sebaiknya menguji logo ini langsung ke pengguna nyata lewat survei supaya hasil penilaiannya lebih lengkap dan terukur. (2) Pengembangan panduan identitas sebaiknya tidak berhenti di logo saja, tapi juga mencakup aturan warna, huruf, dan cara membuat materi promosi. (3) Perlu dicoba pemakaian logo ini di berbagai jenis media untuk memastikan hasilnya tetap seragam. (4) Bisa dikembangkan lagi variasi logo, misalnya versi hitam putih atau versi horizontal, supaya makin luwes pemakaiannya.</p>
+
+            <h1>DAFTAR PUSTAKA</h1>
+
+            <ul class="reference-list">
+                <li>Anggraini, S., &amp; Natasia, S. R. (2020). Pengembangan antarmuka pengguna aplikasi mobile menggunakan metode Design Thinking. <i>Jurnal Teknologi Informasi dan Komunikasi</i>, 12(1), 45–56.</li>
+                <li>Cooper, A., Reimann, R., &amp; Cronin, D. (2014). <i>About Face: The Essentials of Interaction Design</i> (4th ed.). Wiley.</li>
+                <li>Hidayat, R., &amp; Rahmawati, A. (2022). Perancangan ulang identitas visual dalam meningkatkan citra merek platform digital. <i>Jurnal Desain Komunikasi Visual</i>, 8(2), 112–125.</li>
+                <li>Kotler, P., &amp; Keller, K. L. (2016). <i>Marketing Management</i> (15th ed.). Pearson Education.</li>
+                <li>Norman, D. A. (2013). <i>The Design of Everyday Things</i> (Revised ed.). Basic Books.</li>
+                <li>Pradana, A. W., &amp; Nugroho, S. (2021). Penerapan format grafik vektor SVG untuk optimalisasi performa rendering antarmuka web responsif. <i>Jurnal Informatika dan Komputer</i>, 9(3), 78–89.</li>
+                <li>Rowe, M. (2019). <i>Visual Identity Systems for Digital Brands</i>. Design Press.</li>
+                <li>Rustan, S. (2019). <i>Mendesain Logo</i>. Gramedia Pustaka Utama.</li>
+                <li>Saraswati, D. K., &amp; Kurniawan, H. (2023). Analisis keterbacaan tipografi sans-serif pada layar perangkat seluler. <i>Jurnal Desain dan Komunikasi Visual</i>, 10(1), 33–44.</li>
+                <li>Wheeler, A. (2018). <i>Designing Brand Identity</i> (5th ed.). Wiley.</li>
+            </ul>
+
+            <div class="page-footer">
+                Journal of Indonesian Education, Vol. 4, No. 2, Juni 2026 &ensp;|&ensp; 131
+            </div>
+        </div>
+
     </div>
 
-    <!-- ========== HALAMAN 5 ========== -->
-    <div class="page">
+    <script>
+        // ========== EXPORT WORD ==========
+        function exportToWord() {
+            const content = document.getElementById("journal-document-content").innerHTML;
+            const htmlDocument = `
+                <html xmlns:o="urn:schemas-microsoft-com:office:office"
+                      xmlns:w="urn:schemas-microsoft-com:office:word"
+                      xmlns="http://www.w3.org/TR/REC-html40">
+                <head>
+                    <meta charset="utf-8">
+                    <title>Perancangan Ulang Identity Branding</title>
+                    <style>
+                        @page { size: A4; margin: 20mm 20mm 20mm 20mm; }
+                        body { font-family: "Times New Roman", serif; font-size: 11pt; line-height: 1.5; text-align: justify; }
+                        .page { page-break-after: always; width: 100%; min-height: 297mm; }
+                        .page:last-child { page-break-after: auto; }
+                        .cover-page { text-align: center; }
+                        h1 { font-size: 12pt; font-weight: bold; text-align: left; }
+                        h2 { font-size: 11pt; font-weight: bold; text-align: left; }
+                        h3 { font-size: 11pt; font-weight: bold; font-style: italic; text-align: left; }
+                        p { text-indent: 8mm; margin: 0 0 2.5mm 0; font-size: 10.5pt; }
+                        p.no-indent { text-indent: 0; }
+                        .figure-caption { font-size: 9.5pt; text-align: center; }
+                        .table-title { font-weight: bold; text-align: center; }
+                        table { border-collapse: collapse; width: 100%; }
+                        th, td { border: 1px solid #000; padding: 2mm; text-align: center; }
+                        .reference-list { list-style: none; padding-left: 0; }
+                        .reference-list li { padding-left: 8mm; text-indent: -8mm; margin-bottom: 2mm; }
+                        .journal-header-line, .journal-header-line-bottom { border: 1px solid #000; margin: 2mm 0; }
+                    </style>
+                </head>
+                <body>
+                    ${content}
+                </body>
+                </html>
+            `;
 
-      <h2>4.2. Makna Filosofis dan Visual</h2>
-
-      <p>Setiap bagian dari logo baru ini dirancang dengan maksud tertentu: bentuknya melambangkan komunikasi terbuka, garisnya tegas menunjukkan kestabilan, dan kesederhanaannya mewakili kemudahan akses. Warna yang dipilih memberi kesan optimis namun tetap serius dan bisa dipercaya. Bentuk yang simetris juga membantu membuatnya lebih mudah diingat dan terasa rapi <span class="citation">(Rowe, 2019)</span>.</p>
-
-      <p>Secara mendasar, bentuk yang sederhana lebih cepat dipahami oleh otak manusia. Ini sesuai prinsip desain yang baik: pesan harus sampai dengan cepat dan jelas. Jadi, perubahan ini bukan cuma soal tampilan, tapi juga soal seberapa efektif pesan yang ingin disampaikan sampai ke pengguna <span class="citation">(Rustan, 2019)</span>.</p>
-
-      <h2>4.3. Penilaian Kelayakan</h2>
-
-      <p>Penilaian dilakukan berdasarkan empat hal utama: seberapa sederhana, seberapa konsisten, seberapa luwes, dan seberapa menarik bentuknya. Hasilnya, logo baru unggul di semua poin dibanding yang lama. Ini menandakan bahwa tujuan awal penelitian sudah tercapai.</p>
-
-      <p>Karena bentuknya sederhana, logo ini mudah diletakkan di ruang sempit sekalipun. Konsistensi juga lebih mudah dijaga karena tidak ada elemen yang saling bertabrakan. Di dunia digital, hal ini sangat penting karena logo sering muncul di tempat yang sangat kecil, seperti ikon situs, tombol aplikasi, atau gambar profil <span class="citation">(Cooper et al., 2014)</span>.</p>
-
-      <p>Kelebihan terbesar tentu saja kemampuan ubah ukurannya. Tidak ada lagi gambar yang pecah saat diperbesar. Sementara itu, dari segi daya tarik, tampilan yang bersih dan minimalis sangat cocok dengan selera pengguna masa kini yang lebih menyukai kesederhanaan.</p>
-
-      <h2>4.4. Penerapan di Berbagai Media</h2>
-
-      <p>Logo baru ini bisa dipakai di situs web, aplikasi, spanduk, hingga barang cetakan tanpa perlu banyak diubah. Kemudahan ini sangat menguntungkan karena menghemat waktu pembuatan materi promosi. Kalau tampilannya seragam di mana-mana, perusahaan akan terlihat jauh lebih profesional dan teratur <span class="citation">(Hidayat &amp; Rahmawati, 2022)</span>.</p>
-
-      <p>Dalam dunia antarmuka pengguna, logo yang jelas dan ringan membantu orang mengenali merek lebih cepat. Ini berdampak positif pada kenyamanan penggunaan aplikasi atau situs, terutama di layar kecil. Identitas visual yang kuat membuat orang makin akrab dan makin percaya pada layanan yang ditawarkan.</p>
-
-      <p>Kalau semua media komunikasi memakai ciri yang sama, asosiasi yang terbentuk di benak orang akan makin kuat. Ini sangat membantu membangun merek yang kuat dalam jangka panjang.</p>
-
-      <h2>4.5. Dampak pada Citra Perusahaan</h2>
-
-      <p>Identitas visual yang rapi punya peran besar dalam membangun pandangan orang terhadap perusahaan. Logo yang baik memberi sinyal bahwa perusahaan itu teliti, berkualitas, dan konsisten. Di tengah persaingan yang ketat, kesan pertama dari tampilan visual ini bisa sangat menentukan <span class="citation">(Kotler &amp; Keller, 2016)</span>.</p>
-
-      <p>Di era digital, orang sering menilai kualitas layanan dari tampilan awal yang mereka lihat. Karena itu, desain yang rapi dan serasi memberi keuntungan tersendiri. Dengan bentuk baru yang lebih tegas dan jelas, persepsi positif terhadap perusahaan bisa meningkat.</p>
-
-      <div class="page-footer">
-        Journal of Indonesian Education, Vol. 4, No. 2, Juni 2026 &ensp;|&ensp; 129
-      </div>
-    </div>
-
-    <!-- ========== HALAMAN 6 ========== -->
-    <div class="page">
-
-      <h2>4.6. Hubungan Bentuk dan Kegunaan</h2>
-
-      <p>Desain yang baik selalu mempertemukan keindahan dan fungsi. Logo yang cuma indah tapi sulit dipakai tidak ada gunanya. Sebaliknya, logo yang sederhana, luwes, dan jelas akan sangat berguna untuk jangka panjang <span class="citation">(Norman, 2013)</span>.</p>
-
-      <p>Dalam kasus ini, fungsi utama logo adalah mewakili nama perusahaan secara singkat namun kuat. Logo baru berhasil melakukan itu karena bentuk, warna, dan tulisannya saling mendukung. Ini membuktikan bahwa desain identitas yang baik harus seimbang antara seni dan kebutuhan teknis.</p>
-
-      <p>Logo juga merupakan bagian dari strategi komunikasi. Identitas yang tepat bisa membantu mengarahkan pandangan publik ke arah yang diinginkan. Karena itu, berinvestasi pada desain yang baik adalah langkah cerdas untuk memperkuat posisi merek <span class="citation">(Wheeler, 2018)</span>.</p>
-
-      <h2>4.7. Analisis Kelayakan Teknis</h2>
-
-      <p>Ditinjau dari segi teknis, desain baru ini sangat layak dipakai di mana saja. Bentuknya sederhana jadi mudah dibuat ulang, warnanya fleksibel, dan tetap terlihat jelas di latar terang atau gelap. Ini tandanya desain ini siap dipakai di lapangan.</p>
-
-      <p>Selain itu, format vektor yang dipakai sangat cocok dengan sistem digital masa kini. Di situs atau aplikasi, gambar harus jelas tapi tidak boleh membebani sistem. Karena ukuran berkasnya kecil, kebutuhan ini terpenuhi dengan sangat baik <span class="citation">(Pradana &amp; Nugroho, 2021)</span>.</p>
-
-      <h2>4.8. Keterbatasan Penelitian</h2>
-
-      <p>Meskipun hasilnya sudah jauh lebih baik, tetap ada hal yang bisa dikembangkan lagi. Salah satunya adalah perlunya pengujian lebih luas dengan melibatkan banyak pengguna nyata. Penelitian selanjutnya bisa menggunakan survei supaya hasil penilaiannya lebih kuat secara data.</p>
-
-      <p>Hal lain yang perlu diperhatikan adalah konsistensi saat dipakai di media yang sangat beragam. Meskipun sudah dirancang luwes, pengawasan tetap diperlukan supaya semua tampilan tetap seragam. Pengembangan lanjutan masih sangat terbuka untuk dilakukan <span class="citation">(Hidayat &amp; Rahmawati, 2022)</span>.</p>
-
-      <h1>5. PENGEMBANGAN LEBIH LANJUT</h1>
-
-      <p>Perancangan ulang ini tidak berhenti pada satu logo saja. Bisa dikembangkan lagi menjadi satu sistem panduan lengkap yang mencakup aturan pakai logo, warna utama dan pendamping, jenis huruf resmi, dan cara mengatur ukuran. Panduan ini penting supaya semua orang yang memakai aset perusahaan melakukannya dengan cara yang sama <span class="citation">(Wheeler, 2018)</span>.</p>
-
-      <h2>5.1. Panduan Penggunaan</h2>
-
-      <p>Panduan ini nanti akan menjelaskan hal-hal rinci seperti seberapa jauh jarak aman logo dari benda lain, ukuran paling kecil yang masih boleh dipakai, dan aturan pemakaian warna. Hal kecil seperti ini sering diabaikan, padahal sangat menentukan kualitas hasil akhir. Logo yang baik harus tetap terlihat kuat walaupun diletakkan di ruang sempit <span class="citation">(Rustan, 2019)</span>.</p>
-
-      <h2>5.2. Adaptasi di Berbagai Platform</h2>
-
-      <p>Logo yang dibuat untuk zaman digital harus siap dipakai di mana saja. Di situs, harus jelas di bagian atas maupun di ikon kecil. Di media sosial, harus tetap terbaca meski kecil. Di cetakan, harus tajam dan warnanya pas. Semua ini sudah diperhitungkan dalam desain baru ini <span class="citation">(Rowe, 2019)</span>.</p>
-
-      <div class="page-footer">
-        Journal of Indonesian Education, Vol. 4, No. 2, Juni 2026 &ensp;|&ensp; 130
-      </div>
-    </div>
-
-    <!-- ========== HALAMAN 7 ========== -->
-    <div class="page">
-
-      <h1>6. KESIMPULAN DAN SARAN</h1>
-
-      <h2>6.1. Kesimpulan</h2>
-
-      <p>Berdasarkan apa yang sudah dibahas, bisa disimpulkan bahwa perubahan identitas visual Perusahaan Cerah berhasil menghasilkan logo baru yang jauh lebih sederhana, luwes, dan profesional. Pemakaian metode <i>Design Thinking</i> membuat prosesnya berjalan rapi, mulai dari mencari masalah sampai menguji hasil akhirnya.</p>
-
-      <p>Logo baru ini menunjukkan peningkatan nyata di lima hal utama: bentuknya tidak lagi rumit, memakai huruf yang lebih modern, berkasnya berformat vektor, bisa diubah ukurannya dengan bebas, dan bentuknya jauh lebih jelas dibanding yang lama. Ini membuktikan bahwa desain identitas yang baik sangat penting untuk membangun nama baik perusahaan dan mendukung komunikasi visual yang efektif di era digital.</p>
-
-      <p>Secara umum, perubahan ini menunjukkan bahwa identitas visual bukan sekadar hiasan, tapi aset penting yang menjaga reputasi dan kepercayaan pengguna. Pendekatan yang sederhana ternyata paling cocok untuk dunia yang serba cepat ini. Di tengah kebutuhan tampil di banyak perangkat berbeda, desain yang ringkas namun kuat adalah pilihan terbaik.</p>
-
-      <h2>6.2. Saran</h2>
-
-      <p>Dari hasil penelitian ini, ada beberapa hal yang bisa disarankan: (1) Penelitian selanjutnya sebaiknya menguji logo ini langsung ke pengguna nyata lewat survei supaya hasil penilaiannya lebih lengkap dan terukur. (2) Pengembangan panduan identitas sebaiknya tidak berhenti di logo saja, tapi juga mencakup aturan warna, huruf, dan cara membuat materi promosi. (3) Perlu dicoba pemakaian logo ini di berbagai jenis media untuk memastikan hasilnya tetap seragam. (4) Bisa dikembangkan lagi variasi logo, misalnya versi hitam putih atau versi horizontal, supaya makin luwes pemakaiannya.</p>
-
-      <h1>DAFTAR PUSTAKA</h1>
-
-      <ul class="reference-list">
-        <li>Anggraini, S., &amp; Natasia, S. R. (2020). Pengembangan antarmuka pengguna aplikasi mobile menggunakan metode Design Thinking. <i>Jurnal Teknologi Informasi dan Komunikasi</i>, 12(1), 45–56.</li>
-        <li>Cooper, A., Reimann, R., &amp; Cronin, D. (2014). <i>About Face: The Essentials of Interaction Design</i> (4th ed.). Wiley.</li>
-        <li>Hidayat, R., &amp; Rahmawati, A. (2022). Perancangan ulang identitas visual dalam meningkatkan citra merek platform digital. <i>Jurnal Desain Komunikasi Visual</i>, 8(2), 112–125.</li>
-        <li>Kotler, P., &amp; Keller, K. L. (2016). <i>Marketing Management</i> (15th ed.). Pearson Education.</li>
-        <li>Norman, D. A. (2013). <i>The Design of Everyday Things</i> (Revised ed.). Basic Books.</li>
-        <li>Pradana, A. W., &amp; Nugroho, S. (2021). Penerapan format grafik vektor SVG untuk optimalisasi performa rendering antarmuka web responsif. <i>Jurnal Informatika dan Komputer</i>, 9(3), 78–89.</li>
-        <li>Rowe, M. (2019). <i>Visual Identity Systems for Digital Brands</i>. Design Press.</li>
-        <li>Rustan, S. (2019). <i>Mendesain Logo</i>. Gramedia Pustaka Utama.</li>
-        <li>Saraswati, D. K., &amp; Kurniawan, H. (2023). Analisis keterbacaan tipografi sans-serif pada layar perangkat seluler. <i>Jurnal Desain dan Komunikasi Visual</i>, 10(1), 33–44.</li>
-        <li>Wheeler, A. (2018). <i>Designing Brand Identity</i> (5th ed.). Wiley.</li>
-      </ul>
-
-      <div class="page-footer">
-        Journal of Indonesian Education, Vol. 4, No. 2, Juni 2026 &ensp;|&ensp; 131
-      </div>
-    </div>
-
-  </div>
-
-  <script>
-    function exportToWord() {
-      const content = document.getElementById("journal-document-content").innerHTML;
-      const htmlDocument = `
-          <html xmlns:o="urn:schemas-microsoft-com:office:office"
-                xmlns:w="urn:schemas-microsoft-com:office:word"
-                xmlns="http://www.w3.org/TR/REC-html40">
-          <head>
-            <meta charset="utf-8">
-            <title>Perancangan Ulang Identity Branding</title>
-            <style>
-              @page { size: A4; margin: 20mm 20mm 20mm 20mm; }
-              body { font-family: "Times New Roman", serif; font-size: 11pt; line-height: 1.5; text-align: justify; }
-              .page { page-break-after: always; width: 100%; min-height: 297mm; }
-              .page:last-child { page-break-after: auto; }
-              .cover-page { text-align: center; }
-              h1 { font-size: 12pt; font-weight: bold; text-align: left; }
-              h2 { font-size: 11pt; font-weight: bold; text-align: left; }
-              h3 { font-size: 11pt; font-weight: bold; font-style: italic; text-align: left; }
-              p { text-indent: 8mm; margin: 0 0 2.5mm 0; font-size: 10.5pt; }
-              p.no-indent { text-indent: 0; }
-              .figure-caption { font-size: 9.5pt; text-align: center; }
-              .table-title { font-weight: bold; text-align: center; }
-              table { border-collapse: collapse; width: 100%; }
-              th, td { border: 1px solid #000; padding: 2mm; text-align: center; }
-              .reference-list { list-style: none; padding-left: 0; }
-              .reference-list li { padding-left: 8mm; text-indent: -8mm; margin-bottom: 2mm; }
-              .journal-header-line, .journal-header-line-bottom { border: 1px solid #000; margin: 2mm 0; }
-            </style>
-          </head>
-          <body>
-            ${content}
-          </body>
-          </html>
-        `;
-
-      const blob = new Blob([htmlDocument], { type: "application/msword" });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement("a");
-      a.href = url;
-      a.download = "Perancangan_Ulang_Identity_Branding.doc";
-      a.click();
-      URL.revokeObjectURL(url);
-    }
-
-    async function exportToPDF() {
-      const btn = document.getElementById("pdfBtn");
-      btn.classList.add("btn-loading");
-      btn.innerText = "Memproses...";
-
-      const { jsPDF } = window.jspdf;
-
-      const doc = new jsPDF({
-        unit: "mm",
-        format: "a4",
-        orientation: "portrait",
-        compress: true
-      });
-
-      const pages = document.querySelectorAll("#journal-document-content .page");
-
-      for (let i = 0; i < pages.length; i++) {
-        if (i > 0) {
-          doc.addPage();
+            const blob = new Blob([htmlDocument], { type: "application/msword" });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement("a");
+            a.href = url;
+            a.download = "Perancangan_Ulang_Identity_Branding.doc";
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
         }
 
-        await new Promise(resolve => setTimeout(resolve, 150));
+        // ========== EXPORT PDF ==========
+        async function exportToPDF() {
+            const btn = document.getElementById("pdfBtn");
+            const originalText = btn.innerText;
+            btn.classList.add("btn-loading");
+            btn.innerText = "Memproses...";
+            btn.disabled = true;
 
-        const canvas = await html2canvas(pages[i], {
-          scale: 3,
-          useCORS: true,
-          logging: false,
-          allowTaint: true,
-          backgroundColor: '#ffffff',
-          width: 794,
-          height: 1123,
-          windowWidth: 794,
-          windowHeight: 1123,
-          onclone: function(clonedDoc) {
-            const clonedPages = clonedDoc.querySelectorAll('.page');
-            clonedPages.forEach(page => {
-              page.style.display = 'block';
-              page.style.visibility = 'visible';
-              page.style.opacity = '1';
-              page.style.transform = 'scale(1)';
-            });
-          }
-        });
+            try {
+                const { jsPDF } = window.jspdf;
+                const doc = new jsPDF({
+                    unit: "mm",
+                    format: "a4",
+                    orientation: "portrait",
+                    compress: true
+                });
 
-        const imgData = canvas.toDataURL("image/png", 1.0);
-        doc.addImage(imgData, "PNG", 0, 0, 210, 297, undefined, "FAST");
-      }
+                const pages = document.querySelectorAll("#journal-document-content .page");
 
-      doc.save("Perancangan_Ulang_Identity_Branding.pdf");
+                for (let i = 0; i < pages.length; i++) {
+                    if (i > 0) {
+                        doc.addPage();
+                    }
 
-      btn.classList.remove("btn-loading");
-      btn.innerText = "Unduh Format PDF";
-    }
-  </script>
+                    // Beri jeda agar render sempurna
+                    await new Promise(resolve => setTimeout(resolve, 150));
 
+                    const canvas = await html2canvas(pages[i], {
+                        scale: 3,
+                        useCORS: true,
+                        logging: false,
+                        allowTaint: true,
+                        backgroundColor: '#ffffff',
+                        width: pages[i].offsetWidth,
+                        height: pages[i].offsetHeight,
+                        onclone: function(clonedDoc) {
+                            const clonedPages = clonedDoc.querySelectorAll('.page');
+                            clonedPages.forEach(page => {
+                                page.style.display = 'block';
+                                page.style.visibility = 'visible';
+                                page.style.opacity = '1';
+                                page.style.transform = 'scale(1)';
+                            });
+                        }
+                    });
+
+                    const imgData = canvas.toDataURL("image/png", 1.0);
+                    const pageWidth = doc.internal.pageSize.getWidth();
+                    const pageHeight = doc.internal.pageSize.getHeight();
+                    doc.addImage(imgData, "PNG", 0, 0, pageWidth, pageHeight, undefined, "FAST");
+                }
+
+                doc.save("Perancangan_Ulang_Identity_Branding.pdf");
+            } catch (error) {
+                console.error("Gagal membuat PDF:", error);
+                alert("Terjadi kesalahan saat membuat PDF. Silakan coba lagi.");
+            } finally {
+                btn.classList.remove("btn-loading");
+                btn.innerText = originalText;
+                btn.disabled = false;
+            }
+        }
+    </script>
 </body>
 </html>
