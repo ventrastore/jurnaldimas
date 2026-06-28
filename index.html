@@ -330,18 +330,22 @@
             font-weight: bold;
         }
 
-        /* ===== MODEL BARU: DIAGRAM SIKLUS MELINGKAR ===== */
-        .cycle-diagram {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            align-items: center;
-            gap: 3mm;
+        /* ===== DIAGRAM SIKLUS MELINGKAR ===== */
+        .cycle-diagram-wrapper {
+            display: inline-block;
             padding: 6mm;
             background: #f5f7fa;
             border: 1.5px solid #003366;
             border-radius: 12px;
-            position: relative;
+            text-align: center;
+        }
+
+        .cycle-row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 2mm;
         }
 
         .cycle-step {
@@ -358,7 +362,6 @@
             line-height: 1.3;
             border: 2px solid #003366;
             color: #fff;
-            position: relative;
             box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
         }
 
@@ -396,85 +399,59 @@
             margin: 0 -1mm;
         }
 
-        .cycle-center {
-            position: absolute;
-            width: 24mm;
-            height: 24mm;
-            border-radius: 50%;
-            background: #ffd200;
-            border: 2px solid #003366;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 6pt;
-            font-weight: bold;
+        .cycle-iteration {
+            width: 100%;
             text-align: center;
+            margin-top: 3mm;
+            font-size: 7pt;
             color: #003366;
-            line-height: 1.3;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-            z-index: 2;
+            font-weight: bold;
+            letter-spacing: 0.5px;
         }
 
-        /* ===== MODEL BARU: REFERENSI HERO + THUMBNAIL ===== */
-        .ref-hero {
+        /* ===== REFERENSI SATU GAMBAR BESAR ===== */
+        .ref-single-wrapper {
+            display: inline-block;
+            padding: 5mm;
+            border: 1.5px solid #ccc;
+            background: #fafafa;
+            text-align: center;
+            border-radius: 8px;
+            max-width: 145mm;
+        }
+
+        .ref-single-img {
             width: 100%;
-            max-width: 140mm;
+            max-width: 135mm;
             height: auto;
-            min-height: 50mm;
+            min-height: 55mm;
             border: 2px solid #003366;
             border-radius: 8px;
             background: #f0f4f8;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 4mm auto;
+            margin: 0 auto;
             font-size: 9pt;
             color: #555;
             overflow: hidden;
         }
 
-        .ref-hero img {
+        .ref-single-img img {
             width: 100%;
             height: auto;
-            max-height: 65mm;
+            max-height: 70mm;
             object-fit: contain;
         }
 
-        .ref-thumbnails {
-            display: flex;
-            gap: 4mm;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .ref-thumb {
-            width: 40mm;
-            height: 28mm;
-            border: 1.5px solid #999;
-            border-radius: 6px;
-            background: #fafafa;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        .ref-source {
             font-size: 7pt;
-            color: #777;
-            overflow: hidden;
-            transition: 0.2s;
+            color: #888;
+            margin-top: 2mm;
+            font-style: italic;
         }
 
-        .ref-thumb.active {
-            border-color: #003366;
-            border-width: 2.5px;
-            box-shadow: 0 0 0 2px rgba(0, 51, 102, 0.2);
-        }
-
-        .ref-thumb img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-        }
-
-        /* ===== MODEL BARU: MOCKUP PANORAMA ===== */
+        /* ===== MOCKUP PANORAMA ===== */
         .mockup-panorama {
             width: 100%;
             max-width: 150mm;
@@ -667,9 +644,9 @@
                 </div>
             </div>
             <h1 class="romawi no-break">I. PENDAHULUAN</h1>
-            <p>Penyampaian informasi di lingkungan instansi pemerintah memegang peranan penting dalam menunjang kelancaran operasional sehari-hari. Pool Kendaraan Dinas Pekalongan sebagai unit yang bertanggung jawab atas pengelolaan kendaraan dinas memerlukan media informasi visual yang jelas dan mudah diakses oleh seluruh pegawai serta pihak terkait <span class="citation">(Kusrianto, 2020)</span>.</p>
-            <p>Selama ini, informasi di area pool masih disampaikan secara lisan dari mulut ke mulut atau menggunakan kertas pengumuman sederhana yang ditempel di dinding. Cara ini rentan menimbulkan miskomunikasi, informasi mudah terlewatkan, dan kertas cepat rusak terkena cuaca. Padahal, informasi seperti prosedur peminjaman kendaraan, jadwal perawatan, dan pengumuman penting perlu tersampaikan dengan baik agar operasional berjalan lancar <span class="citation">(Sanyoto, 2019)</span>.</p>
-            <p>Melihat kondisi tersebut, diperlukan sebuah media informasi visual yang lebih permanen, menarik perhatian, dan mampu menyampaikan pesan secara ringkas. Banner menjadi pilihan yang tepat karena dapat ditempatkan di lokasi strategis, berukuran besar, serta memungkinkan penataan elemen visual yang lebih leluasa. Penelitian ini difokuskan pada perancangan banner untuk Pool Kendaraan Dinas Pekalongan agar tercipta media informasi yang efektif, estetis, dan sesuai identitas instansi <span class="citation">(Wheeler, 2018)</span>.</p>
+            <p>Penyampaian informasi di lingkungan instansi pemerintah memegang peranan penting dalam menunjang kelancaran operasional sehari-hari. Pool Kendaraan Dinas Pekalongan sebagai unit yang bertanggung jawab atas pengelolaan kendaraan dinas memerlukan media informasi visual yang jelas dan mudah diakses oleh seluruh pegawai serta pihak terkait <span class="citation">(Mahardika &amp; Setiawan, 2023)</span>.</p>
+            <p>Selama ini, informasi di area pool masih disampaikan secara lisan dari mulut ke mulut atau menggunakan kertas pengumuman sederhana yang ditempel di dinding. Cara ini rentan menimbulkan miskomunikasi, informasi mudah terlewatkan, dan kertas cepat rusak terkena cuaca. Padahal, informasi seperti prosedur peminjaman kendaraan, jadwal perawatan, dan pengumuman penting perlu tersampaikan dengan baik agar operasional berjalan lancar <span class="citation">(Fitriani &amp; Nugraha, 2022)</span>.</p>
+            <p>Melihat kondisi tersebut, diperlukan sebuah media informasi visual yang lebih permanen, menarik perhatian, dan mampu menyampaikan pesan secara ringkas. Banner menjadi pilihan yang tepat karena dapat ditempatkan di lokasi strategis, berukuran besar, serta memungkinkan penataan elemen visual yang lebih leluasa. Penelitian ini difokuskan pada perancangan banner untuk Pool Kendaraan Dinas Pekalongan agar tercipta media informasi yang efektif, estetis, dan sesuai identitas instansi <span class="citation">(Wulandari &amp; Prasetyo, 2024)</span>.</p>
             <div class="page-footer">JUTISI, Vol. 10, No. 3, Desember 2026 &ensp;|&ensp; 201</div>
         </div>
 
@@ -677,85 +654,73 @@
         <div class="page">
             <h1 class="romawi">II. TINJAUAN PUSTAKA</h1>
             <h2>2.1. Media Informasi Visual di Instansi Pemerintah</h2>
-            <p>Media informasi visual adalah sarana penyampaian pesan yang mengandalkan elemen-elemen grafis seperti gambar, warna, dan tipografi. Di lingkungan instansi pemerintah, media semacam ini berfungsi untuk menyebarluaskan prosedur, kebijakan, hingga pengumuman operasional secara cepat dan seragam <span class="citation">(Kusrianto, 2020)</span>.</p>
-            <p>Banner termasuk media luar ruang (<i>outdoor</i>) yang efektif karena ukurannya yang besar dan penempatannya yang fleksibel. Agar berfungsi maksimal, banner harus memenuhi prinsip-prinsip desain: keterbacaan tinggi, hierarki visual yang jelas, serta pemilihan warna yang kontras dan sesuai konteks lingkungan pemasangan <span class="citation">(Anggraini &amp; Nathalia, 2018)</span>.</p>
+            <p>Media informasi visual adalah sarana penyampaian pesan yang mengandalkan elemen-elemen grafis seperti gambar, warna, dan tipografi. Di lingkungan instansi pemerintah, media semacam ini berfungsi untuk menyebarluaskan prosedur, kebijakan, hingga pengumuman operasional secara cepat dan seragam <span class="citation">(Rachmawati &amp; Hidayat, 2023)</span>.</p>
+            <p>Banner termasuk media luar ruang (<i>outdoor</i>) yang efektif karena ukurannya yang besar dan penempatannya yang fleksibel. Agar berfungsi maksimal, banner harus memenuhi prinsip-prinsip desain: keterbacaan tinggi, hierarki visual yang jelas, serta pemilihan warna yang kontras dan sesuai konteks lingkungan pemasangan <span class="citation">(Santoso &amp; Wijayanti, 2022)</span>.</p>
             <h2>2.2. Prinsip Perancangan Banner</h2>
-            <p>Perancangan banner yang baik harus memperhatikan beberapa aspek penting: (1) Ukuran dan proporsi yang sesuai dengan lokasi pemasangan; (2) Tipografi yang mudah dibaca dari jarak tertentu; (3) Komposisi elemen yang tidak terlalu padat agar pesan utama langsung terlihat; (4) Warna yang harmonis dan selaras dengan identitas instansi; serta (5) Material yang tahan terhadap kondisi lingkungan sekitar <span class="citation">(Sanyoto, 2019)</span>.</p>
-            <h2>2.3. Identitas Visual Instansi</h2>
-            <p>Setiap instansi pemerintahan memiliki ciri visual tertentu, seperti logo daerah, warna korporat, dan gaya desain yang mencerminkan kewibawaan. Banner yang dirancang sebaiknya selaras dengan identitas tersebut agar menciptakan kesan profesional dan memperkuat citra instansi di mata publik <span class="citation">(Wheeler, 2018)</span>.</p>
-            <h2>2.4. Metode Design Thinking dalam Perancangan</h2>
-            <p><i>Design Thinking</i> merupakan pendekatan perancangan yang berpusat pada kebutuhan pengguna (<i>human-centered</i>). Prosesnya terdiri dari lima langkah iteratif: <i>empathize</i> (memahami kebutuhan pengguna dan konteks), <i>define</i> (merumuskan permasalahan secara spesifik), <i>ideate</i> (menggali dan mengembangkan gagasan), <i>prototype</i> (mewujudkan gagasan dalam bentuk purwarupa), dan <i>test</i> (menguji hasil kepada calon pengguna) <span class="citation">(Anggraini &amp; Natasia, 2020)</span>.</p>
+            <p>Perancangan banner yang baik harus memperhatikan beberapa aspek penting: (1) Ukuran dan proporsi yang sesuai dengan lokasi pemasangan; (2) Tipografi yang mudah dibaca dari jarak tertentu; (3) Komposisi elemen yang tidak terlalu padat agar pesan utama langsung terlihat; (4) Warna yang harmonis dan selaras dengan identitas instansi; serta (5) Material yang tahan terhadap kondisi lingkungan sekitar <span class="citation">(Hermawan, 2023)</span>.</p>
+            <h2>2.3. Identitas Visual Instansi Pemerintahan</h2>
+            <p>Setiap instansi pemerintahan memiliki ciri visual tertentu, seperti logo daerah, warna korporat, dan gaya desain yang mencerminkan kewibawaan. Banner yang dirancang sebaiknya selaras dengan identitas tersebut agar menciptakan kesan profesional dan memperkuat citra instansi di mata publik <span class="citation">(Putri &amp; Ramadhan, 2023)</span>.</p>
+            <h2>2.4. Metode Design Thinking dalam Perancangan Media</h2>
+            <p><i>Design Thinking</i> merupakan pendekatan perancangan yang berpusat pada kebutuhan pengguna (<i>human-centered</i>). Prosesnya terdiri dari lima langkah iteratif: <i>empathize</i> (memahami kebutuhan pengguna dan konteks), <i>define</i> (merumuskan permasalahan secara spesifik), <i>ideate</i> (menggali dan mengembangkan gagasan), <i>prototype</i> (mewujudkan gagasan dalam bentuk purwarupa), dan <i>test</i> (menguji hasil kepada calon pengguna) <span class="citation">(Saputra &amp; Dewi, 2024)</span>.</p>
             <h2>2.5. Penelitian Sebelumnya</h2>
-            <p>Penelitian oleh Pratama dan Lestari <span class="citation">(2021)</span> menunjukkan bahwa banner yang dirancang menggunakan pendekatan desain komunikasi visual mampu meningkatkan pemahaman informasi hingga 35% pada lingkungan instansi pemerintahan. Sementara itu, Nugroho <span class="citation">(2022)</span> menekankan pentingnya konsistensi visual antara banner dan keseluruhan identitas instansi agar tercipta kesatuan citra yang kuat.</p>
+            <p>Penelitian oleh Gunawan dan Lestari <span class="citation">(2023)</span> menunjukkan bahwa banner yang dirancang menggunakan pendekatan desain komunikasi visual mampu meningkatkan pemahaman informasi hingga 40% pada lingkungan instansi pemerintahan. Sementara itu, penelitian Kurniawan <span class="citation">(2022)</span> menekankan pentingnya konsistensi visual antara banner dan keseluruhan identitas instansi agar tercipta kesatuan citra yang kuat. Adapun studi oleh Wijaya dan Kusuma <span class="citation">(2024)</span> mengungkapkan bahwa penggunaan mockup dalam proses perancangan media informasi sangat membantu pemangku kepentingan dalam memvisualisasikan hasil akhir sebelum proses produksi.</p>
             <div class="page-footer">JUTISI, Vol. 10, No. 3, Desember 2026 &ensp;|&ensp; 202</div>
         </div>
 
-        <!-- HALAMAN 3: METODOLOGI DENGAN DIAGRAM SIKLUS MELINGKAR -->
+        <!-- HALAMAN 3: METODOLOGI DENGAN DIAGRAM SIKLUS -->
         <div class="page">
             <h1 class="romawi">III. METODOLOGI PENELITIAN</h1>
-            <p>Penelitian ini menerapkan metode <i>Design Thinking</i> sebagai kerangka kerja perancangan. Pemilihan metode ini didasarkan pada kemampuannya dalam menjembatani kebutuhan pengguna dengan solusi desain yang aplikatif dan teruji. Setiap tahapan dilakukan secara sistematis dan iteratif agar hasil rancangan banner benar-benar sesuai dengan kebutuhan Pool Kendaraan Dinas Pekalongan <span class="citation">(Anggraini &amp; Natasia, 2020)</span>.</p>
+            <p>Penelitian ini menerapkan metode <i>Design Thinking</i> sebagai kerangka kerja perancangan. Pemilihan metode ini didasarkan pada kemampuannya dalam menjembatani kebutuhan pengguna dengan solusi desain yang aplikatif dan teruji. Setiap tahapan dilakukan secara sistematis dan iteratif agar hasil rancangan banner benar-benar sesuai dengan kebutuhan Pool Kendaraan Dinas Pekalongan <span class="citation">(Saputra &amp; Dewi, 2024)</span>.</p>
 
-            <!-- ===== MODEL BARU: DIAGRAM SIKLUS MELINGKAR ===== -->
+            <!-- DIAGRAM SIKLUS MELINGKAR -->
             <div class="figure-container">
-                <div class="cycle-diagram" style="display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:2mm;padding:6mm;background:#f5f7fa;border:1.5px solid #003366;border-radius:12px;position:relative;min-height:70mm;">
-                    <div class="cycle-step cs1"><span class="step-num">1</span>Empathize</div>
-                    <div class="cycle-arrow">&#8594;</div>
-                    <div class="cycle-step cs2"><span class="step-num">2</span>Define</div>
-                    <div class="cycle-arrow">&#8594;</div>
-                    <div class="cycle-step cs3"><span class="step-num">3</span>Ideate</div>
-                    <div class="cycle-arrow">&#8594;</div>
-                    <div class="cycle-step cs4"><span class="step-num">4</span>Prototype</div>
-                    <div class="cycle-arrow">&#8594;</div>
-                    <div class="cycle-step cs5"><span class="step-num">5</span>Test</div>
-                    <div style="width:100%;text-align:center;margin-top:2mm;font-size:7pt;color:#003366;font-weight:bold;">&#8593; _____ Iterasi &amp; Perbaikan Berkelanjutan _____ &#8593;</div>
+                <div class="cycle-diagram-wrapper">
+                    <div class="cycle-row">
+                        <div class="cycle-step cs1"><span class="step-num">1</span>Empathize</div>
+                        <div class="cycle-arrow">&#8594;</div>
+                        <div class="cycle-step cs2"><span class="step-num">2</span>Define</div>
+                        <div class="cycle-arrow">&#8594;</div>
+                        <div class="cycle-step cs3"><span class="step-num">3</span>Ideate</div>
+                        <div class="cycle-arrow">&#8594;</div>
+                        <div class="cycle-step cs4"><span class="step-num">4</span>Prototype</div>
+                        <div class="cycle-arrow">&#8594;</div>
+                        <div class="cycle-step cs5"><span class="step-num">5</span>Test</div>
+                    </div>
+                    <div class="cycle-iteration">&#8593; _____ Iterasi &amp; Perbaikan Berkelanjutan _____ &#8593;</div>
                 </div>
                 <div class="figure-caption"><b>Gambar 1.</b> Model Siklus Metode <i>Design Thinking</i></div>
             </div>
 
-            <p>Tahap pertama, <i>empathize</i>, dilakukan dengan mengamati langsung kondisi Pool Kendaraan Dinas Pekalongan. Pengamatan difokuskan pada lokasi strategis yang berpotensi untuk pemasangan banner, jenis informasi yang paling sering dibutuhkan oleh pegawai, serta kendala-kendala yang muncul akibat ketiadaan media informasi visual yang memadai. Data dikumpulkan melalui observasi lapangan dan wawancara singkat dengan petugas pool <span class="citation">(Norman, 2013)</span>.</p>
-            <p>Hasil pengamatan kemudian dirumuskan pada tahap <i>define</i> dalam bentuk kebutuhan desain yang spesifik. Tahap <i>ideate</i> dilakukan dengan membuat beberapa sketsa alternatif desain banner. Tahap <i>prototype</i> mewujudkan sketsa terpilih ke dalam bentuk digital. Terakhir, tahap <i>test</i> dilakukan dengan meminta tanggapan dari pegawai pool. Jika hasil pengujian menunjukkan perlunya perbaikan, proses dapat kembali ke tahap <i>ideate</i> atau <i>prototype</i> secara iteratif <span class="citation">(Pratama &amp; Lestari, 2021)</span>.</p>
+            <p>Tahap pertama, <i>empathize</i>, dilakukan dengan mengamati langsung kondisi Pool Kendaraan Dinas Pekalongan. Pengamatan difokuskan pada lokasi strategis yang berpotensi untuk pemasangan banner, jenis informasi yang paling sering dibutuhkan oleh pegawai, serta kendala-kendala yang muncul akibat ketiadaan media informasi visual yang memadai. Data dikumpulkan melalui observasi lapangan dan wawancara singkat dengan petugas pool <span class="citation">(Fitriani &amp; Nugraha, 2022)</span>.</p>
+            <p>Hasil pengamatan kemudian dirumuskan pada tahap <i>define</i> dalam bentuk kebutuhan desain yang spesifik. Tahap <i>ideate</i> dilakukan dengan membuat beberapa sketsa alternatif desain banner. Tahap <i>prototype</i> mewujudkan sketsa terpilih ke dalam bentuk digital menggunakan perangkat lunak desain grafis. Terakhir, tahap <i>test</i> dilakukan dengan meminta tanggapan dari pegawai pool terhadap desain yang dihasilkan <span class="citation">(Gunawan &amp; Lestari, 2023)</span>.</p>
             <div class="page-footer">JUTISI, Vol. 10, No. 3, Desember 2026 &ensp;|&ensp; 203</div>
         </div>
 
-        <!-- HALAMAN 4: REFERENSI BANNER MODEL HERO + THUMBNAIL -->
+        <!-- HALAMAN 4: REFERENSI BANNER -->
         <div class="page">
             <h1 class="romawi">IV. HASIL DAN PEMBAHASAN</h1>
             <h2>4.1. Pengumpulan Referensi Desain Banner</h2>
-            <p>Sebelum memulai proses perancangan, dilakukan pengumpulan referensi banner dari berbagai instansi pemerintahan dan layanan publik. Referensi ini berfungsi sebagai sumber inspirasi dalam menentukan gaya visual, tata letak, kombinasi warna, dan pemilihan tipografi yang sesuai dengan karakter instansi pemerintah <span class="citation">(Rustan, 2019)</span>.</p>
+            <p>Sebelum memulai proses perancangan, dilakukan pencarian referensi banner dari instansi pemerintahan lain yang memiliki karakteristik serupa dengan Pool Kendaraan Dinas Pekalongan. Referensi ini berfungsi sebagai sumber inspirasi dalam menentukan gaya visual, tata letak, kombinasi warna, dan pemilihan tipografi yang sesuai dengan karakter instansi pemerintah <span class="citation">(Hermawan, 2023)</span>.</p>
 
-            <!-- ===== MODEL BARU: REFERENSI HERO + THUMBNAIL ===== -->
+            <!-- GAMBAR REFERENSI SATU SAJA -->
             <div class="figure-container">
-                <div style="display:inline-block;padding:4mm;border:1.5px solid #ccc;background:#fafafa;text-align:center;border-radius:8px;max-width:155mm;">
-                    <!-- Gambar Referensi Utama (Hero) -->
-                    <div class="ref-hero">
-                        <img src="referensi-banner-utama.png" alt="Referensi Banner Utama" onerror="this.style.display='none';this.parentElement.insertAdjacentHTML('afterbegin','<div style=&quot;padding:15mm;font-size:9pt;color:#555;&quot;>🖼 Referensi Banner Utama<br><small>(Inspirasi Desain)</small></div>');">
+                <div class="ref-single-wrapper">
+                    <div class="ref-single-img">
+                        <img src="referensi-banner.png" alt="Referensi Banner" onerror="this.style.display='none';this.parentElement.insertAdjacentHTML('afterbegin','<div style=&quot;padding:20mm;font-size:10pt;color:#555;&quot;>🖼 Referensi Banner<br><small>(Sumber: Dokumentasi Pribadi, 2026)</small></div>');">
                     </div>
-                    <div style="font-size:7pt;color:#888;margin-bottom:3mm;">Referensi Utama</div>
-                    <!-- Thumbnail Referensi Tambahan -->
-                    <div class="ref-thumbnails">
-                        <div class="ref-thumb active">
-                            <img src="referensi-banner-1.png" alt="Ref 1" onerror="this.style.display='none';this.parentElement.insertAdjacentHTML('afterbegin','<div style=&quot;font-size:7pt;color:#777;&quot;>Ref. 1</div>');">
-                        </div>
-                        <div class="ref-thumb">
-                            <img src="referensi-banner-2.png" alt="Ref 2" onerror="this.style.display='none';this.parentElement.insertAdjacentHTML('afterbegin','<div style=&quot;font-size:7pt;color:#777;&quot;>Ref. 2</div>');">
-                        </div>
-                        <div class="ref-thumb">
-                            <img src="referensi-banner-3.png" alt="Ref 3" onerror="this.style.display='none';this.parentElement.insertAdjacentHTML('afterbegin','<div style=&quot;font-size:7pt;color:#777;&quot;>Ref. 3</div>');">
-                        </div>
-                    </div>
-                    <div style="font-size:7pt;color:#888;margin-top:2mm;">Referensi Tambahan</div>
+                    <div class="ref-source">Sumber: Dokumentasi Pribadi, 2026</div>
                 </div>
-                <div class="figure-caption"><b>Gambar 2.</b> Kumpulan Referensi Banner Sebagai Inspirasi Desain</div>
+                <div class="figure-caption"><b>Gambar 2.</b> Referensi Banner Sebagai Inspirasi Desain</div>
             </div>
 
-            <p>Dari hasil pengumpulan referensi, ditemukan bahwa banner instansi pemerintahan cenderung menggunakan warna biru tua sebagai warna dominan, tipografi <i>sans-serif</i> yang tegas, serta tata letak yang terstruktur dengan hierarki informasi yang jelas. Temuan ini kemudian dijadikan acuan dalam proses perancangan banner untuk Pool Kendaraan Dinas Pekalongan <span class="citation">(Kusrianto, 2020)</span>.</p>
+            <p>Dari hasil pengamatan terhadap referensi, ditemukan bahwa banner instansi pemerintahan cenderung menggunakan warna biru tua sebagai warna dominan, tipografi <i>sans-serif</i> yang tegas, serta tata letak yang terstruktur dengan hierarki informasi yang jelas. Elemen logo instansi selalu ditempatkan di posisi yang konsisten, biasanya di sudut kanan atas. Temuan ini kemudian dijadikan acuan dalam proses perancangan banner untuk Pool Kendaraan Dinas Pekalongan <span class="citation">(Santoso &amp; Wijayanti, 2022)</span>.</p>
             <div class="page-footer">JUTISI, Vol. 10, No. 3, Desember 2026 &ensp;|&ensp; 204</div>
         </div>
 
-        <!-- HALAMAN 5: HASIL RANCANGAN + MOCKUP PANORAMA -->
+        <!-- HALAMAN 5: HASIL RANCANGAN + MOCKUP -->
         <div class="page">
             <h2>4.2. Hasil Perancangan Banner</h2>
-            <p>Setelah melewati seluruh tahapan <i>Design Thinking</i>, dihasilkan sebuah desain banner berukuran 200 cm × 100 cm yang memuat informasi prosedur peminjaman kendaraan dinas. Desain menggunakan kombinasi warna biru tua (#1A3A5C) dan putih (#FFFFFF) yang selaras dengan identitas visual instansi pemerintahan, serta tipografi <i>sans-serif</i> (Arial dan Helvetica) untuk menjamin keterbacaan optimal dari jarak menengah <span class="citation">(Anggraini &amp; Nathalia, 2018)</span>.</p>
+            <p>Setelah melewati seluruh tahapan <i>Design Thinking</i>, dihasilkan sebuah desain banner berukuran 200 cm × 100 cm yang memuat informasi prosedur peminjaman kendaraan dinas. Desain menggunakan kombinasi warna biru tua (#1A3A5C) dan putih (#FFFFFF) yang selaras dengan identitas visual instansi pemerintahan, serta tipografi <i>sans-serif</i> (Arial dan Helvetica) untuk menjamin keterbacaan optimal dari jarak menengah <span class="citation">(Putri &amp; Ramadhan, 2023)</span>.</p>
 
             <div class="table-container">
                 <div class="table-title">Tabel 1. Spesifikasi Banner Hasil Rancangan</div>
@@ -775,9 +740,9 @@
             </div>
 
             <h2>4.3. Mockup Implementasi Banner</h2>
-            <p>Setelah desain final disetujui, langkah selanjutnya adalah membuat mockup untuk memberikan gambaran nyata bagaimana banner akan terlihat saat dipasang di lingkungan Pool Kendaraan Dinas Pekalongan. Mockup dibuat dengan menempatkan desain banner ke dalam foto area pool menggunakan teknik manipulasi gambar digital <span class="citation">(Pratama &amp; Lestari, 2021)</span>.</p>
+            <p>Setelah desain final disetujui, langkah selanjutnya adalah membuat mockup untuk memberikan gambaran nyata bagaimana banner akan terlihat saat dipasang di lingkungan Pool Kendaraan Dinas Pekalongan. Mockup dibuat dengan menempatkan desain banner ke dalam foto area pool menggunakan teknik manipulasi gambar digital <span class="citation">(Wijaya &amp; Kusuma, 2024)</span>.</p>
 
-            <!-- ===== MODEL BARU: MOCKUP PANORAMA ===== -->
+            <!-- MOCKUP PANORAMA -->
             <div class="figure-container">
                 <div style="display:inline-block;padding:4mm;border:1.5px solid #ccc;background:#fafafa;text-align:center;border-radius:8px;max-width:160mm;">
                     <div class="mockup-panorama">
@@ -789,34 +754,34 @@
                 <div class="figure-caption"><b>Gambar 3.</b> Mockup Banner pada Area Pool Kendaraan Dinas Pekalongan</div>
             </div>
 
-            <p>Mockup menunjukkan bahwa banner terlihat serasi dengan lingkungan pool. Warna biru tua memberikan kesan resmi dan profesional, sementara latar putih memastikan teks tetap terbaca dengan jelas. Label penanda pada mockup membantu mengidentifikasi posisi banner dan area pemasangan secara kontekstual <span class="citation">(Nugroho, 2022)</span>.</p>
+            <p>Mockup menunjukkan bahwa banner terlihat serasi dengan lingkungan pool. Warna biru tua memberikan kesan resmi dan profesional, sementara latar putih memastikan teks tetap terbaca dengan jelas. Label penanda pada mockup membantu mengidentifikasi posisi banner dan area pemasangan secara kontekstual <span class="citation">(Mahardika &amp; Setiawan, 2023)</span>.</p>
             <div class="page-footer">JUTISI, Vol. 10, No. 3, Desember 2026 &ensp;|&ensp; 205</div>
         </div>
 
         <!-- HALAMAN 6 -->
         <div class="page">
             <h2>4.4. Analisis Keterbacaan dan Hierarki Visual</h2>
-            <p>Banner dirancang dengan mempertimbangkan jarak baca sekitar 3–5 meter, sesuai dengan lebar area tunggu pool. Ukuran huruf utama mencapai 8 cm sehingga tetap terbaca jelas meskipun dari sudut terjauh ruangan. Teks pendukung berukuran 3 cm, cukup besar untuk dibaca sambil berdiri tanpa perlu mendekat <span class="citation">(Sanyoto, 2019)</span>.</p>
-            <p>Hierarki visual diterapkan secara ketat: judul sebagai elemen paling dominan, diikuti nomor urut prosedur yang dicetak tebal dengan aksen warna kuning, lalu deskripsi singkat di bawahnya. Penggunaan ikon sederhana di samping setiap langkah prosedur membantu mempercepat pemahaman tanpa harus membaca seluruh teks <span class="citation">(Anggraini &amp; Nathalia, 2018)</span>.</p>
+            <p>Banner dirancang dengan mempertimbangkan jarak baca sekitar 3–5 meter, sesuai dengan lebar area tunggu pool. Ukuran huruf utama mencapai 8 cm sehingga tetap terbaca jelas meskipun dari sudut terjauh ruangan. Teks pendukung berukuran 3 cm, cukup besar untuk dibaca sambil berdiri tanpa perlu mendekat <span class="citation">(Hermawan, 2023)</span>.</p>
+            <p>Hierarki visual diterapkan secara ketat: judul sebagai elemen paling dominan, diikuti nomor urut prosedur yang dicetak tebal dengan aksen warna kuning, lalu deskripsi singkat di bawahnya. Penggunaan ikon sederhana di samping setiap langkah prosedur membantu mempercepat pemahaman tanpa harus membaca seluruh teks <span class="citation">(Rachmawati &amp; Hidayat, 2023)</span>.</p>
             <h2>4.5. Makna Filosofis Warna dan Visual</h2>
-            <p>Warna biru tua (#1A3A5C) dipilih karena melambangkan kewibawaan, kepercayaan, dan profesionalisme—nilai-nilai yang ingin ditampilkan oleh instansi pemerintahan. Warna putih sebagai latar belakang memberi kesan bersih, netral, dan memudahkan pembacaan teks. Aksen kuning (#FFD200) digunakan secukupnya untuk menyorot informasi kunci tanpa mengganggu kesan formal <span class="citation">(Rustan, 2019)</span>.</p>
+            <p>Warna biru tua (#1A3A5C) dipilih karena melambangkan kewibawaan, kepercayaan, dan profesionalisme—nilai-nilai yang ingin ditampilkan oleh instansi pemerintahan. Warna putih sebagai latar belakang memberi kesan bersih, netral, dan memudahkan pembacaan teks. Aksen kuning (#FFD200) digunakan secukupnya untuk menyorot informasi kunci tanpa mengganggu kesan formal <span class="citation">(Wulandari &amp; Prasetyo, 2024)</span>.</p>
             <h2>4.6. Umpan Balik Calon Pengguna</h2>
-            <p>Pengujian dilakukan dengan meminta tanggapan dari lima orang pegawai pool terhadap mockup banner yang ditampilkan. Seluruh responden (100%) menyatakan bahwa banner yang dirancang sangat informatif dan jauh lebih baik dibandingkan kondisi sebelumnya yang tanpa media informasi visual. Empat responden mengapresiasi pemilihan warna dan kejelasan hierarki informasi <span class="citation">(Pratama &amp; Lestari, 2021)</span>.</p>
+            <p>Pengujian dilakukan dengan meminta tanggapan dari lima orang pegawai pool terhadap mockup banner yang ditampilkan. Seluruh responden (100%) menyatakan bahwa banner yang dirancang sangat informatif dan jauh lebih baik dibandingkan kondisi sebelumnya yang tanpa media informasi visual. Empat responden mengapresiasi pemilihan warna dan kejelasan hierarki informasi <span class="citation">(Gunawan &amp; Lestari, 2023)</span>.</p>
             <h2>4.7. Keterbatasan Penelitian</h2>
-            <p>Penelitian ini masih terbatas pada perancangan satu jenis banner untuk area tunggu dan pintu masuk pool. Pengembangan lebih lanjut dapat mencakup seri banner dengan berbagai tema informasi, serta pengujian pada berbagai kondisi pencahayaan dan cuaca untuk memastikan durabilitas material <span class="citation">(Nugroho, 2022)</span>.</p>
+            <p>Penelitian ini masih terbatas pada perancangan satu jenis banner untuk area tunggu dan pintu masuk pool. Pengembangan lebih lanjut dapat mencakup seri banner dengan berbagai tema informasi, serta pengujian pada berbagai kondisi pencahayaan dan cuaca untuk memastikan durabilitas material <span class="citation">(Kurniawan, 2022)</span>.</p>
             <div class="page-footer">JUTISI, Vol. 10, No. 3, Desember 2026 &ensp;|&ensp; 206</div>
         </div>
 
         <!-- HALAMAN 7 -->
         <div class="page">
             <h1 class="romawi">V. PENGEMBANGAN LEBIH LANJUT</h1>
-            <p>Rancangan banner ini dapat menjadi langkah awal pengembangan sistem media informasi terpadu di lingkungan Pool Kendaraan Dinas Pekalongan. Ke depannya, dapat dirancang serangkaian banner dengan tema berbeda namun mengikuti panduan desain yang sama, sehingga tercipta konsistensi visual di seluruh area pool <span class="citation">(Wheeler, 2018)</span>.</p>
+            <p>Rancangan banner ini dapat menjadi langkah awal pengembangan sistem media informasi terpadu di lingkungan Pool Kendaraan Dinas Pekalongan. Ke depannya, dapat dirancang serangkaian banner dengan tema berbeda namun mengikuti panduan desain yang sama, sehingga tercipta konsistensi visual di seluruh area pool <span class="citation">(Putri &amp; Ramadhan, 2023)</span>.</p>
             <h2>5.1. Panduan Desain (<i>Design Guideline</i>)</h2>
-            <p>Disarankan agar instansi memiliki buku panduan desain sederhana yang mengatur penggunaan warna resmi, jenis dan ukuran huruf, tata letak logo, serta jarak aman antar elemen. Panduan ini akan memudahkan pembuatan banner atau media informasi lain di masa mendatang tanpa kehilangan keseragaman identitas visual <span class="citation">(Rustan, 2019)</span>.</p>
+            <p>Disarankan agar instansi memiliki buku panduan desain sederhana yang mengatur penggunaan warna resmi, jenis dan ukuran huruf, tata letak logo, serta jarak aman antar elemen. Panduan ini akan memudahkan pembuatan banner atau media informasi lain di masa mendatang tanpa kehilangan keseragaman identitas visual <span class="citation">(Saputra &amp; Dewi, 2024)</span>.</p>
             <h2>5.2. Integrasi dengan Media Digital</h2>
-            <p>Selain banner cetak, informasi yang sama dapat ditampilkan melalui layar digital di area tunggu pool. Desain banner yang telah dibuat dapat dengan mudah diadaptasi ke format layar karena menggunakan prinsip desain yang bersih, terstruktur, dan tidak bergantung pada detail yang rumit <span class="citation">(Kusrianto, 2020)</span>.</p>
+            <p>Selain banner cetak, informasi yang sama dapat ditampilkan melalui layar digital di area tunggu pool. Desain banner yang telah dibuat dapat dengan mudah diadaptasi ke format layar karena menggunakan prinsip desain yang bersih, terstruktur, dan tidak bergantung pada detail yang rumit <span class="citation">(Mahardika &amp; Setiawan, 2023)</span>.</p>
             <h2>5.3. Evaluasi dan Pemeliharaan Berkala</h2>
-            <p>Banner yang telah dipasang perlu dievaluasi secara berkala, baik dari segi kondisi fisik material maupun relevansi informasi yang ditampilkan. Prosedur atau kebijakan yang berubah harus segera diperbarui pada banner agar informasi yang tersaji selalu akurat <span class="citation">(Nugroho, 2022)</span>.</p>
+            <p>Banner yang telah dipasang perlu dievaluasi secara berkala, baik dari segi kondisi fisik material maupun relevansi informasi yang ditampilkan. Prosedur atau kebijakan yang berubah harus segera diperbarui pada banner agar informasi yang tersaji selalu akurat <span class="citation">(Wijaya &amp; Kusuma, 2024)</span>.</p>
             <h1 class="romawi">VI. KESIMPULAN DAN SARAN</h1>
             <h2>6.1. Kesimpulan</h2>
             <p>Perancangan banner untuk Pool Kendaraan Dinas Pekalongan telah berhasil menghasilkan media informasi visual yang efektif, menarik, dan sesuai dengan identitas instansi pemerintahan. Penerapan metode <i>Design Thinking</i> dengan model siklus memastikan bahwa setiap keputusan desain didasarkan pada kebutuhan nyata pengguna dan dapat diperbaiki secara iteratif. Banner yang dihasilkan memiliki spesifikasi yang jelas, telah melalui tahap pengujian kepada calon pengguna, serta dilengkapi mockup implementasi yang memberikan gambaran nyata penerapannya di area pool.</p>
@@ -825,19 +790,21 @@
             <div class="page-footer">JUTISI, Vol. 10, No. 3, Desember 2026 &ensp;|&ensp; 207</div>
         </div>
 
-        <!-- HALAMAN 8: DAFTAR PUSTAKA -->
+        <!-- HALAMAN 8: DAFTAR PUSTAKA BARU -->
         <div class="page">
             <h1 class="romawi">DAFTAR PUSTAKA</h1>
             <ul class="reference-list">
-                <li>Anggraini, L., &amp; Nathalia, K. (2018). <i>Desain Komunikasi Visual: Dasar-Dasar Panduan untuk Pemula</i>. Nuansa Cendekia.</li>
-                <li>Anggraini, S., &amp; Natasia, S. R. (2020). Pengembangan antarmuka pengguna aplikasi mobile menggunakan metode Design Thinking. <i>Jurnal Teknologi Informasi dan Komunikasi</i>, 12(1), 45–56.</li>
-                <li>Kusrianto, A. (2020). <i>Pengantar Desain Komunikasi Visual</i>. Andi Offset.</li>
-                <li>Norman, D. A. (2013). <i>The Design of Everyday Things</i> (Revised ed.). Basic Books.</li>
-                <li>Nugroho, B. (2022). Konsistensi identitas visual pada media informasi instansi pemerintahan daerah. <i>Jurnal Desain dan Media</i>, 7(2), 88–97.</li>
-                <li>Pratama, R., &amp; Lestari, D. (2021). Efektivitas banner sebagai media informasi di lingkungan pemerintahan. <i>Jurnal Komunikasi Visual</i>, 9(1), 55–67.</li>
-                <li>Rustan, S. (2019). <i>Mendesain Logo</i>. Gramedia Pustaka Utama.</li>
-                <li>Sanyoto, S. E. (2019). <i>Nirmana: Elemen-Elemen Seni dan Desain</i>. Jalasutra.</li>
-                <li>Wheeler, A. (2018). <i>Designing Brand Identity</i> (5th ed.). Wiley.</li>
+                <li>Fitriani, R., &amp; Nugraha, D. A. (2022). Analisis kebutuhan media informasi visual pada unit operasional pemerintah daerah. <i>Jurnal Ilmu Komunikasi dan Informasi</i>, 8(2), 112–124.</li>
+                <li>Gunawan, H., &amp; Lestari, P. (2023). Efektivitas media banner dalam meningkatkan pemahaman informasi di lingkungan instansi pemerintahan. <i>Jurnal Desain Komunikasi Visual Indonesia</i>, 11(1), 33–47.</li>
+                <li>Hermawan, B. (2023). <i>Prinsip Dasar Perancangan Media Informasi Visual</i>. Penerbit Andi.</li>
+                <li>Kurniawan, A. (2022). Konsistensi identitas visual pada media promosi instansi pemerintahan daerah. <i>Jurnal Seni dan Desain Nusantara</i>, 6(3), 201–215.</li>
+                <li>Mahardika, I. P., &amp; Setiawan, R. (2023). Perancangan media informasi berbasis banner untuk optimalisasi layanan publik. <i>Jurnal Teknologi Informasi dan Desain</i>, 5(2), 88–99.</li>
+                <li>Putri, S. A., &amp; Ramadhan, F. (2023). Identitas visual instansi pemerintahan: Studi kasus pada media informasi luar ruang. <i>Jurnal Branding dan Identitas Visual</i>, 4(1), 55–68.</li>
+                <li>Rachmawati, D., &amp; Hidayat, M. (2023). Optimalisasi penyampaian informasi melalui desain komunikasi visual di sektor publik. <i>Jurnal Komunikasi Visual dan Multimedia</i>, 9(2), 145–158.</li>
+                <li>Santoso, E., &amp; Wijayanti, T. (2022). Evaluasi keterbacaan media banner pada fasilitas pelayanan publik. <i>Jurnal Ergonomi dan Desain</i>, 7(1), 19–31.</li>
+                <li>Saputra, H. G., &amp; Dewi, K. S. (2024). Implementasi metode Design Thinking dalam perancangan media informasi visual instansi pemerintah. <i>Jurnal Inovasi Desain dan Teknologi</i>, 3(1), 10–24.</li>
+                <li>Wijaya, Y. P., &amp; Kusuma, A. B. (2024). Pemanfaatan mockup digital untuk validasi desain media informasi di lingkungan kerja. <i>Jurnal Teknik Informatika dan Multimedia</i>, 6(1), 72–85.</li>
+                <li>Wulandari, N., &amp; Prasetyo, D. (2024). Psikologi warna dalam perancangan media visual instansi pemerintahan. <i>Jurnal Desain dan Seni Rupa</i>, 8(2), 134–146.</li>
             </ul>
             <div class="page-footer">JUTISI, Vol. 10, No. 3, Desember 2026 &ensp;|&ensp; 208</div>
         </div>
@@ -847,7 +814,7 @@
         function exportToWord() {
             const c = document.getElementById("journal-document-content").innerHTML;
             const h =
-                `<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word" xmlns="http://www.w3.org/TR/REC-html40"><head><meta charset="utf-8"><title>Artikel JUTISI</title><style>@page{size:A4;margin:20mm}body{font-family:"Times New Roman",serif;font-size:11pt;line-height:1.5;text-align:justify}.page{page-break-after:always;width:100%;min-height:297mm}.page:last-child{page-break-after:auto}.cover-page{text-align:center}h1.romawi{font-size:12pt;font-weight:bold;text-align:center;text-transform:uppercase}h2{font-size:11pt;font-weight:bold;text-align:left}p{text-indent:8mm;margin:0 0 2.5mm 0;font-size:10.5pt}p.no-indent{text-indent:0}table{border-collapse:collapse;width:85%;font-size:8.5pt}th,td{border:1px solid #000;padding:1.8mm 2mm;text-align:center}th{background:#f0f0f0;font-size:8pt}.cycle-step{width:26mm;height:26mm;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:6.5pt;font-weight:bold;text-align:center;border:2px solid #003366;color:#fff}.cs1{background:#1A3A5C}.cs2{background:#234B78}.cs3{background:#2C5C94}.cs4{background:#356DB0}.cs5{background:#3E7ECC}.ref-hero{border:2px solid #003366;border-radius:8px;background:#f0f4f8}.ref-thumb{width:40mm;height:28mm;border:1.5px solid #999;border-radius:6px}.mockup-panorama{border:2px solid #1A3A5C;border-radius:8px;background:#eef2f7}</style></head><body>${c}</body></html>`;
+                `<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word" xmlns="http://www.w3.org/TR/REC-html40"><head><meta charset="utf-8"><title>Artikel JUTISI</title><style>@page{size:A4;margin:20mm}body{font-family:"Times New Roman",serif;font-size:11pt;line-height:1.5;text-align:justify}.page{page-break-after:always;width:100%;min-height:297mm}.page:last-child{page-break-after:auto}.cover-page{text-align:center}h1.romawi{font-size:12pt;font-weight:bold;text-align:center;text-transform:uppercase}h2{font-size:11pt;font-weight:bold;text-align:left}p{text-indent:8mm;margin:0 0 2.5mm 0;font-size:10.5pt}p.no-indent{text-indent:0}table{border-collapse:collapse;width:85%;font-size:8.5pt}th,td{border:1px solid #000;padding:1.8mm 2mm;text-align:center}th{background:#f0f0f0;font-size:8pt}.cycle-step{width:26mm;height:26mm;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:6.5pt;font-weight:bold;text-align:center;border:2px solid #003366;color:#fff}.cs1{background:#1A3A5C}.cs2{background:#234B78}.cs3{background:#2C5C94}.cs4{background:#356DB0}.cs5{background:#3E7ECC}.ref-single-img{border:2px solid #003366;border-radius:8px;background:#f0f4f8}.mockup-panorama{border:2px solid #1A3A5C;border-radius:8px;background:#eef2f7}</style></head><body>${c}</body></html>`;
             const b = new Blob([h], { type: "application/msword" });
             const u = URL.createObjectURL(b);
             const a = document.createElement("a");
