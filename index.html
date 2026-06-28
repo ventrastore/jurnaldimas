@@ -184,7 +184,7 @@
             text-align: center;
         }
 
-        /* ===== HEADER JURNAL (RAPIH, TANPA GARIS BERLEBIHAN) ===== */
+        /* ===== HEADER JURNAL ===== */
         .journal-header {
             text-align: center;
             margin-bottom: 6mm;
@@ -201,14 +201,9 @@
         .journal-header-info {
             font-size: 8.5pt;
             line-height: 1.5;
-            margin-bottom: 2mm;
+            margin-bottom: 5mm;
             text-align: center;
             color: #333;
-        }
-
-        .journal-header-divider {
-            border-top: 1px solid #000;
-            margin: 4mm 0 6mm 0;
         }
 
         /* ===== JUDUL ARTIKEL ===== */
@@ -249,13 +244,16 @@
         }
 
         /* ===== ABSTRAK ===== */
-        .abstract-dual {
-            display: flex;
-            gap: 8mm;
+        .abstract-section {
             margin-bottom: 6mm;
             border-top: 1px solid #000;
             border-bottom: 1px solid #000;
             padding: 5mm 0;
+        }
+
+        .abstract-dual {
+            display: flex;
+            gap: 8mm;
         }
 
         .abstract-col {
@@ -295,7 +293,7 @@
             page-break-after: avoid;
         }
 
-        /* ===== PARAGRAF RESMI ===== */
+        /* ===== PARAGRAF ===== */
         p {
             margin: 0 0 3mm 0;
             text-indent: 10mm;
@@ -327,16 +325,12 @@
             font-size: 9pt;
             margin-top: 2mm;
             text-align: center;
-            font-weight: bold;
         }
 
         /* Diagram Siklus */
         .cycle-diagram-wrapper {
             display: inline-block;
-            padding: 5mm 8mm;
-            background: #f9fafb;
-            border: 1px solid #bbb;
-            border-radius: 8px;
+            padding: 5mm 6mm;
             text-align: center;
         }
 
@@ -345,18 +339,18 @@
             flex-wrap: wrap;
             justify-content: center;
             align-items: center;
-            gap: 2mm;
+            gap: 1.5mm;
         }
 
         .cycle-step {
-            width: 26mm;
-            height: 26mm;
+            width: 25mm;
+            height: 25mm;
             border-radius: 50%;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            font-size: 6.5pt;
+            font-size: 6pt;
             font-weight: bold;
             text-align: center;
             line-height: 1.2;
@@ -365,7 +359,7 @@
         }
 
         .cycle-step .step-num {
-            font-size: 10pt;
+            font-size: 9pt;
             font-weight: bold;
             display: block;
             margin-bottom: 0.5mm;
@@ -388,78 +382,82 @@
         }
 
         .cycle-arrow {
-            font-size: 13pt;
+            font-size: 12pt;
             font-weight: bold;
             color: #1A3A5C;
-            margin: 0 -1mm;
+            margin: 0 0mm;
         }
 
         .cycle-iteration {
             width: 100%;
             text-align: center;
-            margin-top: 3mm;
+            margin-top: 2.5mm;
             font-size: 7.5pt;
             color: #1A3A5C;
             font-weight: bold;
-            letter-spacing: 0.5px;
+            letter-spacing: 0.3px;
             font-style: italic;
         }
 
         /* Referensi Gambar */
         .ref-single-wrapper {
             display: inline-block;
-            padding: 4mm;
-            border: 1px solid #ccc;
-            background: #fafafa;
+            padding: 3mm;
             text-align: center;
-            border-radius: 6px;
-            max-width: 140mm;
+            max-width: 135mm;
         }
 
         .ref-single-img {
             width: 100%;
-            max-width: 132mm;
+            max-width: 130mm;
             height: auto;
-            min-height: 50mm;
-            border: 1px solid #999;
-            background: #f5f6f8;
+            min-height: 45mm;
+            border: 1px solid #bbb;
+            background: #fafbfc;
             display: flex;
             align-items: center;
             justify-content: center;
             margin: 0 auto;
             font-size: 9pt;
-            color: #666;
+            color: #777;
             overflow: hidden;
         }
 
         .ref-single-img img {
             width: 100%;
             height: auto;
-            max-height: 65mm;
+            max-height: 60mm;
             object-fit: contain;
         }
 
         .ref-source {
             font-size: 7.5pt;
-            color: #888;
+            color: #999;
             margin-top: 2mm;
             font-style: italic;
         }
 
         /* Mockup Panorama */
+        .mockup-wrapper {
+            display: inline-block;
+            padding: 3mm;
+            text-align: center;
+            max-width: 155mm;
+        }
+
         .mockup-panorama {
             width: 100%;
-            max-width: 150mm;
+            max-width: 148mm;
             height: auto;
-            min-height: 50mm;
-            border: 1px solid #999;
-            background: #f5f6f8;
+            min-height: 48mm;
+            border: 1px solid #bbb;
+            background: #fafbfc;
             display: flex;
             align-items: center;
             justify-content: center;
             margin: 0 auto;
             font-size: 9pt;
-            color: #666;
+            color: #777;
             overflow: hidden;
             position: relative;
         }
@@ -467,7 +465,7 @@
         .mockup-panorama img {
             width: 100%;
             height: auto;
-            max-height: 70mm;
+            max-height: 68mm;
             object-fit: contain;
         }
 
@@ -483,13 +481,13 @@
         }
 
         .mockup-label.top-right {
-            top: 3mm;
-            right: 3mm;
+            top: 2mm;
+            right: 2mm;
         }
 
         .mockup-label.bottom-left {
-            bottom: 3mm;
-            left: 3mm;
+            bottom: 2mm;
+            left: 2mm;
             background: rgba(176, 0, 0, 0.85);
         }
 
@@ -500,7 +498,7 @@
         }
 
         table {
-            width: 82%;
+            width: 80%;
             border-collapse: collapse;
             font-size: 8.5pt;
             margin: 0 auto;
@@ -509,7 +507,7 @@
         th,
         td {
             border: 1px solid #000;
-            padding: 2mm 2.5mm;
+            padding: 2mm 3mm;
             text-align: left;
             vertical-align: middle;
         }
@@ -553,9 +551,9 @@
             right: 22mm;
             text-align: center;
             font-size: 8.5pt;
-            border-top: 0.5px solid #999;
+            border-top: 0.5px solid #bbb;
             padding-top: 3mm;
-            color: #555;
+            color: #777;
         }
 
         /* ===== SITASI ===== */
@@ -601,7 +599,7 @@
         <!-- ========== HALAMAN SAMPUL ========== -->
         <div class="page cover-page">
             <div class="cover-journal-title">JURNAL TEKNIK INFORMATIKA<br>DAN SISTEM INFORMASI<br><span style="font-size:11pt;">JUTISI</span><br><span style="font-size:10pt;">VOLUME 10, NOMOR 3, DESEMBER 2026</span></div>
-            <div class="cover-logo-container"><img src="logokampus.png" alt="Logo Kampus" onerror="this.style.display='none';this.insertAdjacentHTML('afterend','<div style=&quot;display:inline-block;width:180px;height:180px;border:1px solid #bbb;font-size:10pt;background:#f9fafb;text-align:center;line-height:180px;border-radius:8px;&quot;>Logo Kampus</div>');"></div>
+            <div class="cover-logo-container"><img src="logokampus.png" alt="Logo Kampus" onerror="this.style.display='none';this.insertAdjacentHTML('afterend','<div style=&quot;display:inline-block;width:160px;height:160px;border:1px solid #ccc;font-size:10pt;background:#fafbfc;text-align:center;line-height:160px;border-radius:8px;&quot;>Logo Kampus</div>');"></div>
             <div class="cover-article-title">PERANCANGAN MEDIA INFORMASI VISUAL<br>MELALUI DESAIN BANNER<br>PADA POOL KENDARAAN DINAS PEKALONGAN</div>
             <div class="cover-section-1">
                 <div class="name">Arkan Daffa Musyafa</div>
@@ -622,7 +620,6 @@
             <div class="journal-header">
                 <div class="journal-header-name">Jurnal Teknik Informatika dan Sistem Informasi (JUTISI)</div>
                 <div class="journal-header-info">Vol. 10, No. 3, Desember 2026, hlm. 201–210 &ensp;|&ensp; E-ISSN: 2503-2933 &ensp;|&ensp; P-ISSN: 2502-1171</div>
-                <div class="journal-header-divider"></div>
             </div>
             <div class="article-title-main">Perancangan Media Informasi Visual Melalui Desain Banner pada Pool Kendaraan Dinas Pekalongan</div>
             <div class="authors-section">
@@ -630,16 +627,18 @@
                 <div class="authors-affiliations">Program Studi Teknik Informatika, Institut Widya Pratama, Jl. Patriot No. 25 - Kota Pekalongan, Indonesia</div>
                 <div class="authors-email"><sup>*</sup>Penulis korespondensi: <a href="mailto:arkandaffa@example.com">arkandaffa@example.com</a></div>
             </div>
-            <div class="abstract-dual">
-                <div class="abstract-col">
-                    <div class="abstract-label">Abstrak</div>
-                    <p class="no-indent" style="font-size:9pt;text-indent:0;">Pool Kendaraan Dinas Pekalongan merupakan unit operasional yang mengelola kendaraan dinas pemerintah daerah. Selama ini, belum tersedia media informasi visual yang memadai di area pool, sehingga penyampaian prosedur, jadwal, dan pengumuman operasional masih dilakukan secara lisan atau melalui kertas tempelan sederhana yang mudah terabaikan. Penelitian ini bertujuan untuk merancang banner sebagai media informasi visual yang efektif, komunikatif, dan sesuai dengan karakter instansi. Metode <i>Design Thinking</i> digunakan dalam proses perancangan, meliputi tahap <i>empathize, define, ideate, prototype,</i> dan <i>test</i>. Hasil akhir berupa desain banner yang informatif dan mudah dibaca, lengkap dengan mockup implementasi di lingkungan pool sebagai gambaran nyata penerapannya.</p>
-                    <p class="keywords-text"><b>Kata Kunci:</b> banner, media informasi visual, pool kendaraan dinas, Design Thinking, mockup.</p>
-                </div>
-                <div class="abstract-col">
-                    <div class="abstract-label">Abstract</div>
-                    <p class="no-indent" style="font-size:9pt;text-indent:0;"><i>Pool Kendaraan Dinas Pekalongan is an operational unit managing local government official vehicles. To date, there has been no adequate visual information medium in the pool area; consequently, procedures, schedules, and operational announcements are still delivered verbally or through simple sticky notes that are easily overlooked. This study aims to design a banner as an effective and communicative visual information medium aligned with the agency's character. The Design Thinking method was employed throughout the design process, covering empathize, define, ideate, prototype, and test stages. The final output is an informative, legible banner design, accompanied by an implementation mockup in the pool environment to provide a realistic preview of its application.</i></p>
-                    <p class="keywords-text"><b>Keywords:</b> <i>banner, visual information medium, official vehicle pool, Design Thinking, mockup.</i></p>
+            <div class="abstract-section">
+                <div class="abstract-dual">
+                    <div class="abstract-col">
+                        <div class="abstract-label">Abstrak</div>
+                        <p class="no-indent" style="font-size:9pt;text-indent:0;">Pool Kendaraan Dinas Pekalongan merupakan unit operasional yang mengelola kendaraan dinas pemerintah daerah. Selama ini, belum tersedia media informasi visual yang memadai di area pool, sehingga penyampaian prosedur, jadwal, dan pengumuman operasional masih dilakukan secara lisan atau melalui kertas tempelan sederhana yang mudah terabaikan. Penelitian ini bertujuan untuk merancang banner sebagai media informasi visual yang efektif, komunikatif, dan sesuai dengan karakter instansi. Metode <i>Design Thinking</i> digunakan dalam proses perancangan, meliputi tahap <i>empathize, define, ideate, prototype,</i> dan <i>test</i>. Hasil akhir berupa desain banner yang informatif dan mudah dibaca, lengkap dengan mockup implementasi di lingkungan pool sebagai gambaran nyata penerapannya.</p>
+                        <p class="keywords-text"><b>Kata Kunci:</b> banner, media informasi visual, pool kendaraan dinas, Design Thinking, mockup.</p>
+                    </div>
+                    <div class="abstract-col">
+                        <div class="abstract-label">Abstract</div>
+                        <p class="no-indent" style="font-size:9pt;text-indent:0;"><i>Pool Kendaraan Dinas Pekalongan is an operational unit managing local government official vehicles. To date, there has been no adequate visual information medium in the pool area; consequently, procedures, schedules, and operational announcements are still delivered verbally or through simple sticky notes that are easily overlooked. This study aims to design a banner as an effective and communicative visual information medium aligned with the agency's character. The Design Thinking method was employed throughout the design process, covering empathize, define, ideate, prototype, and test stages. The final output is an informative, legible banner design, accompanied by an implementation mockup in the pool environment to provide a realistic preview of its application.</i></p>
+                        <p class="keywords-text"><b>Keywords:</b> <i>banner, visual information medium, official vehicle pool, Design Thinking, mockup.</i></p>
+                    </div>
                 </div>
             </div>
             <h1 class="romawi no-break">I. PENDAHULUAN</h1>
@@ -685,7 +684,7 @@
                         <div class="cycle-arrow">&#8594;</div>
                         <div class="cycle-step cs5"><span class="step-num">5</span>Test</div>
                     </div>
-                    <div class="cycle-iteration">&#8593; &mdash;&mdash; Iterasi dan Perbaikan Berkelanjutan &mdash;&mdash; &#8593;</div>
+                    <div class="cycle-iteration">Iterasi dan Perbaikan Berkelanjutan</div>
                 </div>
                 <div class="figure-caption">Gambar 1. Model Siklus Metode Design Thinking</div>
             </div>
@@ -701,11 +700,11 @@
             <h2>4.1. Pengumpulan Referensi Desain Banner</h2>
             <p>Sebelum memulai proses perancangan, dilakukan pencarian referensi banner dari instansi pemerintahan lain yang memiliki karakteristik serupa dengan Pool Kendaraan Dinas Pekalongan. Referensi ini berfungsi sebagai sumber inspirasi dalam menentukan gaya visual, tata letak, kombinasi warna, dan pemilihan tipografi yang sesuai dengan karakter instansi pemerintah <span class="citation">(Hermawan, 2023)</span>.</p>
 
-            <!-- Referensi Banner (1 Gambar) -->
+            <!-- Referensi Banner -->
             <div class="figure-container">
                 <div class="ref-single-wrapper">
                     <div class="ref-single-img">
-                        <img src="referensi-banner.png" alt="Referensi Banner" onerror="this.style.display='none';this.parentElement.insertAdjacentHTML('afterbegin','<div style=&quot;padding:18mm;font-size:10pt;color:#666;&quot;>Referensi Banner<br><small>(Sumber: Dokumentasi Pribadi, 2026)</small></div>');">
+                        <img src="referensi-banner.png" alt="Referensi Banner" onerror="this.style.display='none';this.parentElement.insertAdjacentHTML('afterbegin','<div style=&quot;padding:16mm;font-size:10pt;color:#777;&quot;>Referensi Banner<br><small>(Sumber: Dokumentasi Pribadi, 2026)</small></div>');">
                     </div>
                     <div class="ref-source">Sumber: Dokumentasi Pribadi, 2026</div>
                 </div>
@@ -743,11 +742,11 @@
             <h2>4.3. Mockup Implementasi Banner</h2>
             <p>Setelah desain final disetujui, langkah selanjutnya adalah membuat mockup untuk memberikan gambaran nyata bagaimana banner akan terlihat saat dipasang di lingkungan Pool Kendaraan Dinas Pekalongan. Mockup dibuat dengan menempatkan desain banner ke dalam foto area pool menggunakan teknik manipulasi gambar digital <span class="citation">(Wijaya &amp; Kusuma, 2024)</span>.</p>
 
-            <!-- Mockup Panorama -->
+            <!-- Mockup -->
             <div class="figure-container">
-                <div style="display:inline-block;padding:4mm;border:1px solid #ccc;background:#fafafa;text-align:center;border-radius:6px;max-width:158mm;">
+                <div class="mockup-wrapper">
                     <div class="mockup-panorama">
-                        <img src="mockup-banner-panorama.png" alt="Mockup Banner" onerror="this.style.display='none';this.parentElement.insertAdjacentHTML('afterbegin','<div style=&quot;padding:18mm;font-size:9pt;color:#666;&quot;>Mockup Banner<br><small>(Area Pool Kendaraan Dinas Pekalongan)</small></div>');">
+                        <img src="mockup-banner-panorama.png" alt="Mockup Banner" onerror="this.style.display='none';this.parentElement.insertAdjacentHTML('afterbegin','<div style=&quot;padding:16mm;font-size:9pt;color:#777;&quot;>Mockup Banner<br><small>(Area Pool Kendaraan Dinas Pekalongan)</small></div>');">
                         <span class="mockup-label top-right">Banner Prosedur</span>
                         <span class="mockup-label bottom-left">Pool Kendaraan Dinas</span>
                     </div>
@@ -815,12 +814,12 @@
         function exportToWord() {
             const c = document.getElementById("journal-document-content").innerHTML;
             const h =
-                `<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word" xmlns="http://www.w3.org/TR/REC-html40"><head><meta charset="utf-8"><title>Artikel JUTISI</title><style>@page{size:A4;margin:20mm}body{font-family:"Times New Roman",serif;font-size:11pt;line-height:1.6;text-align:justify}.page{page-break-after:always;width:100%;min-height:297mm;padding:20mm 22mm}.page:last-child{page-break-after:auto}.cover-page{text-align:center}h1.romawi{font-size:12pt;font-weight:bold;text-align:center;text-transform:uppercase}h2{font-size:11pt;font-weight:bold;text-align:left}p{text-indent:10mm;margin:0 0 3mm 0;font-size:10.5pt;line-height:1.6}p.no-indent{text-indent:0}table{border-collapse:collapse;width:82%;font-size:8.5pt}th,td{border:1px solid #000;padding:2mm 2.5mm;text-align:left}th{background:#eef1f5;font-weight:bold;font-size:8pt;text-align:center}.cycle-step{width:26mm;height:26mm;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:6.5pt;font-weight:bold;text-align:center;border:1.5px solid #1A3A5C;color:#fff}.cs1{background:#1A3A5C}.cs2{background:#234B78}.cs3{background:#2C5C94}.cs4{background:#356DB0}.cs5{background:#3E7ECC}.ref-single-img{border:1px solid #999;background:#f5f6f8}.mockup-panorama{border:1px solid #999;background:#f5f6f8}.page-footer{position:absolute;bottom:14mm;left:22mm;right:22mm;text-align:center;font-size:8.5pt;border-top:0.5px solid #999;padding-top:3mm;color:#555}</style></head><body>${c}</body></html>`;
+                `<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word" xmlns="http://www.w3.org/TR/REC-html40"><head><meta charset="utf-8"><title>Artikel JUTISI</title><style>@page{size:210mm 297mm;margin:20mm 22mm}body{font-family:"Times New Roman",serif;font-size:11pt;line-height:1.6;text-align:justify;width:166mm}.page{page-break-after:always;width:100%;min-height:257mm}.page:last-child{page-break-after:auto}.cover-page{text-align:center}h1.romawi{font-size:12pt;font-weight:bold;text-align:center;text-transform:uppercase;margin:6mm 0 4mm 0}h2{font-size:11pt;font-weight:bold;text-align:left;margin:5mm 0 3mm 0}p{text-indent:10mm;margin:0 0 3mm 0;font-size:10.5pt;line-height:1.6}p.no-indent{text-indent:0}table{border-collapse:collapse;width:80%;font-size:8.5pt;margin:0 auto}th,td{border:1px solid #000;padding:2mm 3mm;text-align:left}th{background:#eef1f5;font-weight:bold;font-size:8pt;text-align:center}.cycle-step{width:25mm;height:25mm;border-radius:50%;display:inline-flex;flex-direction:column;align-items:center;justify-content:center;font-size:6pt;font-weight:bold;text-align:center;border:1.5px solid #1A3A5C;color:#fff;margin:0 1mm}.cs1{background:#1A3A5C}.cs2{background:#234B78}.cs3{background:#2C5C94}.cs4{background:#356DB0}.cs5{background:#3E7ECC}.ref-single-img{border:1px solid #bbb;background:#fafbfc}.mockup-panorama{border:1px solid #bbb;background:#fafbfc;position:relative}.page-footer{text-align:center;font-size:8.5pt;border-top:0.5px solid #bbb;padding-top:3mm;color:#777;margin-top:5mm}</style></head><body>${c}</body></html>`;
             const b = new Blob([h], { type: "application/msword" });
             const u = URL.createObjectURL(b);
             const a = document.createElement("a");
             a.href = u;
-            a.download = "Artikel_JUTISI_Banner_Pool.docx";
+            a.download = "Artikel_JUTISI_Banner_Pool.doc";
             document.body.appendChild(a);
             a.click();
             document.body.removeChild(a);
@@ -834,14 +833,19 @@
             btn.disabled = true;
             try {
                 const { jsPDF } = window.jspdf;
-                const W = 210,
-                    H = 297;
-                const doc = new jsPDF({ unit: "mm", format: [W, H], orientation: "portrait", compress: true,
-                    hotfixes: ["px_scaling"] });
+                const pdfW = 210,
+                    pdfH = 297;
+                const doc = new jsPDF({
+                    unit: "mm",
+                    format: [pdfW, pdfH],
+                    orientation: "portrait",
+                    compress: true,
+                    hotfixes: ["px_scaling"]
+                });
                 const pages = document.querySelectorAll("#journal-document-content .page");
                 for (let i = 0; i < pages.length; i++) {
                     if (i > 0) doc.addPage();
-                    await new Promise(r => setTimeout(r, 500));
+                    await new Promise(r => setTimeout(r, 400));
                     const canvas = await html2canvas(pages[i], {
                         scale: 3,
                         useCORS: false,
@@ -852,9 +856,10 @@
                         height: pages[i].offsetHeight
                     });
                     const imgData = canvas.toDataURL("image/png", 1.0);
-                    const ratio = canvas.height / canvas.width;
-                    const imgH = Math.min(W * ratio, H);
-                    doc.addImage(imgData, "PNG", 0, 0, W, imgH, undefined, "FAST");
+                    const pageRatio = pages[i].offsetHeight / pages[i].offsetWidth;
+                    const imgWidth = pdfW;
+                    const imgHeight = pdfW * pageRatio;
+                    doc.addImage(imgData, "PNG", 0, 0, imgWidth, Math.min(imgHeight, pdfH), undefined, "FAST");
                 }
                 doc.save("Artikel_JUTISI_Banner_Pool.pdf");
             } catch (e) { alert("Gagal: " + e); } finally { btn.classList.remove("btn-loading");
