@@ -2,288 +2,250 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <title>Artikel Jurnal - Perusahaan Cerah</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Halaman Utama - Dimas Arif Fikriawan</title>
     <style>
-        *{margin:0;padding:0;box-sizing:border-box}
-        body{
-            font-family:"Times New Roman",Times,serif;
-            background:#e0e0e0;
-            color:#000;
-            font-size:11pt;
-            line-height:1.55;
-            text-align:justify;
+        /* Reset Dasar */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-        .btn-row{
-            position:fixed;top:15px;right:15px;z-index:9999;
-            display:flex;gap:8px;
+
+        body {
+            background-color: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            font-family: 'Inter', 'Segoe UI', Roboto, -apple-system, BlinkMacSystemFont, sans-serif;
+            color: #1e293b;
+            overflow-x: hidden;
         }
-        .btn-row button{
-            padding:10px 18px;border:none;border-radius:4px;
-            cursor:pointer;font-weight:bold;font-size:13px;
-            font-family:"Times New Roman",serif;
+
+        /* Animasi Latar Belakang Halus */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at top right, #f8fafc 0%, transparent 50%),
+                        radial-gradient(circle at bottom left, #f1f5f9 0%, transparent 50%);
+            z-index: -1;
+            animation: backgroundShift 20s ease infinite alternate;
         }
-        .btn-word{background:#1a3a5c;color:#ffd200}
-        .btn-pdf{background:#b00000;color:#fff}
 
-        .page{
-            width:210mm;
-            min-height:297mm;
-            background:#fff;
-            padding:20mm 22mm;
-            margin:0 auto 15px auto;
-            box-shadow:0 2px 10px rgba(0,0,0,0.15);
-            page-break-after:always;
-            display:flex;
-            flex-direction:column;
+        @keyframes backgroundShift {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(-10px, 10px); }
         }
-        .page:last-child{page-break-after:auto;margin-bottom:0}
 
-        .content{flex:1}
+        /* Kontainer Utama dengan Efek 3D & Animasi */
+        .container {
+            width: 100%;
+            max-width: 600px;
+            background: #ffffff;
+            padding: 50px 35px;
+            border-radius: 28px;
+            box-shadow: 
+                12px 12px 24px rgba(0, 0, 0, 0.08),
+                -12px -12px 24px rgba(255, 255, 255, 0.95),
+                inset 1px 1px 2px rgba(255, 255, 255, 0.8),
+                inset -1px -1px 2px rgba(0, 0, 0, 0.02);
+            text-align: center;
+            opacity: 0;
+            transform: translateY(30px) scale(0.95);
+            animation: containerPopUp 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        }
 
-        /* SAMPUL */
-        .cover{text-align:center;padding-top:18mm}
-        .cover .jtitle{font-size:14pt;font-weight:bold;text-transform:uppercase;line-height:1.6;margin-bottom:10mm}
-        .cover .logo-wrap{margin-bottom:10mm;text-align:center}
-        .cover .logo-wrap img{width:160px;height:160px;object-fit:contain;display:inline-block}
-        .cover .art-title{font-size:13pt;font-weight:bold;line-height:1.6;margin-bottom:12mm}
-        .cover .author{font-size:12pt;font-weight:bold;margin-bottom:2mm}
-        .cover .nim{font-size:12pt;margin-bottom:10mm}
-        .cover .info{line-height:2;font-size:11pt;margin-bottom:14mm}
-        .cover .info b{font-weight:bold}
-        .cover .year{font-size:12pt;font-weight:bold}
-
-        /* HEADER */
-        .jhead{text-align:center;margin-bottom:5mm}
-        .jhead .jname{font-size:10pt;font-weight:bold}
-        .jhead .jinfo{font-size:8.5pt;color:#333;margin-top:1mm}
-        .art-title-main{font-size:13pt;font-weight:bold;text-align:center;line-height:1.5;margin-bottom:5mm}
-        .authors{text-align:center;margin-bottom:4mm}
-        .authors .aname{font-size:11pt;font-weight:bold}
-        .authors .aaff{font-size:9pt;line-height:1.4}
-        .authors .aemail{font-size:9pt;font-style:italic;margin-top:1mm}
-
-        /* ABSTRAK */
-        .abst-box{border-top:1px solid #000;border-bottom:1px solid #000;padding:4mm 0;margin-bottom:5mm}
-        .abst-row{display:flex;gap:8mm}
-        .abst-col{flex:1;font-size:9pt;line-height:1.45;min-width:0}
-        .abst-col .alabel{font-weight:bold;font-size:10pt;text-align:center;margin-bottom:2mm}
-        .abst-col p{text-indent:0;margin-bottom:2mm}
-        .keywords{font-size:8.5pt;font-style:italic}
-
-        /* HEADING */
-        h1.r{font-size:12pt;font-weight:bold;text-align:center;text-transform:uppercase;margin:5mm 0 3mm 0}
-        h2{font-size:11pt;font-weight:bold;text-align:left;margin:4mm 0 2mm 0}
-
-        /* PARAGRAF */
-        p{text-indent:8mm;text-align:justify;line-height:1.55;font-size:10.5pt;margin-bottom:2.5mm}
-        p.ni{text-indent:0}
-
-        /* GAMBAR */
-        .fig{text-align:center;margin:4mm 0}
-        .fig .cap{font-size:9pt;margin-top:2mm;text-align:center}
-        .fig-box{display:inline-block;padding:3mm;border:1px solid #ccc;background:#fafafa}
-        .fig-dashed{display:inline-block;padding:6mm 8mm;border:1px dashed #000;background:#fafafa;font-weight:bold;font-size:9.5pt}
-        .img-logo{width:50mm;height:50mm;object-fit:contain;border:1px solid #ddd;padding:2px;background:#fff}
-        .img-proc{max-width:130mm;max-height:70mm;object-fit:contain;border:1px solid #ddd;padding:2px;background:#fff}
-
-        /* TABEL */
-        .tbl-wrap{margin:3mm auto;text-align:center}
-        .tbl-wrap .tbl-title{font-size:9pt;font-weight:bold;margin-bottom:1.5mm}
-        table{border-collapse:collapse;font-size:8.5pt;margin:0 auto;width:85%}
-        th,td{border:1px solid #000;padding:1.8mm 2mm;text-align:center;vertical-align:middle}
-        th{background:#f0f0f0;font-weight:bold;font-size:8pt}
-
-        /* DAFTAR PUSTAKA */
-        .ref-list{list-style:none;padding:0;margin-top:3mm}
-        .ref-list li{padding-left:8mm;text-indent:-8mm;margin-bottom:2mm;font-size:9.5pt;line-height:1.45;text-align:justify}
-
-        /* FOOTER */
-        .pg-ft{margin-top:auto;text-align:center;font-size:8.5pt;color:#666;border-top:0.5px solid #999;padding-top:3mm;padding-bottom:2mm}
-
-        a{color:#003366;text-decoration:none}
-
-        @media print{
-            body{background:#fff;padding:0;margin:0}
-            .btn-row{display:none!important}
-            .page{
-                width:210mm;min-height:297mm;padding:20mm 22mm;
-                margin:0;box-shadow:none;page-break-after:always;
-                -webkit-print-color-adjust:exact;print-color-adjust:exact;
-                display:flex;flex-direction:column;
+        @keyframes containerPopUp {
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
             }
-            .page:last-child{page-break-after:auto}
+        }
+
+        /* Teks Salam & Identitas */
+        .salam {
+            font-size: 1.6rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+            line-height: 1.6;
+            color: #0f172a;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeSlideUp 0.8s ease-out 0.4s forwards;
+        }
+
+        .identitas {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: #475569;
+            margin-bottom: 25px;
+            letter-spacing: 0.5px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeSlideUp 0.8s ease-out 0.6s forwards;
+        }
+
+        /* Info Waktu */
+        .info-waktu {
+            font-size: 1rem;
+            font-weight: 400;
+            color: #334155;
+            background: linear-gradient(145deg, #f8fafc, #ffffff);
+            padding: 12px 20px;
+            border-radius: 16px;
+            margin-bottom: 40px;
+            box-shadow: 
+                inset 3px 3px 6px rgba(0, 0, 0, 0.05),
+                inset -3px -3px 6px rgba(255, 255, 255, 0.9);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeSlideUp 0.8s ease-out 0.8s forwards;
+            transition: all 0.3s ease;
+        }
+
+        @keyframes fadeSlideUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Grup Tombol */
+        .tombol-grup {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        /* Gaya Tombol Modern & Animasi */
+        .tombol {
+            display: inline-block;
+            padding: 18px 24px;
+            font-size: 1.08rem;
+            font-weight: 500;
+            text-decoration: none;
+            border-radius: 18px;
+            background: #f1f5f9;
+            color: #1e293b;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 
+                6px 6px 12px rgba(0, 0, 0, 0.08),
+                -6px -6px 12px rgba(255, 255, 255, 0.95);
+            transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            opacity: 0;
+            transform: translateY(25px);
+        }
+
+        /* Animasi masuk bertahap */
+        .tombol:nth-child(1) { animation: tombolMasuk 0.7s ease-out 1s forwards; }
+        .tombol:nth-child(2) { animation: tombolMasuk 0.7s ease-out 1.2s forwards; }
+        .tombol:nth-child(3) { animation: tombolMasuk 0.7s ease-out 1.4s forwards; }
+
+        @keyframes tombolMasuk {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Efek Hover Tombol */
+        .tombol:hover {
+            background: #e2e8f0;
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 
+                8px 8px 16px rgba(0, 0, 0, 0.1),
+                -8px -8px 16px rgba(255, 255, 255, 1);
+            color: #0f172a;
+        }
+
+        /* Efek Klik Tombol */
+        .tombol:active {
+            transform: translateY(1px) scale(0.99);
+            box-shadow: 
+                inset 4px 4px 8px rgba(0, 0, 0, 0.07),
+                inset -4px -4px 8px rgba(255, 255, 255, 0.9);
+        }
+
+        /* Responsif */
+        @media (max-width: 480px) {
+            .container {
+                padding: 35px 22px;
+                border-radius: 24px;
+            }
+
+            .salam {
+                font-size: 1.35rem;
+            }
+
+            .identitas {
+                font-size: 1rem;
+            }
+
+            .info-waktu {
+                font-size: 0.9rem;
+                padding: 10px 16px;
+            }
+
+            .tombol {
+                font-size: 1rem;
+                padding: 15px 20px;
+                border-radius: 16px;
+            }
         }
     </style>
 </head>
 <body>
+    <div class="container">
+        <div class="salam" id="teksSalam"></div>
+        <div class="identitas">DIMAS ARIF FIKRIAWAN • 24.240.0075</div>
+        <div class="info-waktu" id="tampilanWaktu"></div>
 
-<div class="btn-row">
-    <button class="btn-word" onclick="downloadWord()">Unduh Word</button>
-    <button class="btn-pdf" onclick="window.print()">Cetak / Save PDF</button>
-</div>
-
-<!-- SAMPUL -->
-<div class="page cover">
-    <div class="content">
-        <div class="jtitle">JOURNAL OF INDONESIAN EDUCATION<br><span style="font-size:11pt;">JIKOM-DKV</span><br><span style="font-size:10pt;">VOLUME 4, NOMOR 2, JUNI 2026</span></div>
-        <div class="logo-wrap"><img src="logokampus.png" alt="Logo" onerror="this.outerHTML='<div style=&quot;display:inline-block;width:160px;height:160px;border:1px solid #000;font-size:10pt;text-align:center;line-height:160px;background:#fafafa;&quot;>Logo Kampus</div>';"></div>
-        <div class="art-title">PERANCANGAN ULANG IDENTITY BRANDING<br>MELALUI DESAIN LOGO BARU<br>PADA PERUSAHAAN CERAH</div>
-        <div class="author">Dimas Arif Fikriawan</div>
-        <div class="nim">NIM 24.240.0075</div>
-        <div class="info">
-            <b>Program Studi Teknik Informatika</b><br>
-            <b>Institut Widya Pratama</b><br>
-            Jl. Patriot No. 25 - Kota Pekalongan<br>
-            (0285) 427816 / 427817<br>
-            Email: <a href="mailto:akademik@iwima.ac.id">akademik@iwima.ac.id</a>
+        <div class="tombol-grup">
+            <a href="jurnal.html" class="tombol">Lihat jurnal anda</a>
+            <a href="#" class="tombol">Lihat lokasi penelitian</a>
+            <a href="#" class="tombol">Lihat tujuan alamat jurnal anda</a>
         </div>
-        <div class="year">Tahun 2026</div>
     </div>
-</div>
 
-<!-- HALAMAN 1 -->
-<div class="page">
-    <div class="content">
-        <div class="jhead"><div class="jname">Journal of Indonesian Education (JIKOM-DKV)</div><div class="jinfo">Vol. 4, No. 2, Juni 2026, hlm. 125–134 &ensp;|&ensp; E-ISSN: 2987-1234 &ensp;|&ensp; P-ISSN: 2987-5678</div></div>
-        <div class="art-title-main">Perancangan Ulang Identity Branding Melalui Desain Logo Baru pada Perusahaan Cerah</div>
-        <div class="authors"><div class="aname">Dimas Arif Fikriawan<sup>*</sup></div><div class="aaff">Program Studi Teknik Informatika, Institut Widya Pratama<br>Jl. Patriot No. 25 - Kota Pekalongan, Indonesia</div><div class="aemail"><sup>*</sup>Penulis korespondensi: <a href="mailto:dimasfikriawan0@gmail.com">dimasfikriawan0@gmail.com</a></div></div>
-        <div class="abst-box"><div class="abst-row">
-            <div class="abst-col"><div class="alabel">Abstrak</div><p>Perusahaan Cerah berjalan di sektor layanan edukasi digital. Belakangan persaingan makin ramai, dan logo yang dipakai selama ini sudah tidak begitu pas lagi. Tampilannya penuh, sulit terbaca begitu ukurannya dikecilkan, dan kurang luwes kalau harus tampil di layar ponsel. Penelitian ini merancang ulang logo menggunakan pendekatan <i>Design Thinking</i>. Hasilnya, logo baru lebih bersih, modern, dan fleksibel di berbagai media.</p><p class="keywords"><b>Kata Kunci:</b> perancangan ulang, identitas merek, logo, desain visual, Design Thinking.</p></div>
-            <div class="abst-col"><div class="alabel">Abstract</div><p><i>Perusahaan Cerah operates in digital education. Its old logo is crowded and not flexible for mobile screens. This study redesigned the logo using Design Thinking. The new logo is cleaner, more modern, and works across all media.</i></p><p class="keywords"><b>Keywords:</b> <i>redesign, brand identity, logo, visual design, Design Thinking.</i></p></div>
-        </div></div>
-        <h1 class="r">I. PENDAHULUAN</h1>
-        <p>Teknologi bergerak cepat beberapa tahun terakhir. Perubahan ini ikut menggeser cara perusahaan menyapa publiknya. Di lapangan digital, logo bukan cuma penanda biasa. Ia sudah jadi alat komunikasi yang ikut menentukan apakah orang akan memandang sebuah perusahaan punya mutu dan bisa diandalkan atau tidak (Wheeler, 2018).</p>
-        <p>Perusahaan Cerah sendiri berjalan di atas fondasi teknologi. Sayangnya, logo yang ada sekarang terlalu banyak memuat detail. Waktu dipasang di antarmuka <i>mobile</i>, justru merepotkan. Dari situ muncul pikiran buat merombak logo supaya lebih sederhana, bergaris tegas, dan tampil konsisten di mana pun (Rustan, 2019).</p>
-        <p>Penelitian ini cukup penting untuk dikerjakan. Identitas visual yang kuat bisa membangun rasa percaya, memudahkan orang mengingat merek, dan membuat pengalaman pengguna terasa lebih nyaman.</p>
-    </div>
-    <div class="pg-ft">JIKOM-DKV, Vol. 4, No. 2, Juni 2026 &ensp;|&ensp; 125</div>
-</div>
+    <script>
+        // Nama hari dan bulan dalam Bahasa Indonesia
+        const namaHari = ["Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu"];
+        const namaBulan = ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"];
 
-<!-- HALAMAN 2 -->
-<div class="page">
-    <div class="content">
-        <h1 class="r">II. TINJAUAN PUSTAKA</h1>
-        <h2>2.1. Identitas Merek di Dunia Digital</h2>
-        <p><i>Identity branding</i> adalah kumpulan elemen visual dan gagasan yang disusun untuk membentuk kesan terhadap organisasi. Identitas yang baik punya tiga ciri: gampang diingat, bisa dipakai di banyak tempat, dan mewakili nilai perusahaan (Wheeler, 2018). Di dunia digital, logo jadi hal pertama yang dilihat pengguna (Rowe, 2019).</p>
-        <h2>2.2. Keunggulan Format Vektor</h2>
-        <p>Gambar vektor seperti SVG bisa diperbesar tanpa pecah. Cocok buat layar digital berbagai ukuran. Ukuran file juga kecil (Pradana &amp; Nugroho, 2021).</p>
-        <h2>2.3. Tipografi untuk Media Digital</h2>
-        <p>Huruf <i>sans-serif</i> jadi pilihan utama karena bersih dan tetap terbaca di ukuran kecil (Saraswati &amp; Kurniawan, 2023).</p>
-        <h2>2.4. Psikologi Warna</h2>
-        <p>Biru melambangkan kepercayaan, kuning optimisme. Perpaduan serasi mempertegas pesan merek (Rustan, 2019).</p>
-        <h2>2.5. Metode Design Thinking</h2>
-        <p>Lima langkah: <i>empathize, define, ideate, prototype, test</i>. Berpusat pada kebutuhan manusia (Anggraini &amp; Natasia, 2020).</p>
-        <h2>2.6. Penelitian Sebelumnya</h2>
-        <p>Hidayat dan Rahmawati (2022) membuktikan penyederhanaan bentuk meningkatkan kejelasan logo. Pradana dan Nugroho (2021) menekankan pentingnya format vektor. Kurniawan (2022) membahas konsistensi identitas visual.</p>
-    </div>
-    <div class="pg-ft">JIKOM-DKV, Vol. 4, No. 2, Juni 2026 &ensp;|&ensp; 126</div>
-</div>
+        // Fungsi perbarui waktu secara real-time
+        function perbaruiWaktu() {
+            const sekarang = new Date();
+            const hari = namaHari[sekarang.getDay()];
+            const tanggal = sekarang.getDate();
+            const bulan = namaBulan[sekarang.getMonth()];
+            const tahun = sekarang.getFullYear();
+            const jam = sekarang.getHours().toString().padStart(2, '0');
+            const menit = sekarang.getMinutes().toString().padStart(2, '0');
+            const detik = sekarang.getSeconds().toString().padStart(2, '0');
 
-<!-- HALAMAN 3 -->
-<div class="page">
-    <div class="content">
-        <h1 class="r">III. METODOLOGI PENELITIAN</h1>
-        <p>Penelitian ini menempuh metode <i>Design Thinking</i>. Pendekatan ini memberi ruang eksplorasi namun tetap runut dan fokus pada kebutuhan pemakai (Anggraini &amp; Natasia, 2020). Metode ini menyeimbangkan sisi artistik dan tuntutan teknis (Norman, 2013).</p>
-        <div class="fig"><div class="fig-dashed">Empathize &#8594; Define &#8594; Ideate &#8594; Prototype &#8594; Test</div><div class="cap"><b>Gambar 1.</b> Alur Metode <i>Design Thinking</i></div></div>
-        <p>Langkah pertama menggali kebutuhan pengguna. Berikutnya merinci kekurangan logo lama. Sesudah itu mengumpulkan ide dan sketsa baru dengan bentuk lebih ringkas (Rustan, 2019). Pengumpulan data dilakukan dengan mengamati serta membandingkan logo lama dan logo baru.</p>
-        <div class="fig"><div class="fig-box"><img src="bukti-proses.png" alt="Bukti Proses" class="img-proc" onerror="this.outerHTML='<div style=&quot;width:130mm;height:60mm;border:1px dashed #999;display:inline-flex;align-items:center;justify-content:center;font-size:10pt;&quot;>Screenshot Bukti Proses</div>';"></div><div class="cap"><b>Gambar 2.</b> Bukti Proses Pengerjaan</div></div>
-    </div>
-    <div class="pg-ft">JIKOM-DKV, Vol. 4, No. 2, Juni 2026 &ensp;|&ensp; 127</div>
-</div>
+            document.getElementById("tampilanWaktu").textContent = 
+                `${hari}, ${tanggal} ${bulan} ${tahun} | ${jam}:${menit}:${detik}`;
+        }
 
-<!-- HALAMAN 4 -->
-<div class="page">
-    <div class="content">
-        <h1 class="r">IV. HASIL DAN PEMBAHASAN</h1>
-        <h2>4.1. Hasil Perancangan</h2>
-        <p>Dari serangkaian proses, didapat desain baru dengan bentuk geometris sederhana dan komposisi seimbang. Bentuk ringkas memudahkan logo dipasang di pelbagai tempat (Hidayat &amp; Rahmawati, 2022).</p>
-        <div class="fig"><div class="fig-box"><div style="display:flex;gap:6mm;justify-content:center;align-items:center;padding:2mm;"><div style="text-align:center;"><img src="logo-lama.png" alt="Logo Lama" class="img-logo" onerror="this.outerHTML='<div style=&quot;width:50mm;height:50mm;border:1px dashed #999;display:inline-flex;align-items:center;justify-content:center;font-size:9pt;&quot;>Logo Lama</div>';"><div style="font-size:8pt;margin-top:1mm;">(a) Sebelum</div></div><div style="text-align:center;"><img src="logo-baru.png" alt="Logo Baru" class="img-logo" onerror="this.outerHTML='<div style=&quot;width:50mm;height:50mm;border:1px dashed #999;display:inline-flex;align-items:center;justify-content:center;font-size:9pt;&quot;>Logo Baru</div>';"><div style="font-size:8pt;margin-top:1mm;">(b) Sesudah</div></div></div></div><div class="cap"><b>Gambar 3.</b> Perbandingan Logo Lama dan Baru</div></div>
-        <div class="tbl-wrap"><div class="tbl-title">Tabel 1. Perbandingan Kualitas Desain</div><table><thead><tr><th>Aspek</th><th>Logo Lama</th><th>Logo Baru</th></tr></thead><tbody><tr><td>Kerumitan</td><td>Tinggi</td><td>Rendah</td></tr><tr><td>Jenis Huruf</td><td><i>Serif</i></td><td><i>Sans-serif</i></td></tr><tr><td>Format Berkas</td><td>Raster (PNG)</td><td>Vektor (SVG)</td></tr><tr><td>Ubah Ukuran</td><td>Terbatas</td><td>Sangat Baik</td></tr><tr><td>Kejelasan</td><td>Cukup</td><td>Jelas</td></tr></tbody></table></div>
-        <p>Logo baru lebih rapi, modern, dan nyaman di layar apa saja. Peralihan ke vektor membuat pemakaiannya lebih leluasa (Pradana &amp; Nugroho, 2021).</p>
-    </div>
-    <div class="pg-ft">JIKOM-DKV, Vol. 4, No. 2, Juni 2026 &ensp;|&ensp; 128</div>
-</div>
+        // Fungsi salam sesuai jam
+        function dapatkanSalam() {
+            const jam = new Date().getHours();
+            if (jam >= 4 && jam < 11) return "Selamat Pagi";
+            if (jam >= 11 && jam < 18) return "Selamat Siang";
+            return "Selamat Malam";
+        }
 
-<!-- HALAMAN 5 -->
-<div class="page">
-    <div class="content">
-        <h2>4.2. Makna Filosofis dan Visual</h2>
-        <p>Tiap bagian logo baru dirancang dengan maksud: bentuk mengisyaratkan komunikasi terbuka, garis tegas melambangkan kemantapan, kesederhanaan mewakili kemudahan akses (Rowe, 2019).</p>
-        <h2>4.3. Penilaian Kelayakan</h2>
-        <p>Berdasarkan empat tolok ukur (kesederhanaan, konsistensi, keluwesan, daya tarik), logo baru unggul di semua poin (Cooper et al., 2014).</p>
-        <h2>4.4. Penerapan di Berbagai Media</h2>
-        <p>Logo baru bisa dipakai di situs web, aplikasi, spanduk, hingga cetakan tanpa banyak penyesuaian (Hidayat &amp; Rahmawati, 2022).</p>
-        <h2>4.5. Dampak pada Citra Perusahaan</h2>
-        <p>Identitas visual yang tertata membentuk pandangan positif. Logo yang baik memberi isyarat perusahaan itu cermat dan berkualitas (Kotler &amp; Keller, 2016).</p>
-        <h2>4.6. Keterbatasan Penelitian</h2>
-        <p>Perlu pengujian lebih luas dengan banyak pengguna sungguhan (Hidayat &amp; Rahmawati, 2022).</p>
-    </div>
-    <div class="pg-ft">JIKOM-DKV, Vol. 4, No. 2, Juni 2026 &ensp;|&ensp; 129</div>
-</div>
-
-<!-- HALAMAN 6 - DIPERBANYAK -->
-<div class="page">
-    <div class="content">
-        <h1 class="r">V. PENGEMBANGAN LEBIH LANJUT</h1>
-        <p>Perancangan ulang logo Perusahaan Cerah tidak berhenti pada satu desain akhir. Masih banyak ruang pengembangan yang dapat dilakukan untuk memperkuat identitas visual perusahaan secara lebih komprehensif dan berkelanjutan. Pengembangan ini penting agar logo tidak hanya berfungsi sebagai penanda visual, tetapi juga menjadi aset strategis perusahaan dalam menghadapi persaingan di industri edukasi digital.</p>
-        <p>Salah satu arah pengembangan utama adalah penyusunan buku panduan identitas merek (<i>brand identity guidelines</i>) yang lengkap dan terstruktur. Buku panduan ini akan memuat aturan baku mengenai penggunaan logo dalam berbagai konteks, termasuk ketentuan jarak aman (<i>clear space</i>), ukuran minimum yang diperbolehkan, variasi warna (versi penuh warna, hitam-putih, dan <i>grayscale</i>), serta larangan penggunaan yang dapat merusak integritas visual logo (Wheeler, 2018). Dengan adanya panduan tertulis, siapa pun yang menggunakan logo—baik tim internal maupun mitra eksternal—dapat menjaga konsistensi tampilan di seluruh materi komunikasi.</p>
-        <p>Pengembangan berikutnya adalah pembuatan variasi logo untuk berbagai keperluan spesifik. Logo utama dapat dikembangkan menjadi beberapa versi turunan seperti logo horizontal untuk tajuk situs web, logo vertikal untuk keperluan cetak tertentu, ikon mandiri (<i>favicon</i>) untuk tab peramban, serta versi responsif yang dioptimalkan untuk media sosial seperti Instagram, LinkedIn, dan TikTok. Setiap variasi tetap mempertahankan elemen inti logo agar konsistensi identitas tetap terjaga meskipun diterapkan di berbagai platform digital (Rowe, 2019).</p>
-        <p>Aspek warna juga dapat dieksplorasi lebih jauh. Selain palet warna utama yang sudah ditetapkan, dapat dikembangkan palet warna sekunder dan aksen yang memperkaya tampilan visual perusahaan di berbagai media tanpa mengorbankan ciri khasnya. Pemilihan warna sekunder harus tetap mengacu pada prinsip psikologi warna yang telah dikaji sebelumnya (Rustan, 2019).</p>
-        <p>Dari sisi teknis, format vektor (SVG) yang sudah digunakan pada logo baru membuka peluang untuk pengembangan lebih lanjut ke arah animasi ringan (<i>motion graphic</i>) yang dapat digunakan pada situs web, aplikasi, dan presentasi digital. Logo animasi dapat memberikan kesan dinamis dan modern yang sejalan dengan karakter perusahaan teknologi pendidikan (Kurniawan, 2022).</p>
-        <p>Terakhir, evaluasi dan pemutakhiran berkala perlu dijadwalkan secara rutin, misalnya setiap dua hingga tiga tahun sekali. Hal ini penting untuk memastikan bahwa logo tetap relevan dengan perkembangan zaman, selera pasar, dan arah strategis perusahaan ke depan (Putri &amp; Ramadhan, 2023).</p>
-
-        <h1 class="r">VI. KESIMPULAN DAN SARAN</h1>
-        <h2>6.1. Kesimpulan</h2>
-        <p>Berdasarkan seluruh rangkaian proses perancangan yang telah dilakukan, dapat disimpulkan bahwa pembaruan identitas visual Perusahaan Cerah melalui desain logo baru telah berhasil dilaksanakan dengan hasil yang memuaskan. Logo baru berhasil mengatasi permasalahan utama pada logo sebelumnya, yaitu kerumitan bentuk yang mengganggu keterbacaan, ketidakmampuan beradaptasi di layar perangkat seluler, serta kurangnya fleksibilitas untuk digunakan di berbagai media.</p>
-        <p>Penerapan metode <i>Design Thinking</i> yang terdiri dari lima tahapan—<i>empathize, define, ideate, prototype,</i> dan <i>test</i>—terbukti menjadi kerangka kerja yang efektif dalam memandu proses perancangan secara sistematis dan terukur. Setiap keputusan desain didasarkan pada kebutuhan nyata pengguna dan karakteristik media yang digunakan, bukan sekadar preferensi estetis semata.</p>
-        <p>Secara spesifik, logo baru menunjukkan peningkatan signifikan pada lima aspek utama: (1) bentuk lebih sederhana dan geometris sehingga mudah diingat; (2) penggunaan tipografi <i>sans-serif</i> yang lebih kontemporer dan mudah dibaca; (3) format berkas vektor (SVG) yang memungkinkan perubahan ukuran tanpa kehilangan kualitas; (4) fleksibilitas tinggi untuk digunakan di berbagai media, baik cetak maupun digital; dan (5) kejelasan visual yang lebih baik dibandingkan logo sebelumnya.</p>
-        <p>Dengan demikian, logo baru ini diharapkan mampu memperkuat citra profesional Perusahaan Cerah di mata pelanggan, mitra, dan pemangku kepentingan lainnya, sekaligus menjadi fondasi yang kokoh bagi pengembangan identitas merek secara lebih luas di masa depan.</p>
-
-        <h2>6.2. Saran</h2>
-        <p>Berdasarkan hasil penelitian dan keterbatasan yang telah diidentifikasi, beberapa saran dapat diajukan untuk pengembangan selanjutnya:</p>
-        <p>(1) Perusahaan Cerah disarankan untuk segera mengimplementasikan logo baru ini secara resmi di seluruh materi komunikasi, termasuk situs web, aplikasi, media sosial, kop surat, kartu nama, dan materi promosi lainnya. Implementasi yang serentak dan konsisten akan mempercepat terbentuknya citra baru di benak publik.</p>
-        <p>(2) Perlu dilakukan penelitian lanjutan berupa pengujian langsung terhadap calon pengguna (<i>user testing</i>) dengan melibatkan responden yang lebih banyak dan beragam, baik dari segi demografi maupun latar belakang pengguna. Pengujian ini dapat dilakukan melalui metode survei, wawancara kelompok terfokus (<i>focus group discussion</i>), atau uji keterbacaan secara kuantitatif untuk memperoleh data yang lebih objektif dan terukur.</p>
-        <p>(3) Disarankan untuk menyusun buku panduan identitas merek (<i>brand identity guidelines</i>) yang komprehensif sebagai acuan baku bagi seluruh pemangku kepentingan dalam menggunakan logo dan elemen visual terkait. Panduan ini akan memastikan konsistensi visual di seluruh titik kontak merek (<i>brand touchpoints</i>).</p>
-        <p>(4) Perusahaan Cerah dapat mempertimbangkan pengembangan variasi logo, seperti versi horizontal, versi ikon mandiri, dan versi responsif untuk media sosial, guna meningkatkan fleksibilitas penggunaan logo di berbagai platform digital tanpa mengorbankan konsistensi identitas.</p>
-        <p>(5) Penelitian selanjutnya dapat mengeksplorasi integrasi logo baru ke dalam sistem desain yang lebih luas (<i>design system</i>), mencakup elemen antarmuka pengguna (UI), ilustrasi, fotografi, dan panduan nada komunikasi (<i>tone of voice</i>) untuk menciptakan pengalaman merek yang utuh dan kohesif.</p>
-    </div>
-    <div class="pg-ft">JIKOM-DKV, Vol. 4, No. 2, Juni 2026 &ensp;|&ensp; 130</div>
-</div>
-
-<!-- HALAMAN 7 -->
-<div class="page">
-    <div class="content">
-        <h1 class="r">DAFTAR PUSTAKA</h1>
-        <ul class="ref-list">
-            <li>Anggraini, S., &amp; Natasia, S. R. (2020). Pengembangan antarmuka pengguna aplikasi mobile menggunakan metode Design Thinking. <i>Jurnal Teknologi Informasi dan Komunikasi</i>, 12(1), 45–56.</li>
-            <li>Cooper, A., Reimann, R., &amp; Cronin, D. (2014). <i>About Face: The Essentials of Interaction Design</i> (4th ed.). Wiley.</li>
-            <li>Hidayat, R., &amp; Rahmawati, A. (2022). Perancangan ulang identitas visual. <i>Jurnal Desain Komunikasi Visual</i>, 8(2), 112–125.</li>
-            <li>Kotler, P., &amp; Keller, K. L. (2016). <i>Marketing Management</i> (15th ed.). Pearson Education.</li>
-            <li>Kurniawan, A. (2022). Konsistensi identitas visual perusahaan digital. <i>Jurnal Seni dan Desain Nusantara</i>, 6(3), 201–215.</li>
-            <li>Norman, D. A. (2013). <i>The Design of Everyday Things</i>. Basic Books.</li>
-            <li>Pradana, A. W., &amp; Nugroho, S. (2021). Penerapan format grafik vektor SVG. <i>Jurnal Informatika dan Komputer</i>, 9(3), 78–89.</li>
-            <li>Putri, S. A., &amp; Ramadhan, F. (2023). Strategi rebranding visual. <i>Jurnal Branding dan Identitas Visual</i>, 4(1), 55–68.</li>
-            <li>Rowe, M. (2019). <i>Visual Identity Systems for Digital Brands</i>. Design Press.</li>
-            <li>Rustan, S. (2019). <i>Mendesain Logo</i>. Gramedia Pustaka Utama.</li>
-            <li>Saraswati, D. K., &amp; Kurniawan, H. (2023). Analisis keterbacaan tipografi sans-serif. <i>Jurnal Desain dan Komunikasi Visual</i>, 10(1), 33–44.</li>
-            <li>Wheeler, A. (2018). <i>Designing Brand Identity</i> (5th ed.). Wiley.</li>
-        </ul>
-    </div>
-    <div class="pg-ft">JIKOM-DKV, Vol. 4, No. 2, Juni 2026 &ensp;|&ensp; 132</div>
-</div>
-
-<script>
-function downloadWord(){
-    var c=document.body.innerHTML;
-    c=c.replace(/<div class="btn-row">[\s\S]*?<\/div>/,'');
-    c=c.replace(/<script[\s\S]*?<\/script>/g,'');
-    var h='<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word" xmlns="http://www.w3.org/TR/REC-html40"><head><meta charset="utf-8"><title>Artikel</title><style>@page{size:210mm 297mm;margin:20mm 22mm}body{font-family:"Times New Roman",serif;font-size:11pt;line-height:1.55;text-align:justify}.page{page-break-after:always;padding:20mm 22mm;margin-bottom:15px}.page:last-child{page-break-after:auto}.content{min-height:257mm}.cover{text-align:center}h1.r{font-size:12pt;font-weight:bold;text-align:center;text-transform:uppercase}h2{font-size:11pt;font-weight:bold}p{text-indent:8mm;margin-bottom:2.5mm;font-size:10.5pt;text-align:justify}table{border-collapse:collapse;font-size:8.5pt;width:85%;margin:0 auto}th,td{border:1px solid #000;padding:1.8mm 2mm;text-align:center}th{background:#f0f0f0;font-weight:bold;font-size:8pt}.pg-ft{text-align:center;font-size:8.5pt;border-top:0.5px solid #999;padding-top:2mm;color:#666;margin-top:5mm}</style></head><body>'+c+'</body></html>';
-    var b=new Blob([h],{type:"application/msword"});
-    var u=URL.createObjectURL(b);
-    var a=document.createElement("a");
-    a.href=u;a.download="Artikel_JIKOM_DKV.doc";a.click();
-    URL.revokeObjectURL(u);
-}
-</script>
+        // Jalankan fungsi saat halaman dimuat
+        document.getElementById("teksSalam").textContent = `${dapatkanSalam()}`;
+        perbaruiWaktu();
+        setInterval(perbaruiWaktu, 1000);
+    </script>
 </body>
 </html>
