@@ -11,7 +11,6 @@
         body{
             background:#c0c0c0;
             font-family:"Times New Roman",Times,serif;
-            font-size:16px;
             color:#000;
             padding:20px 0;
         }
@@ -20,12 +19,13 @@
             display:flex;gap:6px;
         }
         .btns button{
-            padding:8px 14px;border:none;border-radius:4px;
-            cursor:pointer;font-weight:bold;font-size:13px;
+            padding:10px 16px;border:none;border-radius:4px;
+            cursor:pointer;font-weight:bold;font-size:14px;
             font-family:"Times New Roman",serif;
         }
         .btn-w{background:#1a3a5c;color:#ffd200}
         .btn-p{background:#b00000;color:#fff}
+        .btn-p:disabled{opacity:0.6;cursor:wait}
 
         #wrapper{
             width:794px;
@@ -94,26 +94,13 @@
         .ft{position:absolute;bottom:55px;left:80px;right:80px;text-align:center;font-size:11px;color:#666;border-top:0.5px solid #aaa;padding-top:10px}
 
         a{color:#1a3a5c;text-decoration:none}
-
-        @media print{
-            body{background:#fff;padding:0;margin:0}
-            .btns{display:none!important}
-            #wrapper{width:auto;margin:0}
-            .page{
-                width:210mm;min-height:297mm;padding:20mm 22mm;
-                margin:0;box-shadow:none;page-break-after:always;
-                font-size:11pt;overflow:visible;
-            }
-            .page:last-child{page-break-after:auto}
-            .ft{position:absolute;bottom:14mm;left:22mm;right:22mm}
-        }
     </style>
 </head>
 <body>
 
 <div class="btns">
     <button class="btn-w" onclick="doWord()">Unduh Word</button>
-    <button class="btn-p" id="pdfBtn" onclick="doPDF()">Cetak PDF</button>
+    <button class="btn-p" id="pdfBtn" onclick="doPDF()">Unduh PDF</button>
 </div>
 
 <div id="wrapper">
@@ -283,7 +270,7 @@
 <script>
 function doWord(){
     var c=document.getElementById("wrapper").innerHTML;
-    var h='<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word" xmlns="http://www.w3.org/TR/REC-html40"><head><meta charset="utf-8"><title>Artikel JIKOM-DKV</title><style>@page{size:210mm 297mm;margin:20mm 22mm}body{font-family:"Times New Roman",serif;font-size:11pt;line-height:1.55;text-align:justify}.page{page-break-after:always;padding:0;margin-bottom:15px;position:relative}.page:last-child{page-break-after:auto}.cover{text-align:center}h1.r{font-size:12pt;font-weight:bold;text-align:center;text-transform:uppercase}h2{font-size:11pt;font-weight:bold}p{text-indent:30px;margin-bottom:10px;font-size:10.5pt;text-align:justify}p.ni{text-indent:0}table{border-collapse:collapse;width:80%;font-size:8.5pt;margin:0 auto}th,td{border:1px solid #000;padding:6px 10px;text-align:center}th{background:#f0f0f0;font-weight:bold;font-size:8pt}.ft{text-align:center;font-size:8.5pt;border-top:0.5px solid #aaa;padding-top:8px;color:#666;margin-top:12px}</style></head><body>'+c+'</body></html>';
+    var h='<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word" xmlns="http://www.w3.org/TR/REC-html40"><head><meta charset="utf-8"><title>Artikel</title><style>@page{size:210mm 297mm;margin:20mm 22mm}body{font-family:"Times New Roman",serif;font-size:11pt;line-height:1.55;text-align:justify}.page{page-break-after:always;padding:0;margin-bottom:15px;position:relative}.page:last-child{page-break-after:auto}.cover{text-align:center}h1.r{font-size:12pt;font-weight:bold;text-align:center;text-transform:uppercase}h2{font-size:11pt;font-weight:bold}p{text-indent:30px;margin-bottom:10px;font-size:10.5pt;text-align:justify}table{border-collapse:collapse;width:80%;font-size:8.5pt;margin:0 auto}th,td{border:1px solid #000;padding:6px 10px;text-align:center}th{background:#f0f0f0;font-weight:bold;font-size:8pt}.ft{text-align:center;font-size:8.5pt;border-top:0.5px solid #aaa;padding-top:8px;color:#666;margin-top:12px}</style></head><body>'+c+'</body></html>';
     var b=new Blob([h],{type:"application/msword"});
     var u=URL.createObjectURL(b);
     var a=document.createElement("a");
@@ -291,8 +278,51 @@ function doWord(){
     URL.revokeObjectURL(u);
 }
 
-function doPDF(){
-    window.print();
+async function doPDF(){
+    var btn=document.getElementById("pdfBtn");
+    btn.disabled=true;btn.innerText="Memproses...";
+
+    try{
+        var{jsPDF}=window.jspdf;
+        var pages=document.querySelectorAll("#wrapper .page");
+        var pdfW=210; // mm
+        var pdfH=297; // mm
+        var doc=new jsPDF({unit:"mm",format:[pdfW,pdfH],orientation:"portrait",compress:true});
+
+        for(var i=0;i<pages.length;i++){
+            if(i>0) doc.addPage();
+
+            var page=pages[i];
+            var w=page.offsetWidth;
+            var h=page.offsetHeight;
+
+            var canvas=await html2canvas(page,{
+                scale:2,
+                useCORS:true,
+                allowTaint:true,
+                logging:false,
+                backgroundColor:'#ffffff',
+                width:w,
+                height:h
+            });
+
+            var imgData=canvas.toDataURL("image/jpeg",0.95);
+            var ratio=h/w;
+            var imgH=pdfW*ratio;
+
+            if(imgH>pdfH){
+                imgH=pdfH;
+            }
+
+            doc.addImage(imgData,"JPEG",0,0,pdfW,imgH,undefined,"FAST");
+        }
+
+        doc.save("Artikel_JIKOM_DKV.pdf");
+    }catch(e){
+        alert("Gagal: "+e.message);
+    }finally{
+        btn.disabled=false;btn.innerText="Unduh PDF";
+    }
 }
 </script>
 </body>
